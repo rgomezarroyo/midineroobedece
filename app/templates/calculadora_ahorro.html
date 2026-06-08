@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block title %}Calculadora de Ahorro - Alcanza tu Meta Financiera | MiDineroObedece{% endblock %}
+
+{% block meta_description %}Calcula cuánto necesitas ahorrar cada mes para alcanzar tu meta financiera. Gratis y sin registro.{% endblock %}
+
+{% block content %}
+<section class="calculadora-page">
+    <h1>Calculadora de Ahorro</h1>
+    <p class="subtitulo">Descubre cuánto debes ahorrar cada mes para alcanzar tu meta.</p>
+
+    <div class="calculadora-container">
+        <div class="formulario">
+            <div class="campo">
+                <label for="meta">Meta de ahorro ($)</label>
+                <input type="number" id="meta" placeholder="Ej: 10000" min="0">
+            </div>
+            <div class="campo">
+                <label for="ahorro_actual">Ahorro actual ($)</label>
+                <input type="number" id="ahorro_actual" placeholder="Ej: 1000" min="0" value="0">
+            </div>
+            <div class="campo">
+                <label for="tasa_ahorro">Tasa de interés anual (%)</label>
+                <input type="number" id="tasa_ahorro" placeholder="Ej: 5" min="0" step="0.1" value="0">
+            </div>
+            <div class="campo">
+                <label for="plazo_ahorro">Plazo (meses)</label>
+                <input type="number" id="plazo_ahorro" placeholder="Ej: 24" min="1">
+            </div>
+            <button onclick="calcularAhorro()">Calcular</button>
+        </div>
+
+        <div class="resultados" id="resultados-ahorro" style="display:none;">
+            <h2>Resultado</h2>
+            <div class="resultado-item">
+                <span>Ahorro mensual necesario:</span>
+                <strong id="ahorro-mensual"></strong>
+            </div>
+            <div class="resultado-item">
+                <span>Total ahorrado al final:</span>
+                <strong id="total-ahorro"></strong>
+            </div>
+            <div class="resultado-item">
+                <span>Intereses ganados:</span>
+                <strong id="intereses-ahorro"></strong>
+            </div>
+        </div>
+    </div>
+
+    <article class="contenido-seo">
+        <h2>¿Cómo calcular cuánto ahorrar cada mes?</h2>
+        <p>Para alcanzar una meta de ahorro en un tiempo determinado, debes considerar cuánto ya tienes ahorrado, la tasa de interés que te ofrece tu cuenta o inversión, y el plazo en meses.</p>
+        <h3>Consejos para ahorrar más rápido</h3>
+        <ul>
+            <li>Automatiza tu ahorro: transfiere una parte de tu sueldo el mismo día que cobras.</li>
+            <li>Busca una cuenta de ahorro con la mejor tasa disponible en tu país.</li>
+            <li>Reduce un gasto no esencial y destínalo directamente a tu meta.</li>
+        </ul>
+    </article>
+</section>
+
+<script>
+function calcularAhorro() {
+    const meta = parseFloat(document.getElementById('meta').value);
+    const actual = parseFloat(document.getElementById('ahorro_actual').value) || 0;
+    const tasaAnual = parseFloat(document.getElementById('tasa_ahorro').value) || 0;
+    const meses = parseInt(document.getElementById('plazo_ahorro').value);
+
+    if (!meta || !meses) {
+        alert('Por favor ingresa la meta y el plazo.');
+        return;
+    }
+
+    const tasaMensual = tasaAnual / 100 / 12;
+    let mensual;
+
+    if (tasaMensual === 0) {
+        mensual = (meta - actual) / meses;
+    } else {
+        const factor = Math.pow(1 + tasaMensual, meses);
+        mensual = (meta - actual * factor) * tasaMensual / (factor - 1);
+    }
+
+    const totalAportado = mensual * meses + actual;
+    const intereses = meta - totalAportado;
+
+    document.getElementById('ahorro-mensual').textContent = '$' + mensual.toFixed(2);
+    document.getElementById('total-ahorro').textContent = '$' + meta.toFixed(2);
+    document.getElementById('intereses-ahorro').textContent = '$' + Math.max(0, intereses).toFixed(2);
+    document.getElementById('resultados-ahorro').style.display = 'block';
+}
+</script>
+{% endblock %}

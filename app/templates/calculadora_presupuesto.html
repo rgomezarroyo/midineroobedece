@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+
+{% block title %}Calculadora de Presupuesto Personal - Organiza tus Finanzas | MiDineroObedece{% endblock %}
+
+{% block meta_description %}Organiza tus ingresos y gastos mensuales. Descubre cuánto te sobra o te falta cada mes. Gratis y sin registro.{% endblock %}
+
+{% block content %}
+<section class="calculadora-page">
+    <h1>Calculadora de Presupuesto Personal</h1>
+    <p class="subtitulo">Organiza tus ingresos y gastos. Descubre a dónde va tu dinero cada mes.</p>
+
+    <div class="calculadora-container">
+        <div class="formulario">
+            <h3>Ingresos mensuales</h3>
+            <div class="campo">
+                <label for="salario">Salario / Sueldo ($)</label>
+                <input type="number" id="salario" placeholder="Ej: 800" min="0" value="0">
+            </div>
+            <div class="campo">
+                <label for="otros-ingresos">Otros ingresos ($)</label>
+                <input type="number" id="otros-ingresos" placeholder="Ej: 200" min="0" value="0">
+            </div>
+
+            <h3 style="margin-top:1.5rem;">Gastos mensuales</h3>
+            <div class="campo">
+                <label for="vivienda">Vivienda / Arriendo ($)</label>
+                <input type="number" id="vivienda" placeholder="Ej: 300" min="0" value="0">
+            </div>
+            <div class="campo">
+                <label for="alimentacion">Alimentación ($)</label>
+                <input type="number" id="alimentacion" placeholder="Ej: 200" min="0" value="0">
+            </div>
+            <div class="campo">
+                <label for="transporte">Transporte ($)</label>
+                <input type="number" id="transporte" placeholder="Ej: 50" min="0" value="0">
+            </div>
+            <div class="campo">
+                <label for="servicios">Servicios básicos ($)</label>
+                <input type="number" id="servicios" placeholder="Ej: 80" min="0" value="0">
+            </div>
+            <div class="campo">
+                <label for="otros-gastos">Otros gastos ($)</label>
+                <input type="number" id="otros-gastos" placeholder="Ej: 100" min="0" value="0">
+            </div>
+
+            <button onclick="calcularPresupuesto()">Calcular</button>
+        </div>
+
+        <div class="resultados" id="resultados-presupuesto" style="display:none;">
+            <h2>Resultado</h2>
+            <div class="resultado-item">
+                <span>Total ingresos:</span>
+                <strong id="total-ingresos"></strong>
+            </div>
+            <div class="resultado-item">
+                <span>Total gastos:</span>
+                <strong id="total-gastos"></strong>
+            </div>
+            <div class="resultado-item">
+                <span>Diferencia:</span>
+                <strong id="diferencia"></strong>
+            </div>
+            <p id="mensaje-presupuesto" style="margin-top:1rem; font-weight:bold;"></p>
+        </div>
+    </div>
+
+    <article class="contenido-seo">
+        <h2>¿Por qué hacer un presupuesto personal?</h2>
+        <p>Un presupuesto personal te permite ver con claridad cuánto ganas, cuánto gastas y cuánto puedes ahorrar. Es el primer paso para tomar el control de tus finanzas personales.</p>
+        <h3>Regla del 50/30/20</h3>
+        <ul>
+            <li><strong>50%</strong> de tus ingresos para necesidades básicas (vivienda, comida, transporte).</li>
+            <li><strong>30%</strong> para gastos personales y ocio.</li>
+            <li><strong>20%</strong> para ahorro e inversión.</li>
+        </ul>
+    </article>
+</section>
+
+<script>
+function calcularPresupuesto() {
+    const salario = parseFloat(document.getElementById('salario').value) || 0;
+    const otrosIngresos = parseFloat(document.getElementById('otros-ingresos').value) || 0;
+    const vivienda = parseFloat(document.getElementById('vivienda').value) || 0;
+    const alimentacion = parseFloat(document.getElementById('alimentacion').value) || 0;
+    const transporte = parseFloat(document.getElementById('transporte').value) || 0;
+    const servicios = parseFloat(document.getElementById('servicios').value) || 0;
+    const otrosGastos = parseFloat(document.getElementById('otros-gastos').value) || 0;
+
+    const totalIngresos = salario + otrosIngresos;
+    const totalGastos = vivienda + alimentacion + transporte + servicios + otrosGastos;
+    const diferencia = totalIngresos - totalGastos;
+
+    document.getElementById('total-ingresos').textContent = '$' + totalIngresos.toFixed(2);
+    document.getElementById('total-gastos').textContent = '$' + totalGastos.toFixed(2);
+    document.getElementById('diferencia').textContent = '$' + diferencia.toFixed(2);
+
+    const mensaje = document.getElementById('mensaje-presupuesto');
+    if (diferencia > 0) {
+        mensaje.textContent = '¡Bien! Te sobran $' + diferencia.toFixed(2) + ' al mes. ¡Ahórralos!';
+        mensaje.style.color = '#27ae60';
+    } else if (diferencia === 0) {
+        mensaje.textContent = 'Justo equilibrado. Intenta reducir algún gasto para poder ahorrar.';
+        mensaje.style.color = '#f39c12';
+    } else {
+        mensaje.textContent = 'Atención: gastas $' + Math.abs(diferencia).toFixed(2) + ' más de lo que ganas.';
+        mensaje.style.color = '#e74c3c';
+    }
+
+    document.getElementById('resultados-presupuesto').style.display = 'block';
+}
+</script>
+{% endblock %}

@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+
+{% block title %}Calculadora de Interés Compuesto - Simula el Crecimiento de tu Dinero | MiDineroObedece{% endblock %}
+
+{% block meta_description %}Simula cómo crece tu dinero con el interés compuesto. Calcula el valor futuro de tus inversiones. Gratis y sin registro.{% endblock %}
+
+{% block content %}
+<section class="calculadora-page">
+    <h1>Calculadora de Interés Compuesto</h1>
+    <p class="subtitulo">Simula cómo crece tu dinero con el tiempo gracias al interés compuesto.</p>
+
+    <div class="calculadora-container">
+        <div class="formulario">
+            <div class="campo">
+                <label for="capital">Capital inicial ($)</label>
+                <input type="number" id="capital" placeholder="Ej: 1000" min="0">
+            </div>
+            <div class="campo">
+                <label for="aporte">Aporte mensual ($)</label>
+                <input type="number" id="aporte" placeholder="Ej: 100" min="0" value="0">
+            </div>
+            <div class="campo">
+                <label for="tasa-ic">Tasa de interés anual (%)</label>
+                <input type="number" id="tasa-ic" placeholder="Ej: 8" min="0" step="0.1">
+            </div>
+            <div class="campo">
+                <label for="anos">Años de inversión</label>
+                <input type="number" id="anos" placeholder="Ej: 10" min="1">
+            </div>
+            <button onclick="calcularInteres()">Calcular</button>
+        </div>
+
+        <div class="resultados" id="resultados-ic" style="display:none;">
+            <h2>Resultado</h2>
+            <div class="resultado-item">
+                <span>Valor final:</span>
+                <strong id="valor-final"></strong>
+            </div>
+            <div class="resultado-item">
+                <span>Total invertido:</span>
+                <strong id="total-invertido"></strong>
+            </div>
+            <div class="resultado-item">
+                <span>Ganancias por interés:</span>
+                <strong id="ganancias-ic"></strong>
+            </div>
+        </div>
+    </div>
+
+    <article class="contenido-seo">
+        <h2>¿Qué es el interés compuesto?</h2>
+        <p>El interés compuesto es el proceso por el cual los intereses generados se suman al capital y a su vez generan más intereses. Es considerado la octava maravilla del mundo por su poder de multiplicar el dinero con el tiempo.</p>
+        <h3>¿Por qué empezar a invertir cuanto antes?</h3>
+        <ul>
+            <li>A mayor tiempo, mayor efecto del interés compuesto.</li>
+            <li>Incluso aportes pequeños mensuales hacen una gran diferencia a largo plazo.</li>
+            <li>La clave es la constancia y no retirar los intereses generados.</li>
+        </ul>
+    </article>
+</section>
+
+<script>
+function calcularInteres() {
+    const capital = parseFloat(document.getElementById('capital').value) || 0;
+    const aporte = parseFloat(document.getElementById('aporte').value) || 0;
+    const tasaAnual = parseFloat(document.getElementById('tasa-ic').value);
+    const anos = parseInt(document.getElementById('anos').value);
+
+    if (!tasaAnual || !anos) {
+        alert('Por favor ingresa la tasa de interés y los años.');
+        return;
+    }
+
+    const tasaMensual = tasaAnual / 100 / 12;
+    const meses = anos * 12;
+    const factor = Math.pow(1 + tasaMensual, meses);
+
+    const valorFinal = capital * factor + aporte * (factor - 1) / tasaMensual;
+    const totalInvertido = capital + aporte * meses;
+    const ganancias = valorFinal - totalInvertido;
+
+    document.getElementById('valor-final').textContent = '$' + valorFinal.toFixed(2);
+    document.getElementById('total-invertido').textContent = '$' + totalInvertido.toFixed(2);
+    document.getElementById('ganancias-ic').textContent = '$' + ganancias.toFixed(2);
+    document.getElementById('resultados-ic').style.display = 'block';
+}
+</script>
+{% endblock %}
