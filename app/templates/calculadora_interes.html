@@ -63,11 +63,11 @@
 function calcularInteres() {
     const capital = parseFloat(document.getElementById('capital').value) || 0;
     const aporte = parseFloat(document.getElementById('aporte').value) || 0;
-    const tasaAnual = parseFloat(document.getElementById('tasa-ic').value);
-    const anos = parseInt(document.getElementById('anos').value);
+    const tasaAnual = parseFloat(document.getElementById('tasa-ic').value) || 0;
+    const anos = parseInt(document.getElementById('anos').value) || 0;
 
-    if (!tasaAnual || !anos) {
-        alert('Por favor ingresa la tasa de interés y los años.');
+    if (anos <= 0) {
+        alert('Por favor ingresa los años de inversión.');
         return;
     }
 
@@ -75,7 +75,12 @@ function calcularInteres() {
     const meses = anos * 12;
     const factor = Math.pow(1 + tasaMensual, meses);
 
-    const valorFinal = capital * factor + aporte * (factor - 1) / tasaMensual;
+    let valorFinal;
+    if (tasaMensual === 0) {
+        valorFinal = capital + aporte * meses;
+    } else {
+        valorFinal = capital * factor + aporte * (factor - 1) / tasaMensual;
+    }
     const totalInvertido = capital + aporte * meses;
     const ganancias = valorFinal - totalInvertido;
 
