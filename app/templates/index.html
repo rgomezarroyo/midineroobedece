@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block title %}FinanzasFácil - Calculadoras Financieras Gratis para América Latina{% endblock %}
+
+{% block meta_description %}Calculadoras financieras 100% gratuitas. Calcula tu préstamo, planifica tu ahorro, simula el interés compuesto y organiza tu presupuesto personal.{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <h1>Herramientas Financieras Gratuitas</h1>
+    <p>Toma mejores decisiones con tu dinero. Simple, rápido y sin registro.</p>
+</section>
+
+<section class="herramientas">
+    <div class="grid">
+
+        <a href="/calculadora-prestamos" class="card">
+            <div class="card-icon">💰</div>
+            <h2>Calculadora de Préstamos</h2>
+            <p>Calcula tu cuota mensual, intereses totales y el costo real de cualquier crédito.</p>
+        </a>
+
+        <a href="/calculadora-ahorro" class="card">
+            <div class="card-icon">🏦</div>
+            <h2>Calculadora de Ahorro</h2>
+            <p>Descubre cuánto necesitas ahorrar cada mes para alcanzar tu meta financiera.</p>
+        </a>
+
+        <a href="/calculadora-interes-compuesto" class="card">
+            <div class="card-icon">📈</div>
+            <h2>Interés Compuesto</h2>
+            <p>Simula cómo crece tu dinero con el tiempo gracias al interés compuesto.</p>
+        </a>
+
+        <a href="/calculadora-presupuesto" class="card">
+            <div class="card-icon">📊</div>
+            <h2>Presupuesto Personal</h2>
+            <p>Organiza tus ingresos y gastos. Descubre a dónde va tu dinero cada mes.</p>
+        </a>
+
+    </div>
+</section>
+{% endblock %}

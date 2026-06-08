@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Calculadora de Préstamos - Cuota Mensual y Costo Total | FinanzasFácil{% endblock %}
+
+{% block meta_description %}Calcula la cuota mensual de tu préstamo, el total de intereses y el costo real de cualquier crédito bancario o personal. Gratis y sin registro.{% endblock %}
+
+{% block content %}
+<section class="calculadora-page">
+    <h1>Calculadora de Préstamos</h1>
+    <p class="subtitulo">Conoce tu cuota mensual y el costo total de tu crédito antes de firmarlo.</p>
+
+    <div class="calculadora-container">
+        <div class="formulario">
+            <div class="campo">
+                <label for="monto">Monto del préstamo ($)</label>
+                <input type="number" id="monto" placeholder="Ej: 5000" min="0">
+            </div>
+            <div class="campo">
+                <label for="tasa">Tasa de interés anual (%)</label>
+                <input type="number" id="tasa" placeholder="Ej: 12" min="0" step="0.1">
+            </div>
+            <div class="campo">
+                <label for="plazo">Plazo (meses)</label>
+                <input type="number" id="plazo" placeholder="Ej: 24" min="1">
+            </div>
+            <button onclick="calcularPrestamo()">Calcular</button>
+        </div>
+
+        <div class="resultados" id="resultados" style="display:none;">
+            <h2>Resultado</h2>
+            <div class="resultado-item">
+                <span>Cuota mensual:</span>
+                <strong id="cuota"></strong>
+            </div>
+            <div class="resultado-item">
+                <span>Total a pagar:</span>
+                <strong id="total"></strong>
+            </div>
+            <div class="resultado-item">
+                <span>Total en intereses:</span>
+                <strong id="intereses"></strong>
+            </div>
+        </div>
+    </div>
+
+    <article class="contenido-seo">
+        <h2>¿Cómo funciona el cálculo de préstamos?</h2>
+        <p>La fórmula para calcular la cuota mensual de un préstamo con interés fijo (sistema francés) es la más usada por bancos en América Latina. Toma en cuenta el monto prestado, la tasa de interés mensual y el número de cuotas.</p>
+        <h3>¿Qué es la tasa de interés anual?</h3>
+        <p>Es el porcentaje que el banco o entidad financiera cobra por prestarte dinero durante un año. Para calcular la cuota mensual, se divide entre 12 para obtener la tasa mensual.</p>
+        <h3>Consejos antes de tomar un préstamo</h3>
+        <ul>
+            <li>Compara la tasa entre al menos 3 entidades financieras.</li>
+            <li>Revisa si existen comisiones adicionales no incluidas en la tasa.</li>
+            <li>Asegúrate de que la cuota no supere el 30% de tus ingresos mensuales.</li>
+        </ul>
+    </article>
+</section>
+{% endblock %}
