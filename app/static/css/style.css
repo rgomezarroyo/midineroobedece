@@ -576,6 +576,20 @@ footer {
     margin-top: 3rem;
 }
 
+.footer-links {
+    margin-top: 0.5rem;
+}
+
+.footer-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.15s;
+}
+
+.footer-links a:hover {
+    color: var(--primary);
+}
+
 /* ── HAMBURGER NAV ── */
 .nav-toggle {
     display: none;

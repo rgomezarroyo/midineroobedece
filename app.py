@@ -43,6 +43,14 @@ def calculadora_plazo_fijo():
 def calculadora_fondo_emergencia():
     return render_template('calculadora_fondo_emergencia.html')
 
+@app.route('/privacidad')
+def privacidad():
+    return render_template('privacidad.html')
+
+@app.route('/terminos')
+def terminos():
+    return render_template('terminos.html')
+
 @app.route('/sitemap.xml')
 def sitemap():
     pages = [
@@ -56,6 +64,8 @@ def sitemap():
         ('/calculadora-jubilacion', '0.9', 'monthly'),
         ('/calculadora-plazo-fijo', '0.9', 'monthly'),
         ('/calculadora-fondo-emergencia', '0.9', 'monthly'),
+        ('/privacidad', '0.3', 'yearly'),
+        ('/terminos', '0.3', 'yearly'),
     ]
     base = 'https://midineroobedece.com'
     hoy = date.today().isoformat()
