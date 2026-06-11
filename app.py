@@ -86,5 +86,10 @@ def robots():
     content = "User-agent: *\nAllow: /\nSitemap: https://midineroobedece.com/sitemap.xml\n"
     return Response(content, mimetype='text/plain')
 
+@app.route('/ads.txt')
+def ads_txt():
+    content = "google.com, pub-2445512602031923, DIRECT, f08c47fec0942fa0\n"
+    return Response(content, mimetype='text/plain')
+
 if __name__ == '__main__':
     app.run(debug=True)
