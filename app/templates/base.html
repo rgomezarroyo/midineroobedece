@@ -6,6 +6,9 @@
     <meta name="description" content="{% block meta_description %}Herramientas financieras gratuitas para latinoamérica. Calculadoras de préstamos, ahorro, interés compuesto y más.{% endblock %}">
     <title>{% block title %}MiDineroObedece - Herramientas Financieras Gratis{% endblock %}</title>
 
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+
     <!-- Canonical -->
     <link rel="canonical" href="https://midineroobedece.com{{ request.path }}">
 
@@ -85,6 +88,8 @@
     <footer>
         <p>© 2026 MiDineroObedece &nbsp;·&nbsp; Herramientas financieras gratuitas para América Latina</p>
         <p class="footer-links">
+            <a href="/acerca">Acerca de</a>
+            &nbsp;·&nbsp;
             <a href="/privacidad">Política de Privacidad</a>
             &nbsp;·&nbsp;
             <a href="/terminos">Términos de Uso</a>

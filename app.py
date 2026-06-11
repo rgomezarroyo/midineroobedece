@@ -43,6 +43,10 @@ def calculadora_plazo_fijo():
 def calculadora_fondo_emergencia():
     return render_template('calculadora_fondo_emergencia.html')
 
+@app.route('/acerca')
+def acerca():
+    return render_template('acerca.html')
+
 @app.route('/privacidad')
 def privacidad():
     return render_template('privacidad.html')
@@ -64,6 +68,7 @@ def sitemap():
         ('/calculadora-jubilacion', '0.9', 'monthly'),
         ('/calculadora-plazo-fijo', '0.9', 'monthly'),
         ('/calculadora-fondo-emergencia', '0.9', 'monthly'),
+        ('/acerca', '0.4', 'yearly'),
         ('/privacidad', '0.3', 'yearly'),
         ('/terminos', '0.3', 'yearly'),
     ]
