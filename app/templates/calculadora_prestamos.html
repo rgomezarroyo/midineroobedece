@@ -6,39 +6,58 @@
 
 {% block content %}
 <section class="calculadora-page">
+    <p class="breadcrumb"><a href="/">Inicio</a> › Calculadora de Préstamos</p>
     <h1>Calculadora de Préstamos</h1>
     <p class="subtitulo">Conoce tu cuota mensual y el costo total de tu crédito antes de firmarlo.</p>
 
     <div class="calculadora-container">
         <div class="formulario">
+            <p class="formulario-header">Datos del préstamo</p>
+
             <div class="campo">
-                <label for="monto">Monto del préstamo ($)</label>
-                <input type="number" id="monto" placeholder="Ej: 5000" min="0">
+                <label for="monto">Monto del préstamo</label>
+                <div class="input-wrap">
+                    <span class="input-pre">$</span>
+                    <input type="number" id="monto" class="with-pre" placeholder="5,000" min="0">
+                </div>
             </div>
             <div class="campo">
-                <label for="tasa">Tasa de interés anual (%)</label>
-                <input type="number" id="tasa" placeholder="Ej: 12" min="0" step="0.1">
+                <label for="tasa">Tasa de interés anual</label>
+                <div class="input-wrap">
+                    <input type="number" id="tasa" class="with-suf" placeholder="12" min="0" step="0.1">
+                    <span class="input-suf">% anual</span>
+                </div>
             </div>
             <div class="campo">
-                <label for="plazo">Plazo (meses)</label>
-                <input type="number" id="plazo" placeholder="Ej: 24" min="1">
+                <label for="plazo">Plazo</label>
+                <div class="input-wrap">
+                    <input type="number" id="plazo" class="with-suf" placeholder="24" min="1">
+                    <span class="input-suf">meses</span>
+                </div>
             </div>
-            <button onclick="calcularPrestamo()">Calcular</button>
+
+            <button class="btn-calcular" onclick="calcularPrestamo()">Calcular cuota →</button>
         </div>
 
-        <div class="resultados" id="resultados" style="display:none;">
-            <h2>Resultado</h2>
-            <div class="resultado-item">
-                <span>Cuota mensual:</span>
-                <strong id="cuota"></strong>
+        <div class="resultados" id="resultados">
+            <div class="resultados-espera" id="resultados-espera">
+                <div class="espera-icon">🏦</div>
+                <p>Ingresa los datos y presiona <strong style="color:rgba(255,255,255,0.5)">Calcular</strong></p>
             </div>
-            <div class="resultado-item">
-                <span>Total a pagar:</span>
-                <strong id="total"></strong>
-            </div>
-            <div class="resultado-item">
-                <span>Total en intereses:</span>
-                <strong id="intereses"></strong>
+            <div class="resultados-data" id="resultados-data">
+                <h2>Resultados</h2>
+                <div class="resultado-item highlight">
+                    <span>Cuota mensual</span>
+                    <strong id="cuota"></strong>
+                </div>
+                <div class="resultado-item">
+                    <span>Total a pagar</span>
+                    <strong id="total"></strong>
+                </div>
+                <div class="resultado-item">
+                    <span>Total en intereses</span>
+                    <strong id="intereses"></strong>
+                </div>
             </div>
         </div>
     </div>

@@ -6,43 +6,65 @@
 
 {% block content %}
 <section class="calculadora-page">
+    <p class="breadcrumb"><a href="/">Inicio</a> › Calculadora de Ahorro</p>
     <h1>Calculadora de Ahorro</h1>
     <p class="subtitulo">Descubre cuánto debes ahorrar cada mes para alcanzar tu meta.</p>
 
     <div class="calculadora-container">
         <div class="formulario">
+            <p class="formulario-header">Datos de tu meta</p>
+
             <div class="campo">
-                <label for="meta">Meta de ahorro ($)</label>
-                <input type="number" id="meta" placeholder="Ej: 10000" min="0">
+                <label for="meta">Meta de ahorro</label>
+                <div class="input-wrap">
+                    <span class="input-pre">$</span>
+                    <input type="number" id="meta" class="with-pre" placeholder="10,000" min="0">
+                </div>
             </div>
             <div class="campo">
-                <label for="ahorro_actual">Ahorro actual ($)</label>
-                <input type="number" id="ahorro_actual" placeholder="Ej: 1000" min="0" value="0">
+                <label for="ahorro_actual">Ahorro actual</label>
+                <div class="input-wrap">
+                    <span class="input-pre">$</span>
+                    <input type="number" id="ahorro_actual" class="with-pre" placeholder="0" min="0" value="0">
+                </div>
             </div>
             <div class="campo">
-                <label for="tasa_ahorro">Tasa de interés anual (%)</label>
-                <input type="number" id="tasa_ahorro" placeholder="Ej: 5" min="0" step="0.1" value="0">
+                <label for="tasa_ahorro">Tasa de interés anual</label>
+                <div class="input-wrap">
+                    <input type="number" id="tasa_ahorro" class="with-suf" placeholder="5" min="0" step="0.1" value="0">
+                    <span class="input-suf">% anual</span>
+                </div>
             </div>
             <div class="campo">
-                <label for="plazo_ahorro">Plazo (meses)</label>
-                <input type="number" id="plazo_ahorro" placeholder="Ej: 24" min="1">
+                <label for="plazo_ahorro">Plazo</label>
+                <div class="input-wrap">
+                    <input type="number" id="plazo_ahorro" class="with-suf" placeholder="24" min="1">
+                    <span class="input-suf">meses</span>
+                </div>
             </div>
-            <button onclick="calcularAhorro()">Calcular</button>
+
+            <button class="btn-calcular" onclick="calcularAhorro()">Calcular ahorro →</button>
         </div>
 
-        <div class="resultados" id="resultados-ahorro" style="display:none;">
-            <h2>Resultado</h2>
-            <div class="resultado-item">
-                <span>Ahorro mensual necesario:</span>
-                <strong id="ahorro-mensual"></strong>
+        <div class="resultados" id="resultados-ahorro">
+            <div class="resultados-espera" id="resultados-espera-ahorro">
+                <div class="espera-icon">🎯</div>
+                <p>Ingresa tu meta y presiona <strong style="color:rgba(255,255,255,0.5)">Calcular</strong></p>
             </div>
-            <div class="resultado-item">
-                <span>Total ahorrado al final:</span>
-                <strong id="total-ahorro"></strong>
-            </div>
-            <div class="resultado-item">
-                <span>Intereses ganados:</span>
-                <strong id="intereses-ahorro"></strong>
+            <div class="resultados-data" id="resultados-data-ahorro">
+                <h2>Resultados</h2>
+                <div class="resultado-item highlight">
+                    <span>Ahorro mensual necesario</span>
+                    <strong id="ahorro-mensual"></strong>
+                </div>
+                <div class="resultado-item">
+                    <span>Total ahorrado al final</span>
+                    <strong id="total-ahorro"></strong>
+                </div>
+                <div class="resultado-item positivo">
+                    <span>Intereses ganados</span>
+                    <strong id="intereses-ahorro"></strong>
+                </div>
             </div>
         </div>
     </div>
@@ -84,10 +106,12 @@ function calcularAhorro() {
     const totalAportado = mensual * meses + actual;
     const intereses = meta - totalAportado;
 
-    document.getElementById('ahorro-mensual').textContent = '$' + mensual.toFixed(2);
-    document.getElementById('total-ahorro').textContent = '$' + meta.toFixed(2);
-    document.getElementById('intereses-ahorro').textContent = '$' + Math.max(0, intereses).toFixed(2);
-    document.getElementById('resultados-ahorro').style.display = 'block';
+    document.getElementById('ahorro-mensual').textContent = '$' + mensual.toLocaleString('es-EC', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    document.getElementById('total-ahorro').textContent = '$' + meta.toLocaleString('es-EC', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    document.getElementById('intereses-ahorro').textContent = '$' + Math.max(0, intereses).toLocaleString('es-EC', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+    document.getElementById('resultados-espera-ahorro').style.display = 'none';
+    document.getElementById('resultados-data-ahorro').style.display = 'block';
 }
 </script>
 {% endblock %}

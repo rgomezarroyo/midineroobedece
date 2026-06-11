@@ -1,4 +1,4 @@
-function formatearMoneda(valor) {
+function fmt(valor) {
     return '$' + valor.toLocaleString('es-EC', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 
@@ -17,9 +17,10 @@ function calcularPrestamo() {
     const totalPagar = cuota * plazo;
     const totalIntereses = totalPagar - monto;
 
-    document.getElementById('cuota').textContent = formatearMoneda(cuota);
-    document.getElementById('total').textContent = formatearMoneda(totalPagar);
-    document.getElementById('intereses').textContent = formatearMoneda(totalIntereses);
-    document.getElementById('resultados').style.display = 'block';
-}
+    document.getElementById('cuota').textContent = fmt(cuota);
+    document.getElementById('total').textContent = fmt(totalPagar);
+    document.getElementById('intereses').textContent = fmt(totalIntereses);
 
+    document.getElementById('resultados-espera').style.display = 'none';
+    document.getElementById('resultados-data').style.display = 'block';
+}

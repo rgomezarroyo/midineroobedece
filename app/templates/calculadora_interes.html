@@ -6,43 +6,65 @@
 
 {% block content %}
 <section class="calculadora-page">
+    <p class="breadcrumb"><a href="/">Inicio</a> › Interés Compuesto</p>
     <h1>Calculadora de Interés Compuesto</h1>
     <p class="subtitulo">Simula cómo crece tu dinero con el tiempo gracias al interés compuesto.</p>
 
     <div class="calculadora-container">
         <div class="formulario">
+            <p class="formulario-header">Datos de la inversión</p>
+
             <div class="campo">
-                <label for="capital">Capital inicial ($)</label>
-                <input type="number" id="capital" placeholder="Ej: 1000" min="0">
+                <label for="capital">Capital inicial</label>
+                <div class="input-wrap">
+                    <span class="input-pre">$</span>
+                    <input type="number" id="capital" class="with-pre" placeholder="1,000" min="0">
+                </div>
             </div>
             <div class="campo">
-                <label for="aporte">Aporte mensual ($)</label>
-                <input type="number" id="aporte" placeholder="Ej: 100" min="0" value="0">
+                <label for="aporte">Aporte mensual</label>
+                <div class="input-wrap">
+                    <span class="input-pre">$</span>
+                    <input type="number" id="aporte" class="with-pre" placeholder="100" min="0" value="0">
+                </div>
             </div>
             <div class="campo">
-                <label for="tasa-ic">Tasa de interés anual (%)</label>
-                <input type="number" id="tasa-ic" placeholder="Ej: 8" min="0" step="0.1">
+                <label for="tasa-ic">Tasa de interés anual</label>
+                <div class="input-wrap">
+                    <input type="number" id="tasa-ic" class="with-suf" placeholder="8" min="0" step="0.1">
+                    <span class="input-suf">% anual</span>
+                </div>
             </div>
             <div class="campo">
                 <label for="anos">Años de inversión</label>
-                <input type="number" id="anos" placeholder="Ej: 10" min="1">
+                <div class="input-wrap">
+                    <input type="number" id="anos" class="with-suf" placeholder="10" min="1">
+                    <span class="input-suf">años</span>
+                </div>
             </div>
-            <button onclick="calcularInteres()">Calcular</button>
+
+            <button class="btn-calcular" onclick="calcularInteres()">Simular crecimiento →</button>
         </div>
 
-        <div class="resultados" id="resultados-ic" style="display:none;">
-            <h2>Resultado</h2>
-            <div class="resultado-item">
-                <span>Valor final:</span>
-                <strong id="valor-final"></strong>
+        <div class="resultados" id="resultados-ic">
+            <div class="resultados-espera" id="resultados-espera-ic">
+                <div class="espera-icon">📈</div>
+                <p>Ingresa los datos y presiona <strong style="color:rgba(255,255,255,0.5)">Simular</strong></p>
             </div>
-            <div class="resultado-item">
-                <span>Total invertido:</span>
-                <strong id="total-invertido"></strong>
-            </div>
-            <div class="resultado-item">
-                <span>Ganancias por interés:</span>
-                <strong id="ganancias-ic"></strong>
+            <div class="resultados-data" id="resultados-data-ic">
+                <h2>Resultados</h2>
+                <div class="resultado-item highlight">
+                    <span>Valor final</span>
+                    <strong id="valor-final"></strong>
+                </div>
+                <div class="resultado-item">
+                    <span>Total invertido</span>
+                    <strong id="total-invertido"></strong>
+                </div>
+                <div class="resultado-item positivo">
+                    <span>Ganancias por interés</span>
+                    <strong id="ganancias-ic"></strong>
+                </div>
             </div>
         </div>
     </div>
@@ -84,10 +106,13 @@ function calcularInteres() {
     const totalInvertido = capital + aporte * meses;
     const ganancias = valorFinal - totalInvertido;
 
-    document.getElementById('valor-final').textContent = '$' + valorFinal.toFixed(2);
-    document.getElementById('total-invertido').textContent = '$' + totalInvertido.toFixed(2);
-    document.getElementById('ganancias-ic').textContent = '$' + ganancias.toFixed(2);
-    document.getElementById('resultados-ic').style.display = 'block';
+    const fmt = v => '$' + v.toLocaleString('es-EC', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    document.getElementById('valor-final').textContent = fmt(valorFinal);
+    document.getElementById('total-invertido').textContent = fmt(totalInvertido);
+    document.getElementById('ganancias-ic').textContent = fmt(ganancias);
+
+    document.getElementById('resultados-espera-ic').style.display = 'none';
+    document.getElementById('resultados-data-ic').style.display = 'block';
 }
 </script>
 {% endblock %}

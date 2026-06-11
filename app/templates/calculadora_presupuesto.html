@@ -6,61 +6,91 @@
 
 {% block content %}
 <section class="calculadora-page">
+    <p class="breadcrumb"><a href="/">Inicio</a> › Presupuesto Personal</p>
     <h1>Calculadora de Presupuesto Personal</h1>
     <p class="subtitulo">Organiza tus ingresos y gastos. Descubre a dónde va tu dinero cada mes.</p>
 
     <div class="calculadora-container">
         <div class="formulario">
-            <h3>Ingresos mensuales</h3>
+            <p class="formulario-header">Tu presupuesto mensual</p>
+
+            <p class="seccion-label" style="margin-top:0; border-top:none; padding-top:0">Ingresos</p>
             <div class="campo">
-                <label for="salario">Salario / Sueldo ($)</label>
-                <input type="number" id="salario" placeholder="Ej: 800" min="0" value="0">
+                <label for="salario">Salario / Sueldo</label>
+                <div class="input-wrap">
+                    <span class="input-pre">$</span>
+                    <input type="number" id="salario" class="with-pre" placeholder="800" min="0" value="0">
+                </div>
             </div>
             <div class="campo">
-                <label for="otros-ingresos">Otros ingresos ($)</label>
-                <input type="number" id="otros-ingresos" placeholder="Ej: 200" min="0" value="0">
+                <label for="otros-ingresos">Otros ingresos</label>
+                <div class="input-wrap">
+                    <span class="input-pre">$</span>
+                    <input type="number" id="otros-ingresos" class="with-pre" placeholder="200" min="0" value="0">
+                </div>
             </div>
 
-            <h3 style="margin-top:1.5rem;">Gastos mensuales</h3>
+            <p class="seccion-label">Gastos</p>
             <div class="campo">
-                <label for="vivienda">Vivienda / Arriendo ($)</label>
-                <input type="number" id="vivienda" placeholder="Ej: 300" min="0" value="0">
+                <label for="vivienda">Vivienda / Arriendo</label>
+                <div class="input-wrap">
+                    <span class="input-pre">$</span>
+                    <input type="number" id="vivienda" class="with-pre" placeholder="300" min="0" value="0">
+                </div>
             </div>
             <div class="campo">
-                <label for="alimentacion">Alimentación ($)</label>
-                <input type="number" id="alimentacion" placeholder="Ej: 200" min="0" value="0">
+                <label for="alimentacion">Alimentación</label>
+                <div class="input-wrap">
+                    <span class="input-pre">$</span>
+                    <input type="number" id="alimentacion" class="with-pre" placeholder="200" min="0" value="0">
+                </div>
             </div>
             <div class="campo">
-                <label for="transporte">Transporte ($)</label>
-                <input type="number" id="transporte" placeholder="Ej: 50" min="0" value="0">
+                <label for="transporte">Transporte</label>
+                <div class="input-wrap">
+                    <span class="input-pre">$</span>
+                    <input type="number" id="transporte" class="with-pre" placeholder="50" min="0" value="0">
+                </div>
             </div>
             <div class="campo">
-                <label for="servicios">Servicios básicos ($)</label>
-                <input type="number" id="servicios" placeholder="Ej: 80" min="0" value="0">
+                <label for="servicios">Servicios básicos</label>
+                <div class="input-wrap">
+                    <span class="input-pre">$</span>
+                    <input type="number" id="servicios" class="with-pre" placeholder="80" min="0" value="0">
+                </div>
             </div>
             <div class="campo">
-                <label for="otros-gastos">Otros gastos ($)</label>
-                <input type="number" id="otros-gastos" placeholder="Ej: 100" min="0" value="0">
+                <label for="otros-gastos">Otros gastos</label>
+                <div class="input-wrap">
+                    <span class="input-pre">$</span>
+                    <input type="number" id="otros-gastos" class="with-pre" placeholder="100" min="0" value="0">
+                </div>
             </div>
 
-            <button onclick="calcularPresupuesto()">Calcular</button>
+            <button class="btn-calcular" onclick="calcularPresupuesto()">Ver mi presupuesto →</button>
         </div>
 
-        <div class="resultados" id="resultados-presupuesto" style="display:none;">
-            <h2>Resultado</h2>
-            <div class="resultado-item">
-                <span>Total ingresos:</span>
-                <strong id="total-ingresos"></strong>
+        <div class="resultados" id="resultados-presupuesto">
+            <div class="resultados-espera" id="resultados-espera-presupuesto">
+                <div class="espera-icon">📊</div>
+                <p>Ingresa tus ingresos y gastos para ver el resultado</p>
             </div>
-            <div class="resultado-item">
-                <span>Total gastos:</span>
-                <strong id="total-gastos"></strong>
+            <div class="resultados-data" id="resultados-data-presupuesto">
+                <h2>Resultados</h2>
+                <div class="resultado-item">
+                    <span>Total ingresos</span>
+                    <strong id="total-ingresos"></strong>
+                </div>
+                <div class="resultado-item">
+                    <span>Total gastos</span>
+                    <strong id="total-gastos"></strong>
+                </div>
+                <div class="resultado-item highlight" id="diferencia-item">
+                    <span>Diferencia</span>
+                    <strong id="diferencia"></strong>
+                </div>
+                <p class="msg-presupuesto" id="mensaje-presupuesto"></p>
             </div>
-            <div class="resultado-item">
-                <span>Diferencia:</span>
-                <strong id="diferencia"></strong>
-            </div>
-            <p id="mensaje-presupuesto" style="margin-top:1rem; font-weight:bold;"></p>
         </div>
     </div>
 
@@ -90,23 +120,27 @@ function calcularPresupuesto() {
     const totalGastos = vivienda + alimentacion + transporte + servicios + otrosGastos;
     const diferencia = totalIngresos - totalGastos;
 
-    document.getElementById('total-ingresos').textContent = '$' + totalIngresos.toFixed(2);
-    document.getElementById('total-gastos').textContent = '$' + totalGastos.toFixed(2);
-    document.getElementById('diferencia').textContent = '$' + diferencia.toFixed(2);
+    const fmt = v => '$' + v.toLocaleString('es-EC', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    document.getElementById('total-ingresos').textContent = fmt(totalIngresos);
+    document.getElementById('total-gastos').textContent = fmt(totalGastos);
+    document.getElementById('diferencia').textContent = fmt(Math.abs(diferencia));
 
+    const item = document.getElementById('diferencia-item');
     const mensaje = document.getElementById('mensaje-presupuesto');
+
+    item.className = 'resultado-item highlight';
     if (diferencia > 0) {
-        mensaje.textContent = '¡Bien! Te sobran $' + diferencia.toFixed(2) + ' al mes. ¡Ahórralos!';
-        mensaje.style.color = '#27ae60';
+        item.classList.add('positivo');
+        mensaje.textContent = '¡Excelente! Te sobran ' + fmt(diferencia) + ' al mes. ¡Ahórralos o inviértelos!';
     } else if (diferencia === 0) {
-        mensaje.textContent = 'Justo equilibrado. Intenta reducir algún gasto para poder ahorrar.';
-        mensaje.style.color = '#f39c12';
+        mensaje.textContent = 'Estás justo equilibrado. Intenta reducir algún gasto para poder ahorrar.';
     } else {
-        mensaje.textContent = 'Atención: gastas $' + Math.abs(diferencia).toFixed(2) + ' más de lo que ganas.';
-        mensaje.style.color = '#e74c3c';
+        item.classList.add('negativo');
+        mensaje.textContent = '⚠️ Gastas ' + fmt(Math.abs(diferencia)) + ' más de lo que ganas. Revisa tus gastos.';
     }
 
-    document.getElementById('resultados-presupuesto').style.display = 'block';
+    document.getElementById('resultados-espera-presupuesto').style.display = 'none';
+    document.getElementById('resultados-data-presupuesto').style.display = 'block';
 }
 </script>
 {% endblock %}
