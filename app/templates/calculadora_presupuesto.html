@@ -4,6 +4,22 @@
 
 {% block meta_description %}Organiza tus ingresos y gastos mensuales. Descubre cuánto te sobra o te falta cada mes. Gratis y sin registro.{% endblock %}
 
+{% block json_ld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculadora de Presupuesto Personal",
+  "description": "Organiza tus ingresos y gastos mensuales. Descubre cuánto te sobra o te falta cada mes.",
+  "url": "https://midineroobedece.com/calculadora-presupuesto",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "es",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <section class="calculadora-page">
     <p class="breadcrumb"><a href="/">Inicio</a> › Presupuesto Personal</p>

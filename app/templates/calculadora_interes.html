@@ -4,6 +4,22 @@
 
 {% block meta_description %}Simula cómo crece tu dinero con el interés compuesto. Calcula el valor futuro de tus inversiones. Gratis y sin registro.{% endblock %}
 
+{% block json_ld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculadora de Interés Compuesto",
+  "description": "Simula cómo crece tu dinero con el tiempo gracias al interés compuesto.",
+  "url": "https://midineroobedece.com/calculadora-interes-compuesto",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "es",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <section class="calculadora-page">
     <p class="breadcrumb"><a href="/">Inicio</a> › Interés Compuesto</p>

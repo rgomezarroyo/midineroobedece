@@ -4,6 +4,22 @@
 
 {% block meta_description %}Descubre cuánto tiempo y dinero pierdes pagando solo el mínimo de tu tarjeta de crédito. Calcula tu plan de pago gratis.{% endblock %}
 
+{% block json_ld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculadora de Tarjeta de Crédito",
+  "description": "Descubre cuánto tiempo y dinero pierdes pagando solo el mínimo de tu tarjeta de crédito.",
+  "url": "https://midineroobedece.com/calculadora-tarjeta-credito",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "es",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <section class="calculadora-page">
     <p class="breadcrumb"><a href="/">Inicio</a> › Tarjeta de Crédito</p>

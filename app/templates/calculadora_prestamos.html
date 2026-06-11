@@ -4,6 +4,22 @@
 
 {% block meta_description %}Calcula la cuota mensual de tu préstamo, el total de intereses y el costo real de cualquier crédito bancario o personal. Gratis y sin registro.{% endblock %}
 
+{% block json_ld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculadora de Préstamos",
+  "description": "Calcula la cuota mensual, intereses totales y costo real de cualquier préstamo bancario o personal.",
+  "url": "https://midineroobedece.com/calculadora-prestamos",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "es",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <section class="calculadora-page">
     <p class="breadcrumb"><a href="/">Inicio</a> › Calculadora de Préstamos</p>

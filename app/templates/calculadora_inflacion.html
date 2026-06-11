@@ -4,6 +4,22 @@
 
 {% block meta_description %}Calcula cómo la inflación erosiona el poder adquisitivo de tu dinero. Descubre cuánto necesitarás en el futuro para comprar lo mismo que hoy.{% endblock %}
 
+{% block json_ld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculadora de Inflación",
+  "description": "Calcula cómo la inflación erosiona el poder adquisitivo de tu dinero. Descubre cuánto necesitarás en el futuro.",
+  "url": "https://midineroobedece.com/calculadora-inflacion",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "es",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <section class="calculadora-page">
     <p class="breadcrumb"><a href="/">Inicio</a> › Calculadora de Inflación</p>

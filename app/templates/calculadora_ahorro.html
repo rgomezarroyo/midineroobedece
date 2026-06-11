@@ -4,6 +4,22 @@
 
 {% block meta_description %}Calcula cuánto necesitas ahorrar cada mes para alcanzar tu meta financiera. Gratis y sin registro.{% endblock %}
 
+{% block json_ld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculadora de Ahorro",
+  "description": "Calcula cuánto necesitas ahorrar cada mes para alcanzar tu meta financiera.",
+  "url": "https://midineroobedece.com/calculadora-ahorro",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "es",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+}
+</script>
+{% endblock %}
+
 {% block content %}
 <section class="calculadora-page">
     <p class="breadcrumb"><a href="/">Inicio</a> › Calculadora de Ahorro</p>
