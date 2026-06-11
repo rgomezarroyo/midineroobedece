@@ -31,6 +31,18 @@ def calculadora_tarjeta():
 def calculadora_inflacion():
     return render_template('calculadora_inflacion.html')
 
+@app.route('/calculadora-jubilacion')
+def calculadora_jubilacion():
+    return render_template('calculadora_jubilacion.html')
+
+@app.route('/calculadora-plazo-fijo')
+def calculadora_plazo_fijo():
+    return render_template('calculadora_plazo_fijo.html')
+
+@app.route('/calculadora-fondo-emergencia')
+def calculadora_fondo_emergencia():
+    return render_template('calculadora_fondo_emergencia.html')
+
 @app.route('/sitemap.xml')
 def sitemap():
     pages = [
@@ -41,6 +53,9 @@ def sitemap():
         ('/calculadora-presupuesto', '0.9', 'monthly'),
         ('/calculadora-tarjeta-credito', '0.9', 'monthly'),
         ('/calculadora-inflacion', '0.9', 'monthly'),
+        ('/calculadora-jubilacion', '0.9', 'monthly'),
+        ('/calculadora-plazo-fijo', '0.9', 'monthly'),
+        ('/calculadora-fondo-emergencia', '0.9', 'monthly'),
     ]
     base = 'https://midineroobedece.com'
     hoy = date.today().isoformat()

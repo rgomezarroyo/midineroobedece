@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+{% block title %}Calculadora de Fondo de Emergencia - Cuánto Necesitas Ahorrar | MiDineroObedece{% endblock %}
+
+{% block meta_description %}Calcula cuánto dinero necesitas en tu fondo de emergencia y cuánto ahorrar por mes para armarlo. Gratis y sin registro.{% endblock %}
+
+{% block json_ld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculadora de Fondo de Emergencia",
+  "description": "Calcula cuánto dinero necesitas en tu fondo de emergencia según tus gastos mensuales.",
+  "url": "https://midineroobedece.com/calculadora-fondo-emergencia",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "es",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<section class="calculadora-page">
+    <p class="breadcrumb"><a href="/">Inicio</a> › Fondo de Emergencia</p>
+    <h1>Calculadora de Fondo de Emergencia</h1>
+    <p class="subtitulo">Descubre cuánto necesitas guardar para estar protegido ante cualquier imprevisto.</p>
+
+    <div class="calculadora-container">
+        <div class="formulario">
+            <p class="formulario-header">Tus gastos esenciales</p>
+
+            <div class="campo">
+                <label for="gastos-fe">Gastos mensuales esenciales</label>
+                <div class="input-wrap">
+                    <span class="input-pre">$</span>
+                    <input type="number" id="gastos-fe" class="with-pre" placeholder="800" min="0">
+                </div>
+            </div>
+            <div class="campo">
+                <label for="meses-fe">Meses de cobertura deseados</label>
+                <div class="input-wrap">
+                    <select id="meses-fe">
+                        <option value="3">3 meses (mínimo recomendado)</option>
+                        <option value="6" selected>6 meses (estándar)</option>
+                        <option value="9">9 meses (trabajador independiente)</option>
+                        <option value="12">12 meses (máxima seguridad)</option>
+                    </select>
+                </div>
+            </div>
+            <div class="campo">
+                <label for="plazo-fe">¿En cuántos meses quieres armarlo?</label>
+                <div class="input-wrap">
+                    <input type="number" id="plazo-fe" class="with-suf" placeholder="12" min="1">
+                    <span class="input-suf">meses</span>
+                </div>
+            </div>
+
+            <button class="btn-calcular" onclick="calcularFondoEmergencia()">Calcular mi fondo →</button>
+        </div>
+
+        <div class="resultados" id="resultados-fe">
+            <div class="resultados-espera" id="resultados-espera-fe">
+                <div class="espera-icon">🛡️</div>
+                <p>Ingresa los datos y presiona <strong style="color:rgba(255,255,255,0.5)">Calcular</strong></p>
+            </div>
+            <div class="resultados-data" id="resultados-data-fe">
+                <h2>Resultados</h2>
+                <div class="resultado-item highlight">
+                    <span>Meta de tu fondo</span>
+                    <strong id="meta-fe"></strong>
+                </div>
+                <div class="resultado-item">
+                    <span>Ahorro mensual necesario</span>
+                    <strong id="ahorro-fe"></strong>
+                </div>
+                <div class="resultado-item">
+                    <span>Cobertura que tendrás</span>
+                    <strong id="cobertura-fe"></strong>
+                </div>
+                <p class="msg-presupuesto" id="tip-fe"></p>
+            </div>
+        </div>
+    </div>
+
+    <article class="contenido-seo">
+        <h2>¿Qué es un fondo de emergencia?</h2>
+        <p>Un fondo de emergencia es una reserva de dinero líquido, fácilmente accesible, destinada a cubrir gastos imprevistos: pérdida de empleo, enfermedad, reparaciones urgentes. Es la base de cualquier plan financiero sólido — sin él, cualquier imprevisto se convierte en deuda.</p>
+        <h3>¿Cuántos meses debo tener?</h3>
+        <ul>
+            <li><strong>3 meses:</strong> mínimo si tienes trabajo estable con sueldo fijo.</li>
+            <li><strong>6 meses:</strong> estándar recomendado para la mayoría de personas.</li>
+            <li><strong>9–12 meses:</strong> ideal si trabajas por cuenta propia o tienes ingresos variables.</li>
+        </ul>
+        <h3>¿Dónde guardar el fondo de emergencia?</h3>
+        <ul>
+            <li>En una cuenta de ahorros separada de tu cuenta corriente — para no tentarte a gastarlo.</li>
+            <li>Que sea líquida: debes poder acceder al dinero en 24–48 horas.</li>
+            <li>No lo inviertas en renta variable — el riesgo de pérdida es incompatible con su propósito.</li>
+            <li>Un plazo fijo a 30 días puede ser una buena opción para ganar algo de interés.</li>
+        </ul>
+    </article>
+</section>
+
+<script>
+function calcularFondoEmergencia() {
+    const gastos = parseFloat(document.getElementById('gastos-fe').value);
+    const meses = parseInt(document.getElementById('meses-fe').value);
+    const plazo = parseInt(document.getElementById('plazo-fe').value);
+
+    if (!gastos || !plazo) {
+        alert('Por favor completa todos los campos.');
+        return;
+    }
+
+    const meta = gastos * meses;
+    const ahorro = meta / plazo;
+
+    const fmt = v => '$' + v.toLocaleString('es-EC', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    document.getElementById('meta-fe').textContent = fmt(meta);
+    document.getElementById('ahorro-fe').textContent = fmt(ahorro);
+    document.getElementById('cobertura-fe').textContent = meses + ' meses de gastos';
+
+    const mesesTexto = plazo === 1 ? '1 mes' : plazo + ' meses';
+    document.getElementById('tip-fe').textContent = '🛡️ En ' + mesesTexto + ' tendrás tu colchón de seguridad completo.';
+
+    document.getElementById('resultados-espera-fe').style.display = 'none';
+    document.getElementById('resultados-data-fe').style.display = 'block';
+}
+</script>
+{% endblock %}

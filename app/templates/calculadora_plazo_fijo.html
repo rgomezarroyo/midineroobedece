@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+
+{% block title %}Calculadora de Plazo Fijo - Cuánto Ganas en tu Depósito | MiDineroObedece{% endblock %}
+
+{% block meta_description %}Calcula cuánto ganarás con un depósito a plazo fijo. Simula tus intereses y rendimiento. Gratis y sin registro.{% endblock %}
+
+{% block json_ld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculadora de Plazo Fijo",
+  "description": "Calcula cuánto ganarás con un depósito a plazo fijo.",
+  "url": "https://midineroobedece.com/calculadora-plazo-fijo",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "es",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<section class="calculadora-page">
+    <p class="breadcrumb"><a href="/">Inicio</a> › Calculadora de Plazo Fijo</p>
+    <h1>Calculadora de Plazo Fijo</h1>
+    <p class="subtitulo">Calcula cuánto ganarás al poner tu dinero en un depósito a plazo.</p>
+
+    <div class="calculadora-container">
+        <div class="formulario">
+            <p class="formulario-header">Datos del depósito</p>
+
+            <div class="campo">
+                <label for="capital-pf">Capital a depositar</label>
+                <div class="input-wrap">
+                    <span class="input-pre">$</span>
+                    <input type="number" id="capital-pf" class="with-pre" placeholder="5,000" min="0">
+                </div>
+            </div>
+            <div class="campo">
+                <label for="tasa-pf">Tasa nominal anual</label>
+                <div class="input-wrap">
+                    <input type="number" id="tasa-pf" class="with-suf" placeholder="6.5" min="0" step="0.01">
+                    <span class="input-suf">% anual</span>
+                </div>
+            </div>
+            <div class="campo">
+                <label for="plazo-pf">Plazo del depósito</label>
+                <div class="input-wrap">
+                    <input type="number" id="plazo-pf" class="with-suf" placeholder="12" min="1">
+                    <span class="input-suf">meses</span>
+                </div>
+            </div>
+
+            <button class="btn-calcular" onclick="calcularPlazoFijo()">Calcular rendimiento →</button>
+        </div>
+
+        <div class="resultados" id="resultados-pf">
+            <div class="resultados-espera" id="resultados-espera-pf">
+                <div class="espera-icon">🏛️</div>
+                <p>Ingresa los datos y presiona <strong style="color:rgba(255,255,255,0.5)">Calcular</strong></p>
+            </div>
+            <div class="resultados-data" id="resultados-data-pf">
+                <h2>Resultados</h2>
+                <div class="resultado-item highlight">
+                    <span>Monto final</span>
+                    <strong id="monto-final-pf"></strong>
+                </div>
+                <div class="resultado-item positivo">
+                    <span>Intereses ganados</span>
+                    <strong id="intereses-pf"></strong>
+                </div>
+                <div class="resultado-item">
+                    <span>Rendimiento total</span>
+                    <strong id="rendimiento-pf"></strong>
+                </div>
+                <p class="msg-presupuesto" id="tip-pf"></p>
+            </div>
+        </div>
+    </div>
+
+    <article class="contenido-seo">
+        <h2>¿Qué es un depósito a plazo fijo?</h2>
+        <p>Un plazo fijo es un instrumento de ahorro donde depositas dinero en un banco o cooperativa por un tiempo determinado a cambio de una tasa de interés fija. Es uno de los productos más seguros y populares en América Latina.</p>
+        <h3>Tasas de plazo fijo en LATAM (referencia)</h3>
+        <ul>
+            <li><strong>Ecuador:</strong> 3%–7% anual según el plazo (regulado por el Banco Central).</li>
+            <li><strong>Colombia:</strong> 8%–12% anual en CDTs.</li>
+            <li><strong>Perú:</strong> 3%–7% anual en depósitos a plazo.</li>
+            <li><strong>México:</strong> 8%–12% anual en CETES y pagarés bancarios.</li>
+        </ul>
+        <h3>Consejos al elegir un plazo fijo</h3>
+        <ul>
+            <li>A mayor plazo, mayor tasa. Pero asegúrate de no necesitar el dinero antes.</li>
+            <li>Compara entre bancos y cooperativas — las cooperativas suelen ofrecer mejores tasas.</li>
+            <li>Verifica que la institución esté regulada y cubierta por el seguro de depósitos.</li>
+            <li>Al vencer, reinvierte el capital más los intereses para aprovechar el interés compuesto.</li>
+        </ul>
+    </article>
+</section>
+
+<script>
+function calcularPlazoFijo() {
+    const capital = parseFloat(document.getElementById('capital-pf').value);
+    const tasaAnual = parseFloat(document.getElementById('tasa-pf').value);
+    const plazo = parseInt(document.getElementById('plazo-pf').value);
+
+    if (!capital || !tasaAnual || !plazo) {
+        alert('Por favor completa todos los campos.');
+        return;
+    }
+
+    const intereses = capital * (tasaAnual / 100) * (plazo / 12);
+    const montoFinal = capital + intereses;
+    const rendimientoPct = (intereses / capital * 100).toFixed(2);
+
+    const fmt = v => '$' + v.toLocaleString('es-EC', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    document.getElementById('monto-final-pf').textContent = fmt(montoFinal);
+    document.getElementById('intereses-pf').textContent = fmt(intereses);
+    document.getElementById('rendimiento-pf').textContent = rendimientoPct + '%';
+
+    const mensual = intereses / plazo;
+    document.getElementById('tip-pf').textContent = '💡 Equivale a ganar ' + fmt(mensual) + ' por mes durante ' + plazo + ' meses.';
+
+    document.getElementById('resultados-espera-pf').style.display = 'none';
+    document.getElementById('resultados-data-pf').style.display = 'block';
+}
+</script>
+{% endblock %}

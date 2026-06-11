@@ -1,0 +1,155 @@
+{% extends "base.html" %}
+
+{% block title %}Calculadora de Jubilación - Cuánto Necesitas para Retirarte | MiDineroObedece{% endblock %}
+
+{% block meta_description %}Calcula cuánto dinero necesitas ahorrar para jubilarte y cuánto debes guardar cada mes desde hoy. Gratis y sin registro.{% endblock %}
+
+{% block json_ld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculadora de Jubilación",
+  "description": "Calcula cuánto necesitas ahorrar para jubilarte y cuánto debes guardar cada mes.",
+  "url": "https://midineroobedece.com/calculadora-jubilacion",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "es",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<section class="calculadora-page">
+    <p class="breadcrumb"><a href="/">Inicio</a> › Calculadora de Jubilación</p>
+    <h1>Calculadora de Jubilación</h1>
+    <p class="subtitulo">Descubre cuánto debes ahorrar hoy para retirarte con tranquilidad.</p>
+
+    <div class="calculadora-container">
+        <div class="formulario">
+            <p class="formulario-header">Tu plan de retiro</p>
+
+            <div class="campo">
+                <label for="edad-actual">Edad actual</label>
+                <div class="input-wrap">
+                    <input type="number" id="edad-actual" class="with-suf" placeholder="30" min="18" max="70">
+                    <span class="input-suf">años</span>
+                </div>
+            </div>
+            <div class="campo">
+                <label for="edad-retiro">Edad de retiro</label>
+                <div class="input-wrap">
+                    <input type="number" id="edad-retiro" class="with-suf" placeholder="65" min="40" max="80">
+                    <span class="input-suf">años</span>
+                </div>
+            </div>
+            <div class="campo">
+                <label for="gastos-retiro">Gastos mensuales en el retiro</label>
+                <div class="input-wrap">
+                    <span class="input-pre">$</span>
+                    <input type="number" id="gastos-retiro" class="with-pre" placeholder="1,000" min="0">
+                </div>
+            </div>
+            <div class="campo">
+                <label for="anos-retiro">Años esperados de retiro</label>
+                <div class="input-wrap">
+                    <input type="number" id="anos-retiro" class="with-suf" placeholder="20" min="5" max="50">
+                    <span class="input-suf">años</span>
+                </div>
+            </div>
+            <div class="campo">
+                <label for="tasa-jub">Rendimiento anual de tus ahorros</label>
+                <div class="input-wrap">
+                    <input type="number" id="tasa-jub" class="with-suf" placeholder="7" min="0" step="0.1">
+                    <span class="input-suf">% anual</span>
+                </div>
+            </div>
+
+            <button class="btn-calcular" onclick="calcularJubilacion()">Calcular plan →</button>
+        </div>
+
+        <div class="resultados" id="resultados-jub">
+            <div class="resultados-espera" id="resultados-espera-jub">
+                <div class="espera-icon">🏖️</div>
+                <p>Ingresa los datos y presiona <strong style="color:rgba(255,255,255,0.5)">Calcular</strong></p>
+            </div>
+            <div class="resultados-data" id="resultados-data-jub">
+                <h2>Resultados</h2>
+                <div class="resultado-item highlight">
+                    <span>Ahorro mensual necesario</span>
+                    <strong id="ahorro-mens-jub"></strong>
+                </div>
+                <div class="resultado-item">
+                    <span>Corpus necesario al retiro</span>
+                    <strong id="corpus-jub"></strong>
+                </div>
+                <div class="resultado-item">
+                    <span>Total que aportarás</span>
+                    <strong id="total-aportado-jub"></strong>
+                </div>
+                <div class="resultado-item positivo">
+                    <span>Rendimiento que generarás</span>
+                    <strong id="rendimiento-jub"></strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <article class="contenido-seo">
+        <h2>¿Por qué planificar la jubilación desde joven?</h2>
+        <p>Gracias al interés compuesto, cada año que esperas para empezar a ahorrar para el retiro te cuesta mucho más. Comenzar a los 25 años en vez de los 35 puede significar aportar la mitad del dinero y llegar al mismo resultado.</p>
+        <h3>¿Cuánto necesito realmente para jubilarme?</h3>
+        <p>Una regla práctica es multiplicar tus gastos anuales en el retiro por los años que esperas vivir retirado. Si quieres $1,000/mes durante 20 años, necesitas un fondo de $240,000 como mínimo (sin considerar rendimientos durante el retiro).</p>
+        <h3>Consejos para acelerar tu retiro</h3>
+        <ul>
+            <li>Empieza hoy, aunque sea con $50 al mes. La constancia es más importante que el monto.</li>
+            <li>Busca instrumentos de inversión con rendimientos superiores a la inflación.</li>
+            <li>Aumenta tu aporte cada vez que sube tu ingreso.</li>
+            <li>En Ecuador, aprovecha el IESS. En otros países, fondos de pensión y cuentas de ahorro voluntario.</li>
+        </ul>
+    </article>
+</section>
+
+<script>
+function calcularJubilacion() {
+    const edadActual = parseInt(document.getElementById('edad-actual').value);
+    const edadRetiro = parseInt(document.getElementById('edad-retiro').value);
+    const gastos = parseFloat(document.getElementById('gastos-retiro').value);
+    const anosRetiro = parseInt(document.getElementById('anos-retiro').value);
+    const tasaAnual = parseFloat(document.getElementById('tasa-jub').value) || 0;
+
+    if (!edadActual || !edadRetiro || !gastos || !anosRetiro) {
+        alert('Por favor completa todos los campos.');
+        return;
+    }
+    if (edadRetiro <= edadActual) {
+        alert('La edad de retiro debe ser mayor a tu edad actual.');
+        return;
+    }
+
+    const corpus = gastos * 12 * anosRetiro;
+    const meses = (edadRetiro - edadActual) * 12;
+    const tasaMensual = tasaAnual / 100 / 12;
+
+    let ahorro;
+    if (tasaMensual === 0) {
+        ahorro = corpus / meses;
+    } else {
+        ahorro = corpus * tasaMensual / (Math.pow(1 + tasaMensual, meses) - 1);
+    }
+
+    const totalAportado = ahorro * meses;
+    const rendimiento = corpus - totalAportado;
+
+    const fmt = v => '$' + v.toLocaleString('es-EC', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    document.getElementById('ahorro-mens-jub').textContent = fmt(ahorro);
+    document.getElementById('corpus-jub').textContent = fmt(corpus);
+    document.getElementById('total-aportado-jub').textContent = fmt(totalAportado);
+    document.getElementById('rendimiento-jub').textContent = fmt(Math.max(0, rendimiento));
+
+    document.getElementById('resultados-espera-jub').style.display = 'none';
+    document.getElementById('resultados-data-jub').style.display = 'block';
+}
+</script>
+{% endblock %}
