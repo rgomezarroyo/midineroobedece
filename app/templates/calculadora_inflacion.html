@@ -33,7 +33,7 @@
             <div class="campo">
                 <label for="monto-inf">Monto actual</label>
                 <div class="input-wrap">
-                    <span class="input-pre">$</span>
+                    <span class="input-pre cur-sym">$</span>
                     <input type="number" id="monto-inf" class="with-pre" placeholder="10,000" min="0">
                 </div>
             </div>
@@ -137,8 +137,7 @@ function calcularInflacion() {
     const perdida = valorFuturo - monto;
     const valorReal = monto / factor;
 
-    const fmt = v => '$' + v.toLocaleString('es-EC', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    const pct = ((1 - 1 / factor) * 100).toFixed(1);
+const pct = ((1 - 1 / factor) * 100).toFixed(1);
 
     document.getElementById('valor-futuro-inf').textContent = fmt(valorFuturo);
     document.getElementById('perdida-inf').textContent = fmt(perdida);

@@ -33,7 +33,7 @@
             <div class="campo">
                 <label for="gastos-fe">Gastos mensuales esenciales</label>
                 <div class="input-wrap">
-                    <span class="input-pre">$</span>
+                    <span class="input-pre cur-sym">$</span>
                     <input type="number" id="gastos-fe" class="with-pre" placeholder="800" min="0">
                 </div>
             </div>
@@ -137,8 +137,7 @@ function calcularFondoEmergencia() {
     const meta = gastos * meses;
     const ahorro = meta / plazo;
 
-    const fmt = v => '$' + v.toLocaleString('es-EC', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    document.getElementById('meta-fe').textContent = fmt(meta);
+document.getElementById('meta-fe').textContent = fmt(meta);
     document.getElementById('ahorro-fe').textContent = fmt(ahorro);
     document.getElementById('cobertura-fe').textContent = meses + ' meses de gastos';
 

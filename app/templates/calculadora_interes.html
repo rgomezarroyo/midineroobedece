@@ -33,14 +33,14 @@
             <div class="campo">
                 <label for="capital">Capital inicial</label>
                 <div class="input-wrap">
-                    <span class="input-pre">$</span>
+                    <span class="input-pre cur-sym">$</span>
                     <input type="number" id="capital" class="with-pre" placeholder="1,000" min="0">
                 </div>
             </div>
             <div class="campo">
                 <label for="aporte">Aporte mensual</label>
                 <div class="input-wrap">
-                    <span class="input-pre">$</span>
+                    <span class="input-pre cur-sym">$</span>
                     <input type="number" id="aporte" class="with-pre" placeholder="100" min="0" value="0">
                 </div>
             </div>
@@ -143,8 +143,7 @@ function calcularInteres() {
     const totalInvertido = capital + aporte * meses;
     const ganancias = valorFinal - totalInvertido;
 
-    const fmt = v => '$' + v.toLocaleString('es-EC', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    document.getElementById('valor-final').textContent = fmt(valorFinal);
+document.getElementById('valor-final').textContent = fmt(valorFinal);
     document.getElementById('total-invertido').textContent = fmt(totalInvertido);
     document.getElementById('ganancias-ic').textContent = fmt(ganancias);
 

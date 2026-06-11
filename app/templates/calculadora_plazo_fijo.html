@@ -33,7 +33,7 @@
             <div class="campo">
                 <label for="capital-pf">Capital a depositar</label>
                 <div class="input-wrap">
-                    <span class="input-pre">$</span>
+                    <span class="input-pre cur-sym">$</span>
                     <input type="number" id="capital-pf" class="with-pre" placeholder="5,000" min="0">
                 </div>
             </div>
@@ -135,8 +135,7 @@ function calcularPlazoFijo() {
     const montoFinal = capital + intereses;
     const rendimientoPct = (intereses / capital * 100).toFixed(2);
 
-    const fmt = v => '$' + v.toLocaleString('es-EC', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    document.getElementById('monto-final-pf').textContent = fmt(montoFinal);
+document.getElementById('monto-final-pf').textContent = fmt(montoFinal);
     document.getElementById('intereses-pf').textContent = fmt(intereses);
     document.getElementById('rendimiento-pf').textContent = rendimientoPct + '%';
 

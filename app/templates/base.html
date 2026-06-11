@@ -64,20 +64,32 @@
     <header>
         <nav>
             <a href="/" class="logo">MiDineroObedece</a>
-            <button class="nav-toggle" id="nav-toggle" onclick="toggleNav()" aria-label="Abrir menú">
-                <span></span><span></span><span></span>
-            </button>
-            <ul id="nav-menu">
-                <li><a href="/calculadora-prestamos">Préstamos</a></li>
-                <li><a href="/calculadora-ahorro">Ahorro</a></li>
-                <li><a href="/calculadora-interes-compuesto">Interés Compuesto</a></li>
-                <li><a href="/calculadora-presupuesto">Presupuesto</a></li>
-                <li><a href="/calculadora-tarjeta-credito">Tarjeta</a></li>
-                <li><a href="/calculadora-inflacion">Inflación</a></li>
-                <li><a href="/calculadora-jubilacion">Jubilación</a></li>
-                <li><a href="/calculadora-plazo-fijo">Plazo Fijo</a></li>
-                <li><a href="/calculadora-fondo-emergencia">Emergencia</a></li>
-            </ul>
+            <div class="nav-right">
+                <ul id="nav-menu">
+                    <li><a href="/calculadora-prestamos">Préstamos</a></li>
+                    <li><a href="/calculadora-ahorro">Ahorro</a></li>
+                    <li><a href="/calculadora-interes-compuesto">Interés Compuesto</a></li>
+                    <li><a href="/calculadora-presupuesto">Presupuesto</a></li>
+                    <li><a href="/calculadora-tarjeta-credito">Tarjeta</a></li>
+                    <li><a href="/calculadora-inflacion">Inflación</a></li>
+                    <li><a href="/calculadora-jubilacion">Jubilación</a></li>
+                    <li><a href="/calculadora-plazo-fijo">Plazo Fijo</a></li>
+                    <li><a href="/calculadora-fondo-emergencia">Emergencia</a></li>
+                </ul>
+                <select id="currency-sel" class="currency-sel" onchange="changeCurrency(this.value)" title="Seleccionar moneda">
+                    <option value="USD">🌎 USD</option>
+                    <option value="MXN">🇲🇽 MXN</option>
+                    <option value="COP">🇨🇴 COP</option>
+                    <option value="PEN">🇵🇪 S/</option>
+                    <option value="ARS">🇦🇷 ARS</option>
+                    <option value="CLP">🇨🇱 CLP</option>
+                    <option value="BRL">🇧🇷 R$</option>
+                    <option value="BOB">🇧🇴 Bs.</option>
+                </select>
+                <button class="nav-toggle" id="nav-toggle" onclick="toggleNav()" aria-label="Abrir menú">
+                    <span></span><span></span><span></span>
+                </button>
+            </div>
         </nav>
     </header>
 

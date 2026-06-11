@@ -33,7 +33,7 @@
             <div class="campo">
                 <label for="saldo">Saldo actual de la tarjeta</label>
                 <div class="input-wrap">
-                    <span class="input-pre">$</span>
+                    <span class="input-pre cur-sym">$</span>
                     <input type="number" id="saldo" class="with-pre" placeholder="2,000" min="0">
                 </div>
             </div>
@@ -47,7 +47,7 @@
             <div class="campo">
                 <label for="pago-tc">Pago mensual que harás</label>
                 <div class="input-wrap">
-                    <span class="input-pre">$</span>
+                    <span class="input-pre cur-sym">$</span>
                     <input type="number" id="pago-tc" class="with-pre" placeholder="100" min="0">
                 </div>
             </div>
@@ -143,8 +143,6 @@ function calcularTarjeta() {
     if (anos > 0) tiempoTexto += anos + (anos === 1 ? ' año' : ' años');
     if (anos > 0 && mesesResto > 0) tiempoTexto += ' y ';
     if (mesesResto > 0) tiempoTexto += mesesResto + (mesesResto === 1 ? ' mes' : ' meses');
-
-    const fmt = v => '$' + v.toLocaleString('es-EC', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 
     document.getElementById('meses-tc').textContent = tiempoTexto;
     document.getElementById('intereses-tc').textContent = fmt(totalIntereses);

@@ -33,14 +33,14 @@
             <div class="campo">
                 <label for="meta">Meta de ahorro</label>
                 <div class="input-wrap">
-                    <span class="input-pre">$</span>
+                    <span class="input-pre cur-sym">$</span>
                     <input type="number" id="meta" class="with-pre" placeholder="10,000" min="0">
                 </div>
             </div>
             <div class="campo">
                 <label for="ahorro_actual">Ahorro actual</label>
                 <div class="input-wrap">
-                    <span class="input-pre">$</span>
+                    <span class="input-pre cur-sym">$</span>
                     <input type="number" id="ahorro_actual" class="with-pre" placeholder="0" min="0" value="0">
                 </div>
             </div>
@@ -143,9 +143,9 @@ function calcularAhorro() {
     const totalAportado = mensual * meses + actual;
     const intereses = meta - totalAportado;
 
-    document.getElementById('ahorro-mensual').textContent = '$' + mensual.toLocaleString('es-EC', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    document.getElementById('total-ahorro').textContent = '$' + meta.toLocaleString('es-EC', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    document.getElementById('intereses-ahorro').textContent = '$' + Math.max(0, intereses).toLocaleString('es-EC', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    document.getElementById('ahorro-mensual').textContent = fmt(mensual);
+    document.getElementById('total-ahorro').textContent = fmt(meta);
+    document.getElementById('intereses-ahorro').textContent = fmt(Math.max(0, intereses));
 
     document.getElementById('resultados-espera-ahorro').style.display = 'none';
     document.getElementById('resultados-data-ahorro').style.display = 'block';

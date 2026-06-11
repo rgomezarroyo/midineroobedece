@@ -60,6 +60,12 @@ nav {
     background-clip: text;
 }
 
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
 nav ul {
     list-style: none;
     display: flex;
@@ -153,6 +159,47 @@ main {
     margin: 0 auto;
     position: relative;
     z-index: 1;
+}
+
+/* ── CURRENCY SELECTOR ── */
+.currency-sel {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.12);
+    color: #94a3b8;
+    border-radius: 8px;
+    padding: 0.32rem 0.55rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    cursor: pointer;
+    outline: none;
+    flex-shrink: 0;
+}
+
+.currency-sel:hover,
+.currency-sel:focus {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    border-color: rgba(255,255,255,0.2);
+}
+
+.currency-sel option {
+    background: #0f172a;
+    color: #fff;
+}
+
+/* ── CATEGORY GROUPS ── */
+.categoria {
+    margin-bottom: 2.5rem;
+}
+
+.cat-title {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 1rem;
+    padding-left: 0.85rem;
+    border-left: 3px solid var(--primary);
 }
 
 /* ── TOOLS GRID ── */
@@ -371,7 +418,7 @@ main {
     box-shadow: 0 0 0 3px var(--primary-glow);
 }
 
-.campo input.with-pre { padding-left: 1.85rem; }
+.campo input.with-pre { padding-left: 2.6rem; }
 .campo input.with-suf { padding-right: 2.5rem; }
 
 .btn-calcular {
@@ -716,6 +763,8 @@ footer {
     nav ul.nav-open { display: flex; }
 
     nav ul a { font-size: 0.95rem; padding: 0.6rem 0.85rem; }
+
+    .currency-sel { font-size: 0.72rem; padding: 0.28rem 0.45rem; }
 
     main { padding: 0 1.25rem 3rem; }
 

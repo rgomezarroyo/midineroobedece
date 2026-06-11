@@ -34,14 +34,14 @@
             <div class="campo">
                 <label for="salario">Salario / Sueldo</label>
                 <div class="input-wrap">
-                    <span class="input-pre">$</span>
+                    <span class="input-pre cur-sym">$</span>
                     <input type="number" id="salario" class="with-pre" placeholder="800" min="0" value="0">
                 </div>
             </div>
             <div class="campo">
                 <label for="otros-ingresos">Otros ingresos</label>
                 <div class="input-wrap">
-                    <span class="input-pre">$</span>
+                    <span class="input-pre cur-sym">$</span>
                     <input type="number" id="otros-ingresos" class="with-pre" placeholder="200" min="0" value="0">
                 </div>
             </div>
@@ -50,35 +50,35 @@
             <div class="campo">
                 <label for="vivienda">Vivienda / Arriendo</label>
                 <div class="input-wrap">
-                    <span class="input-pre">$</span>
+                    <span class="input-pre cur-sym">$</span>
                     <input type="number" id="vivienda" class="with-pre" placeholder="300" min="0" value="0">
                 </div>
             </div>
             <div class="campo">
                 <label for="alimentacion">Alimentación</label>
                 <div class="input-wrap">
-                    <span class="input-pre">$</span>
+                    <span class="input-pre cur-sym">$</span>
                     <input type="number" id="alimentacion" class="with-pre" placeholder="200" min="0" value="0">
                 </div>
             </div>
             <div class="campo">
                 <label for="transporte">Transporte</label>
                 <div class="input-wrap">
-                    <span class="input-pre">$</span>
+                    <span class="input-pre cur-sym">$</span>
                     <input type="number" id="transporte" class="with-pre" placeholder="50" min="0" value="0">
                 </div>
             </div>
             <div class="campo">
                 <label for="servicios">Servicios básicos</label>
                 <div class="input-wrap">
-                    <span class="input-pre">$</span>
+                    <span class="input-pre cur-sym">$</span>
                     <input type="number" id="servicios" class="with-pre" placeholder="80" min="0" value="0">
                 </div>
             </div>
             <div class="campo">
                 <label for="otros-gastos">Otros gastos</label>
                 <div class="input-wrap">
-                    <span class="input-pre">$</span>
+                    <span class="input-pre cur-sym">$</span>
                     <input type="number" id="otros-gastos" class="with-pre" placeholder="100" min="0" value="0">
                 </div>
             </div>
@@ -157,8 +157,7 @@ function calcularPresupuesto() {
     const totalGastos = vivienda + alimentacion + transporte + servicios + otrosGastos;
     const diferencia = totalIngresos - totalGastos;
 
-    const fmt = v => '$' + v.toLocaleString('es-EC', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    document.getElementById('total-ingresos').textContent = fmt(totalIngresos);
+document.getElementById('total-ingresos').textContent = fmt(totalIngresos);
     document.getElementById('total-gastos').textContent = fmt(totalGastos);
     document.getElementById('diferencia').textContent = fmt(Math.abs(diferencia));
 

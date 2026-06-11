@@ -47,7 +47,7 @@
             <div class="campo">
                 <label for="gastos-retiro">Gastos mensuales en el retiro</label>
                 <div class="input-wrap">
-                    <span class="input-pre">$</span>
+                    <span class="input-pre cur-sym">$</span>
                     <input type="number" id="gastos-retiro" class="with-pre" placeholder="1,000" min="0">
                 </div>
             </div>
@@ -163,7 +163,6 @@ function calcularJubilacion() {
     const totalAportado = ahorro * meses;
     const rendimiento = corpus - totalAportado;
 
-    const fmt = v => '$' + v.toLocaleString('es-EC', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     document.getElementById('ahorro-mens-jub').textContent = fmt(ahorro);
     document.getElementById('corpus-jub').textContent = fmt(corpus);
     document.getElementById('total-aportado-jub').textContent = fmt(totalAportado);
