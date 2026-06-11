@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+
+{% block title %}Calculadora de Tarjeta de Crédito - Cuánto Pagas de Intereses | MiDineroObedece{% endblock %}
+
+{% block meta_description %}Descubre cuánto tiempo y dinero pierdes pagando solo el mínimo de tu tarjeta de crédito. Calcula tu plan de pago gratis.{% endblock %}
+
+{% block content %}
+<section class="calculadora-page">
+    <p class="breadcrumb"><a href="/">Inicio</a> › Tarjeta de Crédito</p>
+    <h1>Calculadora de Tarjeta de Crédito</h1>
+    <p class="subtitulo">Descubre cuánto te cuesta realmente tu deuda y cuándo la liquidarás.</p>
+
+    <div class="calculadora-container">
+        <div class="formulario">
+            <p class="formulario-header">Datos de tu tarjeta</p>
+
+            <div class="campo">
+                <label for="saldo">Saldo actual de la tarjeta</label>
+                <div class="input-wrap">
+                    <span class="input-pre">$</span>
+                    <input type="number" id="saldo" class="with-pre" placeholder="2,000" min="0">
+                </div>
+            </div>
+            <div class="campo">
+                <label for="tasa-tc">Tasa de interés anual</label>
+                <div class="input-wrap">
+                    <input type="number" id="tasa-tc" class="with-suf" placeholder="24" min="0" step="0.1">
+                    <span class="input-suf">% anual</span>
+                </div>
+            </div>
+            <div class="campo">
+                <label for="pago-tc">Pago mensual que harás</label>
+                <div class="input-wrap">
+                    <span class="input-pre">$</span>
+                    <input type="number" id="pago-tc" class="with-pre" placeholder="100" min="0">
+                </div>
+            </div>
+
+            <button class="btn-calcular" onclick="calcularTarjeta()">Calcular deuda →</button>
+        </div>
+
+        <div class="resultados" id="resultados-tc">
+            <div class="resultados-espera" id="resultados-espera-tc">
+                <div class="espera-icon">💳</div>
+                <p>Ingresa los datos y presiona <strong style="color:rgba(255,255,255,0.5)">Calcular</strong></p>
+            </div>
+            <div class="resultados-data" id="resultados-data-tc">
+                <h2>Resultados</h2>
+                <div class="resultado-item highlight" id="item-meses-tc">
+                    <span>Tiempo para liquidar</span>
+                    <strong id="meses-tc"></strong>
+                </div>
+                <div class="resultado-item negativo">
+                    <span>Total en intereses</span>
+                    <strong id="intereses-tc"></strong>
+                </div>
+                <div class="resultado-item">
+                    <span>Total pagado</span>
+                    <strong id="total-tc"></strong>
+                </div>
+                <p class="msg-presupuesto" id="tip-tc"></p>
+            </div>
+        </div>
+    </div>
+
+    <article class="contenido-seo">
+        <h2>¿Por qué es tan peligroso pagar solo el mínimo?</h2>
+        <p>Las tarjetas de crédito en América Latina tienen tasas de interés anuales que van del 18% al 60%. Cuando pagas solo el mínimo, la mayor parte de tu pago va a cubrir intereses y casi nada reduce la deuda real. Esto puede hacer que tardes años — incluso décadas — en liquidar un saldo que parece pequeño.</p>
+        <h3>Estrategia para pagar más rápido</h3>
+        <ul>
+            <li>Paga siempre más del mínimo. Aunque sea un 20% extra marca una diferencia enorme.</li>
+            <li>No uses la tarjeta para gastos nuevos mientras pagas la deuda actual.</li>
+            <li>Si tienes varias tarjetas, aplica la estrategia avalancha: ataca primero la de mayor tasa.</li>
+            <li>Considera consolidar la deuda en un préstamo personal con menor tasa.</li>
+        </ul>
+        <h3>¿Qué es la tasa de interés de tarjeta de crédito?</h3>
+        <p>En Ecuador la tasa máxima de tarjetas es regulada por el Banco Central. En otros países de LATAM puede superar el 40% anual. Revisa tu estado de cuenta — generalmente aparece como "TEA" (tasa efectiva anual).</p>
+    </article>
+</section>
+
+<script>
+function calcularTarjeta() {
+    const saldo = parseFloat(document.getElementById('saldo').value);
+    const tasaAnual = parseFloat(document.getElementById('tasa-tc').value);
+    const pago = parseFloat(document.getElementById('pago-tc').value);
+
+    if (!saldo || !tasaAnual || !pago) {
+        alert('Por favor completa todos los campos.');
+        return;
+    }
+
+    const tasaMensual = tasaAnual / 100 / 12;
+
+    if (pago <= saldo * tasaMensual) {
+        alert('El pago mensual es menor o igual a los intereses del mes. Nunca liquidarás la deuda. Aumenta tu pago mensual.');
+        return;
+    }
+
+    const meses = Math.ceil(-Math.log(1 - (tasaMensual * saldo) / pago) / Math.log(1 + tasaMensual));
+    const totalPagado = pago * meses;
+    const totalIntereses = totalPagado - saldo;
+
+    const anos = Math.floor(meses / 12);
+    const mesesResto = meses % 12;
+    let tiempoTexto = '';
+    if (anos > 0) tiempoTexto += anos + (anos === 1 ? ' año' : ' años');
+    if (anos > 0 && mesesResto > 0) tiempoTexto += ' y ';
+    if (mesesResto > 0) tiempoTexto += mesesResto + (mesesResto === 1 ? ' mes' : ' meses');
+
+    const fmt = v => '$' + v.toLocaleString('es-EC', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+
+    document.getElementById('meses-tc').textContent = tiempoTexto;
+    document.getElementById('intereses-tc').textContent = fmt(totalIntereses);
+    document.getElementById('total-tc').textContent = fmt(totalPagado);
+
+    const pagoExtra = pago * 1.5;
+    const mesesExtra = Math.ceil(-Math.log(1 - (tasaMensual * saldo) / pagoExtra) / Math.log(1 + tasaMensual));
+    const ahorro = totalIntereses - (pagoExtra * mesesExtra - saldo);
+    document.getElementById('tip-tc').textContent = '💡 Pagando ' + fmt(pagoExtra) + '/mes ahorrarías ' + fmt(ahorro) + ' en intereses.';
+
+    document.getElementById('resultados-espera-tc').style.display = 'none';
+    document.getElementById('resultados-data-tc').style.display = 'block';
+}
+</script>
+{% endblock %}
