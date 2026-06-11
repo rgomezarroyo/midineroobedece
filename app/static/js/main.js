@@ -26,6 +26,12 @@ function changeCurrency(code) {
   localStorage.setItem('mdo_cur', code);
   const sym = MDO_CURRENCIES[code].symbol;
   document.querySelectorAll('.cur-sym').forEach(el => el.textContent = sym);
+  const page = document.querySelector('[data-recalc]');
+  if (page) {
+    const fn = page.dataset.recalc;
+    const shown = document.querySelector('[id^="resultados-data"][style*="block"]');
+    if (shown && typeof window[fn] === 'function') window[fn]();
+  }
 }
 
 document.addEventListener('DOMContentLoaded', function () {
