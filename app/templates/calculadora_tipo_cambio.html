@@ -1,0 +1,177 @@
+{% extends "base.html" %}
+
+{% block title %}Calculadora de Tipo de Cambio - Conversor de Divisas LATAM | MiDineroObedece{% endblock %}
+
+{% block meta_description %}Convierte entre dólares, euros, pesos y monedas de América Latina con tasas actualizadas en tiempo real. Conversor de divisas gratis y sin registro.{% endblock %}
+
+{% block json_ld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculadora de Tipo de Cambio",
+  "description": "Convierte entre divisas con tasas actualizadas en tiempo real para todos los países de América Latina.",
+  "url": "https://midineroobedece.com/calculadora-tipo-cambio",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "es",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Qué es el tipo de cambio?",
+      "acceptedAnswer": {"@type": "Answer", "text": "El tipo de cambio es el precio de una moneda expresado en términos de otra. Por ejemplo, si el tipo de cambio USD/MXN es 17.5, significa que 1 dólar equivale a 17.5 pesos mexicanos. Los tipos de cambio fluctúan constantemente según la oferta y demanda de divisas en los mercados financieros internacionales."}
+    },
+    {
+      "@type": "Question",
+      "name": "¿Por qué cambia el tipo de cambio todos los días?",
+      "acceptedAnswer": {"@type": "Answer", "text": "El tipo de cambio cambia constantemente porque está determinado por la oferta y demanda de divisas en los mercados financieros globales. Factores como las decisiones de los bancos centrales, la inflación, el comercio internacional, las tasas de interés y los eventos políticos afectan el valor relativo de cada moneda."}
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuál es la diferencia entre tipo de cambio oficial y paralelo?",
+      "acceptedAnswer": {"@type": "Answer", "text": "El tipo de cambio oficial es fijado o regulado por el banco central de un país. El tipo de cambio paralelo (o informal) surge cuando hay restricciones al mercado de divisas y el valor real de la moneda difiere del oficial. Países como Argentina han tenido históricamente grandes diferencias entre ambos tipos."}
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo puedo enviar dinero a otro país de LATAM al mejor tipo de cambio?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Compara las tasas que ofrecen servicios como Wise (TransferWise), Remitly, Western Union y tu banco. Los servicios digitales suelen ofrecer tipos de cambio más cercanos al mercado con comisiones menores. Evita cambiar divisas en aeropuertos donde los márgenes son mucho más altos."}
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://midineroobedece.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Calculadora de Tipo de Cambio", "item": "https://midineroobedece.com/calculadora-tipo-cambio"}
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<section class="calculadora-page">
+    <p class="breadcrumb"><a href="/">Inicio</a> › Tipo de Cambio</p>
+    <h1>Calculadora de Tipo de Cambio</h1>
+    <p class="subtitulo">Convierte entre divisas con tasas actualizadas en tiempo real.</p>
+
+    <div class="calculadora-container">
+        <div class="formulario">
+            <p class="formulario-header">Conversión de divisas</p>
+
+            <div class="campo">
+                <label for="monto-tc">Monto a convertir</label>
+                <div class="input-wrap">
+                    <span class="input-pre">$</span>
+                    <input type="number" id="monto-tc" class="with-pre" placeholder="100" min="0" step="0.01">
+                </div>
+            </div>
+            <div class="campo">
+                <label for="moneda-from">Moneda origen</label>
+                <select id="moneda-from">
+                    <option value="USD">🇺🇸 USD — Dólar estadounidense</option>
+                    <option value="EUR">🇪🇺 EUR — Euro</option>
+                    <option value="MXN">🇲🇽 MXN — Peso mexicano</option>
+                    <option value="COP">🇨🇴 COP — Peso colombiano</option>
+                    <option value="PEN">🇵🇪 PEN — Sol peruano</option>
+                    <option value="ARS">🇦🇷 ARS — Peso argentino</option>
+                    <option value="CLP">🇨🇱 CLP — Peso chileno</option>
+                    <option value="BRL">🇧🇷 BRL — Real brasileño</option>
+                    <option value="BOB">🇧🇴 BOB — Boliviano</option>
+                </select>
+            </div>
+            <div class="campo">
+                <label for="moneda-to">Moneda destino</label>
+                <select id="moneda-to">
+                    <option value="MXN">🇲🇽 MXN — Peso mexicano</option>
+                    <option value="USD">🇺🇸 USD — Dólar estadounidense</option>
+                    <option value="EUR">🇪🇺 EUR — Euro</option>
+                    <option value="COP">🇨🇴 COP — Peso colombiano</option>
+                    <option value="PEN">🇵🇪 PEN — Sol peruano</option>
+                    <option value="ARS">🇦🇷 ARS — Peso argentino</option>
+                    <option value="CLP">🇨🇱 CLP — Peso chileno</option>
+                    <option value="BRL">🇧🇷 BRL — Real brasileño</option>
+                    <option value="BOB">🇧🇴 BOB — Boliviano</option>
+                </select>
+            </div>
+
+            <button class="btn-calcular" id="btn-tc" onclick="calcularTipoCambio()">Convertir →</button>
+        </div>
+
+        <div class="resultados" id="resultados-tc">
+            <div class="resultados-espera" id="resultados-espera-tc">
+                <div class="espera-icon">🌐</div>
+                <p>Ingresa el monto y presiona <strong style="color:rgba(255,255,255,0.5)">Convertir</strong></p>
+            </div>
+            <div class="resultados-data" id="resultados-data-tc">
+                <h2>Resultados</h2>
+                <div class="resultado-item highlight">
+                    <span>Monto convertido</span>
+                    <strong id="resultado-tc"></strong>
+                </div>
+                <div class="resultado-item">
+                    <span>Tasa de cambio</span>
+                    <strong id="tasa-tc"></strong>
+                </div>
+                <div class="resultado-item">
+                    <span>Tasa actualizada</span>
+                    <strong id="fecha-tc"></strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p class="aviso-legal">ℹ️ Tasas de referencia del mercado. El tipo de cambio real al momento de tu transacción puede variar según la entidad financiera o servicio que uses.</p>
+
+    {% include '_ad_unit.html' %}
+
+    <article class="contenido-seo">
+        <h2>¿Cómo funciona el tipo de cambio en América Latina?</h2>
+        <p>El tipo de cambio determina cuántas unidades de una moneda necesitas para obtener una unidad de otra. En América Latina, los tipos de cambio son especialmente relevantes porque muchas transacciones internacionales se realizan en dólares y las monedas locales tienen distintos niveles de volatilidad.</p>
+        <h3>Monedas de América Latina</h3>
+        <ul>
+            <li><strong>México (MXN):</strong> Peso mexicano. Uno de los más negociados de LATAM.</li>
+            <li><strong>Colombia (COP):</strong> Peso colombiano. Alta liquidez en el mercado cambiario regional.</li>
+            <li><strong>Perú (PEN):</strong> Sol peruano. Considerado una de las monedas más estables de la región.</li>
+            <li><strong>Chile (CLP):</strong> Peso chileno. Influenciado por el precio del cobre.</li>
+            <li><strong>Brasil (BRL):</strong> Real brasileño. Mayor economía de LATAM.</li>
+        </ul>
+        <h3>Consejos para enviar dinero a LATAM</h3>
+        <ul>
+            <li>Usa servicios digitales como Wise o Remitly — ofrecen tasas más cercanas al mercado.</li>
+            <li>Evita cambiar divisas en aeropuertos y hoteles donde el margen es muy alto.</li>
+            <li>Compara siempre el tipo de cambio más la comisión total antes de decidir.</li>
+        </ul>
+    </article>
+
+    <section class="relacionadas">
+        <p class="section-label">También te puede interesar</p>
+        <div class="rel-grid">
+            <a href="/calculadora-prestamos" class="rel-card">
+                <span class="rel-icon">💰</span>
+                <div class="rel-info"><strong>Calculadora de Préstamos</strong><span>Cuota mensual y costo total</span></div>
+                <span class="rel-arrow">→</span>
+            </a>
+            <a href="/calculadora-inflacion" class="rel-card">
+                <span class="rel-icon">📉</span>
+                <div class="rel-info"><strong>Calculadora de Inflación</strong><span>Poder adquisitivo en el tiempo</span></div>
+                <span class="rel-arrow">→</span>
+            </a>
+            <a href="/calculadora-ahorro" class="rel-card">
+                <span class="rel-icon">🏦</span>
+                <div class="rel-info"><strong>Calculadora de Ahorro</strong><span>Alcanza tu meta financiera</span></div>
+                <span class="rel-arrow">→</span>
+            </a>
+        </div>
+    </section>
+</section>
+{% endblock %}

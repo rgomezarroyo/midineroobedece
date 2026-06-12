@@ -47,6 +47,22 @@ def calculadora_fondo_emergencia():
 def calculadora_descuentos():
     return render_template('calculadora_descuentos.html')
 
+@app.route('/calculadora-liquidacion-laboral')
+def calculadora_liquidacion():
+    return render_template('calculadora_liquidacion.html')
+
+@app.route('/calculadora-roi')
+def calculadora_roi():
+    return render_template('calculadora_roi.html')
+
+@app.route('/calculadora-tipo-cambio')
+def calculadora_tipo_cambio():
+    return render_template('calculadora_tipo_cambio.html')
+
+@app.errorhandler(404)
+def not_found(e):
+    return render_template('404.html'), 404
+
 @app.route('/acerca')
 def acerca():
     return render_template('acerca.html')
@@ -73,6 +89,9 @@ def sitemap():
         ('/calculadora-plazo-fijo', '0.9', 'monthly'),
         ('/calculadora-fondo-emergencia', '0.9', 'monthly'),
         ('/calculadora-descuentos', '0.9', 'monthly'),
+        ('/calculadora-liquidacion-laboral', '0.9', 'monthly'),
+        ('/calculadora-roi', '0.9', 'monthly'),
+        ('/calculadora-tipo-cambio', '0.9', 'monthly'),
         ('/acerca', '0.4', 'yearly'),
         ('/privacidad', '0.3', 'yearly'),
         ('/terminos', '0.3', 'yearly'),

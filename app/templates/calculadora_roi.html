@@ -1,0 +1,164 @@
+{% extends "base.html" %}
+
+{% block title %}Calculadora de ROI - Retorno sobre la Inversión | MiDineroObedece{% endblock %}
+
+{% block meta_description %}Calcula el ROI (retorno sobre la inversión) total y anualizado de cualquier inversión. Mide la rentabilidad real de tu dinero. Gratis y sin registro.{% endblock %}
+
+{% block json_ld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculadora de ROI",
+  "description": "Calcula el retorno sobre la inversión (ROI) total y anualizado de cualquier inversión.",
+  "url": "https://midineroobedece.com/calculadora-roi",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "es",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Qué es el ROI y cómo se calcula?",
+      "acceptedAnswer": {"@type": "Answer", "text": "El ROI (Return on Investment) mide la rentabilidad de una inversión. Se calcula dividiendo la ganancia neta entre la inversión inicial y multiplicando por 100. Fórmula: ROI = ((Valor Final - Inversión Inicial) / Inversión Inicial) × 100. Un ROI positivo significa ganancia; negativo significa pérdida."}
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué es el ROI anualizado?",
+      "acceptedAnswer": {"@type": "Answer", "text": "El ROI anualizado normaliza el retorno a un período de 12 meses para comparar inversiones de distinta duración. Se calcula con la fórmula: ((Valor Final / Inversión Inicial) ^ (12/meses)) - 1. Permite comparar una inversión de 6 meses con una de 3 años en igualdad de condiciones."}
+    },
+    {
+      "@type": "Question",
+      "name": "¿Qué es un buen ROI?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Depende del tipo de inversión y el riesgo. Para inversiones en renta variable (acciones), un ROI anualizado del 8-12% se considera bueno históricamente. Para negocios propios, un ROI del 15-30% anual es un objetivo razonable. Para depósitos bancarios, el ROI suele ser del 3-8% anual según el país."}
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cuál es la diferencia entre ROI y rentabilidad?",
+      "acceptedAnswer": {"@type": "Answer", "text": "El ROI y la rentabilidad son conceptos similares pero el ROI es específicamente el retorno relativo a la inversión inicial, expresado como porcentaje. La rentabilidad es un término más amplio que puede medir distintos aspectos del rendimiento financiero. En la práctica, ambos términos se usan indistintamente para medir el rendimiento de una inversión."}
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://midineroobedece.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Calculadora de ROI", "item": "https://midineroobedece.com/calculadora-roi"}
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<section class="calculadora-page" data-recalc="calcularROI">
+    <p class="breadcrumb"><a href="/">Inicio</a> › Calculadora de ROI</p>
+    <h1>Calculadora de ROI</h1>
+    <p class="subtitulo">Mide el retorno de tu inversión. Calcula la rentabilidad total y anualizada.</p>
+
+    <div class="calculadora-container">
+        <div class="formulario">
+            <p class="formulario-header">Datos de la inversión</p>
+
+            <div class="campo">
+                <label for="inversion-roi">Inversión inicial</label>
+                <div class="input-wrap">
+                    <span class="input-pre cur-sym">$</span>
+                    <input type="number" id="inversion-roi" class="with-pre" placeholder="1,000" min="0" step="0.01">
+                </div>
+            </div>
+            <div class="campo">
+                <label for="valor-final-roi">Valor final obtenido</label>
+                <div class="input-wrap">
+                    <span class="input-pre cur-sym">$</span>
+                    <input type="number" id="valor-final-roi" class="with-pre" placeholder="1,250" min="0" step="0.01">
+                </div>
+            </div>
+            <div class="campo">
+                <label for="periodo-roi">Duración de la inversión <span style="font-weight:400;color:var(--text-muted)">(opcional)</span></label>
+                <div class="input-wrap">
+                    <input type="number" id="periodo-roi" class="with-suf" placeholder="12" min="1">
+                    <span class="input-suf">meses</span>
+                </div>
+            </div>
+
+            <button class="btn-calcular" onclick="calcularROI()">Calcular ROI →</button>
+        </div>
+
+        <div class="resultados" id="resultados-roi">
+            <div class="resultados-espera" id="resultados-espera-roi">
+                <div class="espera-icon">📊</div>
+                <p>Ingresa los datos y presiona <strong style="color:rgba(255,255,255,0.5)">Calcular</strong></p>
+            </div>
+            <div class="resultados-data" id="resultados-data-roi">
+                <h2>Resultados</h2>
+                <div class="resultado-item highlight">
+                    <span>ROI total</span>
+                    <strong id="roi-total"></strong>
+                </div>
+                <div class="resultado-item" id="ganancia-item-roi">
+                    <span>Ganancia neta</span>
+                    <strong id="ganancia-roi"></strong>
+                </div>
+                <div class="resultado-item">
+                    <span>ROI anualizado</span>
+                    <strong id="roi-anual"></strong>
+                </div>
+                <div class="resultado-item">
+                    <span>Multiplicador</span>
+                    <strong id="multiplicador-roi"></strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include '_ad_unit.html' %}
+
+    <article class="contenido-seo">
+        <h2>¿Qué es el ROI y por qué importa?</h2>
+        <p>El ROI (Retorno sobre la Inversión) es el indicador más usado para medir la rentabilidad de cualquier inversión. Te dice cuánto dinero ganaste (o perdiste) en relación a lo que pusiste. Es fundamental para comparar opciones de inversión y decidir dónde poner tu dinero.</p>
+        <h3>Cómo interpretar el ROI</h3>
+        <ul>
+            <li>ROI positivo: tu inversión generó ganancia.</li>
+            <li>ROI negativo: perdiste dinero respecto a lo invertido.</li>
+            <li>ROI anualizado: permite comparar inversiones de distintos plazos en igualdad de condiciones.</li>
+        </ul>
+        <h3>ROI de referencia por tipo de inversión</h3>
+        <ul>
+            <li><strong>Depósito bancario / plazo fijo:</strong> 3–12% anual según país.</li>
+            <li><strong>Fondos indexados (S&P 500):</strong> ~10% anual histórico promedio.</li>
+            <li><strong>Negocio propio:</strong> variable; 15–30% anual es un objetivo razonable.</li>
+            <li><strong>Bienes raíces en LATAM:</strong> 6–12% anual combinando renta y plusvalía.</li>
+        </ul>
+    </article>
+
+    <section class="relacionadas">
+        <p class="section-label">También te puede interesar</p>
+        <div class="rel-grid">
+            <a href="/calculadora-interes-compuesto" class="rel-card">
+                <span class="rel-icon">📈</span>
+                <div class="rel-info"><strong>Interés Compuesto</strong><span>Crecimiento de tu dinero</span></div>
+                <span class="rel-arrow">→</span>
+            </a>
+            <a href="/calculadora-plazo-fijo" class="rel-card">
+                <span class="rel-icon">🏛️</span>
+                <div class="rel-info"><strong>Plazo Fijo / CDT</strong><span>Rendimiento seguro</span></div>
+                <span class="rel-arrow">→</span>
+            </a>
+            <a href="/calculadora-ahorro" class="rel-card">
+                <span class="rel-icon">🏦</span>
+                <div class="rel-info"><strong>Calculadora de Ahorro</strong><span>Alcanza tu meta</span></div>
+                <span class="rel-arrow">→</span>
+            </a>
+        </div>
+    </section>
+</section>
+{% endblock %}

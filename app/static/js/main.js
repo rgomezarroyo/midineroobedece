@@ -64,6 +64,103 @@ function calcularDescuento() {
   document.getElementById('resultados-data-desc').style.display = 'block';
 }
 
+// ── CALCULADORA LIQUIDACION LABORAL ──
+function calcularLiquidacion() {
+  const sueldo = parseFloat(document.getElementById('sueldo-liq').value);
+  const anos = parseInt(document.getElementById('anos-liq').value) || 0;
+  const meses = parseInt(document.getElementById('meses-liq').value) || 0;
+  const tipo = document.getElementById('tipo-liq').value;
+
+  if (!sueldo || sueldo <= 0) {
+    alert('Por favor ingresa un sueldo valido.');
+    return;
+  }
+
+  const indemnizacion = tipo === 'despido' ? sueldo * anos : 0;
+  const vacaciones = (sueldo / 12) * meses;
+  const aguinaldo = (sueldo / 12) * meses;
+  const total = indemnizacion + vacaciones + aguinaldo;
+
+  document.getElementById('total-liq').textContent = fmt(total);
+  document.getElementById('item-indemnizacion').style.display = tipo === 'despido' ? 'block' : 'none';
+  document.getElementById('indemnizacion-liq').textContent = fmt(indemnizacion);
+  document.getElementById('vacaciones-liq').textContent = fmt(vacaciones);
+  document.getElementById('aguinaldo-liq').textContent = fmt(aguinaldo);
+
+  document.getElementById('resultados-espera-liq').style.display = 'none';
+  document.getElementById('resultados-data-liq').style.display = 'block';
+}
+
+// ── CALCULADORA ROI ──
+function calcularROI() {
+  const inversion = parseFloat(document.getElementById('inversion-roi').value);
+  const valorFinal = parseFloat(document.getElementById('valor-final-roi').value);
+  const periodo = parseInt(document.getElementById('periodo-roi').value);
+
+  if (!inversion || inversion <= 0 || !valorFinal || valorFinal < 0) {
+    alert('Por favor ingresa una inversion inicial y un valor final validos.');
+    return;
+  }
+
+  const ganancia = valorFinal - inversion;
+  const roiTotal = (ganancia / inversion) * 100;
+  const multiplicador = valorFinal / inversion;
+  const item = document.getElementById('ganancia-item-roi');
+  item.classList.remove('positivo', 'negativo');
+  item.classList.add(ganancia >= 0 ? 'positivo' : 'negativo');
+  document.getElementById('roi-total').textContent = roiTotal.toFixed(2) + '%';
+  document.getElementById('ganancia-roi').textContent = (ganancia >= 0 ? '+' : '') + fmt(ganancia);
+  document.getElementById('multiplicador-roi').textContent = multiplicador.toFixed(2) + 'x';
+
+  if (periodo && periodo > 0) {
+    const roiAnual = (Math.pow(valorFinal / inversion, 12 / periodo) - 1) * 100;
+    document.getElementById('roi-anual').textContent = roiAnual.toFixed(2) + '% / año';
+  } else {
+    document.getElementById('roi-anual').textContent = '— (sin periodo)';
+  }
+
+  document.getElementById('resultados-espera-roi').style.display = 'none';
+  document.getElementById('resultados-data-roi').style.display = 'block';
+}
+
+// ── CALCULADORA TIPO DE CAMBIO ──
+async function calcularTipoCambio() {
+  const monto = parseFloat(document.getElementById('monto-tc').value);
+  const fromCur = document.getElementById('moneda-from').value;
+  const toCur = document.getElementById('moneda-to').value;
+
+  if (!monto || monto <= 0) {
+    alert('Por favor ingresa un monto valido.');
+    return;
+  }
+
+  const btn = document.getElementById('btn-tc');
+  btn.textContent = 'Obteniendo tasa...';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch('https://open.er-api.com/v6/latest/' + fromCur);
+    const data = await res.json();
+    if (data.result !== 'success') throw new Error('API error');
+
+    const tasa = data.rates[toCur];
+    const resultado = monto * tasa;
+    const fecha = data.time_last_update_utc ? data.time_last_update_utc.split(' 00:')[0] : 'hoy';
+
+    document.getElementById('resultado-tc').textContent = toCur + ' ' + resultado.toLocaleString('es-EC', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+    document.getElementById('tasa-tc').textContent = '1 ' + fromCur + ' = ' + tasa.toLocaleString('es-EC', { minimumFractionDigits: 4, maximumFractionDigits: 4 }) + ' ' + toCur;
+    document.getElementById('fecha-tc').textContent = fecha;
+
+    document.getElementById('resultados-espera-tc').style.display = 'none';
+    document.getElementById('resultados-data-tc').style.display = 'block';
+  } catch (err) {
+    alert('No se pudo obtener la tasa de cambio. Verifica tu conexion a internet.');
+  } finally {
+    btn.textContent = 'Convertir →';
+    btn.disabled = false;
+  }
+}
+
 // ── CALCULADORA PRÉSTAMOS ──
 function calcularPrestamo() {
   const monto = parseFloat(document.getElementById('monto').value);
