@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#0f172a">
-    <meta name="description" content="{% block meta_description %}Herramientas financieras gratuitas para latinoamérica. Calculadoras de préstamos, ahorro, interés compuesto y más.{% endblock %}">
+    <meta name="description" content="{% block meta_description %}Herramientas financieras gratuitas para latinoamerica. Calculadoras de prestamos, ahorro, interes compuesto y mas.{% endblock %}">
     <title>{% block title %}MiDineroObedece - Herramientas Financieras Gratis{% endblock %}</title>
 
     <!-- Favicon -->
@@ -22,19 +22,17 @@
     <meta property="og:title" content="{{ self.title() }}">
     <meta property="og:description" content="{{ self.meta_description() }}">
     <meta property="og:locale" content="es_ES">
-
-    <!-- Open Graph Image -->
     <meta property="og:image" content="https://midineroobedece.com/static/img/og-default.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="MiDineroObedece - Herramientas Financieras Gratis para América Latina">
+    <meta property="og:image:alt" content="MiDineroObedece - Herramientas Financieras Gratis para America Latina">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ self.title() }}">
     <meta name="twitter:description" content="{{ self.meta_description() }}">
     <meta name="twitter:image" content="https://midineroobedece.com/static/img/og-default.png">
-    <meta name="twitter:image:alt" content="MiDineroObedece - Herramientas Financieras Gratis para América Latina">
+    <meta name="twitter:image:alt" content="MiDineroObedece - Herramientas Financieras Gratis para America Latina">
 
     <!-- JSON-LD Structured Data -->
     {% block json_ld %}
@@ -44,7 +42,7 @@
       "@type": "WebSite",
       "name": "MiDineroObedece",
       "url": "https://midineroobedece.com",
-      "description": "Herramientas financieras gratuitas para América Latina",
+      "description": "Herramientas financieras gratuitas para America Latina",
       "inLanguage": "es"
     }
     </script>
@@ -67,65 +65,211 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
 
-    <header>
-        <nav>
-            <a href="/" class="logo">MiDineroObedece</a>
-            <div class="nav-right">
-                <ul id="nav-menu">
-                    <li><a href="/calculadora-prestamos">Préstamos</a></li>
-                    <li><a href="/calculadora-ahorro">Ahorro</a></li>
-                    <li><a href="/calculadora-interes-compuesto">Interés Compuesto</a></li>
-                    <li><a href="/calculadora-presupuesto">Presupuesto</a></li>
-                    <li><a href="/calculadora-tarjeta-credito">Tarjeta</a></li>
-                    <li><a href="/calculadora-inflacion">Inflación</a></li>
-                    <li><a href="/calculadora-jubilacion">Jubilación</a></li>
-                    <li><a href="/calculadora-plazo-fijo">Plazo Fijo</a></li>
-                    <li><a href="/calculadora-fondo-emergencia">Emergencia</a></li>
-                    <li><a href="/calculadora-descuentos">Descuentos</a></li>
-                </ul>
-                <select id="currency-sel" class="currency-sel" onchange="changeCurrency(this.value)" title="Seleccionar moneda">
-                    <option value="USD">🌎 USD</option>
-                    <option value="MXN">🇲🇽 MXN</option>
-                    <option value="COP">🇨🇴 COP</option>
-                    <option value="PEN">🇵🇪 S/</option>
-                    <option value="ARS">🇦🇷 ARS</option>
-                    <option value="CLP">🇨🇱 CLP</option>
-                    <option value="BRL">🇧🇷 R$</option>
-                    <option value="BOB">🇧🇴 Bs.</option>
-                </select>
-                <button class="nav-toggle" id="nav-toggle" onclick="toggleNav()" aria-label="Abrir menú">
-                    <span></span><span></span><span></span>
-                </button>
-            </div>
-        </nav>
-    </header>
+<header>
+    <nav class="navbar">
+        <a href="/" class="logo">
+            <span class="logo-icon">$</span>
+            <span class="logo-text">MiDineroObedece</span>
+        </a>
 
-    <main>
-        {% block content %}{% endblock %}
-    </main>
+        <ul class="nav-links" id="nav-menu">
+            <li class="has-dropdown">
+                <a href="#" class="nav-link">Credito <span class="chevron">&#9662;</span></a>
+                <div class="dropdown">
+                    <a href="/calculadora-prestamos" class="drop-item">
+                        <span class="drop-icon">&#128176;</span>
+                        <span class="drop-text">
+                            <strong>Prestamos</strong>
+                            <span>Cuota mensual e intereses</span>
+                        </span>
+                    </a>
+                    <a href="/calculadora-tarjeta-credito" class="drop-item">
+                        <span class="drop-icon">&#128179;</span>
+                        <span class="drop-text">
+                            <strong>Tarjeta de Credito</strong>
+                            <span>Costo de pagar el minimo</span>
+                        </span>
+                    </a>
+                </div>
+            </li>
+            <li class="has-dropdown">
+                <a href="#" class="nav-link">Ahorro <span class="chevron">&#9662;</span></a>
+                <div class="dropdown">
+                    <a href="/calculadora-ahorro" class="drop-item">
+                        <span class="drop-icon">&#127974;</span>
+                        <span class="drop-text">
+                            <strong>Ahorro</strong>
+                            <span>Meta de ahorro mensual</span>
+                        </span>
+                    </a>
+                    <a href="/calculadora-interes-compuesto" class="drop-item">
+                        <span class="drop-icon">&#128200;</span>
+                        <span class="drop-text">
+                            <strong>Interes Compuesto</strong>
+                            <span>Simula el crecimiento</span>
+                        </span>
+                    </a>
+                    <a href="/calculadora-plazo-fijo" class="drop-item">
+                        <span class="drop-icon">&#127963;</span>
+                        <span class="drop-text">
+                            <strong>Plazo Fijo / CDT</strong>
+                            <span>Rendimiento garantizado</span>
+                        </span>
+                    </a>
+                </div>
+            </li>
+            <li class="has-dropdown">
+                <a href="#" class="nav-link">Planificacion <span class="chevron">&#9662;</span></a>
+                <div class="dropdown drop-wide">
+                    <a href="/calculadora-presupuesto" class="drop-item">
+                        <span class="drop-icon">&#128202;</span>
+                        <span class="drop-text">
+                            <strong>Presupuesto Personal</strong>
+                            <span>Organiza ingresos y gastos</span>
+                        </span>
+                    </a>
+                    <a href="/calculadora-fondo-emergencia" class="drop-item">
+                        <span class="drop-icon">&#128737;</span>
+                        <span class="drop-text">
+                            <strong>Fondo de Emergencia</strong>
+                            <span>Protegete ante imprevistos</span>
+                        </span>
+                    </a>
+                    <a href="/calculadora-jubilacion" class="drop-item">
+                        <span class="drop-icon">&#127958;</span>
+                        <span class="drop-text">
+                            <strong>Jubilacion</strong>
+                            <span>Planifica tu retiro</span>
+                        </span>
+                    </a>
+                    <a href="/calculadora-inflacion" class="drop-item">
+                        <span class="drop-icon">&#128201;</span>
+                        <span class="drop-text">
+                            <strong>Inflacion</strong>
+                            <span>Impacto en tu poder adquisitivo</span>
+                        </span>
+                    </a>
+                    <a href="/calculadora-descuentos" class="drop-item">
+                        <span class="drop-icon">&#127991;</span>
+                        <span class="drop-text">
+                            <strong>Descuentos</strong>
+                            <span>Precio final y ahorro real</span>
+                        </span>
+                    </a>
+                </div>
+            </li>
+            <li class="has-dropdown">
+                <a href="#" class="nav-link">Utilidades <span class="chevron">&#9662;</span></a>
+                <div class="dropdown">
+                    <a href="/calculadora-liquidacion-laboral" class="drop-item">
+                        <span class="drop-icon">&#128203;</span>
+                        <span class="drop-text">
+                            <strong>Liquidacion Laboral</strong>
+                            <span>Indemnizacion y beneficios</span>
+                        </span>
+                    </a>
+                    <a href="/calculadora-roi" class="drop-item">
+                        <span class="drop-icon">&#128202;</span>
+                        <span class="drop-text">
+                            <strong>ROI</strong>
+                            <span>Retorno de inversion</span>
+                        </span>
+                    </a>
+                    <a href="/calculadora-tipo-cambio" class="drop-item">
+                        <span class="drop-icon">&#127760;</span>
+                        <span class="drop-text">
+                            <strong>Tipo de Cambio</strong>
+                            <span>Conversor de monedas LATAM</span>
+                        </span>
+                    </a>
+                </div>
+            </li>
+        </ul>
 
-    <footer>
-        <p>© 2026 MiDineroObedece &nbsp;·&nbsp; Herramientas financieras gratuitas para América Latina</p>
-        <p class="footer-links">
+        <div class="nav-actions">
+            <select id="currency-sel" class="currency-sel" onchange="changeCurrency(this.value)" title="Seleccionar moneda">
+                <option value="USD">&#127758; USD</option>
+                <option value="MXN">&#127474;&#127485; MXN</option>
+                <option value="COP">&#127464;&#127476; COP</option>
+                <option value="PEN">&#127477;&#127466; S/</option>
+                <option value="ARS">&#127462;&#127479; ARS</option>
+                <option value="CLP">&#127464;&#127473; CLP</option>
+                <option value="BRL">&#127463;&#127479; R$</option>
+                <option value="BOB">&#127463;&#127476; Bs.</option>
+            </select>
+            <button class="nav-toggle" id="nav-toggle" onclick="toggleNav()" aria-label="Menu">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+</header>
+
+<main>
+    {% block content %}{% endblock %}
+</main>
+
+<footer>
+    <div class="footer-inner">
+        <div class="footer-brand">
+            <a href="/" class="footer-logo">
+                <span class="logo-icon">$</span>
+                <span>MiDineroObedece</span>
+            </a>
+            <p>Calculadoras financieras gratuitas para America Latina. Toma mejores decisiones con tu dinero hoy.</p>
+            <div class="footer-badge">100% Gratis &nbsp;&middot;&nbsp; Sin Registro</div>
+        </div>
+
+        <div class="footer-col">
+            <h4>Credito</h4>
+            <a href="/calculadora-prestamos">Calculadora de Prestamos</a>
+            <a href="/calculadora-tarjeta-credito">Tarjeta de Credito</a>
+        </div>
+
+        <div class="footer-col">
+            <h4>Ahorro</h4>
+            <a href="/calculadora-ahorro">Calculadora de Ahorro</a>
+            <a href="/calculadora-interes-compuesto">Interes Compuesto</a>
+            <a href="/calculadora-plazo-fijo">Plazo Fijo / CDT</a>
+        </div>
+
+        <div class="footer-col">
+            <h4>Planificacion</h4>
+            <a href="/calculadora-presupuesto">Presupuesto Personal</a>
+            <a href="/calculadora-fondo-emergencia">Fondo de Emergencia</a>
+            <a href="/calculadora-jubilacion">Jubilacion</a>
+            <a href="/calculadora-inflacion">Inflacion</a>
+            <a href="/calculadora-descuentos">Descuentos</a>
+        </div>
+
+        <div class="footer-col">
+            <h4>Utilidades</h4>
+            <a href="/calculadora-liquidacion-laboral">Liquidacion Laboral</a>
+            <a href="/calculadora-roi">ROI</a>
+            <a href="/calculadora-tipo-cambio">Tipo de Cambio</a>
+            <h4 style="margin-top:1.5rem">Legal</h4>
             <a href="/acerca">Acerca de</a>
-            &nbsp;·&nbsp;
-            <a href="/privacidad">Política de Privacidad</a>
-            &nbsp;·&nbsp;
-            <a href="/terminos">Términos de Uso</a>
-        </p>
-    </footer>
+            <a href="/privacidad">Privacidad</a>
+            <a href="/terminos">Terminos</a>
+        </div>
+    </div>
 
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-    <script>
-    function toggleNav() {
-        document.getElementById('nav-menu').classList.toggle('nav-open');
-        document.getElementById('nav-toggle').classList.toggle('active');
-    }
-    </script>
+    <div class="footer-bottom">
+        <p>&copy; 2026 MiDineroObedece &middot; Herramientas financieras para America Latina</p>
+        <p class="footer-disc">Solo fines informativos. No es asesoramiento financiero.</p>
+    </div>
+</footer>
+
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+<script>
+function toggleNav() {
+    document.getElementById('nav-menu').classList.toggle('nav-open');
+    document.getElementById('nav-toggle').classList.toggle('active');
+}
+</script>
 </body>
 </html>

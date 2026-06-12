@@ -1,57 +1,93 @@
 {% extends "base.html" %}
 
-{% block title %}MiDineroObedece - Calculadoras Financieras Gratis para América Latina{% endblock %}
+{% block title %}MiDineroObedece - Calculadoras Financieras Gratis para America Latina{% endblock %}
 
-{% block meta_description %}Calculadoras financieras 100% gratuitas. Calcula tu préstamo, planifica tu ahorro, simula el interés compuesto y organiza tu presupuesto personal.{% endblock %}
+{% block meta_description %}Calculadoras financieras 100% gratuitas para LATAM. Prestamos, ahorro, interes compuesto, presupuesto y mas. Sin registro, sin trampa.{% endblock %}
 
 {% block content %}
 <section class="hero">
-    <div class="hero-badge">✦ 100% gratuito · Sin registro</div>
-    <h1>Haz que tu dinero<br><span class="gradient-text">trabaje para ti</span></h1>
-    <p>Calculadoras financieras simples y poderosas para tomar mejores decisiones en América Latina.</p>
+    <div class="hero-glow"></div>
+    <div class="hero-content">
+        <div class="hero-badge">&#10022; 13 calculadoras &nbsp;&middot;&nbsp; 8 monedas LATAM &nbsp;&middot;&nbsp; 100% gratis</div>
+        <h1>Tu dinero tiene un<br><span class="gradient-text">nuevo jefe: tu.</span></h1>
+        <p class="hero-sub">Herramientas financieras simples y poderosas para que cada latinoamericano tome el control de su plata. Sin cuentas, sin letras chicas.</p>
+        <a href="#calculadoras" class="btn-hero">Ver todas las calculadoras &darr;</a>
+    </div>
+    <div class="trust-bar">
+        <div class="trust-item">
+            <strong>13</strong>
+            <span>Calculadoras</span>
+        </div>
+        <div class="trust-sep"></div>
+        <div class="trust-item">
+            <strong>8</strong>
+            <span>Monedas LATAM</span>
+        </div>
+        <div class="trust-sep"></div>
+        <div class="trust-item">
+            <strong>$0</strong>
+            <span>Costo total</span>
+        </div>
+        <div class="trust-sep"></div>
+        <div class="trust-item">
+            <strong>0</strong>
+            <span>Registro requerido</span>
+        </div>
+    </div>
 </section>
 
-<section class="herramientas">
-    <p class="section-label">Herramientas disponibles</p>
+<section class="herramientas" id="calculadoras">
 
     <div class="categoria">
-        <h2 class="cat-title">Crédito y Deudas</h2>
+        <div class="cat-header">
+            <span class="cat-emoji">&#128179;</span>
+            <div>
+                <h2 class="cat-title">Credito y Deudas</h2>
+                <p class="cat-desc">Entiende cuanto te cuesta realmente lo que debes</p>
+            </div>
+        </div>
         <div class="grid">
             <a href="/calculadora-prestamos" class="card" style="--card-gradient: linear-gradient(90deg, #4f46e5, #818cf8)">
-                <div class="card-icon" style="background:#eef2ff">💰</div>
-                <h2>Calculadora de Préstamos</h2>
-                <p>Calcula tu cuota mensual, intereses totales y el costo real de cualquier crédito.</p>
-                <span class="card-link">Calcular ahora →</span>
+                <div class="card-icon" style="background:#eef2ff">&#128176;</div>
+                <h2>Calculadora de Prestamos</h2>
+                <p>Calcula tu cuota mensual, intereses totales y el costo real de cualquier credito.</p>
+                <span class="card-link">Calcular ahora &rarr;</span>
             </a>
             <a href="/calculadora-tarjeta-credito" class="card" style="--card-gradient: linear-gradient(90deg, #e11d48, #fb7185)">
-                <div class="card-icon" style="background:#fff1f2">💳</div>
-                <h2>Tarjeta de Crédito</h2>
-                <p>Descubre cuánto tiempo y dinero pierdes pagando solo el mínimo de tu tarjeta.</p>
-                <span class="card-link">Calcular ahora →</span>
+                <div class="card-icon" style="background:#fff1f2">&#128179;</div>
+                <h2>Tarjeta de Credito</h2>
+                <p>Descubre cuanto tiempo y dinero pierdes pagando solo el minimo de tu tarjeta.</p>
+                <span class="card-link">Calcular ahora &rarr;</span>
             </a>
         </div>
     </div>
 
     <div class="categoria">
-        <h2 class="cat-title">Ahorro e Inversión</h2>
+        <div class="cat-header">
+            <span class="cat-emoji">&#128200;</span>
+            <div>
+                <h2 class="cat-title">Ahorro e Inversion</h2>
+                <p class="cat-desc">Haz crecer tu dinero con estrategia</p>
+            </div>
+        </div>
         <div class="grid">
             <a href="/calculadora-ahorro" class="card" style="--card-gradient: linear-gradient(90deg, #10b981, #34d399)">
-                <div class="card-icon" style="background:#ecfdf5">🏦</div>
+                <div class="card-icon" style="background:#ecfdf5">&#127974;</div>
                 <h2>Calculadora de Ahorro</h2>
-                <p>Descubre cuánto necesitas ahorrar cada mes para alcanzar tu meta financiera.</p>
-                <span class="card-link">Calcular ahora →</span>
+                <p>Descubre cuanto necesitas ahorrar cada mes para alcanzar tu meta financiera.</p>
+                <span class="card-link">Calcular ahora &rarr;</span>
             </a>
             <a href="/calculadora-interes-compuesto" class="card" style="--card-gradient: linear-gradient(90deg, #f59e0b, #fbbf24)">
-                <div class="card-icon" style="background:#fffbeb">📈</div>
-                <h2>Interés Compuesto</h2>
-                <p>Simula cómo crece tu dinero con el tiempo gracias al interés compuesto.</p>
-                <span class="card-link">Simular ahora →</span>
+                <div class="card-icon" style="background:#fffbeb">&#128200;</div>
+                <h2>Interes Compuesto</h2>
+                <p>Simula como crece tu dinero con el tiempo gracias al interes compuesto.</p>
+                <span class="card-link">Simular ahora &rarr;</span>
             </a>
             <a href="/calculadora-plazo-fijo" class="card" style="--card-gradient: linear-gradient(90deg, #0891b2, #22d3ee)">
-                <div class="card-icon" style="background:#ecfeff">🏛️</div>
+                <div class="card-icon" style="background:#ecfeff">&#127963;</div>
                 <h2>Plazo Fijo / CDT</h2>
-                <p>Calcula cuánto ganarás al depositar tu dinero en un plazo fijo o CDT bancario.</p>
-                <span class="card-link">Calcular ahora →</span>
+                <p>Calcula cuanto ganaras al depositar tu dinero en un plazo fijo o CDT bancario.</p>
+                <span class="card-link">Calcular ahora &rarr;</span>
             </a>
         </div>
     </div>
@@ -59,61 +95,73 @@
     {% include '_ad_unit.html' %}
 
     <div class="categoria">
-        <h2 class="cat-title">Planificación Financiera</h2>
+        <div class="cat-header">
+            <span class="cat-emoji">&#128202;</span>
+            <div>
+                <h2 class="cat-title">Planificacion Financiera</h2>
+                <p class="cat-desc">Organiza tu presente, asegura tu futuro</p>
+            </div>
+        </div>
         <div class="grid">
             <a href="/calculadora-presupuesto" class="card" style="--card-gradient: linear-gradient(90deg, #ef4444, #f87171)">
-                <div class="card-icon" style="background:#fef2f2">📊</div>
+                <div class="card-icon" style="background:#fef2f2">&#128202;</div>
                 <h2>Presupuesto Personal</h2>
-                <p>Organiza tus ingresos y gastos. Descubre a dónde va tu dinero cada mes.</p>
-                <span class="card-link">Organizar ahora →</span>
+                <p>Organiza tus ingresos y gastos. Descubre a donde va tu dinero cada mes.</p>
+                <span class="card-link">Organizar ahora &rarr;</span>
             </a>
             <a href="/calculadora-fondo-emergencia" class="card" style="--card-gradient: linear-gradient(90deg, #059669, #34d399)">
-                <div class="card-icon" style="background:#ecfdf5">🛡️</div>
+                <div class="card-icon" style="background:#ecfdf5">&#128737;</div>
                 <h2>Fondo de Emergencia</h2>
-                <p>Calcula cuánto necesitas guardar para estar protegido ante cualquier imprevisto.</p>
-                <span class="card-link">Calcular ahora →</span>
+                <p>Calcula cuanto necesitas guardar para estar protegido ante cualquier imprevisto.</p>
+                <span class="card-link">Calcular ahora &rarr;</span>
             </a>
             <a href="/calculadora-jubilacion" class="card" style="--card-gradient: linear-gradient(90deg, #7c3aed, #a78bfa)">
-                <div class="card-icon" style="background:#f5f3ff">🏖️</div>
-                <h2>Calculadora de Jubilación</h2>
-                <p>Descubre cuánto debes ahorrar cada mes para retirarte con tranquilidad.</p>
-                <span class="card-link">Planificar ahora →</span>
+                <div class="card-icon" style="background:#f5f3ff">&#127958;</div>
+                <h2>Calculadora de Jubilacion</h2>
+                <p>Descubre cuanto debes ahorrar cada mes para retirarte con tranquilidad.</p>
+                <span class="card-link">Planificar ahora &rarr;</span>
             </a>
             <a href="/calculadora-inflacion" class="card" style="--card-gradient: linear-gradient(90deg, #ea580c, #fb923c)">
-                <div class="card-icon" style="background:#fff7ed">📉</div>
-                <h2>Calculadora de Inflación</h2>
-                <p>Descubre cómo la inflación erosiona el valor de tu dinero con el tiempo.</p>
-                <span class="card-link">Calcular ahora →</span>
+                <div class="card-icon" style="background:#fff7ed">&#128201;</div>
+                <h2>Calculadora de Inflacion</h2>
+                <p>Descubre como la inflacion erosiona el valor de tu dinero con el tiempo.</p>
+                <span class="card-link">Calcular ahora &rarr;</span>
             </a>
             <a href="/calculadora-descuentos" class="card" style="--card-gradient: linear-gradient(90deg, #d97706, #f59e0b)">
-                <div class="card-icon" style="background:#fffbeb">🏷️</div>
+                <div class="card-icon" style="background:#fffbeb">&#127991;</div>
                 <h2>Calculadora de Descuentos</h2>
-                <p>Calcula al instante el precio final con descuento y cuánto te ahorras en cualquier compra.</p>
-                <span class="card-link">Calcular ahora →</span>
+                <p>Calcula al instante el precio final con descuento y cuanto te ahorras en cualquier compra.</p>
+                <span class="card-link">Calcular ahora &rarr;</span>
             </a>
         </div>
     </div>
 
     <div class="categoria">
-        <h2 class="cat-title">Trabajo y Utilidades</h2>
+        <div class="cat-header">
+            <span class="cat-emoji">&#128203;</span>
+            <div>
+                <h2 class="cat-title">Trabajo y Utilidades</h2>
+                <p class="cat-desc">Herramientas para decisiones profesionales e inversiones</p>
+            </div>
+        </div>
         <div class="grid">
             <a href="/calculadora-liquidacion-laboral" class="card" style="--card-gradient: linear-gradient(90deg, #0d9488, #2dd4bf)">
-                <div class="card-icon" style="background:#f0fdfa">📋</div>
-                <h2>Liquidación Laboral</h2>
-                <p>Estima tu indemnización, vacaciones y aguinaldo al finalizar un empleo.</p>
-                <span class="card-link">Calcular ahora →</span>
+                <div class="card-icon" style="background:#f0fdfa">&#128203;</div>
+                <h2>Liquidacion Laboral</h2>
+                <p>Estima tu indemnizacion, vacaciones y aguinaldo al finalizar un empleo.</p>
+                <span class="card-link">Calcular ahora &rarr;</span>
             </a>
             <a href="/calculadora-roi" class="card" style="--card-gradient: linear-gradient(90deg, #7c3aed, #a78bfa)">
-                <div class="card-icon" style="background:#f5f3ff">📊</div>
+                <div class="card-icon" style="background:#f5f3ff">&#128202;</div>
                 <h2>Calculadora de ROI</h2>
-                <p>Mide el retorno total y anualizado de cualquier inversión o negocio.</p>
-                <span class="card-link">Calcular ahora →</span>
+                <p>Mide el retorno total y anualizado de cualquier inversion o negocio.</p>
+                <span class="card-link">Calcular ahora &rarr;</span>
             </a>
             <a href="/calculadora-tipo-cambio" class="card" style="--card-gradient: linear-gradient(90deg, #2563eb, #60a5fa)">
-                <div class="card-icon" style="background:#eff6ff">🌐</div>
+                <div class="card-icon" style="background:#eff6ff">&#127760;</div>
                 <h2>Tipo de Cambio</h2>
-                <p>Convierte entre dólares, euros y monedas de LATAM con tasas en tiempo real.</p>
-                <span class="card-link">Convertir ahora →</span>
+                <p>Convierte entre dolares, euros y monedas de LATAM con tasas en tiempo real.</p>
+                <span class="card-link">Convertir ahora &rarr;</span>
             </a>
         </div>
     </div>
