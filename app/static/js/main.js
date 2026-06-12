@@ -42,6 +42,28 @@ document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('.cur-sym').forEach(el => el.textContent = sym);
 });
 
+// ── CALCULADORA DESCUENTOS ──
+function calcularDescuento() {
+  const precio = parseFloat(document.getElementById('precio').value);
+  const descuento = parseFloat(document.getElementById('descuento').value);
+
+  if (!precio || isNaN(descuento) || descuento < 0 || descuento > 100) {
+    alert('Por favor ingresa un precio válido y un descuento entre 0 y 100.');
+    return;
+  }
+
+  const ahorro = precio * descuento / 100;
+  const precioFinal = precio - ahorro;
+  const pagado = 100 - descuento;
+
+  document.getElementById('precio-final').textContent = fmt(precioFinal);
+  document.getElementById('ahorro-desc').textContent = fmt(ahorro);
+  document.getElementById('porcentaje-pagado').textContent = pagado.toFixed(1) + '%';
+
+  document.getElementById('resultados-espera-desc').style.display = 'none';
+  document.getElementById('resultados-data-desc').style.display = 'block';
+}
+
 // ── CALCULADORA PRÉSTAMOS ──
 function calcularPrestamo() {
   const monto = parseFloat(document.getElementById('monto').value);

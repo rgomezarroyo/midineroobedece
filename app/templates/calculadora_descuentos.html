@@ -1,0 +1,139 @@
+{% extends "base.html" %}
+
+{% block title %}Calculadora de Descuentos - Precio Final con Descuento | MiDineroObedece{% endblock %}
+
+{% block meta_description %}Calcula el precio final con descuento al instante. Descubre cuánto ahorras con cualquier porcentaje de descuento. Gratis y sin registro.{% endblock %}
+
+{% block json_ld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculadora de Descuentos",
+  "description": "Calcula el precio final con descuento y cuánto dinero ahorras en cualquier compra.",
+  "url": "https://midineroobedece.com/calculadora-descuentos",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "es",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "¿Cómo calcular el precio con descuento?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Para calcular el precio con descuento, multiplica el precio original por el porcentaje de descuento y divídelo entre 100. Eso es el monto del ahorro. Réstalo al precio original y obtienes el precio final. Ejemplo: $100 con 20% de descuento = $100 - $20 = $80."}
+    },
+    {
+      "@type": "Question",
+      "name": "¿Cómo saber cuánto me ahorro con un descuento?",
+      "acceptedAnswer": {"@type": "Answer", "text": "El ahorro es igual al precio original multiplicado por el porcentaje de descuento dividido entre 100. Por ejemplo, un 30% de descuento sobre $200 equivale a un ahorro de $60, resultando en un precio final de $140."}
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://midineroobedece.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Calculadora de Descuentos", "item": "https://midineroobedece.com/calculadora-descuentos"}
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<section class="calculadora-page" data-recalc="calcularDescuento">
+    <p class="breadcrumb"><a href="/">Inicio</a> › Calculadora de Descuentos</p>
+    <h1>Calculadora de Descuentos</h1>
+    <p class="subtitulo">Calcula el precio final con descuento y cuánto dinero ahorras al instante.</p>
+
+    <div class="calculadora-container">
+        <div class="formulario">
+            <p class="formulario-header">Datos del producto</p>
+
+            <div class="campo">
+                <label for="precio">Precio original</label>
+                <div class="input-wrap">
+                    <span class="input-pre cur-sym">$</span>
+                    <input type="number" id="precio" class="with-pre" placeholder="100" min="0" step="0.01">
+                </div>
+            </div>
+            <div class="campo">
+                <label for="descuento">Porcentaje de descuento</label>
+                <div class="input-wrap">
+                    <input type="number" id="descuento" class="with-suf" placeholder="20" min="0" max="100" step="0.1">
+                    <span class="input-suf">% OFF</span>
+                </div>
+            </div>
+
+            <button class="btn-calcular" onclick="calcularDescuento()">Calcular precio final →</button>
+        </div>
+
+        <div class="resultados" id="resultados-desc">
+            <div class="resultados-espera" id="resultados-espera-desc">
+                <div class="espera-icon">🏷️</div>
+                <p>Ingresa el precio y el descuento para <strong style="color:rgba(255,255,255,0.5)">Calcular</strong></p>
+            </div>
+            <div class="resultados-data" id="resultados-data-desc">
+                <h2>Resultados</h2>
+                <div class="resultado-item highlight">
+                    <span>Precio final</span>
+                    <strong id="precio-final"></strong>
+                </div>
+                <div class="resultado-item positivo">
+                    <span>Ahorro total</span>
+                    <strong id="ahorro-desc"></strong>
+                </div>
+                <div class="resultado-item">
+                    <span>Pagas el</span>
+                    <strong id="porcentaje-pagado"></strong>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% include '_ad_unit.html' %}
+
+    <article class="contenido-seo">
+        <h2>¿Cómo calcular el precio con descuento?</h2>
+        <p>Para obtener el precio final con descuento, multiplica el precio original por el porcentaje de descuento y divídelo entre 100. Ese resultado es tu ahorro en dinero. Réstalo al precio original y obtienes el precio final.</p>
+        <h3>Ejemplo práctico</h3>
+        <p>Un producto cuesta $80 y tiene un 25% de descuento. El ahorro es $80 × 25 ÷ 100 = $20. El precio final es $80 − $20 = $60. Pagas el 75% del precio original.</p>
+        <h3>Consejos para aprovechar los descuentos</h3>
+        <ul>
+            <li>Compara el precio tachado con el precio real de mercado antes de asumir que es una buena oferta.</li>
+            <li>En fechas como Black Friday o Buen Fin, usa esta calculadora para verificar que el descuento sea real.</li>
+            <li>Divide el precio final entre tus horas de trabajo para evaluar si el gasto vale la pena.</li>
+            <li>Un descuento del 50% en algo que no necesitas no es ahorro — es gasto.</li>
+        </ul>
+    </article>
+
+    <section class="relacionadas">
+        <p class="section-label">También te puede interesar</p>
+        <div class="rel-grid">
+            <a href="/calculadora-presupuesto" class="rel-card">
+                <span class="rel-icon">📊</span>
+                <div class="rel-info"><strong>Presupuesto Personal</strong><span>Organiza tus ingresos y gastos</span></div>
+                <span class="rel-arrow">→</span>
+            </a>
+            <a href="/calculadora-tarjeta-credito" class="rel-card">
+                <span class="rel-icon">💳</span>
+                <div class="rel-info"><strong>Tarjeta de Crédito</strong><span>Cuánto te cuesta tu deuda</span></div>
+                <span class="rel-arrow">→</span>
+            </a>
+            <a href="/calculadora-prestamos" class="rel-card">
+                <span class="rel-icon">💰</span>
+                <div class="rel-info"><strong>Calculadora de Préstamos</strong><span>Cuota mensual y costo total</span></div>
+                <span class="rel-arrow">→</span>
+            </a>
+        </div>
+    </section>
+</section>
+{% endblock %}

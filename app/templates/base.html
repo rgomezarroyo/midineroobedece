@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#0f172a">
     <meta name="description" content="{% block meta_description %}Herramientas financieras gratuitas para latinoamérica. Calculadoras de préstamos, ahorro, interés compuesto y más.{% endblock %}">
     <title>{% block title %}MiDineroObedece - Herramientas Financieras Gratis{% endblock %}</title>
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
 
-    <!-- Canonical -->
+    <!-- Canonical + hreflang -->
     <link rel="canonical" href="https://midineroobedece.com{{ request.path }}">
+    <link rel="alternate" hreflang="es" href="https://midineroobedece.com{{ request.path }}">
+    <link rel="alternate" hreflang="x-default" href="https://midineroobedece.com{{ request.path }}">
 
     <!-- Open Graph -->
     <meta property="og:site_name" content="MiDineroObedece">
@@ -24,12 +27,14 @@
     <meta property="og:image" content="https://midineroobedece.com/static/img/og-default.svg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="MiDineroObedece - Herramientas Financieras Gratis para América Latina">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ self.title() }}">
     <meta name="twitter:description" content="{{ self.meta_description() }}">
     <meta name="twitter:image" content="https://midineroobedece.com/static/img/og-default.svg">
+    <meta name="twitter:image:alt" content="MiDineroObedece - Herramientas Financieras Gratis para América Latina">
 
     <!-- JSON-LD Structured Data -->
     {% block json_ld %}

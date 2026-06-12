@@ -682,6 +682,11 @@ main {
     .rel-grid { grid-template-columns: 1fr; }
 }
 
+/* ── AD UNIT ── */
+.ad-unit {
+    margin: 1.5rem 0;
+}
+
 /* ── FOOTER ── */
 footer {
     text-align: center;
