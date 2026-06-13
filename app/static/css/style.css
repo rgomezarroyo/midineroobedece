@@ -1871,6 +1871,108 @@ main {
 }
 
 /* ══════════════════════════════════════
+   COOKIE BANNER
+══════════════════════════════════════ */
+
+.cookie-banner {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9999;
+    background: #0f172a;
+    border-top: 1px solid rgba(124,58,237,0.35);
+    box-shadow: 0 -4px 32px rgba(0,0,0,0.5);
+    animation: cookieSlideUp 0.4s cubic-bezier(0.22,1,0.36,1);
+}
+
+.cookie-banner.cookie-hide {
+    animation: cookieSlideDown 0.35s cubic-bezier(0.4,0,1,1) forwards;
+}
+
+@keyframes cookieSlideUp {
+    from { transform: translateY(100%); opacity: 0; }
+    to   { transform: translateY(0);    opacity: 1; }
+}
+
+@keyframes cookieSlideDown {
+    from { transform: translateY(0);    opacity: 1; }
+    to   { transform: translateY(100%); opacity: 0; }
+}
+
+.cookie-banner-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.cookie-text {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    flex: 1;
+    min-width: 260px;
+}
+
+.cookie-text p {
+    font-size: 0.85rem;
+    color: #94a3b8;
+    margin: 0;
+    line-height: 1.5;
+}
+
+.cookie-text a {
+    color: #a78bfa;
+    text-decoration: none;
+}
+
+.cookie-text a:hover { text-decoration: underline; }
+
+.cookie-actions {
+    display: flex;
+    gap: 0.6rem;
+    flex-shrink: 0;
+}
+
+.cookie-btn-ok {
+    padding: 0.55rem 1.2rem;
+    background: linear-gradient(135deg, #5b4fff, #9333ea);
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.cookie-btn-ok:hover { opacity: 0.88; }
+
+.cookie-btn-sec {
+    padding: 0.55rem 1.1rem;
+    background: transparent;
+    color: #64748b;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border: 1px solid #334155;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+}
+
+.cookie-btn-sec:hover { border-color: #64748b; color: #94a3b8; }
+
+@media (max-width: 600px) {
+    .cookie-banner-inner { flex-direction: column; gap: 1rem; }
+    .cookie-actions { width: 100%; }
+    .cookie-btn-ok, .cookie-btn-sec { flex: 1; text-align: center; }
+}
+
+/* ══════════════════════════════════════
    FOOTER
 ══════════════════════════════════════ */
 

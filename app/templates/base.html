@@ -344,11 +344,48 @@
     </div>
 </footer>
 
+<!-- COOKIE CONSENT BANNER -->
+<div id="cookie-banner" class="cookie-banner" role="dialog" aria-label="Aviso de cookies" style="display:none">
+    <div class="cookie-banner-inner">
+        <div class="cookie-text">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" width="20" height="20" style="flex-shrink:0;color:#a78bfa"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <p>Usamos cookies para mejorar tu experiencia y mostrar publicidad relevante. Al continuar navegando aceptas nuestro uso de cookies. <a href="/privacidad">Ver politica de privacidad</a>.</p>
+        </div>
+        <div class="cookie-actions">
+            <button class="cookie-btn-sec" onclick="cookieDecline()">Solo esenciales</button>
+            <button class="cookie-btn-ok" onclick="cookieAccept()">Aceptar todo</button>
+        </div>
+    </div>
+</div>
+
 <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 <script>
 function toggleNav() {
     document.getElementById('nav-menu').classList.toggle('nav-open');
     document.getElementById('nav-toggle').classList.toggle('active');
+}
+
+// ── COOKIE CONSENT ──
+(function () {
+    if (!localStorage.getItem('mdo_cookies')) {
+        var b = document.getElementById('cookie-banner');
+        if (b) b.style.display = 'block';
+    }
+})();
+
+function cookieAccept() {
+    localStorage.setItem('mdo_cookies', 'all');
+    _hideCookieBanner();
+}
+
+function cookieDecline() {
+    localStorage.setItem('mdo_cookies', 'essential');
+    _hideCookieBanner();
+}
+
+function _hideCookieBanner() {
+    var b = document.getElementById('cookie-banner');
+    if (b) { b.classList.add('cookie-hide'); setTimeout(function(){ b.style.display='none'; }, 350); }
 }
 
 (function () {
