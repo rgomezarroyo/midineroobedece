@@ -63,6 +63,26 @@ def calculadora_tipo_cambio():
 def not_found(e):
     return render_template('404.html'), 404
 
+BLOG_ARTICLES = {
+    'como-calcular-cuota-prestamo-personal': 'blog_prestamos.html',
+    'cuanto-debo-ahorrar-al-mes':            'blog_ahorro.html',
+    'que-es-el-interes-compuesto':           'blog_interes.html',
+    'como-salir-deuda-tarjeta-credito':      'blog_tarjeta.html',
+    'como-hacer-presupuesto-personal':       'blog_presupuesto.html',
+}
+
+@app.route('/blog')
+def blog_index():
+    return render_template('blog_index.html')
+
+@app.route('/blog/<slug>')
+def blog_article(slug):
+    template = BLOG_ARTICLES.get(slug)
+    if not template:
+        from flask import abort
+        abort(404)
+    return render_template(template)
+
 @app.route('/acerca')
 def acerca():
     return render_template('acerca.html')
@@ -92,6 +112,12 @@ def sitemap():
         ('/calculadora-liquidacion-laboral', '0.9', 'monthly'),
         ('/calculadora-roi', '0.9', 'monthly'),
         ('/calculadora-tipo-cambio', '0.9', 'monthly'),
+        ('/blog', '0.8', 'weekly'),
+        ('/blog/como-calcular-cuota-prestamo-personal', '0.8', 'monthly'),
+        ('/blog/cuanto-debo-ahorrar-al-mes', '0.8', 'monthly'),
+        ('/blog/que-es-el-interes-compuesto', '0.8', 'monthly'),
+        ('/blog/como-salir-deuda-tarjeta-credito', '0.8', 'monthly'),
+        ('/blog/como-hacer-presupuesto-personal', '0.8', 'monthly'),
         ('/acerca', '0.4', 'yearly'),
         ('/privacidad', '0.3', 'yearly'),
         ('/terminos', '0.3', 'yearly'),

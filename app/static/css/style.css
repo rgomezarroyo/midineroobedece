@@ -1738,3 +1738,122 @@ footer { background: var(--footer-bg); margin-top: 4rem; }
     .stats-grid { grid-template-columns: 1fr 1fr; }
     .footer-inner { grid-template-columns: 1fr; }
 }
+
+/* ══════════════════════════════════════
+   BLOG
+══════════════════════════════════════ */
+
+.blog-intro {
+    max-width: 600px;
+    margin-bottom: 2rem;
+}
+
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+    gap: 1.25rem;
+    margin-top: 2rem;
+}
+
+.blog-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.75rem;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    transition: box-shadow 0.15s, transform 0.15s, border-color 0.15s;
+}
+
+.blog-card:hover {
+    box-shadow: 0 8px 28px rgba(91,79,255,0.13);
+    transform: translateY(-2px);
+    border-color: rgba(91,79,255,0.25);
+}
+
+.blog-card-cat {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--primary);
+    background: var(--primary-light);
+    display: inline-flex;
+    padding: 0.22rem 0.55rem;
+    border-radius: 6px;
+    width: fit-content;
+}
+
+.blog-card h2 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text);
+    line-height: 1.4;
+    margin: 0;
+}
+
+.blog-card p {
+    font-size: 0.855rem;
+    color: var(--text-muted);
+    line-height: 1.65;
+    flex: 1;
+    margin: 0;
+}
+
+.blog-card-link {
+    font-size: 0.83rem;
+    font-weight: 600;
+    color: var(--primary);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    margin-top: 0.25rem;
+}
+
+.blog-cta {
+    background: linear-gradient(135deg, var(--primary) 0%, #9333ea 100%);
+    border-radius: 16px;
+    padding: 2rem 1.75rem;
+    margin-top: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.blog-cta h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.blog-cta p {
+    font-size: 0.87rem;
+    color: rgba(255,255,255,0.82);
+    line-height: 1.6;
+    margin: 0;
+}
+
+.blog-cta .btn-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: #fff;
+    color: var(--primary);
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 0.65rem 1.35rem;
+    border-radius: 10px;
+    text-decoration: none;
+    width: fit-content;
+    margin-top: 0.25rem;
+    transition: opacity 0.15s;
+}
+
+.blog-cta .btn-cta:hover { opacity: 0.9; }
+
+@media (max-width: 768px) {
+    .blog-grid { grid-template-columns: 1fr; }
+}

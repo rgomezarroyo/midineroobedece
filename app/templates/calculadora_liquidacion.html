@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 
-{% block title %}Calculadora de Liquidación Laboral - Calcula Tu Indemnización | MiDineroObedece{% endblock %}
+{% block title %}Calculadora de Liquidacion Laboral - Calcula Tu Indemnizacion | MiDineroObedece{% endblock %}
 
-{% block meta_description %}Calcula tu liquidación laboral: indemnización por despido, vacaciones pendientes y aguinaldo proporcional. Referencia para América Latina. Gratis y sin registro.{% endblock %}
+{% block meta_description %}Calcula tu liquidacion laboral: indemnizacion por despido, vacaciones pendientes y aguinaldo proporcional. Referencia para America Latina. Gratis y sin registro.{% endblock %}
 
 {% block json_ld %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Calculadora de Liquidación Laboral",
-  "description": "Calcula tu liquidación laboral: indemnización, vacaciones pendientes y aguinaldo proporcional.",
+  "name": "Calculadora de Liquidacion Laboral",
+  "description": "Calcula tu liquidacion laboral: indemnizacion, vacaciones pendientes y aguinaldo proporcional.",
   "url": "https://midineroobedece.com/calculadora-liquidacion-laboral",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Web",
@@ -25,23 +25,23 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "¿Qué incluye una liquidación laboral?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Una liquidación laboral generalmente incluye: indemnización por despido (si aplica), vacaciones no tomadas de forma proporcional, décimo tercer sueldo o aguinaldo proporcional al tiempo trabajado en el año, y en algunos países fondos de reserva o cesantías. Los montos exactos varían según la legislación de cada país."}
+      "name": "Que incluye una liquidacion laboral?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Una liquidacion laboral generalmente incluye: indemnizacion por despido (si aplica), vacaciones no tomadas de forma proporcional, decimo tercer sueldo o aguinaldo proporcional al tiempo trabajado en el ano, y en algunos paises fondos de reserva o cesantias. Los montos exactos varian segun la legislacion de cada pais."}
     },
     {
       "@type": "Question",
-      "name": "¿Cuánto es la indemnización por despido intempestivo?",
-      "acceptedAnswer": {"@type": "Answer", "text": "En la mayoría de países de América Latina, la indemnización por despido injustificado equivale aproximadamente a un mes de sueldo por año trabajado. Sin embargo, esto varía: en Ecuador es 25 días por año, en México 3 meses más 20 días por año, en Colombia 30 días por año. Consulta la legislación de tu país para el cálculo exacto."}
+      "name": "Cuanto es la indemnizacion por despido intempestivo?",
+      "acceptedAnswer": {"@type": "Answer", "text": "En la mayoria de paises de America Latina, la indemnizacion por despido injustificado equivale aproximadamente a un mes de sueldo por ano trabajado. Sin embargo, esto varia: en Ecuador es 25 dias por ano, en Mexico 3 meses mas 20 dias por ano, en Colombia 30 dias por ano. Consulta la legislacion de tu pais para el calculo exacto."}
     },
     {
       "@type": "Question",
-      "name": "¿Qué diferencia hay entre despido y renuncia voluntaria?",
-      "acceptedAnswer": {"@type": "Answer", "text": "En caso de despido intempestivo (sin causa justificada), el empleador debe pagar indemnización más los beneficios proporcionales. En caso de renuncia voluntaria, el empleado generalmente solo recibe los beneficios proporcionales acumulados (vacaciones, aguinaldo) pero no la indemnización por despido."}
+      "name": "Que diferencia hay entre despido y renuncia voluntaria?",
+      "acceptedAnswer": {"@type": "Answer", "text": "En caso de despido intempestivo (sin causa justificada), el empleador debe pagar indemnizacion mas los beneficios proporcionales. En caso de renuncia voluntaria, el empleado generalmente solo recibe los beneficios proporcionales acumulados (vacaciones, aguinaldo) pero no la indemnizacion por despido."}
     },
     {
       "@type": "Question",
-      "name": "¿Cómo se calculan las vacaciones proporcionales?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Las vacaciones proporcionales se calculan dividiendo el sueldo mensual entre 12 y multiplicando por los meses trabajados en el año en curso. Por ejemplo, si ganás $800 y trabajaste 7 meses del año, tus vacaciones proporcionales son $800 ÷ 12 × 7 = $466.67."}
+      "name": "Como se calculan las vacaciones proporcionales?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Las vacaciones proporcionales se calculan dividiendo el sueldo mensual entre 12 y multiplicando por los meses trabajados en el ano en curso. Por ejemplo, si ganas $800 y trabajaste 7 meses del ano, tus vacaciones proporcionales son $800 / 12 x 7 = $466.67."}
     }
   ]
 }
@@ -52,7 +52,7 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://midineroobedece.com/"},
-    {"@type": "ListItem", "position": 2, "name": "Calculadora de Liquidación Laboral", "item": "https://midineroobedece.com/calculadora-liquidacion-laboral"}
+    {"@type": "ListItem", "position": 2, "name": "Calculadora de Liquidacion Laboral", "item": "https://midineroobedece.com/calculadora-liquidacion-laboral"}
   ]
 }
 </script>
@@ -60,9 +60,9 @@
 
 {% block content %}
 <section class="calculadora-page" data-recalc="calcularLiquidacion">
-    <p class="breadcrumb"><a href="/">Inicio</a> › Liquidación Laboral</p>
-    <h1>Calculadora de Liquidación Laboral</h1>
-    <p class="subtitulo">Estima tu indemnización, vacaciones y aguinaldo proporcional al terminar un empleo.</p>
+    <p class="breadcrumb"><a href="/">Inicio</a> › Liquidacion Laboral</p>
+    <h1>Calculadora de Liquidacion Laboral</h1>
+    <p class="subtitulo">Estima tu indemnizacion, vacaciones y aguinaldo proporcional al terminar un empleo.</p>
 
     <div class="calculadora-container">
         <div class="formulario">
@@ -76,14 +76,14 @@
                 </div>
             </div>
             <div class="campo">
-                <label for="anos-liq">Años trabajados completos</label>
+                <label for="anos-liq">Anos trabajados completos</label>
                 <div class="input-wrap">
                     <input type="number" id="anos-liq" class="with-suf" placeholder="3" min="0">
-                    <span class="input-suf">años</span>
+                    <span class="input-suf">anos</span>
                 </div>
             </div>
             <div class="campo">
-                <label for="meses-liq">Meses trabajados del año actual</label>
+                <label for="meses-liq">Meses trabajados del ano actual</label>
                 <div class="input-wrap">
                     <input type="number" id="meses-liq" class="with-suf" placeholder="6" min="0" max="11">
                     <span class="input-suf">meses</span>
@@ -97,7 +97,7 @@
                 </select>
             </div>
 
-            <button class="btn-calcular" onclick="calcularLiquidacion()">Calcular liquidación →</button>
+            <button class="btn-calcular" onclick="calcularLiquidacion()">Calcular liquidacion →</button>
         </div>
 
         <div class="resultados" id="resultados-liq">
@@ -112,7 +112,7 @@
                     <strong id="total-liq"></strong>
                 </div>
                 <div class="resultado-item" id="item-indemnizacion">
-                    <span>Indemnización por despido</span>
+                    <span>Indemnizacion por despido</span>
                     <strong id="indemnizacion-liq"></strong>
                 </div>
                 <div class="resultado-item">
@@ -127,30 +127,32 @@
         </div>
     </div>
 
-    <p class="aviso-legal">⚠️ Cálculo referencial simplificado. Cada país tiene leyes laborales específicas. Consulta con un abogado laboral para tu caso concreto.</p>
+    <p class="aviso-legal">Calculo referencial simplificado. Cada pais tiene leyes laborales especificas. Consulta con un abogado laboral para tu caso concreto.</p>
 
     {% include '_ad_unit.html' %}
 
     <article class="contenido-seo">
-        <h2>¿Cómo se calcula la liquidación laboral?</h2>
-        <p>La liquidación laboral es el conjunto de beneficios económicos que un trabajador recibe al terminar su relación laboral. Incluye la indemnización (si aplica), las vacaciones no tomadas de forma proporcional y el aguinaldo o décimo sueldo acumulado en el año.</p>
-        <h3>Componentes de una liquidación</h3>
+        <h2>Como se calcula la liquidacion laboral?</h2>
+        <p>La liquidacion laboral es el conjunto de beneficios economicos que un trabajador recibe al terminar su relacion laboral. Incluye la indemnizacion (si aplica), las vacaciones no tomadas de forma proporcional y el aguinaldo o decimo sueldo acumulado en el ano.</p>
+        <h3>Componentes de una liquidacion</h3>
         <ul>
-            <li><strong>Indemnización:</strong> aplica en despidos sin causa justificada. Equivale aproximadamente a 1 mes de sueldo por año trabajado (varía por país).</li>
-            <li><strong>Vacaciones proporcionales:</strong> los días de vacaciones devengados pero no tomados en el año en curso.</li>
-            <li><strong>Aguinaldo / décimo:</strong> la parte del bono anual correspondiente a los meses trabajados en el año.</li>
+            <li><strong>Indemnizacion:</strong> aplica en despidos sin causa justificada. Equivale aproximadamente a 1 mes de sueldo por ano trabajado (varia por pais).</li>
+            <li><strong>Vacaciones proporcionales:</strong> los dias de vacaciones devengados pero no tomados en el ano en curso.</li>
+            <li><strong>Aguinaldo / decimo:</strong> la parte del bono anual correspondiente a los meses trabajados en el ano.</li>
         </ul>
-        <h3>Diferencias por país</h3>
+        <h3>Diferencias por pais</h3>
         <ul>
-            <li><strong>Ecuador:</strong> 25 días de remuneración por año en despido intempestivo.</li>
-            <li><strong>México:</strong> 3 meses de salario + 20 días por año trabajado.</li>
-            <li><strong>Colombia:</strong> 30 días de salario por año (liquidación de cesantías).</li>
-            <li><strong>Perú:</strong> 1,5 sueldos por año con tope de 12 remuneraciones.</li>
+            <li><strong>Ecuador:</strong> 25 dias de remuneracion por ano en despido intempestivo.</li>
+            <li><strong>Mexico:</strong> 3 meses de salario + 20 dias por ano trabajado.</li>
+            <li><strong>Colombia:</strong> 30 dias de salario por ano (liquidacion de cesantias).</li>
+            <li><strong>Peru:</strong> 1,5 sueldos por ano con tope de 12 remuneraciones.</li>
         </ul>
+        <h3>Renuncia vs despido: que te corresponde?</h3>
+        <p>Si renuncias voluntariamente, generalmente solo recibes tus beneficios proporcionales acumulados (vacaciones y aguinaldo), pero no indemnizacion por despido. Si te despiden sin causa justificada, el empleador debe pagar ademas la indemnizacion. Es importante conocer tus derechos antes de firmar cualquier documento de finiquito.</p>
     </article>
 
     <section class="relacionadas">
-        <p class="section-label">También te puede interesar</p>
+        <p class="section-label">Tambien te puede interesar</p>
         <div class="rel-grid">
             <a href="/calculadora-presupuesto" class="rel-card">
                 <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></span>
@@ -159,7 +161,7 @@
             </a>
             <a href="/calculadora-fondo-emergencia" class="rel-card">
                 <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
-                <div class="rel-info"><strong>Fondo de Emergencia</strong><span>Tu colchón financiero</span></div>
+                <div class="rel-info"><strong>Fondo de Emergencia</strong><span>Tu colchon financiero</span></div>
                 <span class="rel-arrow">→</span>
             </a>
             <a href="/calculadora-ahorro" class="rel-card">

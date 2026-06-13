@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
-{% block title %}Calculadora de Fondo de Emergencia - Cuánto Necesitas Ahorrar | MiDineroObedece{% endblock %}
+{% block title %}Calculadora de Fondo de Emergencia - Cuanto Necesitas Ahorrar | MiDineroObedece{% endblock %}
 
-{% block meta_description %}Calcula cuánto dinero necesitas en tu fondo de emergencia y cuánto ahorrar por mes para armarlo. Gratis y sin registro.{% endblock %}
+{% block meta_description %}Calcula cuanto necesitas en tu fondo de emergencia segun tus gastos esenciales. Descubre en cuantos meses puedes armarlo. Gratis y sin registro para LATAM.{% endblock %}
 
 {% block json_ld %}
 <script type="application/ld+json">
@@ -10,7 +10,7 @@
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "Calculadora de Fondo de Emergencia",
-  "description": "Calcula cuánto dinero necesitas en tu fondo de emergencia según tus gastos mensuales.",
+  "description": "Calcula cuanto dinero necesitas en tu fondo de emergencia segun tus gastos mensuales.",
   "url": "https://midineroobedece.com/calculadora-fondo-emergencia",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Web",
@@ -25,23 +25,23 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "¿Qué es un fondo de emergencia?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Un fondo de emergencia es una reserva de dinero líquido y accesible destinada a cubrir gastos imprevistos como pérdida de empleo, enfermedad o reparaciones urgentes. Es la base de cualquier plan financiero sólido. Sin él, cualquier imprevisto se convierte en deuda."}
+      "name": "Que es un fondo de emergencia?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Un fondo de emergencia es una reserva de dinero liquido y accesible destinada a cubrir gastos imprevistos como perdida de empleo, enfermedad o reparaciones urgentes. Es la base de cualquier plan financiero solido. Sin el, cualquier imprevisto se convierte en deuda."}
     },
     {
       "@type": "Question",
-      "name": "¿Cuántos meses debo tener en mi fondo de emergencia?",
-      "acceptedAnswer": {"@type": "Answer", "text": "El mínimo recomendado son 3 meses de gastos si tienes trabajo estable con sueldo fijo. Lo estándar son 6 meses para la mayoría de personas. Y entre 9 y 12 meses si trabajas por cuenta propia o tienes ingresos variables."}
+      "name": "Cuantos meses debo tener en mi fondo de emergencia?",
+      "acceptedAnswer": {"@type": "Answer", "text": "El minimo recomendado son 3 meses de gastos si tienes trabajo estable con sueldo fijo. Lo estandar son 6 meses para la mayoria de personas. Y entre 9 y 12 meses si trabajas por cuenta propia o tienes ingresos variables."}
     },
     {
       "@type": "Question",
-      "name": "¿Dónde debo guardar mi fondo de emergencia?",
-      "acceptedAnswer": {"@type": "Answer", "text": "En una cuenta de ahorros separada de tu cuenta corriente, que sea líquida y accesible en 24 a 48 horas. No lo inviertas en renta variable por el riesgo de pérdidas. Un plazo fijo a 30 días puede ser una buena opción para ganar algo de interés sin perder liquidez."}
+      "name": "Donde debo guardar mi fondo de emergencia?",
+      "acceptedAnswer": {"@type": "Answer", "text": "En una cuenta de ahorros separada de tu cuenta corriente, que sea liquida y accesible en 24 a 48 horas. No lo inviertas en renta variable por el riesgo de perdidas. Un plazo fijo a 30 dias puede ser una buena opcion para ganar algo de interes sin perder liquidez."}
     },
     {
       "@type": "Question",
-      "name": "¿Qué gastos debo incluir al calcular mi fondo de emergencia?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Incluye todos tus gastos mensuales esenciales: arriendo o hipoteca, servicios básicos, alimentación, transporte, seguros y pagos mínimos de deudas. No incluyas gastos de ocio o discrecionales. El fondo cubre lo que necesitas para sobrevivir, no para mantener tu estilo de vida completo."}
+      "name": "Que gastos debo incluir al calcular mi fondo de emergencia?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Incluye todos tus gastos mensuales esenciales: arriendo o hipoteca, servicios basicos, alimentacion, transporte, seguros y pagos minimos de deudas. No incluyas gastos de ocio o discrecionales. El fondo cubre lo que necesitas para sobrevivir, no para mantener tu estilo de vida completo."}
     }
   ]
 }
@@ -62,7 +62,7 @@
 <section class="calculadora-page" data-recalc="calcularFondoEmergencia">
     <p class="breadcrumb"><a href="/">Inicio</a> › Fondo de Emergencia</p>
     <h1>Calculadora de Fondo de Emergencia</h1>
-    <p class="subtitulo">Descubre cuánto necesitas guardar para estar protegido ante cualquier imprevisto.</p>
+    <p class="subtitulo">Descubre cuanto necesitas guardar para estar protegido ante cualquier imprevisto.</p>
 
     <div class="calculadora-container">
         <div class="formulario">
@@ -79,15 +79,15 @@
                 <label for="meses-fe">Meses de cobertura deseados</label>
                 <div class="input-wrap">
                     <select id="meses-fe">
-                        <option value="3">3 meses (mínimo recomendado)</option>
-                        <option value="6" selected>6 meses (estándar)</option>
+                        <option value="3">3 meses (minimo recomendado)</option>
+                        <option value="6" selected>6 meses (estandar)</option>
                         <option value="9">9 meses (trabajador independiente)</option>
-                        <option value="12">12 meses (máxima seguridad)</option>
+                        <option value="12">12 meses (maxima seguridad)</option>
                     </select>
                 </div>
             </div>
             <div class="campo">
-                <label for="plazo-fe">¿En cuántos meses quieres armarlo?</label>
+                <label for="plazo-fe">En cuantos meses quieres armarlo?</label>
                 <div class="input-wrap">
                     <input type="number" id="plazo-fe" class="with-suf" placeholder="12" min="1">
                     <span class="input-suf">meses</span>
@@ -113,7 +113,7 @@
                     <strong id="ahorro-fe"></strong>
                 </div>
                 <div class="resultado-item">
-                    <span>Cobertura que tendrás</span>
+                    <span>Cobertura que tendras</span>
                     <strong id="cobertura-fe"></strong>
                 </div>
                 <p class="msg-presupuesto" id="tip-fe"></p>
@@ -124,25 +124,25 @@
     {% include '_ad_unit.html' %}
 
     <article class="contenido-seo">
-        <h2>¿Qué es un fondo de emergencia?</h2>
-        <p>Un fondo de emergencia es una reserva de dinero líquido, fácilmente accesible, destinada a cubrir gastos imprevistos: pérdida de empleo, enfermedad, reparaciones urgentes. Es la base de cualquier plan financiero sólido — sin él, cualquier imprevisto se convierte en deuda.</p>
-        <h3>¿Cuántos meses debo tener?</h3>
+        <h2>Que es un fondo de emergencia?</h2>
+        <p>Un fondo de emergencia es una reserva de dinero liquido, facilmente accesible, destinada a cubrir gastos imprevistos: perdida de empleo, enfermedad, reparaciones urgentes. Es la base de cualquier plan financiero solido - sin el, cualquier imprevisto se convierte en deuda.</p>
+        <h3>Cuantos meses debo tener?</h3>
         <ul>
-            <li><strong>3 meses:</strong> mínimo si tienes trabajo estable con sueldo fijo.</li>
-            <li><strong>6 meses:</strong> estándar recomendado para la mayoría de personas.</li>
-            <li><strong>9–12 meses:</strong> ideal si trabajas por cuenta propia o tienes ingresos variables.</li>
+            <li><strong>3 meses:</strong> minimo si tienes trabajo estable con sueldo fijo.</li>
+            <li><strong>6 meses:</strong> estandar recomendado para la mayoria de personas.</li>
+            <li><strong>9-12 meses:</strong> ideal si trabajas por cuenta propia o tienes ingresos variables.</li>
         </ul>
-        <h3>¿Dónde guardar el fondo de emergencia?</h3>
+        <h3>Donde guardar el fondo de emergencia?</h3>
         <ul>
-            <li>En una cuenta de ahorros separada de tu cuenta corriente — para no tentarte a gastarlo.</li>
-            <li>Que sea líquida: debes poder acceder al dinero en 24–48 horas.</li>
-            <li>No lo inviertas en renta variable — el riesgo de pérdida es incompatible con su propósito.</li>
-            <li>Un plazo fijo a 30 días puede ser una buena opción para ganar algo de interés.</li>
+            <li>En una cuenta de ahorros separada de tu cuenta corriente - para no tentarte a gastarlo.</li>
+            <li>Que sea liquida: debes poder acceder al dinero en 24-48 horas.</li>
+            <li>No lo inviertas en renta variable - el riesgo de perdida es incompatible con su proposito.</li>
+            <li>Un plazo fijo a 30 dias puede ser una buena opcion para ganar algo de interes.</li>
         </ul>
     </article>
 
     <section class="relacionadas">
-        <p class="section-label">También te puede interesar</p>
+        <p class="section-label">Tambien te puede interesar</p>
         <div class="rel-grid">
             <a href="/calculadora-presupuesto" class="rel-card">
                 <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></span>
@@ -156,7 +156,7 @@
             </a>
             <a href="/calculadora-plazo-fijo" class="rel-card">
                 <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></span>
-                <div class="rel-info"><strong>Plazo Fijo</strong><span>Guarda tu fondo con interés</span></div>
+                <div class="rel-info"><strong>Plazo Fijo</strong><span>Guarda tu fondo con interes</span></div>
                 <span class="rel-arrow">→</span>
             </a>
         </div>
@@ -182,7 +182,7 @@ document.getElementById('meta-fe').textContent = fmt(meta);
     document.getElementById('cobertura-fe').textContent = meses + ' meses de gastos';
 
     const mesesTexto = plazo === 1 ? '1 mes' : plazo + ' meses';
-    document.getElementById('tip-fe').textContent = '🛡️ En ' + mesesTexto + ' tendrás tu colchón de seguridad completo.';
+    document.getElementById('tip-fe').textContent = '🛡️ En ' + mesesTexto + ' tendras tu colchon de seguridad completo.';
 
     document.getElementById('resultados-espera-fe').style.display = 'none';
     document.getElementById('resultados-data-fe').style.display = 'block';

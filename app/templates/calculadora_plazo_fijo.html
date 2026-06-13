@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
-{% block title %}Calculadora de Plazo Fijo - Cuánto Ganas en tu Depósito | MiDineroObedece{% endblock %}
+{% block title %}Calculadora de Plazo Fijo - Cuanto Ganas en tu Deposito | MiDineroObedece{% endblock %}
 
-{% block meta_description %}Calcula cuánto ganarás con un depósito a plazo fijo. Simula tus intereses y rendimiento. Gratis y sin registro.{% endblock %}
+{% block meta_description %}Calcula cuanto ganaras con un deposito a plazo fijo o CDT. Simula tus intereses segun el monto, la tasa y el plazo. Comparador gratis para America Latina.{% endblock %}
 
 {% block json_ld %}
 <script type="application/ld+json">
@@ -10,7 +10,7 @@
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "Calculadora de Plazo Fijo",
-  "description": "Calcula cuánto ganarás con un depósito a plazo fijo.",
+  "description": "Calcula cuanto ganaras con un deposito a plazo fijo o CDT.",
   "url": "https://midineroobedece.com/calculadora-plazo-fijo",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Web",
@@ -25,23 +25,23 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "¿Qué es un depósito a plazo fijo?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Un plazo fijo es un instrumento de ahorro donde depositas dinero en un banco o cooperativa por un tiempo determinado a cambio de una tasa de interés fija garantizada. Es uno de los productos más seguros y populares en América Latina."}
+      "name": "Que es un deposito a plazo fijo?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Un plazo fijo es un instrumento de ahorro donde depositas dinero en un banco o cooperativa por un tiempo determinado a cambio de una tasa de interes fija garantizada. Es uno de los productos mas seguros y populares en America Latina."}
     },
     {
       "@type": "Question",
-      "name": "¿Cuánto rinde un plazo fijo en América Latina?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Las tasas varían por país: en Ecuador entre 3% y 7% anual regulado por el Banco Central, en Colombia entre 8% y 12% en CDTs, en México entre 8% y 12% en CETES, y en Perú entre 3% y 7% anual. A mayor plazo generalmente obtienes una tasa más alta."}
+      "name": "Cuanto rinde un plazo fijo en America Latina?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Las tasas varian por pais: en Ecuador entre 3% y 7% anual regulado por el Banco Central, en Colombia entre 8% y 12% en CDTs, en Mexico entre 8% y 12% en CETES, y en Peru entre 3% y 7% anual. A mayor plazo generalmente obtienes una tasa mas alta."}
     },
     {
       "@type": "Question",
-      "name": "¿Puedo retirar mi dinero antes del vencimiento del plazo fijo?",
-      "acceptedAnswer": {"@type": "Answer", "text": "En la mayoría de instituciones sí, pero con penalidad. Generalmente pierdes parte o todos los intereses acumulados y en algunos casos hay una comisión adicional. Antes de abrir un plazo fijo, verifica las condiciones de retiro anticipado con tu banco o cooperativa."}
+      "name": "Puedo retirar mi dinero antes del vencimiento del plazo fijo?",
+      "acceptedAnswer": {"@type": "Answer", "text": "En la mayoria de instituciones si, pero con penalidad. Generalmente pierdes parte o todos los intereses acumulados y en algunos casos hay una comision adicional. Antes de abrir un plazo fijo, verifica las condiciones de retiro anticipado con tu banco o cooperativa."}
     },
     {
       "@type": "Question",
-      "name": "¿Qué diferencia hay entre un plazo fijo y un CDT?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Son esencialmente el mismo producto con distinto nombre según el país. El plazo fijo es el término común en Ecuador, Perú y Argentina. El CDT (Certificado de Depósito a Término) se usa en Colombia. Ambos funcionan igual: depositas dinero por un plazo determinado y recibes una tasa fija garantizada."}
+      "name": "Que diferencia hay entre un plazo fijo y un CDT?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Son esencialmente el mismo producto con distinto nombre segun el pais. El plazo fijo es el termino comun en Ecuador, Peru y Argentina. El CDT (Certificado de Deposito a Termino) se usa en Colombia. Ambos funcionan igual: depositas dinero por un plazo determinado y recibes una tasa fija garantizada."}
     }
   ]
 }
@@ -62,11 +62,11 @@
 <section class="calculadora-page" data-recalc="calcularPlazoFijo">
     <p class="breadcrumb"><a href="/">Inicio</a> › Calculadora de Plazo Fijo</p>
     <h1>Calculadora de Plazo Fijo</h1>
-    <p class="subtitulo">Calcula cuánto ganarás al poner tu dinero en un depósito a plazo.</p>
+    <p class="subtitulo">Calcula cuanto ganaras al poner tu dinero en un deposito a plazo.</p>
 
     <div class="calculadora-container">
         <div class="formulario">
-            <p class="formulario-header">Datos del depósito</p>
+            <p class="formulario-header">Datos del deposito</p>
 
             <div class="campo">
                 <label for="capital-pf">Capital a depositar</label>
@@ -83,7 +83,7 @@
                 </div>
             </div>
             <div class="campo">
-                <label for="plazo-pf">Plazo del depósito</label>
+                <label for="plazo-pf">Plazo del deposito</label>
                 <div class="input-wrap">
                     <input type="number" id="plazo-pf" class="with-suf" placeholder="12" min="1">
                     <span class="input-suf">meses</span>
@@ -120,26 +120,26 @@
     {% include '_ad_unit.html' %}
 
     <article class="contenido-seo">
-        <h2>¿Qué es un depósito a plazo fijo?</h2>
-        <p>Un plazo fijo es un instrumento de ahorro donde depositas dinero en un banco o cooperativa por un tiempo determinado a cambio de una tasa de interés fija. Es uno de los productos más seguros y populares en América Latina.</p>
+        <h2>Que es un deposito a plazo fijo?</h2>
+        <p>Un plazo fijo es un instrumento de ahorro donde depositas dinero en un banco o cooperativa por un tiempo determinado a cambio de una tasa de interes fija. Es uno de los productos mas seguros y populares en America Latina.</p>
         <h3>Tasas de plazo fijo en LATAM (referencia)</h3>
         <ul>
-            <li><strong>Ecuador:</strong> 3%–7% anual según el plazo (regulado por el Banco Central).</li>
-            <li><strong>Colombia:</strong> 8%–12% anual en CDTs.</li>
-            <li><strong>Perú:</strong> 3%–7% anual en depósitos a plazo.</li>
-            <li><strong>México:</strong> 8%–12% anual en CETES y pagarés bancarios.</li>
+            <li><strong>Ecuador:</strong> 3%-7% anual segun el plazo (regulado por el Banco Central).</li>
+            <li><strong>Colombia:</strong> 8%-12% anual en CDTs.</li>
+            <li><strong>Peru:</strong> 3%-7% anual en depositos a plazo.</li>
+            <li><strong>Mexico:</strong> 8%-12% anual en CETES y pagares bancarios.</li>
         </ul>
         <h3>Consejos al elegir un plazo fijo</h3>
         <ul>
-            <li>A mayor plazo, mayor tasa. Pero asegúrate de no necesitar el dinero antes.</li>
+            <li>A mayor plazo, mayor tasa. Pero asegurate de no necesitar el dinero antes.</li>
             <li>Compara entre bancos y cooperativas — las cooperativas suelen ofrecer mejores tasas.</li>
-            <li>Verifica que la institución esté regulada y cubierta por el seguro de depósitos.</li>
-            <li>Al vencer, reinvierte el capital más los intereses para aprovechar el interés compuesto.</li>
+            <li>Verifica que la institucion este regulada y cubierta por el seguro de depositos.</li>
+            <li>Al vencer, reinvierte el capital mas los intereses para aprovechar el interes compuesto.</li>
         </ul>
     </article>
 
     <section class="relacionadas">
-        <p class="section-label">También te puede interesar</p>
+        <p class="section-label">Tambien te puede interesar</p>
         <div class="rel-grid">
             <a href="/calculadora-ahorro" class="rel-card">
                 <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V22H4a2 2 0 01-2-2V6a2 2 0 012-2h16v6"/><path d="M22 12h-4a2 2 0 000 4h4v-4z"/></svg></span>
@@ -148,12 +148,12 @@
             </a>
             <a href="/calculadora-interes-compuesto" class="rel-card">
                 <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span>
-                <div class="rel-info"><strong>Interés Compuesto</strong><span>Reinvierte tus ganancias</span></div>
+                <div class="rel-info"><strong>Interes Compuesto</strong><span>Reinvierte tus ganancias</span></div>
                 <span class="rel-arrow">→</span>
             </a>
             <a href="/calculadora-jubilacion" class="rel-card">
                 <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 18a5 5 0 0 0-10 0"/><line x1="12" y1="9" x2="12" y2="2"/><line x1="4.22" y1="10.22" x2="5.64" y2="11.64"/><line x1="1" y1="18" x2="3" y2="18"/><line x1="21" y1="18" x2="23" y2="18"/><line x1="18.36" y1="11.64" x2="19.78" y2="10.22"/></svg></span>
-                <div class="rel-info"><strong>Jubilación</strong><span>Planifica tu retiro</span></div>
+                <div class="rel-info"><strong>Jubilacion</strong><span>Planifica tu retiro</span></div>
                 <span class="rel-arrow">→</span>
             </a>
         </div>

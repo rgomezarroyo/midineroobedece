@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 
-{% block title %}Calculadora de Tarjeta de Crédito - Cuánto Pagas de Intereses | MiDineroObedece{% endblock %}
+{% block title %}Calculadora de Tarjeta de Credito - Cuanto Pagas de Intereses | MiDineroObedece{% endblock %}
 
-{% block meta_description %}Descubre cuánto tiempo y dinero pierdes pagando solo el mínimo de tu tarjeta de crédito. Calcula tu plan de pago gratis.{% endblock %}
+{% block meta_description %}Descubre cuanto tiempo y dinero pierdes pagando solo el minimo de tu tarjeta de credito. Calcula tu plan de pago y cuanto ahorras pagando mas. Gratis para LATAM.{% endblock %}
 
 {% block json_ld %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Calculadora de Tarjeta de Crédito",
-  "description": "Descubre cuánto tiempo y dinero pierdes pagando solo el mínimo de tu tarjeta de crédito.",
+  "name": "Calculadora de Tarjeta de Credito",
+  "description": "Descubre cuanto tiempo y dinero pierdes pagando solo el minimo de tu tarjeta de credito.",
   "url": "https://midineroobedece.com/calculadora-tarjeta-credito",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Web",
@@ -25,23 +25,23 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "¿Por qué es tan peligroso pagar solo el mínimo de la tarjeta?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Las tarjetas de crédito en América Latina tienen tasas anuales que van del 18% al 60%. Cuando pagas solo el mínimo, la mayor parte de tu pago cubre intereses y casi nada reduce la deuda real. Esto puede hacer que tardes años en liquidar un saldo que parece pequeño."}
+      "name": "Por que es tan peligroso pagar solo el minimo de la tarjeta?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Las tarjetas de credito en America Latina tienen tasas anuales que van del 18% al 60%. Cuando pagas solo el minimo, la mayor parte de tu pago cubre intereses y casi nada reduce la deuda real. Esto puede hacer que tardes anos en liquidar un saldo que parece pequeno."}
     },
     {
       "@type": "Question",
-      "name": "¿Qué es la tasa de interés de una tarjeta de crédito?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Es el porcentaje anual que el banco cobra por el saldo que no pagas. En Ecuador está regulada por el Banco Central. En otros países de LATAM puede superar el 40% anual y aparece en tu estado de cuenta como TEA (tasa efectiva anual)."}
+      "name": "Que es la tasa de interes de una tarjeta de credito?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Es el porcentaje anual que el banco cobra por el saldo que no pagas. En Ecuador esta regulada por el Banco Central. En otros paises de LATAM puede superar el 40% anual y aparece en tu estado de cuenta como TEA (tasa efectiva anual)."}
     },
     {
       "@type": "Question",
-      "name": "¿Cómo puedo salir de la deuda de mi tarjeta de crédito más rápido?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Paga siempre más del mínimo, idealmente el doble o el triple. No uses la tarjeta para nuevas compras mientras liquidas la deuda. Si tienes varias tarjetas, aplica el método avalancha: ataca primero la de mayor tasa. Considera consolidar la deuda en un préstamo personal con tasa menor."}
+      "name": "Como puedo salir de la deuda de mi tarjeta de credito mas rapido?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Paga siempre mas del minimo, idealmente el doble o el triple. No uses la tarjeta para nuevas compras mientras liquidas la deuda. Si tienes varias tarjetas, aplica el metodo avalancha: ataca primero la de mayor tasa. Considera consolidar la deuda en un prestamo personal con tasa menor."}
     },
     {
       "@type": "Question",
-      "name": "¿Qué es la fecha de corte y la fecha límite de pago?",
-      "acceptedAnswer": {"@type": "Answer", "text": "La fecha de corte es el día en que el banco cierra tu estado de cuenta y suma todos tus consumos del período. La fecha límite de pago es el día máximo para pagar sin generar intereses. Entre ambas fechas suele haber entre 15 y 25 días, que es el período de gracia."}
+      "name": "Que es la fecha de corte y la fecha limite de pago?",
+      "acceptedAnswer": {"@type": "Answer", "text": "La fecha de corte es el dia en que el banco cierra tu estado de cuenta y suma todos tus consumos del periodo. La fecha limite de pago es el dia maximo para pagar sin generar intereses. Entre ambas fechas suele haber entre 15 y 25 dias, que es el periodo de gracia."}
     }
   ]
 }
@@ -52,7 +52,7 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://midineroobedece.com/"},
-    {"@type": "ListItem", "position": 2, "name": "Calculadora de Tarjeta de Crédito", "item": "https://midineroobedece.com/calculadora-tarjeta-credito"}
+    {"@type": "ListItem", "position": 2, "name": "Calculadora de Tarjeta de Credito", "item": "https://midineroobedece.com/calculadora-tarjeta-credito"}
   ]
 }
 </script>
@@ -60,13 +60,13 @@
 
 {% block content %}
 <section class="calculadora-page" data-recalc="calcularTarjeta">
-    <p class="breadcrumb"><a href="/">Inicio</a> › Tarjeta de Crédito</p>
-    <h1>Calculadora de Tarjeta de Crédito</h1>
-    <p class="subtitulo">Descubre cuánto te cuesta realmente tu deuda y cuándo la liquidarás.</p>
+    <p class="breadcrumb"><a href="/">Inicio</a> › Tarjeta de Credito</p>
+    <h1>Calculadora de Tarjeta de Credito</h1>
+    <p class="subtitulo">Descubre cuanto te cuesta realmente tu deuda y cuando la liquidaras.</p>
 
     <div class="calculadora-container">
         <div class="formulario">
-            <p class="formulario-header">Datos de tu tarjeta</p>
+            <p class="formulario-header">Datos de tu tarjeta de credito</p>
 
             <div class="campo">
                 <label for="saldo">Saldo actual de la tarjeta</label>
@@ -76,14 +76,14 @@
                 </div>
             </div>
             <div class="campo">
-                <label for="tasa-tc">Tasa de interés anual</label>
+                <label for="tasa-tc">Tasa de interes anual</label>
                 <div class="input-wrap">
                     <input type="number" id="tasa-tc" class="with-suf" placeholder="24" min="0" step="0.1">
                     <span class="input-suf">% anual</span>
                 </div>
             </div>
             <div class="campo">
-                <label for="pago-tc">Pago mensual que harás</label>
+                <label for="pago-tc">Pago mensual que haras</label>
                 <div class="input-wrap">
                     <span class="input-pre cur-sym">$</span>
                     <input type="number" id="pago-tc" class="with-pre" placeholder="100" min="0">
@@ -120,25 +120,27 @@
     {% include '_ad_unit.html' %}
 
     <article class="contenido-seo">
-        <h2>¿Por qué es tan peligroso pagar solo el mínimo?</h2>
-        <p>Las tarjetas de crédito en América Latina tienen tasas de interés anuales que van del 18% al 60%. Cuando pagas solo el mínimo, la mayor parte de tu pago va a cubrir intereses y casi nada reduce la deuda real. Esto puede hacer que tardes años — incluso décadas — en liquidar un saldo que parece pequeño.</p>
-        <h3>Estrategia para pagar más rápido</h3>
+        <h2>Por que es tan peligroso pagar solo el minimo?</h2>
+        <p>Las tarjetas de credito en America Latina tienen tasas de interes anuales que van del 18% al 60%. Cuando pagas solo el minimo, la mayor parte de tu pago va a cubrir intereses y casi nada reduce la deuda real. Esto puede hacer que tardes anos - incluso decadas - en liquidar un saldo que parece pequeno.</p>
+        <h3>Estrategia para pagar mas rapido</h3>
         <ul>
-            <li>Paga siempre más del mínimo. Aunque sea un 20% extra marca una diferencia enorme.</li>
+            <li>Paga siempre mas del minimo. Aunque sea un 20% extra marca una diferencia enorme.</li>
             <li>No uses la tarjeta para gastos nuevos mientras pagas la deuda actual.</li>
             <li>Si tienes varias tarjetas, aplica la estrategia avalancha: ataca primero la de mayor tasa.</li>
-            <li>Considera consolidar la deuda en un préstamo personal con menor tasa.</li>
+            <li>Considera consolidar la deuda en un prestamo personal con menor tasa.</li>
         </ul>
-        <h3>¿Qué es la tasa de interés de tarjeta de crédito?</h3>
-        <p>En Ecuador la tasa máxima de tarjetas es regulada por el Banco Central. En otros países de LATAM puede superar el 40% anual. Revisa tu estado de cuenta — generalmente aparece como "TEA" (tasa efectiva anual).</p>
+        <h3>Que es la tasa de interes de tarjeta de credito?</h3>
+        <p>En Ecuador la tasa maxima de tarjetas es regulada por el Banco Central. En otros paises de LATAM puede superar el 40% anual. Revisa tu estado de cuenta - generalmente aparece como "TEA" (tasa efectiva anual).</p>
+        <h3>Fecha de corte y fecha limite de pago</h3>
+        <p>La fecha de corte es el dia en que el banco cierra tu estado de cuenta. La fecha limite de pago es el dia maximo para pagar sin generar intereses. El periodo entre ambas (15-25 dias) es tu margen de gracia. Pagar antes de la fecha limite en su totalidad evita cualquier interes.</p>
     </article>
 
     <section class="relacionadas">
-        <p class="section-label">También te puede interesar</p>
+        <p class="section-label">Tambien te puede interesar</p>
         <div class="rel-grid">
             <a href="/calculadora-prestamos" class="rel-card">
                 <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
-                <div class="rel-info"><strong>Calculadora de Préstamos</strong><span>Consolida tu deuda</span></div>
+                <div class="rel-info"><strong>Calculadora de Prestamos</strong><span>Consolida tu deuda</span></div>
                 <span class="rel-arrow">→</span>
             </a>
             <a href="/calculadora-presupuesto" class="rel-card">
@@ -148,7 +150,7 @@
             </a>
             <a href="/calculadora-fondo-emergencia" class="rel-card">
                 <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
-                <div class="rel-info"><strong>Fondo de Emergencia</strong><span>Tu colchón financiero</span></div>
+                <div class="rel-info"><strong>Fondo de Emergencia</strong><span>Tu colchon financiero</span></div>
                 <span class="rel-arrow">→</span>
             </a>
         </div>
@@ -169,7 +171,7 @@ function calcularTarjeta() {
     const tasaMensual = tasaAnual / 100 / 12;
 
     if (pago <= saldo * tasaMensual) {
-        alert('El pago mensual es menor o igual a los intereses del mes. Nunca liquidarás la deuda. Aumenta tu pago mensual.');
+        alert('El pago mensual es menor o igual a los intereses del mes. Nunca liquidaras la deuda. Aumenta tu pago mensual.');
         return;
     }
 
@@ -180,7 +182,7 @@ function calcularTarjeta() {
     const anos = Math.floor(meses / 12);
     const mesesResto = meses % 12;
     let tiempoTexto = '';
-    if (anos > 0) tiempoTexto += anos + (anos === 1 ? ' año' : ' años');
+    if (anos > 0) tiempoTexto += anos + (anos === 1 ? ' ano' : ' anos');
     if (anos > 0 && mesesResto > 0) tiempoTexto += ' y ';
     if (mesesResto > 0) tiempoTexto += mesesResto + (mesesResto === 1 ? ' mes' : ' meses');
 
@@ -191,7 +193,7 @@ function calcularTarjeta() {
     const pagoExtra = pago * 1.5;
     const mesesExtra = Math.ceil(-Math.log(1 - (tasaMensual * saldo) / pagoExtra) / Math.log(1 + tasaMensual));
     const ahorro = totalIntereses - (pagoExtra * mesesExtra - saldo);
-    document.getElementById('tip-tc').textContent = '💡 Pagando ' + fmt(pagoExtra) + '/mes ahorrarías ' + fmt(ahorro) + ' en intereses.';
+    document.getElementById('tip-tc').textContent = '💡 Pagando ' + fmt(pagoExtra) + '/mes ahorrarias ' + fmt(ahorro) + ' en intereses.';
 
     document.getElementById('resultados-espera-tc').style.display = 'none';
     document.getElementById('resultados-data-tc').style.display = 'block';

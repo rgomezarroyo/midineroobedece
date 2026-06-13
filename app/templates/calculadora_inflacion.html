@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 
-{% block title %}Calculadora de Inflación - Cuánto Vale tu Dinero en el Futuro | MiDineroObedece{% endblock %}
+{% block title %}Calculadora de Inflacion - Cuanto Vale tu Dinero en el Futuro | MiDineroObedece{% endblock %}
 
-{% block meta_description %}Calcula cómo la inflación erosiona el poder adquisitivo de tu dinero. Descubre cuánto necesitarás en el futuro para comprar lo mismo que hoy.{% endblock %}
+{% block meta_description %}Calcula como la inflacion erosiona el poder adquisitivo de tu dinero. Descubre cuanto necesitaras en el futuro para comprar lo mismo que hoy. Gratis para LATAM.{% endblock %}
 
 {% block json_ld %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Calculadora de Inflación",
-  "description": "Calcula cómo la inflación erosiona el poder adquisitivo de tu dinero. Descubre cuánto necesitarás en el futuro.",
+  "name": "Calculadora de Inflacion",
+  "description": "Calcula como la inflacion erosiona el poder adquisitivo de tu dinero. Descubre cuanto necesitaras en el futuro.",
   "url": "https://midineroobedece.com/calculadora-inflacion",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Web",
@@ -25,23 +25,23 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "¿Qué es la inflación y cómo afecta mis finanzas?",
-      "acceptedAnswer": {"@type": "Answer", "text": "La inflación es el aumento sostenido del nivel general de precios. Significa que con el mismo dinero compras menos cosas con el tiempo. En América Latina la inflación ha sido históricamente alta, lo que hace especialmente importante planificar con ella en mente."}
+      "name": "Que es la inflacion y como afecta mis finanzas?",
+      "acceptedAnswer": {"@type": "Answer", "text": "La inflacion es el aumento sostenido del nivel general de precios. Significa que con el mismo dinero compras menos cosas con el tiempo. En America Latina la inflacion ha sido historicamente alta, lo que hace especialmente importante planificar con ella en mente."}
     },
     {
       "@type": "Question",
-      "name": "¿Cómo proteger tu dinero de la inflación?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Invierte en activos que superen la inflación como acciones, bienes raíces o fondos indexados. Evita tener grandes sumas en cuentas de ahorro con tasa menor a la inflación. Considera ahorrar en dólares si vives en un país con inflación alta. El dinero guardado sin invertir pierde valor cada año."}
+      "name": "Como proteger tu dinero de la inflacion?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Invierte en activos que superen la inflacion como acciones, bienes raices o fondos indexados. Evita tener grandes sumas en cuentas de ahorro con tasa menor a la inflacion. Considera ahorrar en dolares si vives en un pais con inflacion alta. El dinero guardado sin invertir pierde valor cada ano."}
     },
     {
       "@type": "Question",
-      "name": "¿Qué es la tasa de inflación anual y cómo se calcula?",
-      "acceptedAnswer": {"@type": "Answer", "text": "La tasa de inflación anual mide el porcentaje de aumento en el precio de una canasta de bienes y servicios representativos en un año. Se calcula comparando el Índice de Precios al Consumidor (IPC) del mes actual con el del mismo mes del año anterior. Lo publica mensualmente el banco central o instituto de estadísticas de cada país."}
+      "name": "Que es la tasa de inflacion anual y como se calcula?",
+      "acceptedAnswer": {"@type": "Answer", "text": "La tasa de inflacion anual mide el porcentaje de aumento en el precio de una canasta de bienes y servicios representativos en un ano. Se calcula comparando el Indice de Precios al Consumidor (IPC) del mes actual con el del mismo mes del ano anterior. Lo publica mensualmente el banco central de cada pais."}
     },
     {
       "@type": "Question",
-      "name": "¿Cuánto pierde de valor el dinero con la inflación en 10 años?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Con una inflación del 5% anual, $1,000 de hoy equivaldrán a $614 en poder adquisitivo dentro de 10 años. Con 10% anual, quedan en $386. Con 50% anual como ha ocurrido en algunos países de LATAM, el dinero pierde más del 99% de su valor en una década."}
+      "name": "Cuanto pierde de valor el dinero con la inflacion en 10 anos?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Con una inflacion del 5% anual, $1,000 de hoy equivaldran a $614 en poder adquisitivo dentro de 10 anos. Con 10% anual, quedan en $386. Con 50% anual como ha ocurrido en algunos paises de LATAM, el dinero pierde mas del 99% de su valor en una decada."}
     }
   ]
 }
@@ -52,7 +52,7 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://midineroobedece.com/"},
-    {"@type": "ListItem", "position": 2, "name": "Calculadora de Inflación", "item": "https://midineroobedece.com/calculadora-inflacion"}
+    {"@type": "ListItem", "position": 2, "name": "Calculadora de Inflacion", "item": "https://midineroobedece.com/calculadora-inflacion"}
   ]
 }
 </script>
@@ -60,13 +60,13 @@
 
 {% block content %}
 <section class="calculadora-page" data-recalc="calcularInflacion">
-    <p class="breadcrumb"><a href="/">Inicio</a> › Calculadora de Inflación</p>
-    <h1>Calculadora de Inflación</h1>
-    <p class="subtitulo">Descubre cómo la inflación erosiona el valor de tu dinero con el tiempo.</p>
+    <p class="breadcrumb"><a href="/">Inicio</a> › Calculadora de Inflacion</p>
+    <h1>Calculadora de Inflacion</h1>
+    <p class="subtitulo">Descubre como la inflacion erosiona el valor de tu dinero con el tiempo.</p>
 
     <div class="calculadora-container">
         <div class="formulario">
-            <p class="formulario-header">Datos del cálculo</p>
+            <p class="formulario-header">Datos del calculo</p>
 
             <div class="campo">
                 <label for="monto-inf">Monto actual</label>
@@ -76,17 +76,17 @@
                 </div>
             </div>
             <div class="campo">
-                <label for="tasa-inf">Tasa de inflación anual estimada</label>
+                <label for="tasa-inf">Tasa de inflacion anual estimada</label>
                 <div class="input-wrap">
                     <input type="number" id="tasa-inf" class="with-suf" placeholder="5" min="0" step="0.1">
                     <span class="input-suf">% anual</span>
                 </div>
             </div>
             <div class="campo">
-                <label for="anos-inf">Período de tiempo</label>
+                <label for="anos-inf">Periodo de tiempo</label>
                 <div class="input-wrap">
                     <input type="number" id="anos-inf" class="with-suf" placeholder="10" min="1">
-                    <span class="input-suf">años</span>
+                    <span class="input-suf">anos</span>
                 </div>
             </div>
 
@@ -101,7 +101,7 @@
             <div class="resultados-data" id="resultados-data-inf">
                 <h2>Resultados</h2>
                 <div class="resultado-item highlight">
-                    <span>Necesitarás en el futuro</span>
+                    <span>Necesitaras en el futuro</span>
                     <strong id="valor-futuro-inf"></strong>
                 </div>
                 <div class="resultado-item negativo">
@@ -120,31 +120,31 @@
     {% include '_ad_unit.html' %}
 
     <article class="contenido-seo">
-        <h2>¿Qué es la inflación y cómo afecta tus finanzas?</h2>
-        <p>La inflación es el aumento sostenido del nivel general de precios. Significa que con el mismo dinero compras menos cosas con el tiempo. En América Latina, la inflación ha sido históricamente alta y variable, lo que hace especialmente importante planificar con ella en mente.</p>
-        <h3>Tasas de inflación de referencia en LATAM</h3>
+        <h2>Que es la inflacion y como afecta tus finanzas?</h2>
+        <p>La inflacion es el aumento sostenido del nivel general de precios. Significa que con el mismo dinero compras menos cosas con el tiempo. En America Latina, la inflacion ha sido historicamente alta y variable, lo que hace especialmente importante planificar con ella en mente.</p>
+        <h3>Tasas de inflacion de referencia en LATAM</h3>
         <ul>
-            <li><strong>Ecuador:</strong> 1–4% anual (dolarizado, inflación baja).</li>
-            <li><strong>Colombia:</strong> 5–9% anual en años recientes.</li>
-            <li><strong>México:</strong> 4–8% anual en promedio.</li>
-            <li><strong>Argentina:</strong> +100% anual en 2023–2024.</li>
-            <li><strong>Perú:</strong> 3–6% anual en promedio.</li>
+            <li><strong>Ecuador:</strong> 1-4% anual (dolarizado, inflacion baja).</li>
+            <li><strong>Colombia:</strong> 5-9% anual en anos recientes.</li>
+            <li><strong>Mexico:</strong> 4-8% anual en promedio.</li>
+            <li><strong>Argentina:</strong> +100% anual en 2023-2024.</li>
+            <li><strong>Peru:</strong> 3-6% anual en promedio.</li>
         </ul>
-        <h3>¿Cómo proteger tu dinero de la inflación?</h3>
+        <h3>Como proteger tu dinero de la inflacion?</h3>
         <ul>
-            <li>Invierte en activos que superen la inflación: acciones, bienes raíces, fondos indexados.</li>
-            <li>Evita tener grandes sumas en cuentas de ahorro con tasa menor a la inflación.</li>
-            <li>Considera ahorrar en dólares si vives en un país con inflación alta.</li>
-            <li>La regla de oro: el dinero guardado bajo el colchón pierde valor cada año.</li>
+            <li>Invierte en activos que superen la inflacion: acciones, bienes raices, fondos indexados.</li>
+            <li>Evita tener grandes sumas en cuentas de ahorro con tasa menor a la inflacion.</li>
+            <li>Considera ahorrar en dolares si vives en un pais con inflacion alta.</li>
+            <li>La regla de oro: el dinero guardado bajo el colchon pierde valor cada ano.</li>
         </ul>
     </article>
 
     <section class="relacionadas">
-        <p class="section-label">También te puede interesar</p>
+        <p class="section-label">Tambien te puede interesar</p>
         <div class="rel-grid">
             <a href="/calculadora-interes-compuesto" class="rel-card">
                 <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span>
-                <div class="rel-info"><strong>Interés Compuesto</strong><span>Vence a la inflación</span></div>
+                <div class="rel-info"><strong>Interes Compuesto</strong><span>Vence a la inflacion</span></div>
                 <span class="rel-arrow">→</span>
             </a>
             <a href="/calculadora-ahorro" class="rel-card">
@@ -182,7 +182,7 @@ const pct = ((1 - 1 / factor) * 100).toFixed(1);
     document.getElementById('valor-futuro-inf').textContent = fmt(valorFuturo);
     document.getElementById('perdida-inf').textContent = fmt(perdida);
     document.getElementById('valor-real-inf').textContent = fmt(valorReal);
-    document.getElementById('tip-inf').textContent = '📉 En ' + anos + ' años tu dinero habrá perdido el ' + pct + '% de su poder adquisitivo.';
+    document.getElementById('tip-inf').textContent = '📉 En ' + anos + ' anos tu dinero habra perdido el ' + pct + '% de su poder adquisitivo.';
 
     document.getElementById('resultados-espera-inf').style.display = 'none';
     document.getElementById('resultados-data-inf').style.display = 'block';

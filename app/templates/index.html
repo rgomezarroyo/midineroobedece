@@ -2,7 +2,45 @@
 
 {% block title %}MiDineroObedece - Calculadoras Financieras Gratis para America Latina{% endblock %}
 
-{% block meta_description %}Calculadoras financieras 100% gratuitas para LATAM. Prestamos, ahorro, interes compuesto, presupuesto y mas. Sin registro, sin trampa.{% endblock %}
+{% block meta_description %}13 calculadoras financieras 100% gratuitas para America Latina. Prestamos, ahorro, interes compuesto, presupuesto, jubilacion y mas. Sin registro, resultado instantaneo.{% endblock %}
+
+{% block json_ld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "MiDineroObedece",
+  "url": "https://midineroobedece.com",
+  "description": "Calculadoras financieras gratuitas para America Latina",
+  "inLanguage": "es"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Calculadoras Financieras para America Latina",
+  "description": "13 calculadoras financieras gratuitas para LATAM",
+  "url": "https://midineroobedece.com",
+  "numberOfItems": 13,
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Calculadora de Prestamos", "url": "https://midineroobedece.com/calculadora-prestamos", "description": "Calcula tu cuota mensual, intereses totales y costo real de cualquier prestamo bancario o personal."},
+    {"@type": "ListItem", "position": 2, "name": "Calculadora de Ahorro", "url": "https://midineroobedece.com/calculadora-ahorro", "description": "Calcula cuanto necesitas ahorrar cada mes para alcanzar tu meta financiera."},
+    {"@type": "ListItem", "position": 3, "name": "Calculadora de Interes Compuesto", "url": "https://midineroobedece.com/calculadora-interes-compuesto", "description": "Simula como crece tu dinero con el interes compuesto a lo largo del tiempo."},
+    {"@type": "ListItem", "position": 4, "name": "Calculadora de Presupuesto Personal", "url": "https://midineroobedece.com/calculadora-presupuesto", "description": "Organiza tus ingresos y gastos mensuales. Descubre cuanto te sobra o te falta."},
+    {"@type": "ListItem", "position": 5, "name": "Calculadora de Tarjeta de Credito", "url": "https://midineroobedece.com/calculadora-tarjeta-credito", "description": "Descubre cuanto tiempo y dinero pierdes pagando solo el minimo de tu tarjeta."},
+    {"@type": "ListItem", "position": 6, "name": "Calculadora de Inflacion", "url": "https://midineroobedece.com/calculadora-inflacion", "description": "Calcula como la inflacion erosiona el poder adquisitivo de tu dinero con el tiempo."},
+    {"@type": "ListItem", "position": 7, "name": "Calculadora de Jubilacion", "url": "https://midineroobedece.com/calculadora-jubilacion", "description": "Calcula cuanto necesitas ahorrar para jubilarte y cuanto debes guardar cada mes."},
+    {"@type": "ListItem", "position": 8, "name": "Calculadora de Plazo Fijo", "url": "https://midineroobedece.com/calculadora-plazo-fijo", "description": "Calcula cuanto ganaras con un deposito a plazo fijo o CDT bancario."},
+    {"@type": "ListItem", "position": 9, "name": "Calculadora de Fondo de Emergencia", "url": "https://midineroobedece.com/calculadora-fondo-emergencia", "description": "Calcula cuanto necesitas en tu fondo de emergencia segun tus gastos esenciales."},
+    {"@type": "ListItem", "position": 10, "name": "Calculadora de Descuentos", "url": "https://midineroobedece.com/calculadora-descuentos", "description": "Calcula el precio final con descuento y cuanto ahorras en cualquier compra."},
+    {"@type": "ListItem", "position": 11, "name": "Calculadora de Liquidacion Laboral", "url": "https://midineroobedece.com/calculadora-liquidacion-laboral", "description": "Calcula tu liquidacion laboral: indemnizacion, vacaciones y aguinaldo proporcional."},
+    {"@type": "ListItem", "position": 12, "name": "Calculadora de ROI", "url": "https://midineroobedece.com/calculadora-roi", "description": "Calcula el retorno sobre la inversion total y anualizado de cualquier inversion."},
+    {"@type": "ListItem", "position": 13, "name": "Conversor de Tipo de Cambio", "url": "https://midineroobedece.com/calculadora-tipo-cambio", "description": "Convierte entre dolares, euros, pesos y monedas de America Latina con tasas en tiempo real."}
+  ]
+}
+</script>
+{% endblock %}
 
 {% block content %}
 

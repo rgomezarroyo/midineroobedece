@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 
-{% block title %}Calculadora de Interés Compuesto - Simula el Crecimiento de tu Dinero | MiDineroObedece{% endblock %}
+{% block title %}Calculadora de Interes Compuesto - Simula el Crecimiento de tu Dinero | MiDineroObedece{% endblock %}
 
-{% block meta_description %}Simula cómo crece tu dinero con el interés compuesto. Calcula el valor futuro de tus inversiones. Gratis y sin registro.{% endblock %}
+{% block meta_description %}Simulador de interes compuesto gratis para LATAM. Calcula como crece tu dinero con aportes mensuales a cualquier tasa y plazo. Sin registro, resultado instantaneo.{% endblock %}
 
 {% block json_ld %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Calculadora de Interés Compuesto",
-  "description": "Simula cómo crece tu dinero con el tiempo gracias al interés compuesto.",
+  "name": "Calculadora de Interes Compuesto",
+  "description": "Simula como crece tu dinero con el tiempo gracias al interes compuesto.",
   "url": "https://midineroobedece.com/calculadora-interes-compuesto",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Web",
@@ -25,23 +25,23 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "¿Qué es el interés compuesto?",
-      "acceptedAnswer": {"@type": "Answer", "text": "El interés compuesto es el proceso por el cual los intereses generados se suman al capital y a su vez generan más intereses. Es considerado la octava maravilla del mundo por su poder de multiplicar el dinero con el tiempo de forma exponencial."}
+      "name": "Que es el interes compuesto?",
+      "acceptedAnswer": {"@type": "Answer", "text": "El interes compuesto es el proceso por el cual los intereses generados se suman al capital y a su vez generan mas intereses. Es considerado la octava maravilla del mundo por su poder de multiplicar el dinero con el tiempo de forma exponencial."}
     },
     {
       "@type": "Question",
-      "name": "¿Por qué empezar a invertir cuanto antes?",
-      "acceptedAnswer": {"@type": "Answer", "text": "A mayor tiempo, mayor efecto del interés compuesto. Incluso aportes pequeños mensuales hacen una gran diferencia a largo plazo. La clave es la constancia y no retirar los intereses generados para que sigan acumulándose."}
+      "name": "Por que empezar a invertir cuanto antes?",
+      "acceptedAnswer": {"@type": "Answer", "text": "A mayor tiempo, mayor efecto del interes compuesto. Incluso aportes pequenos mensuales hacen una gran diferencia a largo plazo. La clave es la constancia y no retirar los intereses generados para que sigan acumulandose."}
     },
     {
       "@type": "Question",
-      "name": "¿Cuál es la diferencia entre interés simple e interés compuesto?",
-      "acceptedAnswer": {"@type": "Answer", "text": "El interés simple se calcula siempre sobre el capital original. El interés compuesto se calcula sobre el capital más los intereses ya acumulados. Con el tiempo, el interés compuesto genera un crecimiento exponencial mucho mayor que el interés simple."}
+      "name": "Cual es la diferencia entre interes simple e interes compuesto?",
+      "acceptedAnswer": {"@type": "Answer", "text": "El interes simple se calcula siempre sobre el capital original. El interes compuesto se calcula sobre el capital mas los intereses ya acumulados. Con el tiempo, el interes compuesto genera un crecimiento exponencial mucho mayor que el interes simple."}
     },
     {
       "@type": "Question",
-      "name": "¿Cada cuánto se capitaliza el interés compuesto?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Depende del producto financiero. Puede capitalizarse diariamente, mensualmente, trimestralmente o anualmente. Cuanto más frecuente sea la capitalización, mayor será el rendimiento final. La mayoría de fondos de inversión y cuentas de ahorro capitalizan mensualmente."}
+      "name": "Cada cuanto se capitaliza el interes compuesto?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Depende del producto financiero. Puede capitalizarse diariamente, mensualmente, trimestralmente o anualmente. Cuanto mas frecuente sea la capitalizacion, mayor sera el rendimiento final. La mayoria de fondos de inversion y cuentas de ahorro capitalizan mensualmente."}
     }
   ]
 }
@@ -52,7 +52,7 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://midineroobedece.com/"},
-    {"@type": "ListItem", "position": 2, "name": "Calculadora de Interés Compuesto", "item": "https://midineroobedece.com/calculadora-interes-compuesto"}
+    {"@type": "ListItem", "position": 2, "name": "Calculadora de Interes Compuesto", "item": "https://midineroobedece.com/calculadora-interes-compuesto"}
   ]
 }
 </script>
@@ -60,13 +60,13 @@
 
 {% block content %}
 <section class="calculadora-page" data-recalc="calcularInteres">
-    <p class="breadcrumb"><a href="/">Inicio</a> › Interés Compuesto</p>
-    <h1>Calculadora de Interés Compuesto</h1>
-    <p class="subtitulo">Simula cómo crece tu dinero con el tiempo gracias al interés compuesto.</p>
+    <p class="breadcrumb"><a href="/">Inicio</a> › Interes Compuesto</p>
+    <h1>Calculadora de Interes Compuesto</h1>
+    <p class="subtitulo">Simula como crece tu dinero con el tiempo gracias al interes compuesto.</p>
 
     <div class="calculadora-container">
         <div class="formulario">
-            <p class="formulario-header">Datos de la inversión</p>
+            <p class="formulario-header">Datos de la inversion</p>
 
             <div class="campo">
                 <label for="capital">Capital inicial</label>
@@ -83,17 +83,17 @@
                 </div>
             </div>
             <div class="campo">
-                <label for="tasa-ic">Tasa de interés anual</label>
+                <label for="tasa-ic">Tasa de interes anual</label>
                 <div class="input-wrap">
                     <input type="number" id="tasa-ic" class="with-suf" placeholder="8" min="0" step="0.1">
                     <span class="input-suf">% anual</span>
                 </div>
             </div>
             <div class="campo">
-                <label for="anos">Años de inversión</label>
+                <label for="anos">Anos de inversion</label>
                 <div class="input-wrap">
                     <input type="number" id="anos" class="with-suf" placeholder="10" min="1">
-                    <span class="input-suf">años</span>
+                    <span class="input-suf">anos</span>
                 </div>
             </div>
 
@@ -116,7 +116,7 @@
                     <strong id="total-invertido"></strong>
                 </div>
                 <div class="resultado-item positivo">
-                    <span>Ganancias por interés</span>
+                    <span>Ganancias por interes</span>
                     <strong id="ganancias-ic"></strong>
                 </div>
             </div>
@@ -126,32 +126,37 @@
     {% include '_ad_unit.html' %}
 
     <article class="contenido-seo">
-        <h2>¿Qué es el interés compuesto?</h2>
-        <p>El interés compuesto es el proceso por el cual los intereses generados se suman al capital y a su vez generan más intereses. Es considerado la octava maravilla del mundo por su poder de multiplicar el dinero con el tiempo.</p>
-        <h3>¿Por qué empezar a invertir cuanto antes?</h3>
+        <h2>Que es el interes compuesto?</h2>
+        <p>El interes compuesto es el proceso por el cual los intereses generados se suman al capital y a su vez generan mas intereses. Es considerado la octava maravilla del mundo por su poder de multiplicar el dinero de forma exponencial con el tiempo. A diferencia del interes simple (que solo se calcula sobre el capital original), el interes compuesto trabaja sobre un capital que crece cada periodo.</p>
+        <h3>Por que empezar a invertir cuanto antes?</h3>
         <ul>
-            <li>A mayor tiempo, mayor efecto del interés compuesto.</li>
-            <li>Incluso aportes pequeños mensuales hacen una gran diferencia a largo plazo.</li>
+            <li>A mayor tiempo, mayor efecto del interes compuesto.</li>
+            <li>Incluso aportes pequenos mensuales hacen una gran diferencia a largo plazo.</li>
             <li>La clave es la constancia y no retirar los intereses generados.</li>
+            <li>Empezar 10 anos antes puede duplicar o triplicar el capital final.</li>
         </ul>
+        <h3>Diferencia entre interes simple e interes compuesto</h3>
+        <p>El interes simple se calcula siempre sobre el capital original. El interes compuesto se calcula sobre el capital mas los intereses ya acumulados, generando un efecto de bola de nieve. Por eso es tan poderoso en el largo plazo.</p>
+        <h3>Cada cuanto se capitaliza?</h3>
+        <p>Depende del producto: puede ser diario, mensual, trimestral o anual. Cuanto mas frecuente la capitalizacion, mayor el rendimiento final. La mayoria de fondos de inversion y cuentas de ahorro en LATAM capitalizan mensualmente.</p>
     </article>
 
     <section class="relacionadas">
-        <p class="section-label">También te puede interesar</p>
+        <p class="section-label">Tambien te puede interesar</p>
         <div class="rel-grid">
             <a href="/calculadora-ahorro" class="rel-card">
                 <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V22H4a2 2 0 01-2-2V6a2 2 0 012-2h16v6"/><path d="M22 12h-4a2 2 0 000 4h4v-4z"/></svg></span>
-                <div class="rel-info"><strong>Calculadora de Ahorro</strong><span>Cuánto ahorrar cada mes</span></div>
+                <div class="rel-info"><strong>Calculadora de Ahorro</strong><span>Cuanto ahorrar cada mes</span></div>
                 <span class="rel-arrow">→</span>
             </a>
             <a href="/calculadora-jubilacion" class="rel-card">
                 <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 18a5 5 0 0 0-10 0"/><line x1="12" y1="9" x2="12" y2="2"/><line x1="4.22" y1="10.22" x2="5.64" y2="11.64"/><line x1="1" y1="18" x2="3" y2="18"/><line x1="21" y1="18" x2="23" y2="18"/><line x1="18.36" y1="11.64" x2="19.78" y2="10.22"/></svg></span>
-                <div class="rel-info"><strong>Calculadora de Jubilación</strong><span>Planifica tu retiro</span></div>
+                <div class="rel-info"><strong>Calculadora de Jubilacion</strong><span>Planifica tu retiro</span></div>
                 <span class="rel-arrow">→</span>
             </a>
             <a href="/calculadora-plazo-fijo" class="rel-card">
                 <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></span>
-                <div class="rel-info"><strong>Plazo Fijo</strong><span>Rendimiento de tu depósito</span></div>
+                <div class="rel-info"><strong>Plazo Fijo</strong><span>Rendimiento de tu deposito</span></div>
                 <span class="rel-arrow">→</span>
             </a>
         </div>
@@ -166,7 +171,7 @@ function calcularInteres() {
     const anos = parseInt(document.getElementById('anos').value) || 0;
 
     if (anos <= 0) {
-        alert('Por favor ingresa los años de inversión.');
+        alert('Por favor ingresa los anos de inversion.');
         return;
     }
 

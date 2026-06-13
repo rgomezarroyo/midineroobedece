@@ -1,8 +1,8 @@
 {% extends "base.html" %}
 
-{% block title %}Calculadora de Ahorro - Alcanza tu Meta Financiera | MiDineroObedece{% endblock %}
+{% block title %}Calculadora de Ahorro - Cuanto Ahorrar para tu Meta Financiera | MiDineroObedece{% endblock %}
 
-{% block meta_description %}Calcula cuánto necesitas ahorrar cada mes para alcanzar tu meta financiera. Gratis y sin registro.{% endblock %}
+{% block meta_description %}Calcula tu ahorro mensual ideal para cualquier meta financiera. Considera tu ahorro actual, plazo e interes. Herramienta gratis para America Latina, sin registro.{% endblock %}
 
 {% block json_ld %}
 <script type="application/ld+json">
@@ -10,7 +10,7 @@
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "Calculadora de Ahorro",
-  "description": "Calcula cuánto necesitas ahorrar cada mes para alcanzar tu meta financiera.",
+  "description": "Calcula cuanto necesitas ahorrar cada mes para alcanzar tu meta financiera.",
   "url": "https://midineroobedece.com/calculadora-ahorro",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Web",
@@ -25,23 +25,23 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "¿Cómo calcular cuánto ahorrar cada mes para una meta?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Para calcular el ahorro mensual necesario debes considerar tu meta, cuánto ya tienes ahorrado, la tasa de interés de tu cuenta o inversión y el plazo en meses. Con todos estos datos obtienes el monto exacto que debes depositar cada mes."}
+      "name": "Como calcular cuanto ahorrar cada mes para una meta?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Para calcular el ahorro mensual necesario debes considerar tu meta, cuanto ya tienes ahorrado, la tasa de interes de tu cuenta o inversion y el plazo en meses. Con todos estos datos obtienes el monto exacto que debes depositar cada mes."}
     },
     {
       "@type": "Question",
-      "name": "¿Qué pasa si ya tengo algo ahorrado?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Si ya tienes ahorros previos, esa cantidad genera intereses durante el plazo y reduce el aporte mensual necesario. Cuanto más tienes ahorrado de partida, menos necesitas aportar cada mes para llegar a tu meta."}
+      "name": "Que pasa si ya tengo algo ahorrado?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Si ya tienes ahorros previos, esa cantidad genera intereses durante el plazo y reduce el aporte mensual necesario. Cuanto mas tienes ahorrado de partida, menos necesitas aportar cada mes para llegar a tu meta."}
     },
     {
       "@type": "Question",
-      "name": "¿Cuál es la mejor forma de ahorrar dinero cada mes?",
-      "acceptedAnswer": {"@type": "Answer", "text": "La estrategia más efectiva es el ahorro automático: tan pronto recibes tu sueldo, transfiere un porcentaje fijo a una cuenta separada antes de gastar. Empieza con el 10% si no puedes más, y auméntalo gradualmente. Lo que no ves, no lo gastas."}
+      "name": "Cual es la mejor forma de ahorrar dinero cada mes?",
+      "acceptedAnswer": {"@type": "Answer", "text": "La estrategia mas efectiva es el ahorro automatico: tan pronto recibes tu sueldo, transfiere un porcentaje fijo a una cuenta separada antes de gastar. Empieza con el 10% si no puedes mas, y aumentalo gradualmente. Lo que no ves, no lo gastas."}
     },
     {
       "@type": "Question",
-      "name": "¿Dónde conviene guardar mis ahorros para que rindan más?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Para ahorros de corto plazo usa una cuenta de ahorros con la mejor tasa disponible. Para metas a mediano plazo considera un plazo fijo o CDT. Para metas a largo plazo como la jubilación, los fondos de inversión diversificados suelen ofrecer mejores rendimientos históricos."}
+      "name": "Donde conviene guardar mis ahorros para que rindan mas?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Para ahorros de corto plazo usa una cuenta de ahorros con la mejor tasa disponible. Para metas a mediano plazo considera un plazo fijo o CDT. Para metas a largo plazo como la jubilacion, los fondos de inversion diversificados suelen ofrecer mejores rendimientos historicos."}
     }
   ]
 }
@@ -62,7 +62,7 @@
 <section class="calculadora-page" data-recalc="calcularAhorro">
     <p class="breadcrumb"><a href="/">Inicio</a> › Calculadora de Ahorro</p>
     <h1>Calculadora de Ahorro</h1>
-    <p class="subtitulo">Descubre cuánto debes ahorrar cada mes para alcanzar tu meta.</p>
+    <p class="subtitulo">Descubre cuanto debes ahorrar cada mes para alcanzar tu meta.</p>
 
     <div class="calculadora-container">
         <div class="formulario">
@@ -83,7 +83,7 @@
                 </div>
             </div>
             <div class="campo">
-                <label for="tasa_ahorro">Tasa de interés anual</label>
+                <label for="tasa_ahorro">Tasa de interes anual</label>
                 <div class="input-wrap">
                     <input type="number" id="tasa_ahorro" class="with-suf" placeholder="5" min="0" step="0.1" value="0">
                     <span class="input-suf">% anual</span>
@@ -126,32 +126,37 @@
     {% include '_ad_unit.html' %}
 
     <article class="contenido-seo">
-        <h2>¿Cómo calcular cuánto ahorrar cada mes?</h2>
-        <p>Para alcanzar una meta de ahorro en un tiempo determinado, debes considerar cuánto ya tienes ahorrado, la tasa de interés que te ofrece tu cuenta o inversión, y el plazo en meses.</p>
-        <h3>Consejos para ahorrar más rápido</h3>
+        <h2>Como calcular cuanto ahorrar cada mes?</h2>
+        <p>Para alcanzar una meta de ahorro en un tiempo determinado, debes considerar cuanto ya tienes ahorrado, la tasa de interes que te ofrece tu cuenta o inversion, y el plazo en meses. La formula toma en cuenta el efecto del interes compuesto sobre tus depositos mensuales y tu ahorro inicial.</p>
+        <h3>Consejos para ahorrar mas rapido</h3>
         <ul>
-            <li>Automatiza tu ahorro: transfiere una parte de tu sueldo el mismo día que cobras.</li>
-            <li>Busca una cuenta de ahorro con la mejor tasa disponible en tu país.</li>
-            <li>Reduce un gasto no esencial y destínalo directamente a tu meta.</li>
+            <li>Automatiza tu ahorro: transfiere una parte de tu sueldo el mismo dia que cobras.</li>
+            <li>Busca una cuenta de ahorro con la mejor tasa disponible en tu pais.</li>
+            <li>Reduce un gasto no esencial y destinalo directamente a tu meta.</li>
+            <li>Aumenta el porcentaje de ahorro cada vez que suba tu ingreso.</li>
         </ul>
+        <h3>Donde guardar tus ahorros?</h3>
+        <p>Para metas de corto plazo (menos de 1 ano) usa una cuenta de ahorro liquida. Para metas a mediano plazo considera un plazo fijo o CDT. Para metas a largo plazo como la jubilacion, los fondos de inversion indexados suelen ofrecer mejores rendimientos historicos.</p>
+        <h3>Cuanto debo ahorrar de mi sueldo?</h3>
+        <p>El minimo recomendado es el 10% de tus ingresos netos. Si tienes deudas caras como tarjetas de credito, prioriza pagarlas antes — su costo supera cualquier rendimiento que obtendrias ahorrando.</p>
     </article>
 
     <section class="relacionadas">
-        <p class="section-label">También te puede interesar</p>
+        <p class="section-label">Tambien te puede interesar</p>
         <div class="rel-grid">
             <a href="/calculadora-interes-compuesto" class="rel-card">
                 <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span>
-                <div class="rel-info"><strong>Interés Compuesto</strong><span>Cómo crece tu dinero</span></div>
+                <div class="rel-info"><strong>Interes Compuesto</strong><span>Como crece tu dinero</span></div>
                 <span class="rel-arrow">→</span>
             </a>
             <a href="/calculadora-plazo-fijo" class="rel-card">
                 <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></span>
-                <div class="rel-info"><strong>Plazo Fijo</strong><span>Rendimiento de tu depósito</span></div>
+                <div class="rel-info"><strong>Plazo Fijo</strong><span>Rendimiento de tu deposito</span></div>
                 <span class="rel-arrow">→</span>
             </a>
             <a href="/calculadora-fondo-emergencia" class="rel-card">
                 <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
-                <div class="rel-info"><strong>Fondo de Emergencia</strong><span>Tu colchón financiero</span></div>
+                <div class="rel-info"><strong>Fondo de Emergencia</strong><span>Tu colchon financiero</span></div>
                 <span class="rel-arrow">→</span>
             </a>
         </div>

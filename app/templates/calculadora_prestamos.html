@@ -1,16 +1,16 @@
 {% extends "base.html" %}
 
-{% block title %}Calculadora de Préstamos - Cuota Mensual y Costo Total | MiDineroObedece{% endblock %}
+{% block title %}Calculadora de Prestamos - Cuota Mensual y Costo Total | MiDineroObedece{% endblock %}
 
-{% block meta_description %}Calcula la cuota mensual de tu préstamo, el total de intereses y el costo real de cualquier crédito bancario o personal. Gratis y sin registro.{% endblock %}
+{% block meta_description %}Calcula la cuota mensual de tu prestamo, el total de intereses y el costo real de cualquier credito bancario o personal en America Latina. Gratis y sin registro.{% endblock %}
 
 {% block json_ld %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Calculadora de Préstamos",
-  "description": "Calcula la cuota mensual, intereses totales y costo real de cualquier préstamo bancario o personal.",
+  "name": "Calculadora de Prestamos",
+  "description": "Calcula la cuota mensual, intereses totales y costo real de cualquier prestamo bancario o personal.",
   "url": "https://midineroobedece.com/calculadora-prestamos",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Web",
@@ -25,23 +25,23 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "¿Cómo funciona el cálculo de préstamos?",
-      "acceptedAnswer": {"@type": "Answer", "text": "La fórmula para calcular la cuota mensual de un préstamo con interés fijo usa el monto prestado, la tasa de interés mensual y el número de cuotas. Es el sistema más usado por bancos en América Latina."}
+      "name": "Como funciona el calculo de prestamos?",
+      "acceptedAnswer": {"@type": "Answer", "text": "La formula para calcular la cuota mensual de un prestamo con interes fijo usa el monto prestado, la tasa de interes mensual y el numero de cuotas. Es el sistema mas usado por bancos en America Latina."}
     },
     {
       "@type": "Question",
-      "name": "¿Qué es la tasa de interés anual de un préstamo?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Es el porcentaje que el banco o entidad financiera cobra por prestarte dinero durante un año. Para calcular la cuota mensual se divide entre 12 para obtener la tasa mensual equivalente."}
+      "name": "Que es la tasa de interes anual de un prestamo?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Es el porcentaje que el banco o entidad financiera cobra por prestarte dinero durante un ano. Para calcular la cuota mensual se divide entre 12 para obtener la tasa mensual equivalente."}
     },
     {
       "@type": "Question",
-      "name": "¿Cuánto préstamo puedo pedir según mi sueldo?",
-      "acceptedAnswer": {"@type": "Answer", "text": "La regla general es que la cuota mensual del préstamo no debe superar el 30% de tus ingresos netos. Si ganas $1,000 al mes, tu cuota máxima recomendable es $300. Comprometer más del 30% de tu sueldo en deuda puede afectar tu calidad de vida y dificultarte ahorrar."}
+      "name": "Cuanto prestamo puedo pedir segun mi sueldo?",
+      "acceptedAnswer": {"@type": "Answer", "text": "La regla general es que la cuota mensual del prestamo no debe superar el 30% de tus ingresos netos. Si ganas $1,000 al mes, tu cuota maxima recomendable es $300. Comprometer mas del 30% de tu sueldo en deuda puede afectar tu calidad de vida y dificultarte ahorrar."}
     },
     {
       "@type": "Question",
-      "name": "¿Cuál es la diferencia entre tasa nominal y tasa efectiva?",
-      "acceptedAnswer": {"@type": "Answer", "text": "La tasa nominal es el porcentaje que el banco anuncia, mientras que la tasa efectiva anual (TEA) incluye el efecto de la capitalización y refleja el costo real del crédito. Para comparar préstamos entre distintos bancos, siempre compara la TEA, no la tasa nominal."}
+      "name": "Cual es la diferencia entre tasa nominal y tasa efectiva?",
+      "acceptedAnswer": {"@type": "Answer", "text": "La tasa nominal es el porcentaje que el banco anuncia, mientras que la tasa efectiva anual (TEA) incluye el efecto de la capitalizacion y refleja el costo real del credito. Para comparar prestamos entre distintos bancos, siempre compara la TEA, no la tasa nominal."}
     }
   ]
 }
@@ -52,7 +52,7 @@
   "@type": "BreadcrumbList",
   "itemListElement": [
     {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://midineroobedece.com/"},
-    {"@type": "ListItem", "position": 2, "name": "Calculadora de Préstamos", "item": "https://midineroobedece.com/calculadora-prestamos"}
+    {"@type": "ListItem", "position": 2, "name": "Calculadora de Prestamos", "item": "https://midineroobedece.com/calculadora-prestamos"}
   ]
 }
 </script>
@@ -60,23 +60,23 @@
 
 {% block content %}
 <section class="calculadora-page" data-recalc="calcularPrestamo">
-    <p class="breadcrumb"><a href="/">Inicio</a> › Calculadora de Préstamos</p>
-    <h1>Calculadora de Préstamos</h1>
-    <p class="subtitulo">Conoce tu cuota mensual y el costo total de tu crédito antes de firmarlo.</p>
+    <p class="breadcrumb"><a href="/">Inicio</a> › Calculadora de Prestamos</p>
+    <h1>Calculadora de Prestamos</h1>
+    <p class="subtitulo">Conoce tu cuota mensual y el costo total de tu credito antes de firmarlo.</p>
 
     <div class="calculadora-container">
         <div class="formulario">
-            <p class="formulario-header">Datos del préstamo</p>
+            <p class="formulario-header">Datos del prestamo</p>
 
             <div class="campo">
-                <label for="monto">Monto del préstamo</label>
+                <label for="monto">Monto del prestamo</label>
                 <div class="input-wrap">
                     <span class="input-pre cur-sym">$</span>
                     <input type="number" id="monto" class="with-pre" placeholder="5,000" min="0">
                 </div>
             </div>
             <div class="campo">
-                <label for="tasa">Tasa de interés anual</label>
+                <label for="tasa">Tasa de interes anual</label>
                 <div class="input-wrap">
                     <input type="number" id="tasa" class="with-suf" placeholder="12" min="0" step="0.1">
                     <span class="input-suf">% anual</span>
@@ -119,24 +119,27 @@
     {% include '_ad_unit.html' %}
 
     <article class="contenido-seo">
-        <h2>¿Cómo funciona el cálculo de préstamos?</h2>
-        <p>La fórmula para calcular la cuota mensual de un préstamo con interés fijo (sistema francés) es la más usada por bancos en América Latina. Toma en cuenta el monto prestado, la tasa de interés mensual y el número de cuotas.</p>
-        <h3>¿Qué es la tasa de interés anual?</h3>
-        <p>Es el porcentaje que el banco o entidad financiera cobra por prestarte dinero durante un año. Para calcular la cuota mensual, se divide entre 12 para obtener la tasa mensual.</p>
-        <h3>Consejos antes de tomar un préstamo</h3>
+        <h2>Como funciona el calculo de prestamos?</h2>
+        <p>La formula para calcular la cuota mensual de un prestamo con interes fijo (sistema frances) es la mas usada por bancos en America Latina. Toma en cuenta el monto prestado, la tasa de interes mensual y el numero de cuotas. El resultado es una cuota fija que combina amortizacion del capital e intereses en cada pago.</p>
+        <h3>Que es la tasa de interes anual?</h3>
+        <p>Es el porcentaje que el banco o entidad financiera cobra por prestarte dinero durante un ano. Para calcular la cuota mensual, se divide entre 12 para obtener la tasa mensual. Siempre compara la TEA (tasa efectiva anual) entre distintos bancos para saber el costo real del credito.</p>
+        <h3>Consejos antes de tomar un prestamo</h3>
         <ul>
-            <li>Compara la tasa entre al menos 3 entidades financieras.</li>
-            <li>Revisa si existen comisiones adicionales no incluidas en la tasa.</li>
-            <li>Asegúrate de que la cuota no supere el 30% de tus ingresos mensuales.</li>
+            <li>Compara la tasa entre al menos 3 entidades financieras antes de firmar.</li>
+            <li>Revisa si existen comisiones adicionales no incluidas en la tasa anunciada.</li>
+            <li>Asegurate de que la cuota no supere el 30% de tus ingresos mensuales netos.</li>
+            <li>Evalua el plazo: cuotas mas bajas significan mas interes total pagado.</li>
         </ul>
+        <h3>Cuanto prestamo puedo pagar segun mi sueldo?</h3>
+        <p>La regla del 30% dice que la cuota mensual no debe superar el 30% de tus ingresos netos. Si ganas $800 al mes, tu cuota maxima recomendable es $240. Comprometer mas genera estres financiero y dificulta el ahorro.</p>
     </article>
 
     <section class="relacionadas">
-        <p class="section-label">También te puede interesar</p>
+        <p class="section-label">Tambien te puede interesar</p>
         <div class="rel-grid">
             <a href="/calculadora-tarjeta-credito" class="rel-card">
                 <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></span>
-                <div class="rel-info"><strong>Tarjeta de Crédito</strong><span>Cuánto te cuesta tu deuda</span></div>
+                <div class="rel-info"><strong>Tarjeta de Credito</strong><span>Cuanto te cuesta tu deuda</span></div>
                 <span class="rel-arrow">→</span>
             </a>
             <a href="/calculadora-presupuesto" class="rel-card">
@@ -146,7 +149,7 @@
             </a>
             <a href="/calculadora-fondo-emergencia" class="rel-card">
                 <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
-                <div class="rel-info"><strong>Fondo de Emergencia</strong><span>Tu colchón financiero</span></div>
+                <div class="rel-info"><strong>Fondo de Emergencia</strong><span>Tu colchon financiero</span></div>
                 <span class="rel-arrow">→</span>
             </a>
         </div>

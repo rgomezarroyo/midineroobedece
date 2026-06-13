@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}Blog de Finanzas Personales para America Latina | MiDineroObedece{% endblock %}
+
+{% block meta_description %}Guias y consejos de finanzas personales para America Latina. Aprende a calcular prestamos, ahorrar mas, salir de deudas y planificar tu retiro. Todo gratis.{% endblock %}
+
+{% block json_ld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Blog",
+  "name": "Blog MiDineroObedece",
+  "description": "Guias practicas de finanzas personales para America Latina",
+  "url": "https://midineroobedece.com/blog",
+  "inLanguage": "es",
+  "publisher": {"@type": "Organization", "name": "MiDineroObedece", "url": "https://midineroobedece.com"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://midineroobedece.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://midineroobedece.com/blog"}
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<section class="calculadora-page">
+    <p class="breadcrumb"><a href="/">Inicio</a> › Blog</p>
+    <h1>Blog de Finanzas Personales</h1>
+    <p class="subtitulo blog-intro">Guias practicas para tomar el control de tu dinero. Sin jerga financiera, con ejemplos reales para America Latina.</p>
+
+    <div class="blog-grid">
+
+        <a href="/blog/como-calcular-cuota-prestamo-personal" class="blog-card">
+            <span class="blog-card-cat">Credito</span>
+            <h2>Como calcular la cuota mensual de un prestamo personal</h2>
+            <p>Entiende la formula PMT, ve ejemplos reales con tasas de LATAM y descubre por que el plazo puede costarte el doble de intereses.</p>
+            <span class="blog-card-link">Leer guia →</span>
+        </a>
+
+        <a href="/blog/cuanto-debo-ahorrar-al-mes" class="blog-card">
+            <span class="blog-card-cat">Ahorro</span>
+            <h2>Cuanto debo ahorrar al mes segun mi sueldo?</h2>
+            <p>La regla del 20%, la piramide de prioridades y cuanto ahorrar segun tu nivel de ingreso. Aplica igual si ganas $400 o $2,000 al mes.</p>
+            <span class="blog-card-link">Leer guia →</span>
+        </a>
+
+        <a href="/blog/que-es-el-interes-compuesto" class="blog-card">
+            <span class="blog-card-cat">Inversion</span>
+            <h2>Que es el interes compuesto y como usarlo a tu favor</h2>
+            <p>La diferencia entre quien acumula riqueza y quien no, muchas veces, es entender esto. Con numeros concretos y ejemplos para LATAM.</p>
+            <span class="blog-card-link">Leer guia →</span>
+        </a>
+
+        <a href="/blog/como-salir-deuda-tarjeta-credito" class="blog-card">
+            <span class="blog-card-cat">Deudas</span>
+            <h2>Como salir de la deuda de tarjeta de credito paso a paso</h2>
+            <p>Pagar solo el minimo es la decision mas costosa que puedes tomar. Te mostramos los dos metodos mas efectivos con numeros reales.</p>
+            <span class="blog-card-link">Leer guia →</span>
+        </a>
+
+        <a href="/blog/como-hacer-presupuesto-personal" class="blog-card">
+            <span class="blog-card-cat">Presupuesto</span>
+            <h2>Como hacer un presupuesto personal paso a paso</h2>
+            <p>Un presupuesto no es una prision. Es el mapa que te dice donde va tu dinero. La guia completa con la regla 50/30/20 para LATAM.</p>
+            <span class="blog-card-link">Leer guia →</span>
+        </a>
+
+    </div>
+</section>
+{% endblock %}

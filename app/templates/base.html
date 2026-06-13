@@ -29,6 +29,19 @@
     <meta name="twitter:image" content="https://midineroobedece.com/static/img/og-default.png">
     <meta name="twitter:image:alt" content="MiDineroObedece - Herramientas Financieras Gratis para America Latina">
 
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "MiDineroObedece",
+      "url": "https://midineroobedece.com",
+      "logo": "https://midineroobedece.com/static/img/og-default.png",
+      "description": "Calculadoras financieras gratuitas para America Latina",
+      "inLanguage": "es",
+      "areaServed": "LATAM",
+      "audience": {"@type": "Audience", "audienceType": "Latinoamerica"}
+    }
+    </script>
     {% block json_ld %}
     <script type="application/ld+json">
     {
@@ -36,8 +49,13 @@
       "@type": "WebSite",
       "name": "MiDineroObedece",
       "url": "https://midineroobedece.com",
-      "description": "Herramientas financieras gratuitas para America Latina",
-      "inLanguage": "es"
+      "description": "Calculadoras financieras gratuitas para America Latina",
+      "inLanguage": "es",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://midineroobedece.com/#calculadoras",
+        "query-input": "required name=search_term_string"
+      }
     }
     </script>
     {% endblock %}
@@ -178,6 +196,9 @@
                     </a>
                 </div>
             </li>
+
+            <!-- BLOG -->
+            <li><a href="/blog" class="nav-link">Blog</a></li>
 
             <!-- UTILIDADES -->
             <li class="has-dropdown">

@@ -2,7 +2,7 @@
 
 {% block title %}Calculadora de Presupuesto Personal - Organiza tus Finanzas | MiDineroObedece{% endblock %}
 
-{% block meta_description %}Organiza tus ingresos y gastos mensuales. Descubre cuánto te sobra o te falta cada mes. Gratis y sin registro.{% endblock %}
+{% block meta_description %}Organiza tu presupuesto personal con la regla 50/30/20. Calcula cuanto te sobra o falta cada mes e identifica donde reducir gastos. Gratis para America Latina.{% endblock %}
 
 {% block json_ld %}
 <script type="application/ld+json">
@@ -10,7 +10,7 @@
   "@context": "https://schema.org",
   "@type": "WebApplication",
   "name": "Calculadora de Presupuesto Personal",
-  "description": "Organiza tus ingresos y gastos mensuales. Descubre cuánto te sobra o te falta cada mes.",
+  "description": "Organiza tus ingresos y gastos mensuales. Descubre cuanto te sobra o te falta cada mes.",
   "url": "https://midineroobedece.com/calculadora-presupuesto",
   "applicationCategory": "FinanceApplication",
   "operatingSystem": "Web",
@@ -25,23 +25,23 @@
   "mainEntity": [
     {
       "@type": "Question",
-      "name": "¿Por qué hacer un presupuesto personal?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Un presupuesto personal te permite ver con claridad cuánto ganas, cuánto gastas y cuánto puedes ahorrar. Es el primer paso para tomar el control de tus finanzas personales y dejar de preguntarte a dónde se fue el dinero."}
+      "name": "Por que hacer un presupuesto personal?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Un presupuesto personal te permite ver con claridad cuanto ganas, cuanto gastas y cuanto puedes ahorrar. Es el primer paso para tomar el control de tus finanzas personales y dejar de preguntarte a donde se fue el dinero."}
     },
     {
       "@type": "Question",
-      "name": "¿Qué es la regla del 50/30/20?",
-      "acceptedAnswer": {"@type": "Answer", "text": "La regla 50/30/20 propone destinar el 50% de tus ingresos a necesidades básicas (vivienda, comida, transporte), el 30% a gastos personales y ocio, y el 20% restante al ahorro e inversión. Es una guía simple para organizar tus finanzas."}
+      "name": "Que es la regla del 50/30/20?",
+      "acceptedAnswer": {"@type": "Answer", "text": "La regla 50/30/20 propone destinar el 50% de tus ingresos a necesidades basicas (vivienda, comida, transporte), el 30% a gastos personales y ocio, y el 20% restante al ahorro e inversion. Es una guia simple para organizar tus finanzas."}
     },
     {
       "@type": "Question",
-      "name": "¿Cómo hacer un presupuesto personal paso a paso?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Primero anota todos tus ingresos mensuales. Luego lista todos tus gastos fijos (arriendo, servicios, créditos) y variables (comida, transporte, ocio). Resta gastos a ingresos. Si el resultado es negativo, identifica qué gastos variables puedes reducir. Asigna al menos un 10% al ahorro antes de distribuir el resto."}
+      "name": "Como hacer un presupuesto personal paso a paso?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Primero anota todos tus ingresos mensuales. Luego lista todos tus gastos fijos (arriendo, servicios, creditos) y variables (comida, transporte, ocio). Resta gastos a ingresos. Si el resultado es negativo, identifica que gastos variables puedes reducir. Asigna al menos un 10% al ahorro antes de distribuir el resto."}
     },
     {
       "@type": "Question",
-      "name": "¿Cuánto debo destinar al ahorro cada mes?",
-      "acceptedAnswer": {"@type": "Answer", "text": "El mínimo recomendado es el 10% de tus ingresos netos. Lo ideal es el 20% si tu situación lo permite. Si tienes deudas de alto interés como tarjetas de crédito, prioriza pagarlas antes de ahorrar, ya que su costo suele superar cualquier rendimiento que obtendrías ahorrando."}
+      "name": "Cuanto debo destinar al ahorro cada mes?",
+      "acceptedAnswer": {"@type": "Answer", "text": "El minimo recomendado es el 10% de tus ingresos netos. Lo ideal es el 20% si tu situacion lo permite. Si tienes deudas de alto interes como tarjetas de credito, prioriza pagarlas antes de ahorrar, ya que su costo suele superar cualquier rendimiento que obtendrias ahorrando."}
     }
   ]
 }
@@ -62,7 +62,7 @@
 <section class="calculadora-page" data-recalc="calcularPresupuesto">
     <p class="breadcrumb"><a href="/">Inicio</a> › Presupuesto Personal</p>
     <h1>Calculadora de Presupuesto Personal</h1>
-    <p class="subtitulo">Organiza tus ingresos y gastos. Descubre a dónde va tu dinero cada mes.</p>
+    <p class="subtitulo">Organiza tus ingresos y gastos. Descubre a donde va tu dinero cada mes.</p>
 
     <div class="calculadora-container">
         <div class="formulario">
@@ -93,7 +93,7 @@
                 </div>
             </div>
             <div class="campo">
-                <label for="alimentacion">Alimentación</label>
+                <label for="alimentacion">Alimentacion</label>
                 <div class="input-wrap">
                     <span class="input-pre cur-sym">$</span>
                     <input type="number" id="alimentacion" class="with-pre" placeholder="200" min="0" value="0">
@@ -107,7 +107,7 @@
                 </div>
             </div>
             <div class="campo">
-                <label for="servicios">Servicios básicos</label>
+                <label for="servicios">Servicios basicos</label>
                 <div class="input-wrap">
                     <span class="input-pre cur-sym">$</span>
                     <input type="number" id="servicios" class="with-pre" placeholder="80" min="0" value="0">
@@ -151,18 +151,22 @@
     {% include '_ad_unit.html' %}
 
     <article class="contenido-seo">
-        <h2>¿Por qué hacer un presupuesto personal?</h2>
-        <p>Un presupuesto personal te permite ver con claridad cuánto ganas, cuánto gastas y cuánto puedes ahorrar. Es el primer paso para tomar el control de tus finanzas personales.</p>
+        <h2>Por que hacer un presupuesto personal?</h2>
+        <p>Un presupuesto personal te permite ver con claridad cuanto ganas, cuanto gastas y cuanto puedes ahorrar. Es el primer paso para tomar el control de tus finanzas personales y dejar de preguntarte a donde se fue el dinero.</p>
         <h3>Regla del 50/30/20</h3>
         <ul>
-            <li><strong>50%</strong> de tus ingresos para necesidades básicas (vivienda, comida, transporte).</li>
+            <li><strong>50%</strong> de tus ingresos para necesidades basicas (vivienda, comida, transporte).</li>
             <li><strong>30%</strong> para gastos personales y ocio.</li>
-            <li><strong>20%</strong> para ahorro e inversión.</li>
+            <li><strong>20%</strong> para ahorro e inversion.</li>
         </ul>
+        <h3>Como hacer un presupuesto personal paso a paso</h3>
+        <p>1. Anota todos tus ingresos mensuales (sueldo, freelance, rentas). 2. Lista tus gastos fijos (arriendo, servicios, creditos). 3. Lista tus gastos variables (comida, transporte, ocio). 4. Resta gastos a ingresos. 5. Asigna al menos el 10% al ahorro antes de gastar el resto.</p>
+        <h3>Cuanto debo ahorrar de mi sueldo?</h3>
+        <p>El minimo recomendado es el 10% de tus ingresos netos. Lo ideal es el 20%. Si tienes deudas de alto interes como tarjetas de credito, prioriza pagarlas primero - su costo supera cualquier rendimiento de ahorro.</p>
     </article>
 
     <section class="relacionadas">
-        <p class="section-label">También te puede interesar</p>
+        <p class="section-label">Tambien te puede interesar</p>
         <div class="rel-grid">
             <a href="/calculadora-ahorro" class="rel-card">
                 <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V22H4a2 2 0 01-2-2V6a2 2 0 012-2h16v6"/><path d="M22 12h-4a2 2 0 000 4h4v-4z"/></svg></span>
@@ -171,12 +175,12 @@
             </a>
             <a href="/calculadora-fondo-emergencia" class="rel-card">
                 <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
-                <div class="rel-info"><strong>Fondo de Emergencia</strong><span>Tu colchón financiero</span></div>
+                <div class="rel-info"><strong>Fondo de Emergencia</strong><span>Tu colchon financiero</span></div>
                 <span class="rel-arrow">→</span>
             </a>
             <a href="/calculadora-prestamos" class="rel-card">
                 <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
-                <div class="rel-info"><strong>Calculadora de Préstamos</strong><span>Cuota y costo real</span></div>
+                <div class="rel-info"><strong>Calculadora de Prestamos</strong><span>Cuota y costo real</span></div>
                 <span class="rel-arrow">→</span>
             </a>
         </div>
@@ -207,12 +211,12 @@ document.getElementById('total-ingresos').textContent = fmt(totalIngresos);
     item.className = 'resultado-item highlight';
     if (diferencia > 0) {
         item.classList.add('positivo');
-        mensaje.textContent = '¡Excelente! Te sobran ' + fmt(diferencia) + ' al mes. ¡Ahórralos o inviértelos!';
+        mensaje.textContent = 'Excelente! Te sobran ' + fmt(diferencia) + ' al mes. Ahorralos o inviertelos!';
     } else if (diferencia === 0) {
-        mensaje.textContent = 'Estás justo equilibrado. Intenta reducir algún gasto para poder ahorrar.';
+        mensaje.textContent = 'Estas justo equilibrado. Intenta reducir algun gasto para poder ahorrar.';
     } else {
         item.classList.add('negativo');
-        mensaje.textContent = '⚠️ Gastas ' + fmt(Math.abs(diferencia)) + ' más de lo que ganas. Revisa tus gastos.';
+        mensaje.textContent = '⚠️ Gastas ' + fmt(Math.abs(diferencia)) + ' mas de lo que ganas. Revisa tus gastos.';
     }
 
     document.getElementById('resultados-espera-presupuesto').style.display = 'none';
