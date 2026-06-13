@@ -237,16 +237,48 @@
         </ul>
 
         <div class="nav-actions">
-            <select id="currency-sel" class="currency-sel" onchange="changeCurrency(this.value)" title="Seleccionar moneda">
-                <option value="USD">USD $</option>
-                <option value="MXN">MXN $</option>
-                <option value="COP">COP $</option>
-                <option value="PEN">PEN S/</option>
-                <option value="ARS">ARS $</option>
-                <option value="CLP">CLP $</option>
-                <option value="BRL">BRL R$</option>
-                <option value="BOB">BOB Bs.</option>
-            </select>
+            <div class="currency-picker" id="currency-picker">
+                <span class="cp-label">Tu pais</span>
+                <button class="currency-trigger" id="currency-trigger" onclick="toggleCurrencyPicker(event)" aria-label="Seleccionar moneda">
+                    <span class="cp-flag-sel" id="cp-flag-sel">🇪🇨</span>
+                    <span class="cp-code-sel" id="cp-code-sel">USD</span>
+                    <svg class="cp-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </button>
+                <div class="cp-dropdown" id="cp-dropdown" onclick="event.stopPropagation()">
+                    <div class="cp-option active" data-code="USD" onclick="selectCurrency('USD')">
+                        <span class="cp-flag">🇪🇨</span>
+                        <div class="cp-info"><strong>Ecuador</strong><span>USD $</span></div>
+                    </div>
+                    <div class="cp-option" data-code="MXN" onclick="selectCurrency('MXN')">
+                        <span class="cp-flag">🇲🇽</span>
+                        <div class="cp-info"><strong>Mexico</strong><span>MXN $</span></div>
+                    </div>
+                    <div class="cp-option" data-code="COP" onclick="selectCurrency('COP')">
+                        <span class="cp-flag">🇨🇴</span>
+                        <div class="cp-info"><strong>Colombia</strong><span>COP $</span></div>
+                    </div>
+                    <div class="cp-option" data-code="PEN" onclick="selectCurrency('PEN')">
+                        <span class="cp-flag">🇵🇪</span>
+                        <div class="cp-info"><strong>Peru</strong><span>PEN S/</span></div>
+                    </div>
+                    <div class="cp-option" data-code="ARS" onclick="selectCurrency('ARS')">
+                        <span class="cp-flag">🇦🇷</span>
+                        <div class="cp-info"><strong>Argentina</strong><span>ARS $</span></div>
+                    </div>
+                    <div class="cp-option" data-code="CLP" onclick="selectCurrency('CLP')">
+                        <span class="cp-flag">🇨🇱</span>
+                        <div class="cp-info"><strong>Chile</strong><span>CLP $</span></div>
+                    </div>
+                    <div class="cp-option" data-code="BRL" onclick="selectCurrency('BRL')">
+                        <span class="cp-flag">🇧🇷</span>
+                        <div class="cp-info"><strong>Brasil</strong><span>BRL R$</span></div>
+                    </div>
+                    <div class="cp-option" data-code="BOB" onclick="selectCurrency('BOB')">
+                        <span class="cp-flag">🇧🇴</span>
+                        <div class="cp-info"><strong>Bolivia</strong><span>BOB Bs.</span></div>
+                    </div>
+                </div>
+            </div>
             <button class="nav-toggle" id="nav-toggle" onclick="toggleNav()" aria-label="Menu">
                 <span></span><span></span><span></span>
             </button>

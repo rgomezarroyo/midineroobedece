@@ -34,12 +34,65 @@ function changeCurrency(code) {
   }
 }
 
+// ── CURRENCY PICKER ──
+var CP_FLAGS = {
+  USD: ['🇪🇨', 'Ecuador'],
+  MXN: ['🇲🇽', 'Mexico'],
+  COP: ['🇨🇴', 'Colombia'],
+  PEN: ['🇵🇪', 'Peru'],
+  ARS: ['🇦🇷', 'Argentina'],
+  CLP: ['🇨🇱', 'Chile'],
+  BRL: ['🇧🇷', 'Brasil'],
+  BOB: ['🇧🇴', 'Bolivia'],
+};
+
+function toggleCurrencyPicker(e) {
+  e.stopPropagation();
+  var dd = document.getElementById('cp-dropdown');
+  var btn = document.getElementById('currency-trigger');
+  var isOpen = dd.classList.contains('open');
+  dd.classList.toggle('open', !isOpen);
+  btn.classList.toggle('open', !isOpen);
+}
+
+function selectCurrency(code) {
+  var data = CP_FLAGS[code];
+  if (!data) return;
+  var flagEl = document.getElementById('cp-flag-sel');
+  var codeEl = document.getElementById('cp-code-sel');
+  if (flagEl) { flagEl.textContent = data[0]; flagEl.classList.remove('flag-pick'); void flagEl.offsetWidth; flagEl.classList.add('flag-pick'); }
+  if (codeEl) codeEl.textContent = code;
+  document.querySelectorAll('.cp-option').forEach(function(el) {
+    el.classList.toggle('active', el.dataset.code === code);
+  });
+  var dd = document.getElementById('cp-dropdown');
+  var btn = document.getElementById('currency-trigger');
+  if (dd) dd.classList.remove('open');
+  if (btn) btn.classList.remove('open');
+  changeCurrency(code);
+}
+
+document.addEventListener('click', function() {
+  var dd = document.getElementById('cp-dropdown');
+  var btn = document.getElementById('currency-trigger');
+  if (dd) dd.classList.remove('open');
+  if (btn) btn.classList.remove('open');
+});
+
 document.addEventListener('DOMContentLoaded', function () {
-  const saved = localStorage.getItem('mdo_cur') || 'USD';
-  const sel = document.getElementById('currency-sel');
-  if (sel) sel.value = saved;
-  const sym = MDO_CURRENCIES[saved].symbol;
-  document.querySelectorAll('.cur-sym').forEach(el => el.textContent = sym);
+  var saved = localStorage.getItem('mdo_cur') || 'USD';
+  var data = CP_FLAGS[saved];
+  if (data) {
+    var flagEl = document.getElementById('cp-flag-sel');
+    var codeEl = document.getElementById('cp-code-sel');
+    if (flagEl) flagEl.textContent = data[0];
+    if (codeEl) codeEl.textContent = saved;
+    document.querySelectorAll('.cp-option').forEach(function(el) {
+      el.classList.toggle('active', el.dataset.code === saved);
+    });
+  }
+  var sym = MDO_CURRENCIES[saved].symbol;
+  document.querySelectorAll('.cur-sym').forEach(function(el) { el.textContent = sym; });
 });
 
 // ── SHARE WHATSAPP ──

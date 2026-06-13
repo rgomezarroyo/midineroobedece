@@ -207,28 +207,162 @@ header {
     margin-left: auto;
 }
 
-.currency-sel {
-    background: rgba(255,255,255,0.07);
-    border: 1px solid rgba(255,255,255,0.1);
-    color: #94a3b8;
-    border-radius: 8px;
-    padding: 0.38rem 0.6rem;
-    font-size: 0.8rem;
-    font-weight: 600;
-    font-family: 'Inter', sans-serif;
-    cursor: pointer;
-    outline: none;
+/* ── CURRENCY PICKER ── */
+.currency-picker {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
     flex-shrink: 0;
-    transition: all 0.15s;
 }
 
-.currency-sel:hover, .currency-sel:focus {
+.cp-label {
+    font-size: 0.63rem;
+    font-weight: 700;
+    color: #64748b;
+    white-space: nowrap;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+}
+
+.currency-trigger {
+    display: flex;
+    align-items: center;
+    gap: 0.38rem;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding: 0.36rem 0.62rem;
+    cursor: pointer;
+    color: #e2e8f0;
+    font-family: 'Inter', sans-serif;
+    transition: background 0.15s, border-color 0.15s, box-shadow 0.15s;
+    outline: none;
+    flex-shrink: 0;
+}
+
+.currency-trigger:hover {
     background: rgba(255,255,255,0.12);
-    color: #fff;
     border-color: rgba(255,255,255,0.2);
 }
 
-.currency-sel option { background: #08091a; color: #fff; }
+.currency-trigger.open {
+    background: rgba(255,255,255,0.1);
+    border-color: rgba(91,79,255,0.45);
+    box-shadow: 0 0 0 3px rgba(91,79,255,0.15);
+}
+
+.cp-flag-sel {
+    font-size: 1.1rem;
+    line-height: 1;
+    display: inline-block;
+}
+
+.cp-flag-sel.flag-pick {
+    animation: flagPick 0.38s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+.cp-code-sel {
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: #e2e8f0;
+}
+
+.cp-chevron {
+    width: 11px;
+    height: 11px;
+    color: #64748b;
+    transition: transform 0.2s cubic-bezier(0.4,0,0.2,1);
+    flex-shrink: 0;
+}
+
+.currency-trigger.open .cp-chevron { transform: rotate(180deg); }
+
+.cp-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.22), 0 4px 16px rgba(0,0,0,0.08);
+    padding: 0.38rem;
+    min-width: 192px;
+    border: 1px solid rgba(0,0,0,0.06);
+    z-index: 500;
+}
+
+.cp-dropdown.open {
+    display: block;
+    animation: cpDropIn 0.18s cubic-bezier(0.16,1,0.3,1) both;
+}
+
+.cp-option {
+    display: flex;
+    align-items: center;
+    gap: 0.62rem;
+    padding: 0.5rem 0.72rem;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.1s;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.cp-option:hover { background: #f1f5f9; }
+
+.cp-option:hover .cp-flag {
+    animation: flagBounce 0.45s cubic-bezier(0.34,1.56,0.64,1);
+}
+
+.cp-option.active { background: #ede9fe; }
+.cp-option.active .cp-info strong { color: #5b4fff; }
+
+.cp-flag {
+    font-size: 1.45rem;
+    line-height: 1;
+    display: inline-block;
+    width: 1.65rem;
+    text-align: center;
+}
+
+.cp-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.04rem;
+}
+
+.cp-info strong {
+    font-size: 0.8rem;
+    color: #1e293b;
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+.cp-info span {
+    font-size: 0.68rem;
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+@keyframes cpDropIn {
+    from { opacity: 0; transform: translateY(-8px) scale(0.96); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes flagBounce {
+    0%   { transform: scale(1) rotate(0deg); }
+    30%  { transform: scale(1.35) rotate(-10deg); }
+    60%  { transform: scale(1.12) rotate(6deg); }
+    80%  { transform: scale(1.04) rotate(-2deg); }
+    100% { transform: scale(1) rotate(0deg); }
+}
+
+@keyframes flagPick {
+    0%   { transform: scale(1); }
+    45%  { transform: scale(1.45); }
+    72%  { transform: scale(0.88); }
+    100% { transform: scale(1); }
+}
 
 .nav-toggle {
     display: none;
@@ -1639,6 +1773,8 @@ footer { background: var(--footer-bg); margin-top: 4rem; }
 @media (max-width: 900px) {
     .nav-links { display: none; }
     .nav-toggle { display: flex; }
+    .cp-label { display: none; }
+    .cp-dropdown { right: auto; left: 0; }
 
     .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
     .footer-brand { grid-column: 1 / -1; }
