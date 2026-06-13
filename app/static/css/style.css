@@ -525,6 +525,18 @@ main {
     50%       { filter: brightness(1.18) drop-shadow(0 4px 32px rgba(167,139,250,0.45)); }
 }
 
+/* En desktop (hero split 2 columnas): bandera detras del texto, mas grande */
+@media (min-width: 1025px) {
+    .hero-flag-wm {
+        left: 28%;
+        font-size: min(52rem, 46vw);
+        opacity: 0.13;
+    }
+    .hero-tu {
+        font-size: clamp(8rem, 10vw, 12rem);
+    }
+}
+
 .hero-sub {
     font-size: 1.05rem;
     color: #94a3b8;
