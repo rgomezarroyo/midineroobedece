@@ -1,0 +1,561 @@
+{% extends "base.html" %}
+
+{% block title %}Calculadora de Pago de Deudas - Bola de Nieve y Avalancha | MiDineroObedece{% endblock %}
+
+{% block meta_description %}Compara el metodo bola de nieve vs avalancha para salir de deudas. Ingresa tus deudas y descubre en cuantos meses las pagas y cuanto ahorras en intereses. Gratis.{% endblock %}
+
+{% block json_ld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculadora de Pago de Deudas",
+  "description": "Compara el metodo bola de nieve vs avalancha para salir de deudas mas rapido y pagar menos intereses.",
+  "url": "https://midineroobedece.com/calculadora-deudas",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "es",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Que es el metodo bola de nieve para pagar deudas?",
+      "acceptedAnswer": {"@type": "Answer", "text": "El metodo bola de nieve consiste en ordenar tus deudas de menor a mayor saldo y atacar primero la mas pequena mientras pagas el minimo en las demas. Al eliminarla, ese dinero se suma al pago de la siguiente. Es psicologicamente motivador porque ves victorias rapidas."}
+    },
+    {
+      "@type": "Question",
+      "name": "Que es el metodo avalancha para pagar deudas?",
+      "acceptedAnswer": {"@type": "Answer", "text": "El metodo avalancha ordena las deudas de mayor a menor tasa de interes y ataca primero la mas cara mientras paga el minimo en las demas. Es matematicamente superior porque minimiza el total de intereses pagados."}
+    },
+    {
+      "@type": "Question",
+      "name": "Cual metodo para pagar deudas es mejor?",
+      "acceptedAnswer": {"@type": "Answer", "text": "El metodo avalancha ahorra mas dinero en intereses. El metodo bola de nieve es mejor si necesitas motivacion para no abandonar. El mejor metodo es el que vas a seguir consistentemente."}
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://midineroobedece.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Calculadora de Deudas", "item": "https://midineroobedece.com/calculadora-deudas"}
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<section class="calculadora-page">
+    <p class="breadcrumb"><a href="/">Inicio</a> › Calculadora de Deudas</p>
+    <h1>Calculadora de Pago de Deudas</h1>
+    <p class="subtitulo">Compara el metodo bola de nieve vs avalancha y descubre cual te libera antes de tus deudas.</p>
+
+    <div class="calculadora-container calculadora-deudas-wrap">
+        <div class="formulario">
+            <p class="formulario-header">Tus deudas</p>
+
+            <div id="deudas-lista">
+                <div class="deuda-row" id="deuda-row-0">
+                    <div class="deuda-row-header">
+                        <span class="deuda-num">Deuda 1</span>
+                    </div>
+                    <div class="deuda-campos">
+                        <div class="campo campo-sm">
+                            <label>Nombre</label>
+                            <input type="text" id="d0-nombre" placeholder="Ej: Tarjeta Visa" maxlength="30">
+                        </div>
+                        <div class="campo campo-sm">
+                            <label>Saldo</label>
+                            <div class="input-wrap">
+                                <span class="input-pre cur-sym">$</span>
+                                <input type="number" id="d0-saldo" class="with-pre" placeholder="2,000" min="0">
+                            </div>
+                        </div>
+                        <div class="campo campo-sm">
+                            <label>Tasa anual</label>
+                            <div class="input-wrap">
+                                <input type="number" id="d0-tasa" class="with-suf" placeholder="36" min="0" step="0.1">
+                                <span class="input-suf">%</span>
+                            </div>
+                        </div>
+                        <div class="campo campo-sm">
+                            <label>Pago minimo</label>
+                            <div class="input-wrap">
+                                <span class="input-pre cur-sym">$</span>
+                                <input type="number" id="d0-minimo" class="with-pre" placeholder="60" min="0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="deuda-row" id="deuda-row-1">
+                    <div class="deuda-row-header">
+                        <span class="deuda-num">Deuda 2</span>
+                    </div>
+                    <div class="deuda-campos">
+                        <div class="campo campo-sm">
+                            <label>Nombre</label>
+                            <input type="text" id="d1-nombre" placeholder="Ej: Prestamo banco" maxlength="30">
+                        </div>
+                        <div class="campo campo-sm">
+                            <label>Saldo</label>
+                            <div class="input-wrap">
+                                <span class="input-pre cur-sym">$</span>
+                                <input type="number" id="d1-saldo" class="with-pre" placeholder="5,000" min="0">
+                            </div>
+                        </div>
+                        <div class="campo campo-sm">
+                            <label>Tasa anual</label>
+                            <div class="input-wrap">
+                                <input type="number" id="d1-tasa" class="with-suf" placeholder="22" min="0" step="0.1">
+                                <span class="input-suf">%</span>
+                            </div>
+                        </div>
+                        <div class="campo campo-sm">
+                            <label>Pago minimo</label>
+                            <div class="input-wrap">
+                                <span class="input-pre cur-sym">$</span>
+                                <input type="number" id="d1-minimo" class="with-pre" placeholder="150" min="0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="deuda-row deuda-row-oculta" id="deuda-row-2">
+                    <div class="deuda-row-header">
+                        <span class="deuda-num">Deuda 3</span>
+                        <button class="btn-quitar-deuda" onclick="quitarDeuda(2)" type="button">Quitar</button>
+                    </div>
+                    <div class="deuda-campos">
+                        <div class="campo campo-sm">
+                            <label>Nombre</label>
+                            <input type="text" id="d2-nombre" placeholder="Ej: Tienda departamento" maxlength="30">
+                        </div>
+                        <div class="campo campo-sm">
+                            <label>Saldo</label>
+                            <div class="input-wrap">
+                                <span class="input-pre cur-sym">$</span>
+                                <input type="number" id="d2-saldo" class="with-pre" placeholder="800" min="0">
+                            </div>
+                        </div>
+                        <div class="campo campo-sm">
+                            <label>Tasa anual</label>
+                            <div class="input-wrap">
+                                <input type="number" id="d2-tasa" class="with-suf" placeholder="45" min="0" step="0.1">
+                                <span class="input-suf">%</span>
+                            </div>
+                        </div>
+                        <div class="campo campo-sm">
+                            <label>Pago minimo</label>
+                            <div class="input-wrap">
+                                <span class="input-pre cur-sym">$</span>
+                                <input type="number" id="d2-minimo" class="with-pre" placeholder="40" min="0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="deuda-row deuda-row-oculta" id="deuda-row-3">
+                    <div class="deuda-row-header">
+                        <span class="deuda-num">Deuda 4</span>
+                        <button class="btn-quitar-deuda" onclick="quitarDeuda(3)" type="button">Quitar</button>
+                    </div>
+                    <div class="deuda-campos">
+                        <div class="campo campo-sm">
+                            <label>Nombre</label>
+                            <input type="text" id="d3-nombre" placeholder="Ej: Prestamo familiar" maxlength="30">
+                        </div>
+                        <div class="campo campo-sm">
+                            <label>Saldo</label>
+                            <div class="input-wrap">
+                                <span class="input-pre cur-sym">$</span>
+                                <input type="number" id="d3-saldo" class="with-pre" placeholder="1,500" min="0">
+                            </div>
+                        </div>
+                        <div class="campo campo-sm">
+                            <label>Tasa anual</label>
+                            <div class="input-wrap">
+                                <input type="number" id="d3-tasa" class="with-suf" placeholder="0" min="0" step="0.1">
+                                <span class="input-suf">%</span>
+                            </div>
+                        </div>
+                        <div class="campo campo-sm">
+                            <label>Pago minimo</label>
+                            <div class="input-wrap">
+                                <span class="input-pre cur-sym">$</span>
+                                <input type="number" id="d3-minimo" class="with-pre" placeholder="100" min="0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="deuda-row deuda-row-oculta" id="deuda-row-4">
+                    <div class="deuda-row-header">
+                        <span class="deuda-num">Deuda 5</span>
+                        <button class="btn-quitar-deuda" onclick="quitarDeuda(4)" type="button">Quitar</button>
+                    </div>
+                    <div class="deuda-campos">
+                        <div class="campo campo-sm">
+                            <label>Nombre</label>
+                            <input type="text" id="d4-nombre" placeholder="Ej: Auto" maxlength="30">
+                        </div>
+                        <div class="campo campo-sm">
+                            <label>Saldo</label>
+                            <div class="input-wrap">
+                                <span class="input-pre cur-sym">$</span>
+                                <input type="number" id="d4-saldo" class="with-pre" placeholder="8,000" min="0">
+                            </div>
+                        </div>
+                        <div class="campo campo-sm">
+                            <label>Tasa anual</label>
+                            <div class="input-wrap">
+                                <input type="number" id="d4-tasa" class="with-suf" placeholder="14" min="0" step="0.1">
+                                <span class="input-suf">%</span>
+                            </div>
+                        </div>
+                        <div class="campo campo-sm">
+                            <label>Pago minimo</label>
+                            <div class="input-wrap">
+                                <span class="input-pre cur-sym">$</span>
+                                <input type="number" id="d4-minimo" class="with-pre" placeholder="200" min="0">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <button class="btn-agregar-deuda" id="btn-agregar" onclick="agregarDeuda()" type="button">+ Agregar otra deuda</button>
+
+            <div class="campo" style="margin-top:1.5rem">
+                <label for="pago-extra">Pago extra disponible por mes</label>
+                <div class="input-wrap">
+                    <span class="input-pre cur-sym">$</span>
+                    <input type="number" id="pago-extra" class="with-pre" placeholder="100" min="0">
+                </div>
+                <p class="campo-hint">Dinero adicional que puedes destinar a deudas cada mes, ademas de los minimos.</p>
+            </div>
+
+            <button class="btn-calcular" onclick="calcularDeudas()">Comparar metodos →</button>
+        </div>
+
+        <div class="resultados" id="resultados">
+            <div class="resultados-espera" id="resultados-espera">
+                <div class="espera-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <p>Ingresa tus deudas y presiona <strong style="color:rgba(255,255,255,0.5)">Comparar</strong></p>
+            </div>
+            <div class="resultados-data" id="resultados-data">
+                <h2>Comparacion de metodos</h2>
+
+                <div id="ganador-banner" class="ganador-banner"></div>
+
+                <div class="deudas-comparativa">
+                    <div class="metodo-col" id="col-nieve">
+                        <div class="metodo-titulo metodo-nieve">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="9.5" y1="9.5" x2="14.5" y2="14.5"/><line x1="14.5" y1="9.5" x2="9.5" y2="14.5"/></svg>
+                            Bola de Nieve
+                        </div>
+                        <div class="resultado-item highlight">
+                            <span>Meses para liberarte</span>
+                            <strong id="nieve-meses"></strong>
+                        </div>
+                        <div class="resultado-item">
+                            <span>Total en intereses</span>
+                            <strong id="nieve-interes"></strong>
+                        </div>
+                        <div class="deuda-orden-lista" id="nieve-orden"></div>
+                    </div>
+
+                    <div class="metodo-col" id="col-avalancha">
+                        <div class="metodo-titulo metodo-avalancha">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:18px;height:18px"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+                            Avalancha
+                        </div>
+                        <div class="resultado-item highlight">
+                            <span>Meses para liberarte</span>
+                            <strong id="aval-meses"></strong>
+                        </div>
+                        <div class="resultado-item">
+                            <span>Total en intereses</span>
+                            <strong id="aval-interes"></strong>
+                        </div>
+                        <div class="deuda-orden-lista" id="aval-orden"></div>
+                    </div>
+                </div>
+
+                <div class="resultado-item" style="margin-top:1rem">
+                    <span>Saldo total de deudas</span>
+                    <strong id="saldo-total"></strong>
+                </div>
+                <div class="resultado-item">
+                    <span>Pago mensual actual</span>
+                    <strong id="pago-mensual-total"></strong>
+                </div>
+
+                <button class="btn-share" id="btn-share-deudas" onclick="shareWADeudas()" style="display:none">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                    Compartir en WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    {% include '_ad_unit.html' %}
+
+    <article class="contenido-seo">
+        <h2>Bola de nieve vs avalancha: cual metodo elegir?</h2>
+        <p>Ambos metodos funcionan bajo el mismo principio: pagas el minimo en todas las deudas excepto una, a la que le destinas todo el dinero extra disponible. Cuando esa deuda desaparece, su pago se suma al siguiente objetivo. La diferencia esta en el orden.</p>
+
+        <h3>Metodo bola de nieve</h3>
+        <p>Ataca primero la deuda con el saldo mas pequeno, sin importar la tasa de interes. La ventaja es psicologica: eliminas deudas rapido, ves progreso y te mantienes motivado. Dave Ramsey lo popularizo porque la mayoria de personas abandona los planes de pago cuando no ve resultados rapidos.</p>
+
+        <h3>Metodo avalancha</h3>
+        <p>Ataca primero la deuda con la tasa de interes mas alta. Matematicamente es superior porque reduces el dinero que va a intereses cada mes. Si tienes disciplina y no necesitas victorias rapidas para mantenerte en el plan, la avalancha te ahorra mas dinero.</p>
+
+        <h3>La regla mas importante: no importa el metodo, importa el extra</h3>
+        <p>Pagar solo los minimos es la trampa. Una tarjeta de credito al 36% anual con un saldo de $2,000 pagando solo el minimo puede tardarte mas de 10 anos en pagarse. El dinero extra que destinas cada mes es lo que realmente acelera tu libertad financiera.</p>
+
+        <h3>Como usar esta calculadora</h3>
+        <ul>
+            <li>Ingresa todas tus deudas con el saldo actual, la tasa anual y el pago minimo mensual.</li>
+            <li>Agrega el monto extra que puedes pagar cada mes ademas de los minimos.</li>
+            <li>Compara ambos metodos y elige el que mejor se adapte a tu situacion.</li>
+            <li>El metodo que ahorras mas en intereses se marca automaticamente.</li>
+        </ul>
+    </article>
+
+    <section class="relacionadas">
+        <p class="section-label">Tambien te puede interesar</p>
+        <div class="rel-grid">
+            <a href="/calculadora-tarjeta-credito" class="rel-card">
+                <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/><line x1="6" y1="16" x2="10" y2="16"/><circle cx="18" cy="16" r="2"/></svg></span>
+                <div class="rel-info"><strong>Tarjeta de Credito</strong><span>Cuanto te cuesta pagar el minimo</span></div>
+                <span class="rel-arrow">→</span>
+            </a>
+            <a href="/calculadora-prestamos" class="rel-card">
+                <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg></span>
+                <div class="rel-info"><strong>Prestamos</strong><span>Calcula la cuota de un credito nuevo</span></div>
+                <span class="rel-arrow">→</span>
+            </a>
+            <a href="/calculadora-presupuesto" class="rel-card">
+                <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg></span>
+                <div class="rel-info"><strong>Presupuesto Personal</strong><span>Encuentra dinero extra para pagar deudas</span></div>
+                <span class="rel-arrow">→</span>
+            </a>
+            <a href="/blog/como-salir-deuda-tarjeta-credito" class="rel-card">
+                <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></span>
+                <div class="rel-info"><strong>Guia: Salir de deuda de tarjeta</strong><span>Metodos explicados paso a paso</span></div>
+                <span class="rel-arrow">→</span>
+            </a>
+        </div>
+    </section>
+</section>
+
+<style>
+.calculadora-deudas-wrap { align-items: flex-start; }
+.deuda-row { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 1rem; margin-bottom: 0.75rem; }
+.deuda-row-oculta { display: none; }
+.deuda-row-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem; }
+.deuda-num { font-size: 0.8rem; font-weight: 600; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.05em; }
+.deuda-campos { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+.campo-sm label { font-size: 0.78rem; }
+.campo-sm input { font-size: 0.9rem; padding: 0.55rem 0.7rem; }
+.campo-hint { font-size: 0.75rem; color: rgba(255,255,255,0.4); margin-top: 0.35rem; }
+.btn-agregar-deuda { width: 100%; padding: 0.6rem; background: rgba(255,255,255,0.04); border: 1px dashed rgba(255,255,255,0.15); border-radius: 8px; color: rgba(255,255,255,0.5); font-size: 0.85rem; cursor: pointer; transition: all 0.2s; }
+.btn-agregar-deuda:hover { background: rgba(255,255,255,0.07); color: rgba(255,255,255,0.8); }
+.btn-agregar-deuda:disabled { opacity: 0.3; cursor: default; }
+.btn-quitar-deuda { font-size: 0.72rem; color: rgba(255,100,100,0.6); background: none; border: none; cursor: pointer; padding: 0.2rem 0.4rem; border-radius: 4px; transition: all 0.2s; }
+.btn-quitar-deuda:hover { color: #ff6464; background: rgba(255,100,100,0.08); }
+.deudas-comparativa { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin: 1rem 0; }
+.metodo-col { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.07); border-radius: 10px; padding: 0.9rem; }
+.metodo-col.ganador { border-color: #00cc76; background: rgba(0,204,118,0.05); }
+.metodo-titulo { display: flex; align-items: center; gap: 0.4rem; font-size: 0.85rem; font-weight: 700; margin-bottom: 0.75rem; }
+.metodo-nieve { color: #60a5fa; }
+.metodo-avalancha { color: #ff9f0a; }
+.deuda-orden-lista { margin-top: 0.75rem; }
+.deuda-orden-item { display: flex; align-items: center; gap: 0.4rem; font-size: 0.75rem; color: rgba(255,255,255,0.6); padding: 0.25rem 0; border-top: 1px solid rgba(255,255,255,0.05); }
+.deuda-orden-num { width: 18px; height: 18px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 700; flex-shrink: 0; }
+.ganador-banner { background: rgba(0,204,118,0.1); border: 1px solid rgba(0,204,118,0.25); border-radius: 8px; padding: 0.6rem 0.9rem; font-size: 0.83rem; color: #00cc76; font-weight: 600; margin-bottom: 0.5rem; display: none; }
+@media (max-width: 500px) {
+  .deudas-comparativa { grid-template-columns: 1fr; }
+  .deuda-campos { grid-template-columns: 1fr; }
+}
+</style>
+
+<script>
+var deudasVisibles = 2;
+var MAX_DEUDAS = 5;
+
+function agregarDeuda() {
+    if (deudasVisibles >= MAX_DEUDAS) return;
+    var row = document.getElementById('deuda-row-' + deudasVisibles);
+    if (row) {
+        row.classList.remove('deuda-row-oculta');
+        deudasVisibles++;
+    }
+    if (deudasVisibles >= MAX_DEUDAS) {
+        document.getElementById('btn-agregar').disabled = true;
+    }
+}
+
+function quitarDeuda(idx) {
+    var row = document.getElementById('deuda-row-' + idx);
+    if (row) {
+        row.classList.add('deuda-row-oculta');
+        document.getElementById('d' + idx + '-saldo').value = '';
+        document.getElementById('d' + idx + '-tasa').value = '';
+        document.getElementById('d' + idx + '-minimo').value = '';
+        document.getElementById('d' + idx + '-nombre').value = '';
+    }
+    deudasVisibles = Math.max(deudasVisibles - 1, 2);
+    document.getElementById('btn-agregar').disabled = false;
+}
+
+function leerDeudas() {
+    var deudas = [];
+    for (var i = 0; i < MAX_DEUDAS; i++) {
+        var row = document.getElementById('deuda-row-' + i);
+        if (!row || row.classList.contains('deuda-row-oculta')) continue;
+        var saldo = parseFloat(document.getElementById('d' + i + '-saldo').value);
+        var tasa = parseFloat(document.getElementById('d' + i + '-tasa').value);
+        var minimo = parseFloat(document.getElementById('d' + i + '-minimo').value);
+        var nombre = document.getElementById('d' + i + '-nombre').value.trim() || ('Deuda ' + (i + 1));
+        if (saldo > 0 && !isNaN(tasa) && minimo > 0) {
+            deudas.push({ nombre: nombre, saldo: saldo, tasa: tasa, minimo: minimo });
+        }
+    }
+    return deudas;
+}
+
+function simular(deudasOrig, pagoExtra, metodo) {
+    var deudas = deudasOrig.map(function(d) {
+        return { nombre: d.nombre, saldo: d.saldo, tasaMensual: d.tasa / 100 / 12, minimo: d.minimo, pagada: false };
+    });
+    var mes = 0;
+    var totalInteres = 0;
+    var orden = [];
+    var extraDisp = pagoExtra;
+
+    while (deudas.some(function(d) { return !d.pagada; }) && mes < 600) {
+        mes++;
+        var activas = deudas.filter(function(d) { return !d.pagada; });
+
+        var target = activas.slice().sort(function(a, b) {
+            return metodo === 'nieve' ? a.saldo - b.saldo : b.tasaMensual - a.tasaMensual;
+        })[0];
+
+        activas.forEach(function(d) {
+            var interes = d.saldo * d.tasaMensual;
+            totalInteres += interes;
+            d.saldo += interes;
+
+            var pago = d.minimo + (d === target ? extraDisp : 0);
+            if (pago >= d.saldo) {
+                extraDisp += d.minimo;
+                d.saldo = 0;
+                d.pagada = true;
+                orden.push({ nombre: d.nombre, mes: mes });
+            } else {
+                d.saldo -= pago;
+            }
+        });
+    }
+    return { meses: mes, totalInteres: totalInteres, orden: orden };
+}
+
+function fmtMeses(m) {
+    if (m >= 600) return '+50 anos';
+    var anos = Math.floor(m / 12);
+    var meses = m % 12;
+    if (anos === 0) return meses + ' mes' + (meses !== 1 ? 'es' : '');
+    if (meses === 0) return anos + ' ano' + (anos !== 1 ? 's' : '');
+    return anos + ' ano' + (anos !== 1 ? 's' : '') + ' y ' + meses + ' mes' + (meses !== 1 ? 'es' : '');
+}
+
+function renderOrden(elId, orden) {
+    var el = document.getElementById(elId);
+    el.innerHTML = orden.map(function(o, i) {
+        return '<div class="deuda-orden-item"><span class="deuda-orden-num">' + (i + 1) + '</span>' + o.nombre + '</div>';
+    }).join('');
+}
+
+var _lastNieve = null, _lastAval = null;
+
+function calcularDeudas() {
+    var deudas = leerDeudas();
+    if (deudas.length === 0) {
+        alert('Ingresa al menos una deuda con saldo, tasa y pago minimo.');
+        return;
+    }
+    var extra = parseFloat(document.getElementById('pago-extra').value) || 0;
+
+    var nieve = simular(deudas, extra, 'nieve');
+    var aval = simular(deudas, extra, 'avalancha');
+    _lastNieve = nieve; _lastAval = aval;
+
+    var sym = window._curSym || '$';
+    var fmt = function(n) { return sym + n.toLocaleString('es', { minimumFractionDigits: 0, maximumFractionDigits: 0 }); };
+
+    document.getElementById('nieve-meses').textContent = fmtMeses(nieve.meses);
+    document.getElementById('nieve-interes').textContent = fmt(nieve.totalInteres);
+    renderOrden('nieve-orden', nieve.orden);
+
+    document.getElementById('aval-meses').textContent = fmtMeses(aval.meses);
+    document.getElementById('aval-interes').textContent = fmt(aval.totalInteres);
+    renderOrden('aval-orden', aval.orden);
+
+    var totalSaldo = deudas.reduce(function(a, d) { return a + d.saldo; }, 0);
+    var totalMinimos = deudas.reduce(function(a, d) { return a + d.minimo; }, 0);
+    document.getElementById('saldo-total').textContent = fmt(totalSaldo);
+    document.getElementById('pago-mensual-total').textContent = fmt(totalMinimos + extra) + '/mes';
+
+    var colNieve = document.getElementById('col-nieve');
+    var colAval = document.getElementById('col-avalancha');
+    var banner = document.getElementById('ganador-banner');
+    colNieve.classList.remove('ganador'); colAval.classList.remove('ganador');
+
+    if (aval.totalInteres < nieve.totalInteres) {
+        colAval.classList.add('ganador');
+        var ahorro = nieve.totalInteres - aval.totalInteres;
+        banner.style.display = 'block';
+        banner.textContent = 'Avalancha te ahorra ' + fmt(ahorro) + ' en intereses';
+    } else if (nieve.totalInteres < aval.totalInteres) {
+        colNieve.classList.add('ganador');
+        var ahorro = aval.totalInteres - nieve.totalInteres;
+        banner.style.display = 'block';
+        banner.textContent = 'Bola de nieve te ahorra ' + fmt(ahorro) + ' en intereses';
+    } else {
+        banner.style.display = 'none';
+    }
+
+    document.getElementById('resultados-espera').style.display = 'none';
+    document.getElementById('resultados-data').style.display = 'block';
+    document.getElementById('btn-share-deudas').style.display = 'flex';
+}
+
+function shareWADeudas() {
+    if (!_lastNieve || !_lastAval) return;
+    var sym = window._curSym || '$';
+    var fmt = function(n) { return sym + Math.round(n).toLocaleString('es'); };
+    var mejor = _lastAval.totalInteres <= _lastNieve.totalInteres ? 'Avalancha' : 'Bola de nieve';
+    var meses = _lastAval.totalInteres <= _lastNieve.totalInteres ? _lastAval.meses : _lastNieve.meses;
+    var interes = Math.min(_lastAval.totalInteres, _lastNieve.totalInteres);
+    var msg = 'Calcule mis deudas en midineroobedece.com\n'
+            + 'Metodo recomendado: ' + mejor + '\n'
+            + 'Libre en: ' + fmtMeses(meses) + '\n'
+            + 'Total intereses: ' + fmt(interes) + '\n'
+            + 'Calcula el tuyo: https://midineroobedece.com/calculadora-deudas';
+    window.open('https://wa.me/?text=' + encodeURIComponent(msg), '_blank');
+}
+</script>
+{% endblock %}

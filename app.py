@@ -92,6 +92,10 @@ def calculadora_presupuesto():
 def calculadora_tarjeta():
     return render_template('calculadora_tarjeta.html')
 
+@app.route('/calculadora-deudas')
+def calculadora_deudas():
+    return render_template('calculadora_deudas.html')
+
 @app.route('/calculadora-inflacion')
 def calculadora_inflacion():
     return render_template('calculadora_inflacion.html')
@@ -181,6 +185,7 @@ def sitemap():
         ('/calculadora-interes-compuesto', '0.9', 'monthly'),
         ('/calculadora-presupuesto', '0.9', 'monthly'),
         ('/calculadora-tarjeta-credito', '0.9', 'monthly'),
+        ('/calculadora-deudas', '0.9', 'monthly'),
         ('/calculadora-inflacion', '0.9', 'monthly'),
         ('/calculadora-jubilacion', '0.9', 'monthly'),
         ('/calculadora-plazo-fijo', '0.9', 'monthly'),
