@@ -97,11 +97,30 @@ var RATE_HINTS = {
   },
 };
 
+var _wb_rates = null;
+
+function buildHint(code, type, wb) {
+  var r = wb ? wb[code] : null;
+  var year = r && r.year ? r.year : null;
+  var dateSuffix = year
+    ? '· <em class="hint-date">Banco Mundial ' + year + '</em>'
+    : HINT_DATE;
+  // Inflacion: mostrar valor real del BM (es el indicador mas directo)
+  if (type === 'inflacion' && r && r.inflation != null) {
+    var country = CP_FLAGS[code] ? CP_FLAGS[code][1] : code;
+    return '<strong>' + country + ' (' + code + '):</strong> '
+         + r.inflation.toFixed(1) + '% anual estimado ' + dateSuffix;
+  }
+  // Resto: texto estatico curado + fecha actualizada
+  var hints = RATE_HINTS[type];
+  if (hints && hints[code]) return hints[code] + ' ' + dateSuffix;
+  return null;
+}
+
 function updateRateHints(code) {
   document.querySelectorAll('.tasa-hint[data-hint]').forEach(function(el) {
-    var type = el.dataset.hint;
-    var hints = RATE_HINTS[type];
-    if (hints && hints[code]) el.innerHTML = hints[code] + ' ' + HINT_DATE;
+    var hint = buildHint(code, el.dataset.hint, _wb_rates);
+    if (hint) el.innerHTML = hint;
   });
 }
 
@@ -178,6 +197,13 @@ document.addEventListener('DOMContentLoaded', function () {
   var sym = MDO_CURRENCIES[saved].symbol;
   document.querySelectorAll('.cur-sym').forEach(function(el) { el.textContent = sym; });
   updateRateHints(saved);
+  fetch('/api/tasas')
+    .then(function(r) { return r.json(); })
+    .then(function(d) {
+      _wb_rates = d.rates;
+      updateRateHints(localStorage.getItem('mdo_cur') || 'USD');
+    })
+    .catch(function() {});
 });
 
 // ── SHARE WHATSAPP ──

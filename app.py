@@ -1,7 +1,69 @@
-from flask import Flask, render_template, Response
-from datetime import date
+from flask import Flask, render_template, Response, jsonify
+from datetime import date, datetime, timedelta
+import requests, threading
 
 app = Flask(__name__, template_folder='app/templates', static_folder='app/static')
+
+# ── MOTOR DE TASAS (Banco Mundial API, refresh mensual) ──
+_RATES_FALLBACK = {
+    'USD': {'lending': 16.0, 'deposit': 4.0, 'inflation':  2.0, 'year': '2024'},
+    'MXN': {'lending': 18.0, 'deposit': 4.0, 'inflation':  5.5, 'year': '2024'},
+    'COP': {'lending': 22.0, 'deposit': 5.5, 'inflation':  7.0, 'year': '2024'},
+    'PEN': {'lending': 17.0, 'deposit': 3.5, 'inflation':  4.5, 'year': '2024'},
+    'ARS': {'lending': 80.0, 'deposit':60.0, 'inflation':120.0, 'year': '2024'},
+    'CLP': {'lending': 14.0, 'deposit': 3.0, 'inflation':  5.0, 'year': '2024'},
+    'BRL': {'lending': 35.0, 'deposit':11.0, 'inflation':  5.5, 'year': '2024'},
+    'BOB': {'lending': 10.0, 'deposit': 2.5, 'inflation':  4.5, 'year': '2024'},
+}
+_WB_CTRY = {'USD':'ECU','MXN':'MEX','COP':'COL','PEN':'PER','ARS':'ARG','CLP':'CHL','BRL':'BRA','BOB':'BOL'}
+_WB_IND  = {'lending':'FR.INR.LEND','deposit':'FR.INR.DPST','inflation':'FP.CPI.TOTL.ZG'}
+
+_rates = None
+_rates_ts = None
+_refreshing = False
+
+def _wb_get(wb_code, indicator):
+    url = ('https://api.worldbank.org/v2/country/{}/indicator/{}'
+           '?format=json&mrv=3&per_page=3').format(wb_code, indicator)
+    resp = requests.get(url, timeout=8)
+    rows = resp.json()
+    if len(rows) > 1 and rows[1]:
+        for row in rows[1]:
+            if row.get('value') is not None:
+                return round(float(row['value']), 1), row['date']
+    return None, None
+
+def _do_refresh():
+    global _rates, _rates_ts, _refreshing
+    result = {}
+    for cur, wb in _WB_CTRY.items():
+        row = dict(_RATES_FALLBACK.get(cur, {}))
+        for key, ind in _WB_IND.items():
+            try:
+                val, yr = _wb_get(wb, ind)
+                if val is not None:
+                    row[key] = val
+                    row['year'] = yr
+            except Exception:
+                pass
+        result[cur] = row
+    _rates = result
+    _rates_ts = datetime.utcnow()
+    _refreshing = False
+
+def _get_rates():
+    global _refreshing
+    stale = _rates_ts is None or (datetime.utcnow() - _rates_ts) > timedelta(days=30)
+    if stale and not _refreshing:
+        _refreshing = True
+        threading.Thread(target=_do_refresh, daemon=True).start()
+    return _rates or _RATES_FALLBACK
+
+@app.route('/api/tasas')
+def api_tasas():
+    rates = _get_rates()
+    ts = _rates_ts.strftime('%b %Y') if _rates_ts else None
+    return jsonify({'rates': rates, 'fetched': ts})
 
 @app.route('/')
 def index():
