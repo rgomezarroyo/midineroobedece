@@ -1564,6 +1564,7 @@ main {
 /* ── TASA HINT ── */
 .tasa-hint { font-size: 0.71rem; color: var(--text-muted); margin-top: 0.35rem; line-height: 1.5; }
 .tasa-hint strong { color: var(--text); }
+.hint-date { font-style: italic; opacity: 0.65; font-size: 0.67rem; }
 
 /* ── SHARE BUTTON ── */
 .btn-share { width: 100%; margin-top: 1.1rem; padding: 0.7rem 1rem; background: #25D366; color: #fff; border: none; border-radius: 12px; font-size: 0.88rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; transition: background 0.15s; }

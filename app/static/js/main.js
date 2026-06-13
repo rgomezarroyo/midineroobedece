@@ -22,10 +22,94 @@ function fmt(v) {
   });
 }
 
+// ── RATE HINTS ──
+var HINT_DATE = '· <em class="hint-date">Ref. jun 2026</em>';
+var RATE_HINTS = {
+  prestamos: {
+    USD: '<strong>Ecuador (USD):</strong> credito personal 16-24% anual · tasa maxima BCE',
+    MXN: '<strong>Mexico (MXN):</strong> credito personal 18-36% anual · segun banco y perfil',
+    COP: '<strong>Colombia (COP):</strong> credito consumo 20-32% anual · DTF + spread bancario',
+    PEN: '<strong>Peru (PEN):</strong> credito personal 15-28% anual · segun entidad',
+    ARS: '<strong>Argentina (ARS):</strong> credito personal 70-100%+ anual · tasa muy variable',
+    CLP: '<strong>Chile (CLP):</strong> credito consumo 12-20% anual · CAE referencial CMF',
+    BRL: '<strong>Brasil (BRL):</strong> credito pessoal 25-55% anual · juros variam por banco',
+    BOB: '<strong>Bolivia (BOB):</strong> credito personal 8-18% anual · sistema regulado BCB',
+  },
+  tarjeta: {
+    USD: '<strong>Ecuador (USD):</strong> max 17% anual · tasa maxima regulada por BCE',
+    MXN: '<strong>Mexico (MXN):</strong> 24-60% anual · TEA segun banco emisor',
+    COP: '<strong>Colombia (COP):</strong> 22-36% anual · tasa maxima legal establecida',
+    PEN: '<strong>Peru (PEN):</strong> 20-45% anual · TEA segun entidad financiera',
+    ARS: '<strong>Argentina (ARS):</strong> 50-80% anual · regulada por BCRA',
+    CLP: '<strong>Chile (CLP):</strong> 20-35% anual · tasa maxima convencional CMF',
+    BRL: '<strong>Brasil (BRL):</strong> 80-200%+ anual · rotativo muy caro, paga el total mensual',
+    BOB: '<strong>Bolivia (BOB):</strong> 15-25% anual · credito revolvente regulado BCB',
+  },
+  ahorro: {
+    USD: '<strong>Ecuador (USD):</strong> 3-5% anual · bancos y cooperativas reguladas',
+    MXN: '<strong>Mexico (MXN):</strong> 3-5% cuenta ahorro · hasta 10-12% en CETES',
+    COP: '<strong>Colombia (COP):</strong> 4-7% anual · cuenta de ahorros bancaria',
+    PEN: '<strong>Peru (PEN):</strong> 2-5% anual · cuenta de ahorros',
+    ARS: '<strong>Argentina (ARS):</strong> 50-80% anual nominal · busca tasa mayor a la inflacion',
+    CLP: '<strong>Chile (CLP):</strong> 2-4% anual · cuenta de ahorro vista',
+    BRL: '<strong>Brasil (BRL):</strong> poupanca ~6% · CDB ~12-13% · rendimiento variable',
+    BOB: '<strong>Bolivia (BOB):</strong> 2-4% anual · caja de ahorros regulada',
+  },
+  interes: {
+    USD: '<strong>Ecuador (USD):</strong> plazo fijo 3-7% · fondos indexados ~10% hist.',
+    MXN: '<strong>Mexico (MXN):</strong> CETES 9-12% · fondos de inversion 8-13%',
+    COP: '<strong>Colombia (COP):</strong> CDT 9-13% · fondos mixtos 8-15%',
+    PEN: '<strong>Peru (PEN):</strong> depositos a plazo 4-8% · fondos mutuos 7-12%',
+    ARS: '<strong>Argentina (ARS):</strong> FCI 60-80%+ nominal · prioriza cobertura de inflacion',
+    CLP: '<strong>Chile (CLP):</strong> depositos a plazo 4-7% · fondos mutuos 6-11%',
+    BRL: '<strong>Brasil (BRL):</strong> CDI ~13% · fundos renda fixa 10-16%',
+    BOB: '<strong>Bolivia (BOB):</strong> depositos 3-6% · fondos de inversion 5-10%',
+  },
+  plazofijo: {
+    USD: '<strong>Ecuador (USD):</strong> 3-7% anual · tasa BCE regulada segun plazo',
+    MXN: '<strong>Mexico (MXN):</strong> 9-11% (CETES) · bancos y pagares 8-12%',
+    COP: '<strong>Colombia (COP):</strong> 9-13% anual · CDT bancario',
+    PEN: '<strong>Peru (PEN):</strong> 4-8% anual · deposito a plazo',
+    ARS: '<strong>Argentina (ARS):</strong> 70-100%+ nominal · plazo fijo UVA cubre inflacion',
+    CLP: '<strong>Chile (CLP):</strong> 4-7% anual · deposito a plazo',
+    BRL: '<strong>Brasil (BRL):</strong> 10-14% anual · CDB/LCI referenciado al CDI',
+    BOB: '<strong>Bolivia (BOB):</strong> 3-6% anual · DPF en sistema bancario',
+  },
+  inflacion: {
+    USD: '<strong>Ecuador (USD):</strong> 1-3% anual · economia dolarizada, inflacion baja',
+    MXN: '<strong>Mexico (MXN):</strong> 4-7% anual · meta Banxico 3%',
+    COP: '<strong>Colombia (COP):</strong> 6-9% anual · meta Banrep 3%',
+    PEN: '<strong>Peru (PEN):</strong> 3-6% anual · meta BCRP 2%',
+    ARS: '<strong>Argentina (ARS):</strong> 50%+ anual · inflacion muy alta, revisa dato actual',
+    CLP: '<strong>Chile (CLP):</strong> 4-6% anual · meta BCCh 3%',
+    BRL: '<strong>Brasil (BRL):</strong> 4-7% anual · meta Bacen 3%',
+    BOB: '<strong>Bolivia (BOB):</strong> 3-6% anual · meta BCB 3%',
+  },
+  jubilacion: {
+    USD: '<strong>Ecuador:</strong> conservador 4-6% · moderado 6-9% · agresivo 8-12%',
+    MXN: '<strong>Mexico (AFORE):</strong> conservador 5-8% · moderado 7-11% · agresivo 9-14%',
+    COP: '<strong>Colombia (AFP):</strong> conservador 5-8% · moderado 7-11% · agresivo 9-14%',
+    PEN: '<strong>Peru (AFP):</strong> conservador 4-7% · moderado 6-10% · agresivo 8-13%',
+    ARS: '<strong>Argentina:</strong> fondos ARS ajustar por inflacion · evalua cobertura en USD',
+    CLP: '<strong>Chile (AFP):</strong> fondo E 3-5% · fondo C 5-8% · fondo A 7-12%',
+    BRL: '<strong>Brasil (PGBL/VGBL):</strong> conservador 8-10% · moderado 10-14% · agresivo 12-18%',
+    BOB: '<strong>Bolivia:</strong> conservador 4-6% · moderado 5-8% · instrumentos limitados',
+  },
+};
+
+function updateRateHints(code) {
+  document.querySelectorAll('.tasa-hint[data-hint]').forEach(function(el) {
+    var type = el.dataset.hint;
+    var hints = RATE_HINTS[type];
+    if (hints && hints[code]) el.innerHTML = hints[code] + ' ' + HINT_DATE;
+  });
+}
+
 function changeCurrency(code) {
   localStorage.setItem('mdo_cur', code);
   const sym = MDO_CURRENCIES[code].symbol;
   document.querySelectorAll('.cur-sym').forEach(el => el.textContent = sym);
+  updateRateHints(code);
   const page = document.querySelector('[data-recalc]');
   if (page) {
     const fn = page.dataset.recalc;
@@ -93,6 +177,7 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   var sym = MDO_CURRENCIES[saved].symbol;
   document.querySelectorAll('.cur-sym').forEach(function(el) { el.textContent = sym; });
+  updateRateHints(saved);
 });
 
 // ── SHARE WHATSAPP ──
