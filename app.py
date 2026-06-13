@@ -4,49 +4,52 @@ import requests, threading
 
 app = Flask(__name__, template_folder='app/templates', static_folder='app/static')
 
-# ── MOTOR DE TASAS (Banco Mundial API, refresh mensual) ──
+# ── MOTOR DE TASAS (Bancos Centrales, refresh mensual) ──
 _RATES_FALLBACK = {
-    'USD': {'lending': 16.0, 'deposit': 4.0, 'inflation':  2.0, 'year': '2024'},
-    'MXN': {'lending': 18.0, 'deposit': 4.0, 'inflation':  5.5, 'year': '2024'},
-    'COP': {'lending': 22.0, 'deposit': 5.5, 'inflation':  7.0, 'year': '2024'},
-    'PEN': {'lending': 17.0, 'deposit': 3.5, 'inflation':  4.5, 'year': '2024'},
-    'ARS': {'lending': 80.0, 'deposit':60.0, 'inflation':120.0, 'year': '2024'},
-    'CLP': {'lending': 14.0, 'deposit': 3.0, 'inflation':  5.0, 'year': '2024'},
-    'BRL': {'lending': 35.0, 'deposit':11.0, 'inflation':  5.5, 'year': '2024'},
-    'BOB': {'lending': 10.0, 'deposit': 2.5, 'inflation':  4.5, 'year': '2024'},
+    'USD': {'lending': 17.0, 'deposit': 5.0,  'inflation':  2.7, 'source': 'BCE Ecuador', 'year': 'jun 2025'},
+    'MXN': {'lending': 28.0, 'deposit': 9.0,  'inflation':  3.9, 'source': 'Banxico',     'year': 'jun 2025'},
+    'COP': {'lending': 20.0, 'deposit': 7.5,  'inflation':  5.2, 'source': 'Banrep',      'year': 'jun 2025'},
+    'PEN': {'lending': 14.0, 'deposit': 4.0,  'inflation':  2.4, 'source': 'BCRP',        'year': 'jun 2025'},
+    'ARS': {'lending': 55.0, 'deposit':32.0,  'inflation': 80.0, 'source': 'BCRA',        'year': 'jun 2025'},
+    'CLP': {'lending': 13.0, 'deposit': 5.0,  'inflation':  4.1, 'source': 'BCCh',        'year': 'jun 2025'},
+    'BRL': {'lending': 44.0, 'deposit':13.75, 'inflation':  5.5, 'source': 'BCB Brasil',  'year': 'jun 2025'},
+    'BOB': {'lending':  8.0, 'deposit': 2.5,  'inflation':  3.5, 'source': 'BCB Bolivia', 'year': 'jun 2025'},
 }
-_WB_CTRY = {'USD':'ECU','MXN':'MEX','COP':'COL','PEN':'PER','ARS':'ARG','CLP':'CHL','BRL':'BRA','BOB':'BOL'}
-_WB_IND  = {'lending':'FR.INR.LEND','deposit':'FR.INR.DPST','inflation':'FP.CPI.TOTL.ZG'}
+
+_MONTHS_ES = {'01':'ene','02':'feb','03':'mar','04':'abr','05':'may','06':'jun',
+              '07':'jul','08':'ago','09':'sep','10':'oct','11':'nov','12':'dic'}
 
 _rates = None
 _rates_ts = None
 _refreshing = False
 
-def _wb_get(wb_code, indicator):
-    url = ('https://api.worldbank.org/v2/country/{}/indicator/{}'
-           '?format=json&mrv=3&per_page=3').format(wb_code, indicator)
+def _bcb_get(series_id):
+    """Banco Central do Brasil SGS API — free, no auth."""
+    url = ('https://api.bcb.gov.br/dados/serie/bcdata.sgs.{}/dados/ultimos/1'
+           '?formato=json').format(series_id)
     resp = requests.get(url, timeout=8)
-    rows = resp.json()
-    if len(rows) > 1 and rows[1]:
-        for row in rows[1]:
-            if row.get('value') is not None:
-                return round(float(row['value']), 1), row['date']
+    data = resp.json()
+    if data:
+        valor = float(data[0]['valor'].replace(',', '.'))
+        parts = data[0]['data'].split('/')  # DD/MM/YYYY
+        label = _MONTHS_ES.get(parts[1], parts[1]) + ' ' + parts[2]
+        return round(valor, 2), label
     return None, None
 
 def _do_refresh():
     global _rates, _rates_ts, _refreshing
-    result = {}
-    for cur, wb in _WB_CTRY.items():
-        row = dict(_RATES_FALLBACK.get(cur, {}))
-        for key, ind in _WB_IND.items():
-            try:
-                val, yr = _wb_get(wb, ind)
-                if val is not None:
-                    row[key] = val
-                    row['year'] = yr
-            except Exception:
-                pass
-        result[cur] = row
+    result = {cur: dict(row) for cur, row in _RATES_FALLBACK.items()}
+    # Brasil — BCB SGS: 432=SELIC, 13522=IPCA 12m, 20714=media emprestimos PF
+    try:
+        selic, yr = _bcb_get(432)
+        ipca,  _  = _bcb_get(13522)
+        lend,  _  = _bcb_get(20714)
+        if selic is not None: result['BRL']['deposit']   = selic
+        if ipca  is not None: result['BRL']['inflation'] = ipca
+        if lend  is not None: result['BRL']['lending']   = lend
+        if yr:                result['BRL']['year']      = yr
+    except Exception:
+        pass
     _rates = result
     _rates_ts = datetime.utcnow()
     _refreshing = False
