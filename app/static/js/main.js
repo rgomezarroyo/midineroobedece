@@ -139,14 +139,14 @@ function changeCurrency(code) {
 
 // ── CURRENCY PICKER ──
 var CP_FLAGS = {
-  USD: ['🇪🇨', 'Ecuador'],
-  MXN: ['🇲🇽', 'Mexico'],
-  COP: ['🇨🇴', 'Colombia'],
-  PEN: ['🇵🇪', 'Peru'],
-  ARS: ['🇦🇷', 'Argentina'],
-  CLP: ['🇨🇱', 'Chile'],
-  BRL: ['🇧🇷', 'Brasil'],
-  BOB: ['🇧🇴', 'Bolivia'],
+  USD: ['🇪🇨', 'Ecuador',   'ec'],
+  MXN: ['🇲🇽', 'Mexico',    'mx'],
+  COP: ['🇨🇴', 'Colombia',  'co'],
+  PEN: ['🇵🇪', 'Peru',      'pe'],
+  ARS: ['🇦🇷', 'Argentina', 'ar'],
+  CLP: ['🇨🇱', 'Chile',     'cl'],
+  BRL: ['🇧🇷', 'Brasil',    'br'],
+  BOB: ['🇧🇴', 'Bolivia',   'bo'],
 };
 
 function toggleCurrencyPicker(e) {
@@ -163,7 +163,11 @@ function selectCurrency(code) {
   if (!data) return;
   var flagEl = document.getElementById('cp-flag-sel');
   var codeEl = document.getElementById('cp-code-sel');
-  if (flagEl) { flagEl.textContent = data[0]; flagEl.classList.remove('flag-pick'); void flagEl.offsetWidth; flagEl.classList.add('flag-pick'); }
+  if (flagEl) {
+    flagEl.className = 'cp-flag-sel fi fi-' + data[2];
+    void flagEl.offsetWidth;
+    flagEl.classList.add('flag-pick');
+  }
   if (codeEl) codeEl.textContent = code;
   document.querySelectorAll('.cp-option').forEach(function(el) {
     el.classList.toggle('active', el.dataset.code === code);
@@ -177,7 +181,7 @@ function selectCurrency(code) {
   if (wm && data) {
     wm.classList.add('swapping');
     setTimeout(function() {
-      wm.textContent = data[0];
+      wm.src = 'https://cdn.jsdelivr.net/npm/flag-icons@6.11.0/flags/4x3/' + data[2] + '.svg';
       wm.classList.remove('swapping');
     }, 380);
   }
@@ -197,14 +201,14 @@ document.addEventListener('DOMContentLoaded', function () {
   if (data) {
     var flagEl = document.getElementById('cp-flag-sel');
     var codeEl = document.getElementById('cp-code-sel');
-    if (flagEl) flagEl.textContent = data[0];
+    if (flagEl) flagEl.className = 'cp-flag-sel fi fi-' + data[2];
     if (codeEl) codeEl.textContent = saved;
     document.querySelectorAll('.cp-option').forEach(function(el) {
       el.classList.toggle('active', el.dataset.code === saved);
     });
     // Sincroniza bandera hero
     var wm = document.getElementById('hero-flag-wm');
-    if (wm) wm.textContent = data[0];
+    if (wm) wm.src = 'https://cdn.jsdelivr.net/npm/flag-icons@6.11.0/flags/4x3/' + data[2] + '.svg';
   }
   var sym = MDO_CURRENCIES[saved].symbol;
   document.querySelectorAll('.cur-sym').forEach(function(el) { el.textContent = sym; });

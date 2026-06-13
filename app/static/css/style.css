@@ -325,6 +325,9 @@ header {
     text-align: center;
 }
 
+.cp-flag-sel.fi { font-size: 1.2rem; line-height: 1; }
+.cp-flag.fi { font-size: 1.4rem; border-radius: 3px; width: auto; }
+
 .cp-info {
     display: flex;
     flex-direction: column;
@@ -483,13 +486,14 @@ main {
     position: absolute;
     left: 50%;
     top: 50%;
-    font-size: clamp(12rem, 48vw, 30rem);
-    line-height: 1;
+    width: clamp(20rem, 60vw, 48rem);
+    height: auto;
+    border-radius: 6px;
     pointer-events: none;
     user-select: none;
     z-index: 0;
     opacity: 0.12;
-    filter: blur(0.4px) drop-shadow(0 0 80px rgba(167,139,250,0.25));
+    filter: blur(0.5px) drop-shadow(0 0 80px rgba(167,139,250,0.25));
     animation: heroFlagWave 7s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
     transition: opacity 0.38s ease;
     will-change: transform, opacity;
@@ -529,7 +533,7 @@ main {
 @media (min-width: 1025px) {
     .hero-flag-wm {
         left: 28%;
-        font-size: min(52rem, 46vw);
+        width: min(52rem, 46vw);
         opacity: 0.13;
     }
     .hero-tu {
