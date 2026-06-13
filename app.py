@@ -152,6 +152,10 @@ def blog_article(slug):
         abort(404)
     return render_template(template)
 
+@app.route('/contacto')
+def contacto():
+    return render_template('contacto.html')
+
 @app.route('/acerca')
 def acerca():
     return render_template('acerca.html')
@@ -191,6 +195,7 @@ def sitemap():
         ('/blog/cuanto-necesito-para-jubilarme', '0.8', 'monthly'),
         ('/blog/que-es-un-plazo-fijo', '0.8', 'monthly'),
         ('/blog/como-calcular-roi-inversion', '0.8', 'monthly'),
+        ('/contacto', '0.4', 'yearly'),
         ('/acerca', '0.4', 'yearly'),
         ('/privacidad', '0.3', 'yearly'),
         ('/terminos', '0.3', 'yearly'),

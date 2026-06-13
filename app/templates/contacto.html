@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+
+{% block title %}Contacto - MiDineroObedece{% endblock %}
+{% block meta_description %}Contacta al equipo de MiDineroObedece. Dudas, sugerencias o reportar un error en nuestras calculadoras financieras para America Latina.{% endblock %}
+
+{% block content %}
+<section class="page-hero">
+    <div class="page-hero-inner">
+        <p class="section-eyebrow">Estamos aqui para ayudarte</p>
+        <h1>Contacto</h1>
+        <p class="page-hero-sub">Tienes alguna duda, sugerencia o encontraste un error? Escribenos y te respondemos a la brevedad.</p>
+    </div>
+</section>
+
+<section class="contacto-section">
+    <div class="contacto-inner">
+
+        <div class="contacto-info">
+            <div class="contacto-card">
+                <div class="contacto-icon" style="background:#ede9fe; color:#5b4fff">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <h3>Correo electronico</h3>
+                <p>Para consultas generales, sugerencias o reportar errores en las calculadoras.</p>
+                <a href="mailto:contacto@midineroobedece.com" class="contacto-link">contacto@midineroobedece.com</a>
+            </div>
+
+            <div class="contacto-card">
+                <div class="contacto-icon" style="background:#dcfce7; color:#00a85e">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <h3>Tiempo de respuesta</h3>
+                <p>Respondemos en un plazo de <strong>24 a 48 horas habiles</strong>. Revisamos todos los mensajes personalmente.</p>
+            </div>
+
+            <div class="contacto-card">
+                <div class="contacto-icon" style="background:#fef9c3; color:#e08900">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="22" height="22"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                </div>
+                <h3>Reportar un error</h3>
+                <p>Si una calculadora da un resultado incorrecto, indicanos cual es, que datos usaste y que resultado esperabas.</p>
+            </div>
+        </div>
+
+        <div class="contacto-form-wrap">
+            <form class="contacto-form" action="mailto:contacto@midineroobedece.com" method="get" enctype="text/plain">
+                <h2>Envianos un mensaje</h2>
+
+                <div class="form-group">
+                    <label for="contact-name">Nombre</label>
+                    <input type="text" id="contact-name" name="nombre" placeholder="Tu nombre" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="contact-email">Correo electronico</label>
+                    <input type="email" id="contact-email" name="correo" placeholder="tu@correo.com" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="contact-subject">Asunto</label>
+                    <select id="contact-subject" name="subject">
+                        <option value="Consulta general">Consulta general</option>
+                        <option value="Sugerencia de calculadora">Sugerencia de calculadora</option>
+                        <option value="Error en calculadora">Reportar error en calculadora</option>
+                        <option value="Colaboracion">Propuesta de colaboracion</option>
+                        <option value="Otro">Otro</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="contact-msg">Mensaje</label>
+                    <textarea id="contact-msg" name="body" rows="5" placeholder="Describenos tu consulta o sugerencia con el mayor detalle posible..." required></textarea>
+                </div>
+
+                <button type="submit" class="contacto-submit">Enviar mensaje &rarr;</button>
+
+                <p class="contacto-note">Al enviar aceptas nuestra <a href="/privacidad">politica de privacidad</a>. No usamos tus datos para spam.</p>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}
