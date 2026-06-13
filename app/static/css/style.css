@@ -73,6 +73,21 @@ header {
     flex-shrink: 0;
 }
 
+.logo-img {
+    width: 38px;
+    height: 38px;
+    object-fit: cover;
+    object-position: center 15%;
+    border-radius: 9px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 16px rgba(124,58,237,0.5);
+}
+
+.logo-img-footer {
+    width: 32px;
+    height: 32px;
+}
+
 .logo-text {
     font-size: 1.1rem;
     font-weight: 800;
