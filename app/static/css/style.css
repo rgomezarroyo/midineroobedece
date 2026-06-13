@@ -478,6 +478,53 @@ main {
     background-clip: text;
 }
 
+/* ── HERO FLAG WATERMARK 3D ── */
+.hero-flag-wm {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    font-size: clamp(12rem, 48vw, 30rem);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    z-index: 0;
+    opacity: 0.12;
+    filter: blur(0.4px) drop-shadow(0 0 80px rgba(167,139,250,0.25));
+    animation: heroFlagWave 7s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+    transition: opacity 0.38s ease;
+    will-change: transform, opacity;
+}
+
+.hero-flag-wm.swapping { opacity: 0; }
+
+@keyframes heroFlagWave {
+    0%   { transform: translate(-50%,-50%) perspective(1200px) rotateY(-18deg) rotateX(6deg)  scale(1.00); }
+    20%  { transform: translate(-50%,-50%) perspective(1200px) rotateY(-7deg)  rotateX(2deg)  scale(1.05); }
+    45%  { transform: translate(-50%,-50%) perspective(1200px) rotateY(-25deg) rotateX(10deg) scale(0.96); }
+    70%  { transform: translate(-50%,-50%) perspective(1200px) rotateY(-5deg)  rotateX(1deg)  scale(1.04); }
+    100% { transform: translate(-50%,-50%) perspective(1200px) rotateY(-18deg) rotateX(6deg)  scale(1.00); }
+}
+
+/* ── HERO TU ── */
+.hero-tu {
+    display: block;
+    font-size: clamp(4.5rem, 13vw, 8.5rem);
+    font-weight: 900;
+    line-height: 0.88;
+    letter-spacing: -0.05em;
+    background: linear-gradient(115deg, #ffffff 0%, #c4b5fd 28%, #e879f9 62%, #22d3ee 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-top: 0.08em;
+    animation: tuGlow 4s ease-in-out infinite;
+}
+
+@keyframes tuGlow {
+    0%, 100% { filter: brightness(1) drop-shadow(0 0 0px transparent); }
+    50%       { filter: brightness(1.18) drop-shadow(0 4px 32px rgba(167,139,250,0.45)); }
+}
+
 .hero-sub {
     font-size: 1.05rem;
     color: #94a3b8;

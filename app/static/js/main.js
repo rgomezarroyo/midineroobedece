@@ -172,6 +172,15 @@ function selectCurrency(code) {
   var btn = document.getElementById('currency-trigger');
   if (dd) dd.classList.remove('open');
   if (btn) btn.classList.remove('open');
+  // Actualiza bandera watermark 3D en el hero
+  var wm = document.getElementById('hero-flag-wm');
+  if (wm && data) {
+    wm.classList.add('swapping');
+    setTimeout(function() {
+      wm.textContent = data[0];
+      wm.classList.remove('swapping');
+    }, 380);
+  }
   changeCurrency(code);
 }
 
@@ -193,6 +202,9 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('.cp-option').forEach(function(el) {
       el.classList.toggle('active', el.dataset.code === saved);
     });
+    // Sincroniza bandera hero
+    var wm = document.getElementById('hero-flag-wm');
+    if (wm) wm.textContent = data[0];
   }
   var sym = MDO_CURRENCIES[saved].symbol;
   document.querySelectorAll('.cur-sym').forEach(function(el) { el.textContent = sym; });
