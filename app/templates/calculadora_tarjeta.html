@@ -113,6 +113,7 @@
                     <strong id="total-tc"></strong>
                 </div>
                 <p class="msg-presupuesto" id="tip-tc"></p>
+                <button class="btn-share" id="btn-share-tarjeta" onclick="shareWA()" style="display:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Compartir en WhatsApp</button>
             </div>
         </div>
     </div>
@@ -197,6 +198,8 @@ function calcularTarjeta() {
 
     document.getElementById('resultados-espera-tc').style.display = 'none';
     document.getElementById('resultados-data-tc').style.display = 'block';
+    window._shareMsg = 'Calcule el costo de mi deuda de tarjeta en MiDineroObedece:\nTiempo para liquidar: ' + tiempoTexto + '\nTotal en intereses: ' + fmt(totalIntereses) + ' | Total pagado: ' + fmt(totalPagado) + '\nCalcula el tuyo gratis: midineroobedece.com/calculadora-tarjeta-credito';
+    document.getElementById('btn-share-tarjeta').style.display = 'flex';
 }
 </script>
 {% endblock %}

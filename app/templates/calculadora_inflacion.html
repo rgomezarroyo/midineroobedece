@@ -113,6 +113,7 @@
                     <strong id="valor-real-inf"></strong>
                 </div>
                 <p class="msg-presupuesto" id="tip-inf"></p>
+                <button class="btn-share" id="btn-share-inf" onclick="shareWA()" style="display:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg> Compartir en WhatsApp</button>
             </div>
         </div>
     </div>
@@ -186,6 +187,8 @@ const pct = ((1 - 1 / factor) * 100).toFixed(1);
 
     document.getElementById('resultados-espera-inf').style.display = 'none';
     document.getElementById('resultados-data-inf').style.display = 'block';
+    window._shareMsg = 'Calcule el impacto de la inflacion en MiDineroObedece:\n' + fmt(monto) + ' hoy equivaldra a ' + fmt(valorFuturo) + ' en ' + anos + ' anos (inflacion ' + tasa + '% anual)\nPoder adquisitivo perdido: ' + fmt(perdida) + '\nCalcula el tuyo gratis: midineroobedece.com/calculadora-inflacion';
+    document.getElementById('btn-share-inf').style.display = 'flex';
 }
 </script>
 {% endblock %}

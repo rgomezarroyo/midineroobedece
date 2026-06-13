@@ -42,6 +42,12 @@ document.addEventListener('DOMContentLoaded', function () {
   document.querySelectorAll('.cur-sym').forEach(el => el.textContent = sym);
 });
 
+// ── SHARE WHATSAPP ──
+function shareWA() {
+  var msg = window._shareMsg || '';
+  window.open('https://wa.me/?text=' + encodeURIComponent(msg), '_blank');
+}
+
 // ── CALCULADORA DESCUENTOS ──
 function calcularDescuento() {
   const precio = parseFloat(document.getElementById('precio').value);
@@ -62,6 +68,8 @@ function calcularDescuento() {
 
   document.getElementById('resultados-espera-desc').style.display = 'none';
   document.getElementById('resultados-data-desc').style.display = 'block';
+  window._shareMsg = 'Calcule mi descuento en MiDineroObedece:\nPrecio final: ' + fmt(precioFinal) + ' | Ahorro: ' + fmt(ahorro) + ' (' + descuento + '% off)\nCalcula el tuyo gratis: midineroobedece.com/calculadora-descuentos';
+  document.getElementById('btn-share-desc').style.display = 'flex';
 }
 
 // ── CALCULADORA LIQUIDACION LABORAL ──
@@ -89,6 +97,8 @@ function calcularLiquidacion() {
 
   document.getElementById('resultados-espera-liq').style.display = 'none';
   document.getElementById('resultados-data-liq').style.display = 'block';
+  window._shareMsg = 'Calcule mi liquidacion laboral en MiDineroObedece:\nTotal a recibir: ' + fmt(total) + '\nCalcula el tuyo gratis: midineroobedece.com/calculadora-liquidacion-laboral';
+  document.getElementById('btn-share-liq').style.display = 'flex';
 }
 
 // ── CALCULADORA ROI ──
@@ -121,6 +131,8 @@ function calcularROI() {
 
   document.getElementById('resultados-espera-roi').style.display = 'none';
   document.getElementById('resultados-data-roi').style.display = 'block';
+  window._shareMsg = 'Calcule el ROI de mi inversion en MiDineroObedece:\nROI total: ' + roiTotal.toFixed(2) + '% | Ganancia: ' + fmt(ganancia) + '\nROI anualizado: ' + document.getElementById('roi-anual').textContent + '\nCalcula el tuyo gratis: midineroobedece.com/calculadora-roi';
+  document.getElementById('btn-share-roi').style.display = 'flex';
 }
 
 // ── CALCULADORA TIPO DE CAMBIO ──
@@ -153,6 +165,8 @@ async function calcularTipoCambio() {
 
     document.getElementById('resultados-espera-tc').style.display = 'none';
     document.getElementById('resultados-data-tc').style.display = 'block';
+    window._shareMsg = 'Calcule el tipo de cambio en MiDineroObedece:\n' + document.getElementById('resultado-tc').textContent + '\nTasa: ' + document.getElementById('tasa-tc').textContent + '\nCalcula el tuyo gratis: midineroobedece.com/calculadora-tipo-cambio';
+    document.getElementById('btn-share-tc').style.display = 'flex';
   } catch (err) {
     alert('No se pudo obtener la tasa de cambio. Verifica tu conexion a internet.');
   } finally {
@@ -183,4 +197,6 @@ function calcularPrestamo() {
 
   document.getElementById('resultados-espera').style.display = 'none';
   document.getElementById('resultados-data').style.display = 'block';
+  window._shareMsg = 'Calcule mi cuota de prestamo en MiDineroObedece:\nCuota mensual: ' + fmt(cuota) + '\nTotal a pagar: ' + fmt(totalPagar) + ' (' + fmt(totalIntereses) + ' en intereses)\nCalcula el tuyo gratis: midineroobedece.com/calculadora-prestamos';
+  document.getElementById('btn-share-pres').style.display = 'flex';
 }
