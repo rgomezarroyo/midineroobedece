@@ -138,6 +138,10 @@ BLOG_ARTICLES = {
     'cuanto-necesito-para-jubilarme':        'blog_jubilacion.html',
     'que-es-un-plazo-fijo':                 'blog_plazo_fijo.html',
     'como-calcular-roi-inversion':           'blog_roi.html',
+    'como-calcular-fondo-emergencia':        'blog_fondo_emergencia.html',
+    'calcular-descuento-porcentaje':         'blog_descuentos.html',
+    'como-calcular-liquidacion-laboral':     'blog_liquidacion.html',
+    'que-es-el-tipo-de-cambio':              'blog_tipo_cambio.html',
 }
 
 @app.route('/blog')
@@ -195,6 +199,10 @@ def sitemap():
         ('/blog/cuanto-necesito-para-jubilarme', '0.8', 'monthly'),
         ('/blog/que-es-un-plazo-fijo', '0.8', 'monthly'),
         ('/blog/como-calcular-roi-inversion', '0.8', 'monthly'),
+        ('/blog/como-calcular-fondo-emergencia', '0.8', 'monthly'),
+        ('/blog/calcular-descuento-porcentaje', '0.8', 'monthly'),
+        ('/blog/como-calcular-liquidacion-laboral', '0.8', 'monthly'),
+        ('/blog/que-es-el-tipo-de-cambio', '0.8', 'monthly'),
         ('/contacto', '0.4', 'yearly'),
         ('/acerca', '0.4', 'yearly'),
         ('/privacidad', '0.3', 'yearly'),

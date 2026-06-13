@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% block title %}Como calcular un descuento en porcentaje | MiDineroObedece{% endblock %}
+{% block meta_description %}Aprende a calcular descuentos en porcentaje, precios finales y cuanto ahorras realmente en cualquier compra. Formulas simples con ejemplos practicos para LATAM.{% endblock %}
+
+{% block json_ld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Como calcular un descuento en porcentaje",
+  "description": "Aprende a calcular descuentos en porcentaje, precios finales y cuanto ahorras realmente en cualquier compra.",
+  "url": "https://midineroobedece.com/blog/calcular-descuento-porcentaje",
+  "datePublished": "2026-06-13",
+  "dateModified": "2026-06-13",
+  "inLanguage": "es",
+  "author": {"@type": "Organization", "name": "MiDineroObedece"},
+  "publisher": {"@type": "Organization", "name": "MiDineroObedece", "logo": {"@type": "ImageObject", "url": "https://midineroobedece.com/static/images/og-image.jpg"}},
+  "mainEntityOfPage": {"@type": "WebPage", "@id": "https://midineroobedece.com/blog/calcular-descuento-porcentaje"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://midineroobedece.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://midineroobedece.com/blog"},
+    {"@type": "ListItem", "position": 3, "name": "Como calcular un descuento en porcentaje", "item": "https://midineroobedece.com/blog/calcular-descuento-porcentaje"}
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<section class="calculadora-page">
+    <p class="breadcrumb"><a href="/">Inicio</a> › <a href="/blog">Blog</a> › Calcular Descuentos</p>
+    <h1>Como calcular un descuento en porcentaje</h1>
+    <p class="subtitulo">Las formulas exactas para saber cuanto pagas, cuanto ahorras y si ese descuento realmente vale la pena.</p>
+
+    <article class="contenido-seo">
+
+        <h2>La formula basica para calcular un descuento</h2>
+        <p>Calcular un descuento en porcentaje es una de las operaciones matematicas mas utiles en la vida diaria. La formula es:</p>
+        <p><strong>Precio final = Precio original × (1 - Descuento% / 100)</strong></p>
+        <p>Y para saber cuanto ahorras:</p>
+        <p><strong>Ahorro = Precio original × (Descuento% / 100)</strong></p>
+
+        <h3>Ejemplo: $120 con 30% de descuento</h3>
+        <ul>
+            <li>Ahorro = $120 × 0.30 = $36</li>
+            <li>Precio final = $120 - $36 = $84</li>
+            <li>O directamente: $120 × 0.70 = $84</li>
+        </ul>
+
+        <h2>Como calcular el porcentaje de descuento si conoces los precios</h2>
+        <p>A veces ves el precio original y el precio de oferta, pero no te dicen el porcentaje. Para calcularlo:</p>
+        <p><strong>Descuento% = (Precio original - Precio oferta) / Precio original × 100</strong></p>
+
+        <h3>Ejemplo: producto que costaba $80 y ahora cuesta $52</h3>
+        <ul>
+            <li>Diferencia = $80 - $52 = $28</li>
+            <li>Descuento% = $28 / $80 × 100 = 35%</li>
+        </ul>
+
+        <h2>Descuentos sucesivos: el truco que usan las tiendas</h2>
+        <p>Muchas tiendas anuncian "50% + 20% adicional". La mayoria de personas suma los porcentajes y cree que es 70% de descuento. Ese es el error.</p>
+        <p>Los descuentos sucesivos se aplican uno sobre el otro, no sobre el precio original:</p>
+        <ul>
+            <li>Precio original: $100</li>
+            <li>Despues del 50%: $100 × 0.50 = $50</li>
+            <li>Despues del 20% adicional: $50 × 0.80 = $40</li>
+            <li>Descuento real total: 60%, no 70%</li>
+        </ul>
+        <p>La formula para descuentos sucesivos es: <strong>Precio final = Precio × (1-d1) × (1-d2)</strong></p>
+
+        <h2>Como saber si un descuento realmente vale la pena</h2>
+        <p>No todo descuento es una buena compra. Antes de dejarte llevar por el porcentaje, hazte estas preguntas:</p>
+        <ul>
+            <li><strong>Necesitas el producto?</strong> Un 50% de descuento en algo que no necesitas sigue siendo dinero gastado innecesariamente.</li>
+            <li><strong>El precio original es real?</strong> Algunas tiendas inflan el precio "original" semanas antes de la oferta para que el descuento parezca mayor.</li>
+            <li><strong>Puedes comparar en otras tiendas?</strong> A veces el "precio de oferta" sigue siendo mas caro que el precio normal en otra tienda.</li>
+            <li><strong>Es el momento correcto?</strong> Comprar en temporada de descuentos reales (Black Friday, fin de temporada) suele ser mas conveniente.</li>
+        </ul>
+
+        <h2>Descuentos con impuesto incluido vs sin impuesto</h2>
+        <p>En muchos paises de LATAM los precios se muestran sin impuesto (IVA, IGV, etc.). Si el descuento se aplica antes del impuesto, el ahorro real en el precio final es diferente.</p>
+        <ul>
+            <li>Producto a $100 sin IVA, con 12% de IVA y 20% de descuento</li>
+            <li>Precio con IVA sin descuento: $100 × 1.12 = $112</li>
+            <li>Descuento sobre precio sin IVA: $100 × 0.80 = $80</li>
+            <li>Precio final con IVA: $80 × 1.12 = $89.60</li>
+            <li>Ahorro real: $112 - $89.60 = $22.40 (no $20)</li>
+        </ul>
+
+        <h2>Atajos mentales para calcular descuentos rapido</h2>
+        <ul>
+            <li><strong>10%:</strong> divide entre 10. $350 → $35 de descuento</li>
+            <li><strong>25%:</strong> divide entre 4. $200 → $50 de descuento</li>
+            <li><strong>50%:</strong> divide entre 2. $180 → $90 de descuento</li>
+            <li><strong>20%:</strong> calcula 10% y multiplica por 2. $450 → $45 × 2 = $90</li>
+            <li><strong>15%:</strong> calcula 10% + 5%. $60 → $6 + $3 = $9 de descuento</li>
+        </ul>
+
+    </article>
+
+    <div class="blog-cta">
+        <h3>Calcula cualquier descuento en segundos</h3>
+        <p>Ingresa el precio original y el porcentaje de descuento. Obtenes el precio final, el ahorro exacto y el porcentaje real si tienes dos precios.</p>
+        <a href="/calculadora-descuentos" class="btn-cta">Usar Calculadora de Descuentos →</a>
+    </div>
+
+    <section class="relacionadas">
+        <p class="section-label">Tambien te puede interesar</p>
+        <div class="rel-grid">
+            <a href="/calculadora-presupuesto" class="rel-card">
+                <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg></span>
+                <div class="rel-info"><strong>Presupuesto Personal</strong><span>Controla cuanto gastas</span></div>
+                <span class="rel-arrow">→</span>
+            </a>
+            <a href="/calculadora-fondo-emergencia" class="rel-card">
+                <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+                <div class="rel-info"><strong>Fondo de Emergencia</strong><span>Cuanto necesitas guardar</span></div>
+                <span class="rel-arrow">→</span>
+            </a>
+            <a href="/blog/como-hacer-presupuesto-personal" class="rel-card">
+                <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span>
+                <div class="rel-info"><strong>Como hacer un presupuesto</strong><span>Guia paso a paso</span></div>
+                <span class="rel-arrow">→</span>
+            </a>
+        </div>
+    </section>
+</section>
+{% endblock %}
