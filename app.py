@@ -69,6 +69,10 @@ BLOG_ARTICLES = {
     'que-es-el-interes-compuesto':           'blog_interes.html',
     'como-salir-deuda-tarjeta-credito':      'blog_tarjeta.html',
     'como-hacer-presupuesto-personal':       'blog_presupuesto.html',
+    'como-proteger-dinero-de-la-inflacion':  'blog_inflacion.html',
+    'cuanto-necesito-para-jubilarme':        'blog_jubilacion.html',
+    'que-es-un-plazo-fijo':                 'blog_plazo_fijo.html',
+    'como-calcular-roi-inversion':           'blog_roi.html',
 }
 
 @app.route('/blog')
@@ -118,6 +122,10 @@ def sitemap():
         ('/blog/que-es-el-interes-compuesto', '0.8', 'monthly'),
         ('/blog/como-salir-deuda-tarjeta-credito', '0.8', 'monthly'),
         ('/blog/como-hacer-presupuesto-personal', '0.8', 'monthly'),
+        ('/blog/como-proteger-dinero-de-la-inflacion', '0.8', 'monthly'),
+        ('/blog/cuanto-necesito-para-jubilarme', '0.8', 'monthly'),
+        ('/blog/que-es-un-plazo-fijo', '0.8', 'monthly'),
+        ('/blog/como-calcular-roi-inversion', '0.8', 'monthly'),
         ('/acerca', '0.4', 'yearly'),
         ('/privacidad', '0.3', 'yearly'),
         ('/terminos', '0.3', 'yearly'),
