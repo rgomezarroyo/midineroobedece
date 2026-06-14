@@ -22,7 +22,7 @@
                 </div>
                 <h3>Correo electronico</h3>
                 <p>Para consultas generales, sugerencias o reportar errores en las calculadoras.</p>
-                <a href="mailto:contacto@midineroobedece.com" class="contacto-link">contacto@midineroobedece.com</a>
+                <a href="mailto:info@midineroobedece.com" class="contacto-link">info@midineroobedece.com</a>
             </div>
 
             <div class="contacto-card">
@@ -43,7 +43,12 @@
         </div>
 
         <div class="contacto-form-wrap">
-            <form class="contacto-form" action="mailto:contacto@midineroobedece.com" method="get" enctype="text/plain">
+            <div id="form-exito" style="display:none" class="contacto-exito">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="40" height="40" style="color:#00cc76"><circle cx="12" cy="12" r="10"/><polyline points="9 12 11 14 15 10"/></svg>
+                <h3>Mensaje recibido</h3>
+                <p>Te respondemos en 24-48 horas habiles a tu correo.</p>
+            </div>
+            <form class="contacto-form" id="contacto-form" onsubmit="enviarContacto(event)">
                 <h2>Envianos un mensaje</h2>
 
                 <div class="form-group">
@@ -72,11 +77,49 @@
                     <textarea id="contact-msg" name="body" rows="5" placeholder="Describenos tu consulta o sugerencia con el mayor detalle posible..." required></textarea>
                 </div>
 
-                <button type="submit" class="contacto-submit">Enviar mensaje &rarr;</button>
+                <button type="submit" class="contacto-submit" id="contacto-btn">Enviar mensaje &rarr;</button>
 
                 <p class="contacto-note">Al enviar aceptas nuestra <a href="/privacidad">politica de privacidad</a>. No usamos tus datos para spam.</p>
             </form>
         </div>
+
+<script>
+function enviarContacto(e) {
+    e.preventDefault();
+    var btn = document.getElementById('contacto-btn');
+    btn.disabled = true;
+    btn.textContent = 'Enviando...';
+    var nombre  = document.getElementById('contact-name').value;
+    var correo  = document.getElementById('contact-email').value;
+    var asunto  = document.getElementById('contact-subject').value;
+    var mensaje = document.getElementById('contact-msg').value;
+    var mailto  = 'mailto:info@midineroobedece.com'
+                + '?subject=' + encodeURIComponent('[MDO] ' + asunto + ' - ' + nombre)
+                + '&body='    + encodeURIComponent('Nombre: ' + nombre + '\nCorreo: ' + correo + '\n\n' + mensaje);
+    window.location.href = mailto;
+    setTimeout(function() {
+        document.getElementById('contacto-form').style.display = 'none';
+        document.getElementById('form-exito').style.display    = 'flex';
+    }, 800);
+}
+</script>
+
+<style>
+.contacto-exito {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 3rem 2rem;
+    text-align: center;
+    background: rgba(0,204,118,0.06);
+    border: 1px solid rgba(0,204,118,0.2);
+    border-radius: 16px;
+}
+.contacto-exito h3 { font-size: 1.3rem; color: #fff; }
+.contacto-exito p  { color: rgba(255,255,255,0.6); }
+</style>
 
     </div>
 </section>
