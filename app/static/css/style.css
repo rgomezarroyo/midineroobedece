@@ -1650,6 +1650,21 @@ main {
 .btn-share { width: 100%; margin-top: 1.1rem; padding: 0.7rem 1rem; background: #25D366; color: #fff; border: none; border-radius: 12px; font-size: 0.88rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 0.5rem; transition: background 0.15s; }
 .btn-share:hover { background: #1db954; }
 
+/* ── SHARE STRIP ── */
+.share-strip { background: rgba(37,211,102,0.07); border: 1px solid rgba(37,211,102,0.2); border-radius: 16px; padding: 1.1rem 1.4rem; margin: 2rem 0 1.25rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+.share-strip-text { font-size: 0.88rem; color: var(--text-muted); line-height: 1.45; }
+.share-strip-text strong { display: block; font-size: 0.95rem; color: var(--text); margin-bottom: 0.15rem; }
+.share-strip-btns { display: flex; gap: 0.55rem; flex-shrink: 0; }
+.btn-strip-wa { background: #25D366; color: #fff; border: none; border-radius: 10px; padding: 0.5rem 1rem; font-size: 0.83rem; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 0.4rem; transition: background 0.15s; }
+.btn-strip-wa:hover { background: #1db954; }
+.btn-strip-copy { background: rgba(255,255,255,0.06); color: var(--text); border: 1px solid rgba(255,255,255,0.12); border-radius: 10px; padding: 0.5rem 1rem; font-size: 0.83rem; font-weight: 600; cursor: pointer; display: flex; align-items: center; gap: 0.4rem; transition: background 0.15s; }
+.btn-strip-copy:hover { background: rgba(255,255,255,0.11); }
+@media (max-width: 580px) {
+    .share-strip { flex-direction: column; align-items: flex-start; }
+    .share-strip-btns { width: 100%; }
+    .btn-strip-wa, .btn-strip-copy { flex: 1; justify-content: center; }
+}
+
 /* ── AD UNIT ── */
 .ad-unit { margin: 1.5rem 0; }
 
