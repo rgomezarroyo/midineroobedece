@@ -6,14 +6,23 @@ app = Flask(__name__, template_folder='app/templates', static_folder='app/static
 
 # ── MOTOR DE TASAS (Bancos Centrales, refresh mensual) ──
 _RATES_FALLBACK = {
-    'USD': {'lending': 17.0, 'deposit': 5.0,  'inflation':  2.7, 'source': 'BCE Ecuador', 'year': 'jun 2025'},
-    'MXN': {'lending': 28.0, 'deposit': 9.0,  'inflation':  3.9, 'source': 'Banxico',     'year': 'jun 2025'},
-    'COP': {'lending': 20.0, 'deposit': 7.5,  'inflation':  5.2, 'source': 'Banrep',      'year': 'jun 2025'},
-    'PEN': {'lending': 14.0, 'deposit': 4.0,  'inflation':  2.4, 'source': 'BCRP',        'year': 'jun 2025'},
-    'ARS': {'lending': 55.0, 'deposit':32.0,  'inflation': 80.0, 'source': 'BCRA',        'year': 'jun 2025'},
-    'CLP': {'lending': 13.0, 'deposit': 5.0,  'inflation':  4.1, 'source': 'BCCh',        'year': 'jun 2025'},
-    'BRL': {'lending': 44.0, 'deposit':13.75, 'inflation':  5.5, 'source': 'BCB Brasil',  'year': 'jun 2025'},
-    'BOB': {'lending':  8.0, 'deposit': 2.5,  'inflation':  3.5, 'source': 'BCB Bolivia', 'year': 'jun 2025'},
+    'USD': {'lending': 17.0, 'deposit':  5.0,  'inflation':   2.7, 'source': 'BCE Ecuador', 'year': 'jun 2025'},
+    'MXN': {'lending': 28.0, 'deposit':  9.0,  'inflation':   3.9, 'source': 'Banxico',     'year': 'jun 2025'},
+    'GTQ': {'lending': 16.0, 'deposit':  5.0,  'inflation':   4.5, 'source': 'Banguat',     'year': 'jun 2025'},
+    'HNL': {'lending': 22.0, 'deposit':  7.0,  'inflation':   5.5, 'source': 'BCH',         'year': 'jun 2025'},
+    'NIO': {'lending': 15.0, 'deposit':  4.0,  'inflation':   7.0, 'source': 'BCN',         'year': 'jun 2025'},
+    'CRC': {'lending': 16.0, 'deposit':  8.0,  'inflation':   1.5, 'source': 'BCCR',        'year': 'jun 2025'},
+    'DOP': {'lending': 20.0, 'deposit':  8.0,  'inflation':   4.5, 'source': 'BCRD',        'year': 'jun 2025'},
+    'COP': {'lending': 20.0, 'deposit':  7.5,  'inflation':   5.2, 'source': 'Banrep',      'year': 'jun 2025'},
+    'VES': {'lending': 30.0, 'deposit': 10.0,  'inflation': 130.0, 'source': 'BCV',         'year': 'jun 2025'},
+    'CUP': {'lending': 12.0, 'deposit':  3.0,  'inflation':  25.0, 'source': 'BCC Cuba',    'year': 'jun 2025'},
+    'PEN': {'lending': 14.0, 'deposit':  4.0,  'inflation':   2.4, 'source': 'BCRP',        'year': 'jun 2025'},
+    'BOB': {'lending':  8.0, 'deposit':  2.5,  'inflation':   3.5, 'source': 'BCB Bolivia', 'year': 'jun 2025'},
+    'BRL': {'lending': 44.0, 'deposit': 13.75, 'inflation':   5.5, 'source': 'BCB Brasil',  'year': 'jun 2025'},
+    'CLP': {'lending': 13.0, 'deposit':  5.0,  'inflation':   4.1, 'source': 'BCCh',        'year': 'jun 2025'},
+    'ARS': {'lending': 55.0, 'deposit': 32.0,  'inflation':  80.0, 'source': 'BCRA',        'year': 'jun 2025'},
+    'UYU': {'lending': 18.0, 'deposit':  8.0,  'inflation':   5.5, 'source': 'BCU',         'year': 'jun 2025'},
+    'PYG': {'lending': 16.0, 'deposit':  6.0,  'inflation':   4.5, 'source': 'BCP',         'year': 'jun 2025'},
 }
 
 _MONTHS_ES = {'01':'ene','02':'feb','03':'mar','04':'abr','05':'may','06':'jun',
