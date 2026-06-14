@@ -293,6 +293,71 @@ def sitemap():
     xml += '</urlset>'
     return Response(xml, mimetype='application/xml')
 
+@app.route('/manifest.json')
+def manifest():
+    data = '''{
+  "name": "MiDineroObedece",
+  "short_name": "MiDinero",
+  "description": "Calculadoras financieras gratuitas para America Latina",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#08091a",
+  "theme_color": "#5b4fff",
+  "lang": "es",
+  "categories": ["finance", "utilities"],
+  "icons": [
+    {"src": "/static/images/logo.jpg", "sizes": "192x192", "type": "image/jpeg", "purpose": "any maskable"},
+    {"src": "/static/images/logo.jpg", "sizes": "512x512", "type": "image/jpeg", "purpose": "any maskable"}
+  ],
+  "shortcuts": [
+    {"name": "Calculadora de Prestamos", "url": "/calculadora-prestamos", "description": "Calcula tu cuota mensual"},
+    {"name": "Tipo de Cambio",           "url": "/calculadora-tipo-cambio", "description": "Conversor de monedas"},
+    {"name": "Pago de Deudas",           "url": "/calculadora-deudas",     "description": "Bola de nieve vs avalancha"}
+  ]
+}'''
+    return Response(data, mimetype='application/json')
+
+@app.route('/sw.js')
+def service_worker():
+    sw = """var CACHE = 'mdo-v2';
+var SHELL = [
+  '/',
+  '/static/css/style.css',
+  '/static/js/main.js'
+];
+
+self.addEventListener('install', function(e) {
+  self.skipWaiting();
+  e.waitUntil(caches.open(CACHE).then(function(c) { return c.addAll(SHELL); }));
+});
+
+self.addEventListener('activate', function(e) {
+  e.waitUntil(
+    caches.keys().then(function(keys) {
+      return Promise.all(keys.filter(function(k) { return k !== CACHE; }).map(function(k) { return caches.delete(k); }));
+    })
+  );
+  return self.clients.claim();
+});
+
+self.addEventListener('fetch', function(e) {
+  var url = e.request.url;
+  if (url.includes('/api/') || url.includes('er-api.com') || url.includes('list-manage.com') || e.request.method !== 'GET') return;
+  e.respondWith(
+    caches.match(e.request).then(function(cached) {
+      var net = fetch(e.request).then(function(res) {
+        if (res && res.status === 200 && res.type === 'basic') {
+          caches.open(CACHE).then(function(c) { c.put(e.request, res.clone()); });
+        }
+        return res;
+      });
+      return cached || net;
+    })
+  );
+});
+"""
+    return Response(sw, mimetype='application/javascript')
+
 @app.route('/robots.txt')
 def robots():
     content = "User-agent: *\nAllow: /\nSitemap: https://midineroobedece.com/sitemap.xml\n"

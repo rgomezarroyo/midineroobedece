@@ -61,6 +61,13 @@
     </script>
     {% endblock %}
 
+    <link rel="manifest" href="/manifest.json">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="MiDinero">
+    <link rel="apple-touch-icon" sizes="192x192" href="{{ url_for('static', filename='images/logo.jpg') }}">
+
     <meta name="google-site-verification" content="fwyHggyRdjEXDDfv7CDDwOOovK6P663vdX_2B4dbNOI" />
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2445512602031923" crossorigin="anonymous"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-CMM6V374N2"></script>
@@ -482,6 +489,13 @@ function cookieAccept() {
 function cookieDecline() {
     localStorage.setItem('mdo_cookies', 'essential');
     _hideCookieBanner();
+}
+
+// ── PWA SERVICE WORKER ──
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('/sw.js');
+    });
 }
 
 function _hideCookieBanner() {
