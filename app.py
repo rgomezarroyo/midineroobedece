@@ -161,6 +161,18 @@ def calculadora_roi():
 def calculadora_tipo_cambio():
     return render_template('calculadora_tipo_cambio.html')
 
+@app.route('/calculadora-tir-van')
+def calculadora_tir_van():
+    return render_template('calculadora_tir_van.html')
+
+@app.route('/calculadora-seguro-vida')
+def calculadora_seguro_vida():
+    return render_template('calculadora_seguro_vida.html')
+
+@app.route('/calculadora-portafolio')
+def calculadora_portafolio():
+    return render_template('calculadora_portafolio.html')
+
 @app.route('/tasas-de-interes-latam')
 def tasas_latam():
     rates = _get_rates()
@@ -263,6 +275,9 @@ def sitemap():
         ('/blog/como-calcular-liquidacion-laboral', '0.8', 'monthly'),
         ('/blog/que-es-el-tipo-de-cambio', '0.8', 'monthly'),
         ('/blog/como-pagar-varias-deudas-bola-de-nieve-avalancha', '0.8', 'monthly'),
+        ('/calculadora-tir-van', '0.9', 'monthly'),
+        ('/calculadora-seguro-vida', '0.9', 'monthly'),
+        ('/calculadora-portafolio', '0.9', 'monthly'),
         ('/tasas-de-interes-latam', '0.85', 'monthly'),
         ('/contacto', '0.4', 'yearly'),
         ('/acerca', '0.4', 'yearly'),

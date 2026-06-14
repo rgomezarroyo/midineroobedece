@@ -1,0 +1,313 @@
+{% extends "base.html" %}
+
+{% block title %}Calculadora TIR y VAN - Evalua Cualquier Inversion | MiDineroObedece{% endblock %}
+{% block meta_description %}Calcula la Tasa Interna de Retorno (TIR) y el Valor Actual Neto (VAN) de cualquier inversion o proyecto. Decide si vale la pena invertir con numeros reales.{% endblock %}
+
+{% block json_ld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculadora TIR y VAN",
+  "description": "Calcula la Tasa Interna de Retorno y el Valor Actual Neto para evaluar si una inversion es rentable.",
+  "url": "https://midineroobedece.com/calculadora-tir-van",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "es",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Que es la TIR?",
+      "acceptedAnswer": {"@type": "Answer", "text": "La Tasa Interna de Retorno (TIR) es la tasa de descuento que hace que el VAN de una inversion sea igual a cero. Si la TIR es mayor que tu tasa de costo de capital, la inversion es rentable."}
+    },
+    {
+      "@type": "Question",
+      "name": "Que es el VAN?",
+      "acceptedAnswer": {"@type": "Answer", "text": "El Valor Actual Neto (VAN) es la suma de todos los flujos de caja de un proyecto traidos al valor presente, descontando la inversion inicial. VAN positivo significa que la inversion genera valor; VAN negativo, que destruye valor."}
+    },
+    {
+      "@type": "Question",
+      "name": "Que decision tomar segun el VAN y la TIR?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Acepta la inversion si el VAN es positivo Y la TIR supera tu tasa minima de rendimiento requerida. Si ambos criterios se cumplen, el proyecto vale la pena. Si se contradicen, el VAN es el criterio mas confiable."}
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://midineroobedece.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Calculadora TIR y VAN", "item": "https://midineroobedece.com/calculadora-tir-van"}
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<section class="calculadora-page" data-recalc="calcularTirVan">
+    <p class="breadcrumb"><a href="/">Inicio</a> › Calculadora TIR y VAN</p>
+    <h1>Calculadora TIR y VAN</h1>
+    <p class="subtitulo">Ingresa la inversion inicial y los flujos de caja para saber si tu proyecto es rentable.</p>
+
+    <div class="calculadora-container tir-container">
+        <div class="formulario">
+            <p class="formulario-header">Datos del proyecto</p>
+
+            <div class="campo">
+                <label for="inversion">Inversion inicial</label>
+                <div class="input-wrap">
+                    <span class="input-pre cur-sym">$</span>
+                    <input type="number" id="inversion" class="with-pre" placeholder="10,000" min="0">
+                </div>
+            </div>
+
+            <div class="campo">
+                <label for="tasa-desc">Tasa de descuento (costo de capital)</label>
+                <div class="input-wrap">
+                    <input type="number" id="tasa-desc" class="with-suf" placeholder="12" min="0" step="0.1">
+                    <span class="input-suf">% anual</span>
+                </div>
+                <p class="tasa-hint" data-hint="prestamos">Usa la tasa a la que puedes obtener financiamiento, o la tasa minima que exiges a tu inversion.</p>
+            </div>
+
+            <div class="campo">
+                <label>Flujos de caja anuales (hasta 10 periodos)</label>
+                <p class="tir-sub">Ingresa el flujo neto de cada periodo. Puede ser negativo si hay perdida ese ano.</p>
+                <div id="flujos-wrap">
+                    <div class="flujo-row">
+                        <span class="flujo-label">Ano 1</span>
+                        <div class="input-wrap flujo-input">
+                            <span class="input-pre cur-sym">$</span>
+                            <input type="number" class="with-pre flujo" placeholder="3,000">
+                        </div>
+                    </div>
+                    <div class="flujo-row">
+                        <span class="flujo-label">Ano 2</span>
+                        <div class="input-wrap flujo-input">
+                            <span class="input-pre cur-sym">$</span>
+                            <input type="number" class="with-pre flujo" placeholder="4,000">
+                        </div>
+                    </div>
+                    <div class="flujo-row">
+                        <span class="flujo-label">Ano 3</span>
+                        <div class="input-wrap flujo-input">
+                            <span class="input-pre cur-sym">$</span>
+                            <input type="number" class="with-pre flujo" placeholder="5,000">
+                        </div>
+                    </div>
+                </div>
+                <div class="tir-btns">
+                    <button type="button" class="btn-add-flujo" onclick="addFlujo()">+ Agregar periodo</button>
+                    <button type="button" class="btn-rem-flujo" onclick="removeFlujo()" id="btn-rem">– Quitar</button>
+                </div>
+            </div>
+
+            <button class="btn-calcular" onclick="calcularTirVan()">Calcular TIR y VAN →</button>
+        </div>
+
+        <div class="resultados" id="resultados">
+            <div class="resultados-espera" id="resultados-espera">
+                <div class="espera-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
+                <p>Ingresa los datos y presiona <strong style="color:rgba(255,255,255,0.5)">Calcular</strong></p>
+            </div>
+            <div class="resultados-data" id="resultados-data" style="display:none">
+                <h2>Resultados</h2>
+                <div class="resultado-item highlight">
+                    <span>VAN (Valor Actual Neto)</span>
+                    <strong id="res-van"></strong>
+                </div>
+                <div class="resultado-item">
+                    <span>TIR (Tasa Interna de Retorno)</span>
+                    <strong id="res-tir"></strong>
+                </div>
+                <div class="resultado-item">
+                    <span>Periodo de recuperacion</span>
+                    <strong id="res-payback"></strong>
+                </div>
+                <div class="resultado-item">
+                    <span>Total flujos recibidos</span>
+                    <strong id="res-total"></strong>
+                </div>
+                <div id="res-verdict" class="tir-verdict"></div>
+                <button class="btn-share" id="btn-share-tir" onclick="shareWA()" style="display:none">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                    Compartir en WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <article class="contenido-seo">
+        <h2>Como interpretar el VAN y la TIR</h2>
+        <p><strong>VAN positivo:</strong> la inversion genera mas valor del que cuesta. Cuanto mayor el VAN, mejor el proyecto en terminos absolutos.</p>
+        <p><strong>VAN negativo:</strong> la inversion destruye valor. Incluso si recuperas el capital, no alcanzas la rentabilidad minima que exiges.</p>
+        <p><strong>TIR mayor a tu tasa de descuento:</strong> el proyecto es rentable. Si financias al 12% y la TIR es 25%, cada peso invertido te deja 13 puntos de ganancia neta anual.</p>
+        <p><strong>TIR menor a tu tasa de descuento:</strong> no vale la pena. Estarias invirtiendo a una tasa menor que lo que te cuesta el dinero.</p>
+        <h3>Cuando usar cada indicador</h3>
+        <p>Usa el VAN cuando compares proyectos de distinto tamano — el que tiene el VAN mayor genera mas riqueza absoluta. Usa la TIR cuando compares opciones de igual monto para ver cual tiene mejor rendimiento porcentual. Si se contradicen, confia en el VAN.</p>
+    </article>
+
+    <section class="relacionadas">
+        <p class="section-label">Tambien te puede interesar</p>
+        <div class="rel-grid">
+            <a href="/calculadora-roi" class="rel-card">
+                <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></span>
+                <div class="rel-info"><strong>Calculadora de ROI</strong><span>Retorno simple y anualizado</span></div>
+                <span class="rel-arrow">→</span>
+            </a>
+            <a href="/calculadora-portafolio" class="rel-card">
+                <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span>
+                <div class="rel-info"><strong>Simulador de Portafolio</strong><span>Proyecta tu inversion mensual</span></div>
+                <span class="rel-arrow">→</span>
+            </a>
+            <a href="/calculadora-interes-compuesto" class="rel-card">
+                <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span>
+                <div class="rel-info"><strong>Interes Compuesto</strong><span>Como crece tu capital</span></div>
+                <span class="rel-arrow">→</span>
+            </a>
+        </div>
+    </section>
+</section>
+
+<style>
+.tir-container .formulario { max-width: 100%; }
+.tir-sub { font-size: 0.78rem; color: var(--text-muted); margin: 0.2rem 0 0.75rem; }
+.flujo-row { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.5rem; }
+.flujo-label { font-size: 0.8rem; color: var(--text-muted); width: 44px; flex-shrink: 0; }
+.flujo-input { flex: 1; margin: 0; }
+.tir-btns { display: flex; gap: 0.5rem; margin-top: 0.6rem; }
+.btn-add-flujo, .btn-rem-flujo { flex: 1; padding: 0.45rem 0.75rem; border-radius: 8px; border: 1px solid rgba(255,255,255,0.15); background: rgba(255,255,255,0.06); color: var(--text); font-size: 0.82rem; font-weight: 600; cursor: pointer; transition: background 0.15s; }
+.btn-add-flujo:hover, .btn-rem-flujo:hover { background: rgba(255,255,255,0.12); }
+.tir-verdict { margin-top: 1rem; padding: 0.75rem 1rem; border-radius: 10px; font-size: 0.85rem; font-weight: 600; line-height: 1.45; }
+.tir-verdict.bueno { background: rgba(0,204,118,0.1); border: 1px solid rgba(0,204,118,0.25); color: #00cc76; }
+.tir-verdict.malo  { background: rgba(239,68,68,0.1);  border: 1px solid rgba(239,68,68,0.25);  color: #ef4444; }
+.tir-verdict.neutral { background: rgba(245,158,11,0.1); border: 1px solid rgba(245,158,11,0.25); color: #f59e0b; }
+</style>
+
+<script>
+var MAX_FLUJOS = 10;
+var MIN_FLUJOS = 1;
+
+function updateFlujoLabels() {
+    var rows = document.querySelectorAll('.flujo-row');
+    rows.forEach(function(r, i) { r.querySelector('.flujo-label').textContent = 'Ano ' + (i + 1); });
+    document.getElementById('btn-rem').disabled = rows.length <= MIN_FLUJOS;
+}
+
+function addFlujo() {
+    var wrap = document.getElementById('flujos-wrap');
+    if (wrap.querySelectorAll('.flujo-row').length >= MAX_FLUJOS) return;
+    var row = document.createElement('div');
+    row.className = 'flujo-row';
+    row.innerHTML = '<span class="flujo-label"></span>'
+        + '<div class="input-wrap flujo-input"><span class="input-pre cur-sym">'
+        + (document.querySelector('.cur-sym') ? document.querySelector('.cur-sym').textContent : '$')
+        + '</span><input type="number" class="with-pre flujo" placeholder="0"></div>';
+    wrap.appendChild(row);
+    updateFlujoLabels();
+}
+
+function removeFlujo() {
+    var wrap = document.getElementById('flujos-wrap');
+    var rows = wrap.querySelectorAll('.flujo-row');
+    if (rows.length <= MIN_FLUJOS) return;
+    wrap.removeChild(rows[rows.length - 1]);
+    updateFlujoLabels();
+}
+
+function calcularTIR(flujos) {
+    var tir = 0.1;
+    for (var i = 0; i < 2000; i++) {
+        var vpn = 0, dvpn = 0;
+        for (var t = 0; t < flujos.length; t++) {
+            var disc = Math.pow(1 + tir, t);
+            vpn  += flujos[t] / disc;
+            dvpn -= t * flujos[t] / (disc * (1 + tir));
+        }
+        if (Math.abs(vpn) < 0.001) break;
+        if (Math.abs(dvpn) < 1e-12) break;
+        var delta = vpn / dvpn;
+        tir -= delta;
+        if (tir < -0.9999) tir = -0.9999;
+    }
+    return tir;
+}
+
+function calcularTirVan() {
+    var inv = parseFloat(document.getElementById('inversion').value);
+    var tasa = parseFloat(document.getElementById('tasa-desc').value);
+    if (!inv || isNaN(tasa)) { alert('Completa la inversion inicial y la tasa de descuento.'); return; }
+
+    var inputs = document.querySelectorAll('.flujo');
+    var flujos = [-inv];
+    var hayValor = false;
+    inputs.forEach(function(el) {
+        var v = parseFloat(el.value) || 0;
+        flujos.push(v);
+        if (v !== 0) hayValor = true;
+    });
+    if (!hayValor) { alert('Ingresa al menos un flujo de caja.'); return; }
+
+    // VAN
+    var van = 0;
+    for (var t = 0; t < flujos.length; t++) {
+        van += flujos[t] / Math.pow(1 + tasa / 100, t);
+    }
+
+    // TIR (Newton-Raphson)
+    var tirVal = null;
+    try {
+        var t2 = calcularTIR(flujos);
+        if (isFinite(t2) && t2 > -1) tirVal = t2 * 100;
+    } catch(e) {}
+
+    // Payback
+    var acum = -inv, payback = null;
+    for (var k = 1; k < flujos.length; k++) {
+        var prev = acum;
+        acum += flujos[k];
+        if (acum >= 0 && payback === null) {
+            var frac = prev < 0 ? Math.abs(prev) / flujos[k] : 0;
+            payback = (k - 1) + frac;
+        }
+    }
+
+    var totalFlujos = flujos.slice(1).reduce(function(a, b) { return a + b; }, 0);
+
+    document.getElementById('res-van').textContent = fmt(van);
+    document.getElementById('res-van').style.color = van >= 0 ? '#00cc76' : '#ef4444';
+    document.getElementById('res-tir').textContent = tirVal !== null ? tirVal.toFixed(2) + '%' : 'No calculable';
+    document.getElementById('res-tir').style.color = (tirVal !== null && tirVal > tasa) ? '#00cc76' : '#ef4444';
+    document.getElementById('res-payback').textContent = payback !== null ? payback.toFixed(1) + ' anos' : 'No recupera';
+    document.getElementById('res-total').textContent = fmt(totalFlujos);
+
+    var verdict = document.getElementById('res-verdict');
+    if (van > 0 && tirVal !== null && tirVal > tasa) {
+        verdict.className = 'tir-verdict bueno';
+        verdict.textContent = 'Inversion RENTABLE — VAN positivo y TIR (' + tirVal.toFixed(1) + '%) supera la tasa de descuento (' + tasa + '%). Vale la pena.';
+    } else if (van < 0) {
+        verdict.className = 'tir-verdict malo';
+        verdict.textContent = 'Inversion NO RENTABLE — el VAN es negativo. Los flujos no compensan la inversion al ' + tasa + '% de descuento.';
+    } else {
+        verdict.className = 'tir-verdict neutral';
+        verdict.textContent = 'Resultado MIXTO — revisa los supuestos. La TIR esta cerca de la tasa de descuento; el margen es estrecho.';
+    }
+
+    document.getElementById('resultados-espera').style.display = 'none';
+    document.getElementById('resultados-data').style.display = 'block';
+    window._shareMsg = 'Evalue mi proyecto en MiDineroObedece:\nVAN: ' + fmt(van) + (tirVal !== null ? ' | TIR: ' + tirVal.toFixed(2) + '%' : '') + '\nCalcula el tuyo gratis: midineroobedece.com/calculadora-tir-van';
+    document.getElementById('btn-share-tir').style.display = 'flex';
+}
+
+updateFlujoLabels();
+</script>
+{% endblock %}

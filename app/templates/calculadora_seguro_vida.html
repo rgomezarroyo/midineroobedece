@@ -1,0 +1,231 @@
+{% extends "base.html" %}
+
+{% block title %}Calculadora de Seguro de Vida - Cuanta Cobertura Necesitas | MiDineroObedece{% endblock %}
+{% block meta_description %}Calcula cuanta cobertura de seguro de vida necesita tu familia segun tus ingresos, deudas y dependientes. Estimacion de prima mensual para LATAM. Gratis.{% endblock %}
+
+{% block json_ld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Calculadora de Seguro de Vida",
+  "description": "Calcula la cobertura de seguro de vida que necesita tu familia segun ingresos, deudas y numero de dependientes.",
+  "url": "https://midineroobedece.com/calculadora-seguro-vida",
+  "applicationCategory": "FinanceApplication",
+  "operatingSystem": "Web",
+  "inLanguage": "es",
+  "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Cuanta cobertura de seguro de vida necesito?",
+      "acceptedAnswer": {"@type": "Answer", "text": "La regla general es tener una cobertura equivalente a 10-12 veces tu ingreso anual. Un metodo mas preciso es el DIME: suma tus Deudas, el reemplazo de Ingresos que necesitan tus dependientes, el costo de Manutension (educacion, vivienda) y cualquier otro gasto futuro importante. Resta los ahorros e inversiones que ya tienes."}
+    },
+    {
+      "@type": "Question",
+      "name": "Que tipo de seguro de vida es mejor en LATAM?",
+      "acceptedAnswer": {"@type": "Answer", "text": "El seguro de vida temporal (term life) es el mas recomendado para la mayoria de familias: cubre el periodo en que tus dependientes realmente te necesitan (20-30 anos) y tiene la prima mas baja. El seguro de vida permanente mezcla seguro con inversion, lo cual suele ser menos eficiente que tenerlos separados."}
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://midineroobedece.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Calculadora de Seguro de Vida", "item": "https://midineroobedece.com/calculadora-seguro-vida"}
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<section class="calculadora-page" data-recalc="calcularSeguro">
+    <p class="breadcrumb"><a href="/">Inicio</a> › Calculadora de Seguro de Vida</p>
+    <h1>Calculadora de Seguro de Vida</h1>
+    <p class="subtitulo">Descubre cuanta cobertura necesita tu familia si tu faltaras hoy.</p>
+
+    <div class="calculadora-container">
+        <div class="formulario">
+            <p class="formulario-header">Tu situacion familiar</p>
+
+            <div class="campo">
+                <label for="ingreso-seg">Ingreso mensual neto</label>
+                <div class="input-wrap">
+                    <span class="input-pre cur-sym">$</span>
+                    <input type="number" id="ingreso-seg" class="with-pre" placeholder="1,500" min="0">
+                </div>
+                <p class="tasa-hint">El ingreso que tu familia perderia si no estuvieras.</p>
+            </div>
+
+            <div class="campo">
+                <label for="anos-cob">Anos de cobertura necesarios</label>
+                <div class="input-wrap">
+                    <input type="number" id="anos-cob" class="with-suf" placeholder="20" min="1" max="40">
+                    <span class="input-suf">anos</span>
+                </div>
+                <p class="tasa-hint">Hasta que tus dependientes sean independientes o tu pareja se jubile.</p>
+            </div>
+
+            <div class="campo">
+                <label for="deudas-seg">Deudas pendientes totales</label>
+                <div class="input-wrap">
+                    <span class="input-pre cur-sym">$</span>
+                    <input type="number" id="deudas-seg" class="with-pre" placeholder="25,000" min="0" value="0">
+                </div>
+                <p class="tasa-hint">Hipoteca, prestamos, tarjetas — lo que no quieres dejarle a tu familia.</p>
+            </div>
+
+            <div class="campo">
+                <label for="gastos-finales">Gastos finales (funeral, tramites)</label>
+                <div class="input-wrap">
+                    <span class="input-pre cur-sym">$</span>
+                    <input type="number" id="gastos-finales" class="with-pre" placeholder="5,000" min="0" value="5000">
+                </div>
+            </div>
+
+            <div class="campo">
+                <label for="ahorros-seg">Ahorros e inversiones actuales</label>
+                <div class="input-wrap">
+                    <span class="input-pre cur-sym">$</span>
+                    <input type="number" id="ahorros-seg" class="with-pre" placeholder="10,000" min="0" value="0">
+                </div>
+                <p class="tasa-hint">Esto reduce la cobertura necesaria — tu familia ya cuenta con este dinero.</p>
+            </div>
+
+            <button class="btn-calcular" onclick="calcularSeguro()">Calcular cobertura →</button>
+        </div>
+
+        <div class="resultados" id="resultados-seg">
+            <div class="resultados-espera" id="resultados-espera-seg">
+                <div class="espera-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+                <p>Ingresa los datos y presiona <strong style="color:rgba(255,255,255,0.5)">Calcular</strong></p>
+            </div>
+            <div class="resultados-data" id="resultados-data-seg" style="display:none">
+                <h2>Resultados</h2>
+                <div class="resultado-item highlight">
+                    <span>Cobertura recomendada</span>
+                    <strong id="res-cobertura"></strong>
+                </div>
+                <div class="resultado-item">
+                    <span>Reemplazo de ingresos</span>
+                    <strong id="res-ingresos"></strong>
+                </div>
+                <div class="resultado-item">
+                    <span>Deudas a cubrir</span>
+                    <strong id="res-deudas-cob"></strong>
+                </div>
+                <div class="resultado-item">
+                    <span>Gastos finales</span>
+                    <strong id="res-gastos"></strong>
+                </div>
+                <div class="resultado-item">
+                    <span>Menos: ahorros actuales</span>
+                    <strong id="res-menos-ah" style="color:#00cc76"></strong>
+                </div>
+                <div class="seg-prima-box">
+                    <p class="seg-prima-titulo">Prima mensual estimada</p>
+                    <div class="seg-prima-grid">
+                        <div class="seg-prima-item">
+                            <span>Seguro temporal 20 anos</span>
+                            <strong id="prima-temp"></strong>
+                        </div>
+                        <div class="seg-prima-item">
+                            <span>Seguro permanente</span>
+                            <strong id="prima-perm"></strong>
+                        </div>
+                    </div>
+                    <p class="seg-prima-nota">Estimacion orientativa. La prima real depende de tu edad, salud y aseguradora.</p>
+                </div>
+                <button class="btn-share" id="btn-share-seg" onclick="shareWA()" style="display:none">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+                    Compartir en WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <article class="contenido-seo">
+        <h2>Como se calcula la cobertura necesaria</h2>
+        <p>Usamos el metodo DIME simplificado: <strong>Deudas + Ingresos de reemplazo + gastos finales - Ahorros</strong>. Es el metodo mas usado por asesores financieros en LATAM por ser directo y conservador.</p>
+        <h3>Por que el ingreso de reemplazo es el factor mas grande</h3>
+        <p>Si ganas $1,500 al mes y tus dependientes necesitan esos ingresos por 20 anos, el fondo necesario es de $360,000 nominales. Aunque la inflacion erosionara ese dinero, un seguro a suma fija sigue siendo la forma mas accesible de proteger a tu familia en la mayoria de paises de LATAM.</p>
+        <h3>Seguro temporal vs permanente</h3>
+        <p>El <strong>seguro temporal</strong> cubre un periodo definido (10, 20, 30 anos) y su prima es significativamente mas baja. Es ideal si tu objetivo es cubrir el periodo mientras tus hijos son dependientes o mientras pagas la hipoteca. Al vencimiento no tiene valor residual.</p>
+        <p>El <strong>seguro permanente</strong> cubre toda la vida y tiene un componente de ahorro (valor en efectivo). Su prima es 5 a 15 veces mayor. La mayoria de planificadores financieros recomienda el temporal y separar el ahorro en instrumentos mas eficientes.</p>
+    </article>
+
+    <section class="relacionadas">
+        <p class="section-label">Tambien te puede interesar</p>
+        <div class="rel-grid">
+            <a href="/calculadora-fondo-emergencia" class="rel-card">
+                <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+                <div class="rel-info"><strong>Fondo de Emergencia</strong><span>Tu colchon financiero para imprevistos</span></div>
+                <span class="rel-arrow">→</span>
+            </a>
+            <a href="/calculadora-jubilacion" class="rel-card">
+                <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M17 18a5 5 0 0 0-10 0"/><line x1="12" y1="9" x2="12" y2="2"/><line x1="4.22" y1="10.22" x2="5.64" y2="11.64"/><line x1="1" y1="18" x2="3" y2="18"/><line x1="21" y1="18" x2="23" y2="18"/><line x1="18.36" y1="11.64" x2="19.78" y2="10.22"/></svg></span>
+                <div class="rel-info"><strong>Calculadora de Jubilacion</strong><span>Planifica tu retiro</span></div>
+                <span class="rel-arrow">→</span>
+            </a>
+            <a href="/calculadora-deudas" class="rel-card">
+                <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+                <div class="rel-info"><strong>Pago de Deudas</strong><span>Elimina deudas antes de necesitar mas cobertura</span></div>
+                <span class="rel-arrow">→</span>
+            </a>
+        </div>
+    </section>
+</section>
+
+<style>
+.seg-prima-box { margin-top: 1.25rem; background: rgba(91,79,255,0.08); border: 1px solid rgba(91,79,255,0.2); border-radius: 12px; padding: 1rem; }
+.seg-prima-titulo { font-size: 0.8rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: .04em; margin-bottom: 0.75rem; }
+.seg-prima-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.6rem; }
+.seg-prima-item { background: rgba(255,255,255,0.04); border-radius: 8px; padding: 0.6rem 0.75rem; }
+.seg-prima-item span { display: block; font-size: 0.72rem; color: var(--text-muted); margin-bottom: 0.2rem; }
+.seg-prima-item strong { font-size: 1rem; }
+.seg-prima-nota { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.6rem; font-style: italic; }
+</style>
+
+<script>
+function calcularSeguro() {
+    var ingreso  = parseFloat(document.getElementById('ingreso-seg').value)    || 0;
+    var anos     = parseFloat(document.getElementById('anos-cob').value)        || 20;
+    var deudas   = parseFloat(document.getElementById('deudas-seg').value)      || 0;
+    var gastos   = parseFloat(document.getElementById('gastos-finales').value)  || 0;
+    var ahorros  = parseFloat(document.getElementById('ahorros-seg').value)     || 0;
+
+    if (!ingreso) { alert('Ingresa tu ingreso mensual.'); return; }
+
+    var reemplazoIngresos = ingreso * 12 * anos;
+    var totalNecesidad    = reemplazoIngresos + deudas + gastos;
+    var cobertura         = Math.max(0, totalNecesidad - ahorros);
+
+    // Prima estimada: temporal ~0.25% cobertura/ano para adulto sano 30-40 anos
+    // permanente ~1.5-2%
+    var primaTempAnual = cobertura * 0.0025;
+    var primaPermAnual = cobertura * 0.018;
+
+    document.getElementById('res-cobertura').textContent    = fmt(cobertura);
+    document.getElementById('res-ingresos').textContent     = fmt(reemplazoIngresos);
+    document.getElementById('res-deudas-cob').textContent   = fmt(deudas);
+    document.getElementById('res-gastos').textContent       = fmt(gastos);
+    document.getElementById('res-menos-ah').textContent     = '- ' + fmt(ahorros);
+    document.getElementById('prima-temp').textContent       = fmt(primaTempAnual / 12) + '/mes';
+    document.getElementById('prima-perm').textContent       = fmt(primaPermAnual / 12) + '/mes';
+
+    document.getElementById('resultados-espera-seg').style.display = 'none';
+    document.getElementById('resultados-data-seg').style.display   = 'block';
+    window._shareMsg = 'Calcule cuanto seguro de vida necesita mi familia en MiDineroObedece:\nCobertura recomendada: ' + fmt(cobertura) + '\nCalcula el tuyo gratis: midineroobedece.com/calculadora-seguro-vida';
+    document.getElementById('btn-share-seg').style.display = 'flex';
+}
+</script>
+{% endblock %}
