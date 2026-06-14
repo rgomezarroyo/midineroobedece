@@ -1,0 +1,251 @@
+{% extends "base.html" %}
+
+{% block title %}Tasas de Interes en America Latina 2025 | Prestamos, Ahorro e Inflacion por Pais{% endblock %}
+{% block meta_description %}Comparativa de tasas de interes en 19 paises de LATAM: tasa de prestamos, rendimiento de ahorro e inflacion anual. Datos de bancos centrales actualizados 2025.{% endblock %}
+
+{% block json_ld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Dataset",
+  "name": "Tasas de interes en America Latina 2025",
+  "description": "Comparativa de tasas de prestamos, ahorro e inflacion en 19 paises de America Latina. Datos de bancos centrales, actualizados jun 2025.",
+  "url": "https://midineroobedece.com/tasas-de-interes-latam",
+  "creator": {"@type": "Organization", "name": "MiDineroObedece"},
+  "inLanguage": "es",
+  "temporalCoverage": "2025"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://midineroobedece.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Tasas de interes LATAM", "item": "https://midineroobedece.com/tasas-de-interes-latam"}
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<section class="calculadora-page">
+    <p class="breadcrumb"><a href="/">Inicio</a> › Tasas de Interes LATAM</p>
+    <h1>Tasas de interes en America Latina</h1>
+    <p class="subtitulo">Prestamos, ahorro e inflacion en 19 paises. Datos de bancos centrales — ref. jun 2025.</p>
+
+    <div class="tasas-legend">
+        <span class="tl-item"><span class="tl-dot" style="background:#00cc76"></span>Bajo</span>
+        <span class="tl-item"><span class="tl-dot" style="background:#f59e0b"></span>Moderado</span>
+        <span class="tl-item"><span class="tl-dot" style="background:#f97316"></span>Alto</span>
+        <span class="tl-item"><span class="tl-dot" style="background:#ef4444"></span>Muy alto</span>
+    </div>
+
+    <!-- TABLA DESKTOP -->
+    <div class="tasas-table-wrap">
+        <table class="tasas-table">
+            <thead>
+                <tr>
+                    <th>Pais</th>
+                    <th>Moneda</th>
+                    <th title="Tasa promedio credito personal / consumo">Prestamos</th>
+                    <th title="Tasa promedio cuenta de ahorros">Ahorro</th>
+                    <th title="Inflacion anual estimada">Inflacion</th>
+                    <th>Fuente</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for r in rows %}
+                <tr>
+                    <td class="tasas-pais">
+                        <span class="fi fi-{{ r.flag }} tasas-flag"></span>
+                        <div>
+                            <strong>{{ r.name }}</strong>
+                            {% if r.note %}<span class="tasas-note">{{ r.note }}</span>{% endif %}
+                        </div>
+                    </td>
+                    <td class="tasas-moneda">
+                        <span class="tasas-code">{{ r.code }}</span>
+                        <span class="tasas-sym">{{ r.symbol }}</span>
+                    </td>
+                    <td>
+                        {% if r.lending is not none %}
+                        <span class="tasas-val {{ 'tv-green' if r.lending < 12 else ('tv-yellow' if r.lending < 20 else ('tv-orange' if r.lending < 35 else 'tv-red')) }}">
+                            {{ "%.1f"|format(r.lending) }}%
+                        </span>
+                        {% else %}<span class="tasas-na">—</span>{% endif %}
+                    </td>
+                    <td>
+                        {% if r.deposit is not none %}
+                        <span class="tasas-val {{ 'tv-green' if r.deposit >= 5 else ('tv-yellow' if r.deposit >= 3 else 'tv-orange') }}">
+                            {{ "%.1f"|format(r.deposit) }}%
+                        </span>
+                        {% else %}<span class="tasas-na">—</span>{% endif %}
+                    </td>
+                    <td>
+                        {% if r.inflation is not none %}
+                        <span class="tasas-val {{ 'tv-green' if r.inflation < 3 else ('tv-yellow' if r.inflation < 7 else ('tv-orange' if r.inflation < 20 else 'tv-red')) }}">
+                            {{ "%.1f"|format(r.inflation) }}%
+                        </span>
+                        {% else %}<span class="tasas-na">—</span>{% endif %}
+                    </td>
+                    <td class="tasas-source">{{ r.source }}<br><span class="tasas-year">{{ r.year }}</span></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- CARDS MOBILE -->
+    <div class="tasas-cards">
+        {% for r in rows %}
+        <div class="tasas-card">
+            <div class="tasas-card-header">
+                <span class="fi fi-{{ r.flag }} tasas-flag"></span>
+                <div>
+                    <strong>{{ r.name }}</strong>
+                    <span class="tasas-code">{{ r.code }} · {{ r.symbol }}</span>
+                </div>
+                {% if r.note %}<span class="tasas-badge">{{ r.note }}</span>{% endif %}
+            </div>
+            <div class="tasas-card-body">
+                <div class="tck-item">
+                    <span>Prestamos</span>
+                    {% if r.lending is not none %}
+                    <strong class="tasas-val {{ 'tv-green' if r.lending < 12 else ('tv-yellow' if r.lending < 20 else ('tv-orange' if r.lending < 35 else 'tv-red')) }}">{{ "%.1f"|format(r.lending) }}%</strong>
+                    {% else %}<strong class="tasas-na">—</strong>{% endif %}
+                </div>
+                <div class="tck-item">
+                    <span>Ahorro</span>
+                    {% if r.deposit is not none %}
+                    <strong class="tasas-val {{ 'tv-green' if r.deposit >= 5 else ('tv-yellow' if r.deposit >= 3 else 'tv-orange') }}">{{ "%.1f"|format(r.deposit) }}%</strong>
+                    {% else %}<strong class="tasas-na">—</strong>{% endif %}
+                </div>
+                <div class="tck-item">
+                    <span>Inflacion</span>
+                    {% if r.inflation is not none %}
+                    <strong class="tasas-val {{ 'tv-green' if r.inflation < 3 else ('tv-yellow' if r.inflation < 7 else ('tv-orange' if r.inflation < 20 else 'tv-red')) }}">{{ "%.1f"|format(r.inflation) }}%</strong>
+                    {% else %}<strong class="tasas-na">—</strong>{% endif %}
+                </div>
+            </div>
+            <div class="tasas-card-footer">{{ r.source }} · {{ r.year }}</div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="tasas-disclaimer">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" width="16" height="16" style="flex-shrink:0;color:#a78bfa"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <p>Las tasas son promedios de referencia tomados de bancos centrales y reguladores financieros. Las tasas reales varian segun banco, perfil del cliente y plazo. Datos actualizados junio 2025. <strong>No constituyen asesoramiento financiero.</strong></p>
+    </div>
+
+    <article class="contenido-seo" style="margin-top:2.5rem">
+        <h2>Como leer esta tabla</h2>
+        <p><strong>Tasa de prestamos:</strong> promedio de credito personal o de consumo segun el banco central de cada pais. Si tu banco te cobra mas, vale la pena comparar opciones.</p>
+        <p><strong>Tasa de ahorro:</strong> rendimiento promedio de una cuenta de ahorros bancaria. En paises con alta inflacion, si tu ahorro rinde menos que la inflacion, tu dinero pierde poder adquisitivo cada mes.</p>
+        <p><strong>Inflacion:</strong> el porcentaje en que suben los precios en un ano. Si la inflacion es del 8% y tu ahorro rinde el 4%, en terminos reales estas perdiendo el 4% de tu dinero.</p>
+
+        <h2>Paises con tasas de prestamos mas bajas</h2>
+        <p>Los paises dolarizados (Ecuador, El Salvador, Panama) y Bolivia tienen las tasas de prestamo mas bajas de la region, por debajo del 12% anual en promedio. Esto se debe a que operan con monedas estables o con sistemas financieros muy regulados. El contrapunto es que sus tasas de ahorro tambien son mas bajas.</p>
+
+        <h2>Donde rinde mas el ahorro en LATAM</h2>
+        <p>Brasil lidera con tasas de deposito cercanas al 13-14% gracias a su tasa SELIC, aunque su inflacion tambien es mas alta. Mexico ofrece rendimientos interesantes via CETES (8-10%). Costa Rica y Rep. Dominicana tienen tasas de ahorro relativamente altas para la region (5-9%) con inflacion controlada.</p>
+
+        <h2>Paises con mayor riesgo inflacionario</h2>
+        <p>Venezuela y Argentina presentan inflaciones extremas que erosionan el poder adquisitivo rapidamente. En estos paises, mantener ahorros en moneda local sin un rendimiento que supere la inflacion significa perder dinero cada mes. La dolarizacion informal es una estrategia comun de proteccion.</p>
+    </article>
+
+    <div class="tasas-ctas">
+        <p class="section-label">Usa las calculadoras con las tasas de tu pais</p>
+        <div class="rel-grid">
+            <a href="/calculadora-prestamos" class="rel-card">
+                <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span>
+                <div class="rel-info"><strong>Calculadora de Prestamos</strong><span>Cuota mensual e intereses totales</span></div>
+                <span class="rel-arrow">→</span>
+            </a>
+            <a href="/calculadora-ahorro" class="rel-card">
+                <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V22H4a2 2 0 01-2-2V6a2 2 0 012-2h16v6"/><path d="M22 12h-4a2 2 0 000 4h4v-4z"/></svg></span>
+                <div class="rel-info"><strong>Calculadora de Ahorro</strong><span>Cuanto ahorrar para tu meta</span></div>
+                <span class="rel-arrow">→</span>
+            </a>
+            <a href="/calculadora-inflacion" class="rel-card">
+                <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></span>
+                <div class="rel-info"><strong>Calculadora de Inflacion</strong><span>Cuanto pierde tu dinero cada ano</span></div>
+                <span class="rel-arrow">→</span>
+            </a>
+            <a href="/calculadora-plazo-fijo" class="rel-card">
+                <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12 2 20 7 4 7"/></svg></span>
+                <div class="rel-info"><strong>Plazo Fijo / CDT</strong><span>Rendimiento de tus depositos</span></div>
+                <span class="rel-arrow">→</span>
+            </a>
+        </div>
+    </div>
+
+    <section class="relacionadas">
+        <p class="section-label">Tambien te puede interesar</p>
+        <div class="rel-grid">
+            <a href="/calculadora-tipo-cambio" class="rel-card">
+                <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></span>
+                <div class="rel-info"><strong>Tipo de Cambio</strong><span>Conversor de monedas LATAM en tiempo real</span></div>
+                <span class="rel-arrow">→</span>
+            </a>
+            <a href="/blog/como-proteger-dinero-de-la-inflacion" class="rel-card">
+                <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+                <div class="rel-info"><strong>Guia: Proteger tu dinero de la inflacion</strong><span>Estrategias para no perder poder adquisitivo</span></div>
+                <span class="rel-arrow">→</span>
+            </a>
+        </div>
+    </section>
+</section>
+
+<style>
+.tasas-legend { display:flex; gap:1rem; flex-wrap:wrap; margin:0.75rem 0 1.5rem; }
+.tl-item { display:flex; align-items:center; gap:0.4rem; font-size:0.78rem; color:var(--text-muted); }
+.tl-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+
+.tasas-table-wrap { overflow-x:auto; border-radius:16px; border:1px solid rgba(255,255,255,0.07); margin-bottom:1.5rem; }
+.tasas-table { width:100%; border-collapse:collapse; font-size:0.88rem; }
+.tasas-table thead tr { background:rgba(91,79,255,0.12); }
+.tasas-table th { padding:0.75rem 1rem; text-align:left; font-size:0.78rem; font-weight:700; color:var(--text-muted); text-transform:uppercase; letter-spacing:.04em; white-space:nowrap; }
+.tasas-table td { padding:0.7rem 1rem; border-bottom:1px solid rgba(255,255,255,0.05); vertical-align:middle; }
+.tasas-table tbody tr:last-child td { border-bottom:none; }
+.tasas-table tbody tr:hover { background:rgba(255,255,255,0.03); }
+
+.tasas-pais { display:flex; align-items:center; gap:0.7rem; min-width:150px; }
+.tasas-flag { font-size:1.35rem; flex-shrink:0; }
+.tasas-pais strong { display:block; font-size:0.88rem; }
+.tasas-note { font-size:0.7rem; color:var(--text-muted); background:rgba(255,255,255,0.07); border-radius:4px; padding:0.1rem 0.4rem; }
+.tasas-moneda { white-space:nowrap; }
+.tasas-code { font-size:0.78rem; font-weight:700; color:var(--primary); }
+.tasas-sym { font-size:0.78rem; color:var(--text-muted); margin-left:0.3rem; }
+.tasas-val { font-weight:700; font-size:0.9rem; }
+.tv-green  { color:#00cc76; }
+.tv-yellow { color:#f59e0b; }
+.tv-orange { color:#f97316; }
+.tv-red    { color:#ef4444; }
+.tasas-na  { color:var(--text-muted); }
+.tasas-source { font-size:0.75rem; color:var(--text-muted); white-space:nowrap; }
+.tasas-year { font-size:0.7rem; opacity:.7; }
+
+.tasas-disclaimer { display:flex; gap:0.6rem; align-items:flex-start; background:rgba(167,139,250,0.07); border:1px solid rgba(167,139,250,0.18); border-radius:12px; padding:0.9rem 1rem; font-size:0.8rem; color:var(--text-muted); margin-bottom:2rem; }
+.tasas-disclaimer p { margin:0; line-height:1.55; }
+.tasas-ctas { margin-top:2.5rem; }
+
+/* CARDS MOBILE */
+.tasas-cards { display:none; gap:0.75rem; flex-direction:column; }
+.tasas-card { background:var(--surface); border:1px solid rgba(255,255,255,0.07); border-radius:14px; padding:1rem; }
+.tasas-card-header { display:flex; align-items:center; gap:0.65rem; margin-bottom:0.85rem; }
+.tasas-card-header strong { display:block; font-size:0.9rem; }
+.tasas-card-header .tasas-code { font-size:0.75rem; color:var(--text-muted); }
+.tasas-badge { margin-left:auto; font-size:0.68rem; background:rgba(255,255,255,0.07); color:var(--text-muted); border-radius:4px; padding:0.15rem 0.45rem; white-space:nowrap; }
+.tasas-card-body { display:grid; grid-template-columns:repeat(3,1fr); gap:0.5rem; margin-bottom:0.7rem; }
+.tck-item { background:rgba(255,255,255,0.04); border-radius:8px; padding:0.5rem 0.6rem; }
+.tck-item span { display:block; font-size:0.68rem; color:var(--text-muted); margin-bottom:0.2rem; }
+.tck-item strong { font-size:0.9rem; }
+.tasas-card-footer { font-size:0.7rem; color:var(--text-muted); border-top:1px solid rgba(255,255,255,0.06); padding-top:0.6rem; }
+
+@media (max-width: 720px) {
+    .tasas-table-wrap { display:none; }
+    .tasas-cards { display:flex; }
+}
+</style>
+{% endblock %}

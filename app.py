@@ -27,6 +27,28 @@ _RATES_FALLBACK = {
     'PYG': {'lending': 16.0, 'deposit':  6.0,  'inflation':   4.5, 'source': 'BCP',         'year': 'jun 2025'},
 }
 
+_COUNTRY_META = {
+    'USD': {'name': 'Ecuador',          'flag': 'ec', 'symbol': '$',    'note': 'Dolarizado'},
+    'MXN': {'name': 'Mexico',           'flag': 'mx', 'symbol': '$',    'note': ''},
+    'GTQ': {'name': 'Guatemala',        'flag': 'gt', 'symbol': 'Q',    'note': ''},
+    'HNL': {'name': 'Honduras',         'flag': 'hn', 'symbol': 'L',    'note': ''},
+    'SVC': {'name': 'El Salvador',      'flag': 'sv', 'symbol': '$',    'note': 'Dolarizado'},
+    'NIO': {'name': 'Nicaragua',        'flag': 'ni', 'symbol': 'C$',   'note': ''},
+    'CRC': {'name': 'Costa Rica',       'flag': 'cr', 'symbol': '₡',    'note': ''},
+    'PAB': {'name': 'Panama',           'flag': 'pa', 'symbol': 'B/.', 'note': 'Dolarizado'},
+    'DOP': {'name': 'Rep. Dominicana',  'flag': 'do', 'symbol': 'RD$',  'note': ''},
+    'CUP': {'name': 'Cuba',             'flag': 'cu', 'symbol': '$',    'note': ''},
+    'COP': {'name': 'Colombia',         'flag': 'co', 'symbol': '$',    'note': ''},
+    'VES': {'name': 'Venezuela',        'flag': 've', 'symbol': 'Bs.',  'note': 'Alta inflacion'},
+    'PEN': {'name': 'Peru',             'flag': 'pe', 'symbol': 'S/',   'note': ''},
+    'BOB': {'name': 'Bolivia',          'flag': 'bo', 'symbol': 'Bs.s', 'note': ''},
+    'BRL': {'name': 'Brasil',           'flag': 'br', 'symbol': 'R$',   'note': ''},
+    'CLP': {'name': 'Chile',            'flag': 'cl', 'symbol': '$',    'note': ''},
+    'ARS': {'name': 'Argentina',        'flag': 'ar', 'symbol': '$',    'note': 'Alta inflacion'},
+    'UYU': {'name': 'Uruguay',          'flag': 'uy', 'symbol': '$U',   'note': ''},
+    'PYG': {'name': 'Paraguay',         'flag': 'py', 'symbol': 'Gs.',  'note': ''},
+}
+
 _MONTHS_ES = {'01':'ene','02':'feb','03':'mar','04':'abr','05':'may','06':'jun',
               '07':'jul','08':'ago','09':'sep','10':'oct','11':'nov','12':'dic'}
 
@@ -139,6 +161,26 @@ def calculadora_roi():
 def calculadora_tipo_cambio():
     return render_template('calculadora_tipo_cambio.html')
 
+@app.route('/tasas-de-interes-latam')
+def tasas_latam():
+    rates = _get_rates()
+    rows = []
+    for code, meta in _COUNTRY_META.items():
+        r = rates.get(code, _RATES_FALLBACK.get(code, {}))
+        rows.append({
+            'code':      code,
+            'name':      meta['name'],
+            'flag':      meta['flag'],
+            'symbol':    meta['symbol'],
+            'note':      meta['note'],
+            'lending':   r.get('lending'),
+            'deposit':   r.get('deposit'),
+            'inflation': r.get('inflation'),
+            'source':    r.get('source', ''),
+            'year':      r.get('year', ''),
+        })
+    return render_template('tasas_latam.html', rows=rows)
+
 @app.errorhandler(404)
 def not_found(e):
     return render_template('404.html'), 404
@@ -221,6 +263,7 @@ def sitemap():
         ('/blog/como-calcular-liquidacion-laboral', '0.8', 'monthly'),
         ('/blog/que-es-el-tipo-de-cambio', '0.8', 'monthly'),
         ('/blog/como-pagar-varias-deudas-bola-de-nieve-avalancha', '0.8', 'monthly'),
+        ('/tasas-de-interes-latam', '0.85', 'monthly'),
         ('/contacto', '0.4', 'yearly'),
         ('/acerca', '0.4', 'yearly'),
         ('/privacidad', '0.3', 'yearly'),
