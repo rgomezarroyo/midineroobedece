@@ -155,6 +155,7 @@ BLOG_ARTICLES = {
     'calcular-descuento-porcentaje':         'blog_descuentos.html',
     'como-calcular-liquidacion-laboral':     'blog_liquidacion.html',
     'que-es-el-tipo-de-cambio':              'blog_tipo_cambio.html',
+    'como-pagar-varias-deudas-bola-de-nieve-avalancha': 'blog_deudas.html',
 }
 
 @app.route('/blog')
@@ -217,6 +218,7 @@ def sitemap():
         ('/blog/calcular-descuento-porcentaje', '0.8', 'monthly'),
         ('/blog/como-calcular-liquidacion-laboral', '0.8', 'monthly'),
         ('/blog/que-es-el-tipo-de-cambio', '0.8', 'monthly'),
+        ('/blog/como-pagar-varias-deudas-bola-de-nieve-avalancha', '0.8', 'monthly'),
         ('/contacto', '0.4', 'yearly'),
         ('/acerca', '0.4', 'yearly'),
         ('/privacidad', '0.3', 'yearly'),
