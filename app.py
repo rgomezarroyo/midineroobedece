@@ -212,6 +212,9 @@ BLOG_ARTICLES = {
     'como-calcular-liquidacion-laboral':     'blog_liquidacion.html',
     'que-es-el-tipo-de-cambio':              'blog_tipo_cambio.html',
     'como-pagar-varias-deudas-bola-de-nieve-avalancha': 'blog_deudas.html',
+    'que-es-la-tir-y-el-van':                'blog_tir_van.html',
+    'cuanto-seguro-de-vida-necesito':        'blog_seguro_vida.html',
+    'como-armar-un-portafolio-de-inversion': 'blog_portafolio.html',
 }
 
 @app.route('/blog')
@@ -275,6 +278,9 @@ def sitemap():
         ('/blog/como-calcular-liquidacion-laboral', '0.8', 'monthly'),
         ('/blog/que-es-el-tipo-de-cambio', '0.8', 'monthly'),
         ('/blog/como-pagar-varias-deudas-bola-de-nieve-avalancha', '0.8', 'monthly'),
+        ('/blog/que-es-la-tir-y-el-van', '0.8', 'monthly'),
+        ('/blog/cuanto-seguro-de-vida-necesito', '0.8', 'monthly'),
+        ('/blog/como-armar-un-portafolio-de-inversion', '0.8', 'monthly'),
         ('/calculadora-tir-van', '0.9', 'monthly'),
         ('/calculadora-seguro-vida', '0.9', 'monthly'),
         ('/calculadora-portafolio', '0.9', 'monthly'),

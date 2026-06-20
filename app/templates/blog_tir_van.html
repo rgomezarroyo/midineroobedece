@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block title %}Que es la TIR y el VAN y como saber si una inversion vale la pena | MiDineroObedece{% endblock %}
+
+{% block meta_description %}Aprende que es la TIR (Tasa Interna de Retorno) y el VAN (Valor Actual Neto), como se calculan paso a paso y como decidir si un proyecto o inversion es rentable. Con ejemplo numerico completo.{% endblock %}
+
+{% block json_ld %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Que es la TIR y el VAN y como saber si una inversion vale la pena",
+  "description": "Guia completa de TIR y VAN con ejemplo numerico paso a paso para evaluar proyectos e inversiones.",
+  "url": "https://midineroobedece.com/blog/que-es-la-tir-y-el-van",
+  "datePublished": "2026-06-19",
+  "dateModified": "2026-06-19",
+  "inLanguage": "es",
+  "author": {"@type": "Organization", "name": "MiDineroObedece"},
+  "publisher": {
+    "@type": "Organization",
+    "name": "MiDineroObedece",
+    "logo": {"@type": "ImageObject", "url": "https://midineroobedece.com/static/img/og-default.png"}
+  },
+  "mainEntityOfPage": {"@type": "WebPage", "@id": "https://midineroobedece.com/blog/que-es-la-tir-y-el-van"}
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://midineroobedece.com/"},
+    {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://midineroobedece.com/blog"},
+    {"@type": "ListItem", "position": 3, "name": "Que es la TIR y el VAN", "item": "https://midineroobedece.com/blog/que-es-la-tir-y-el-van"}
+  ]
+}
+</script>
+{% endblock %}
+
+{% block content %}
+<section class="calculadora-page">
+    <p class="breadcrumb"><a href="/">Inicio</a> › <a href="/blog">Blog</a> › TIR y VAN</p>
+    <h1>Que es la TIR y el VAN y como saber si una inversion vale la pena</h1>
+    <p class="subtitulo">Dos indicadores que todo emprendedor o inversionista deberia saber leer antes de meter dinero en un proyecto.</p>
+
+    <article class="contenido-seo">
+
+        <h2>Que es el VAN (Valor Actual Neto)</h2>
+        <p>El VAN trae todos los flujos de dinero futuros de un proyecto a su valor de hoy, descontando una tasa, y le resta la inversion inicial. En palabras simples: te dice cuanto valor REAL genera el proyecto despues de considerar que el dinero de hoy vale mas que el dinero de manana.</p>
+        <p><strong>VAN = -Inversion inicial + Flujo1 / (1+i) + Flujo2 / (1+i)^2 + ... + FlujoN / (1+i)^N</strong></p>
+        <p>Donde "i" es tu tasa de descuento: el costo de tu financiamiento, o el rendimiento minimo que exiges para que el proyecto valga la pena.</p>
+
+        <h2>Que es la TIR (Tasa Interna de Retorno)</h2>
+        <p>La TIR es la tasa de descuento exacta que hace que el VAN sea igual a cero. Es, en otras palabras, el rendimiento porcentual real que produce el proyecto. Si la TIR es mayor que tu tasa de descuento, el proyecto rinde mas de lo que te cuesta el dinero — es rentable.</p>
+
+        <h2>Ejemplo paso a paso</h2>
+        <p>Inviertes $10,000 en un negocio y proyectas estos flujos netos:</p>
+        <ul>
+            <li>Ano 1: $3,000</li>
+            <li>Ano 2: $4,000</li>
+            <li>Ano 3: $5,000</li>
+        </ul>
+        <p>Tu tasa de descuento es 12% anual (lo que te cuesta financiarte o tu rendimiento minimo exigido).</p>
+        <p><strong>VAN</strong> = -10,000 + 3,000/1.12 + 4,000/1.12^2 + 5,000/1.12^3 = -10,000 + 2,678 + 3,189 + 3,558 = <strong>$-575</strong></p>
+        <p>VAN negativo: con esos flujos y esa tasa, el proyecto destruye valor por $575. La <strong>TIR</strong> de este mismo flujo es aproximadamente 9.7% — menor al 12% que exiges, lo cual confirma la misma conclusion desde otro angulo.</p>
+
+        <h2>Como decidir con VAN y TIR juntos</h2>
+        <ul>
+            <li><strong>VAN positivo y TIR mayor a tu tasa de descuento:</strong> acepta el proyecto, genera valor real.</li>
+            <li><strong>VAN negativo:</strong> rechaza el proyecto, sin importar cuanto te guste la idea.</li>
+            <li><strong>Resultados contradictorios (raro, pasa con flujos irregulares):</strong> confia siempre en el VAN, es el criterio mas confiable porque mide valor en dinero absoluto, no en porcentaje.</li>
+        </ul>
+
+        <h2>TIR vs VAN: cual usar para comparar proyectos</h2>
+        <p>Usa la <strong>TIR</strong> cuando quieras comparar el rendimiento porcentual de proyectos de tamano similar. Usa el <strong>VAN</strong> cuando compares proyectos de tamano distinto: un proyecto de $100,000 con TIR de 15% probablemente genera mas riqueza absoluta que uno de $5,000 con TIR de 40%, aunque el segundo "rinda mas" en porcentaje.</p>
+
+        <h2>Errores comunes al usar la TIR</h2>
+        <ul>
+            <li><strong>Ignorar el tamano del proyecto:</strong> una TIR alta en un proyecto pequeno no compensa una TIR mas baja en un proyecto grande si el VAN del grande es mayor.</li>
+            <li><strong>Flujos con signos alternados:</strong> si el proyecto tiene flujos negativos y positivos intercalados (no solo al inicio), puede haber mas de una TIR matematicamente valida — en ese caso el VAN es el unico criterio confiable.</li>
+            <li><strong>Usar una tasa de descuento irreal:</strong> si subestimas tu costo de capital, cualquier proyecto parecera rentable en el papel.</li>
+        </ul>
+
+    </article>
+
+    <div class="blog-cta">
+        <h3>Calcula la TIR y el VAN de tu proyecto en segundos</h3>
+        <p>Ingresa la inversion inicial, la tasa de descuento y los flujos esperados. La calculadora te da el VAN, la TIR y el periodo de recuperacion.</p>
+        <a href="/calculadora-tir-van" class="btn-cta">Usar Calculadora de TIR y VAN →</a>
+    </div>
+
+    <section class="relacionadas">
+        <p class="section-label">Tambien te puede interesar</p>
+        <div class="rel-grid">
+            <a href="/calculadora-roi" class="rel-card">
+                <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/></svg></span>
+                <div class="rel-info"><strong>Calculadora de ROI</strong><span>Retorno simple y anualizado</span></div>
+                <span class="rel-arrow">→</span>
+            </a>
+            <a href="/calculadora-portafolio" class="rel-card">
+                <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></span>
+                <div class="rel-info"><strong>Simulador de Portafolio</strong><span>Proyecta tu inversion mensual</span></div>
+                <span class="rel-arrow">→</span>
+            </a>
+            <a href="/blog/como-calcular-roi-inversion" class="rel-card">
+                <span class="rel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V22H4a2 2 0 01-2-2V6a2 2 0 012-2h16v6"/><path d="M22 12h-4a2 2 0 000 4h4v-4z"/></svg></span>
+                <div class="rel-info"><strong>Guia: Como calcular el ROI</strong><span>El indicador mas simple</span></div>
+                <span class="rel-arrow">→</span>
+            </a>
+        </div>
+    </section>
+</section>
+{% endblock %}
