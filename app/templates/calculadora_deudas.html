@@ -323,7 +323,7 @@
         <p>Ataca primero la deuda con la tasa de interes mas alta. Matematicamente es superior porque reduces el dinero que va a intereses cada mes. Si tienes disciplina y no necesitas victorias rapidas para mantenerte en el plan, la avalancha te ahorra mas dinero.</p>
 
         <h3>La regla mas importante: no importa el metodo, importa el extra</h3>
-        <p>Pagar solo los minimos es la trampa. Una tarjeta de credito al 36% anual con un saldo de $2,000 pagando solo el minimo puede tardarte mas de 10 anos en pagarse. El dinero extra que destinas cada mes es lo que realmente acelera tu libertad financiera.</p>
+        <p>Pagar solo los minimos es la trampa. Una tarjeta de credito al 36% anual con un saldo de $2,000 pagando solo el minimo puede tardarte mas de 10 años en pagarse. El dinero extra que destinas cada mes es lo que realmente acelera tu libertad financiera.</p>
 
         <h3>Como usar esta calculadora</h3>
         <ul>
@@ -474,12 +474,12 @@ function simular(deudasOrig, pagoExtra, metodo) {
 }
 
 function fmtMeses(m) {
-    if (m >= 600) return '+50 anos';
-    var anos = Math.floor(m / 12);
+    if (m >= 600) return '+50 años';
+    var años = Math.floor(m / 12);
     var meses = m % 12;
-    if (anos === 0) return meses + ' mes' + (meses !== 1 ? 'es' : '');
-    if (meses === 0) return anos + ' ano' + (anos !== 1 ? 's' : '');
-    return anos + ' ano' + (anos !== 1 ? 's' : '') + ' y ' + meses + ' mes' + (meses !== 1 ? 'es' : '');
+    if (años === 0) return meses + ' mes' + (meses !== 1 ? 'es' : '');
+    if (meses === 0) return años + ' año' + (años !== 1 ? 's' : '');
+    return años + ' año' + (años !== 1 ? 's' : '') + ' y ' + meses + ' mes' + (meses !== 1 ? 'es' : '');
 }
 
 function renderOrden(elId, orden) {

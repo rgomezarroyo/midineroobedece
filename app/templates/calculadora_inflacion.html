@@ -31,17 +31,17 @@
     {
       "@type": "Question",
       "name": "Como proteger tu dinero de la inflacion?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Invierte en activos que superen la inflacion como acciones, bienes raices o fondos indexados. Evita tener grandes sumas en cuentas de ahorro con tasa menor a la inflacion. Considera ahorrar en dolares si vives en un pais con inflacion alta. El dinero guardado sin invertir pierde valor cada ano."}
+      "acceptedAnswer": {"@type": "Answer", "text": "Invierte en activos que superen la inflacion como acciones, bienes raices o fondos indexados. Evita tener grandes sumas en cuentas de ahorro con tasa menor a la inflacion. Considera ahorrar en dolares si vives en un pais con inflacion alta. El dinero guardado sin invertir pierde valor cada año."}
     },
     {
       "@type": "Question",
       "name": "Que es la tasa de inflacion anual y como se calcula?",
-      "acceptedAnswer": {"@type": "Answer", "text": "La tasa de inflacion anual mide el porcentaje de aumento en el precio de una canasta de bienes y servicios representativos en un ano. Se calcula comparando el Indice de Precios al Consumidor (IPC) del mes actual con el del mismo mes del ano anterior. Lo publica mensualmente el banco central de cada pais."}
+      "acceptedAnswer": {"@type": "Answer", "text": "La tasa de inflacion anual mide el porcentaje de aumento en el precio de una canasta de bienes y servicios representativos en un año. Se calcula comparando el Indice de Precios al Consumidor (IPC) del mes actual con el del mismo mes del año anterior. Lo publica mensualmente el banco central de cada pais."}
     },
     {
       "@type": "Question",
-      "name": "Cuanto pierde de valor el dinero con la inflacion en 10 anos?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Con una inflacion del 5% anual, $1,000 de hoy equivaldran a $614 en poder adquisitivo dentro de 10 anos. Con 10% anual, quedan en $386. Con 50% anual como ha ocurrido en algunos paises de LATAM, el dinero pierde mas del 99% de su valor en una decada."}
+      "name": "Cuanto pierde de valor el dinero con la inflacion en 10 años?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Con una inflacion del 5% anual, $1,000 de hoy equivaldran a $614 en poder adquisitivo dentro de 10 años. Con 10% anual, quedan en $386. Con 50% anual como ha ocurrido en algunos paises de LATAM, el dinero pierde mas del 99% de su valor en una decada."}
     }
   ]
 }
@@ -84,10 +84,10 @@
                 <p class="tasa-hint" data-hint="inflacion"><strong>Ref inflacion 2025:</strong> EC 2-4% · CL 4-6% · PE 3-6% · MX 4-7% · CO 6-9% · AR 50%+</p>
             </div>
             <div class="campo">
-                <label for="anos-inf">Periodo de tiempo</label>
+                <label for="años-inf">Periodo de tiempo</label>
                 <div class="input-wrap">
-                    <input type="number" id="anos-inf" class="with-suf" placeholder="10" min="1">
-                    <span class="input-suf">anos</span>
+                    <input type="number" id="años-inf" class="with-suf" placeholder="10" min="1">
+                    <span class="input-suf">años</span>
                 </div>
             </div>
 
@@ -127,7 +127,7 @@
         <h3>Tasas de inflacion de referencia en LATAM</h3>
         <ul>
             <li><strong>Ecuador:</strong> 1-4% anual (dolarizado, inflacion baja).</li>
-            <li><strong>Colombia:</strong> 5-9% anual en anos recientes.</li>
+            <li><strong>Colombia:</strong> 5-9% anual en años recientes.</li>
             <li><strong>Mexico:</strong> 4-8% anual en promedio.</li>
             <li><strong>Argentina:</strong> +100% anual en 2023-2024.</li>
             <li><strong>Peru:</strong> 3-6% anual en promedio.</li>
@@ -137,7 +137,7 @@
             <li>Invierte en activos que superen la inflacion: acciones, bienes raices, fondos indexados.</li>
             <li>Evita tener grandes sumas en cuentas de ahorro con tasa menor a la inflacion.</li>
             <li>Considera ahorrar en dolares si vives en un pais con inflacion alta.</li>
-            <li>La regla de oro: el dinero guardado bajo el colchon pierde valor cada ano.</li>
+            <li>La regla de oro: el dinero guardado bajo el colchon pierde valor cada año.</li>
         </ul>
     </article>
 
@@ -172,14 +172,14 @@
 function calcularInflacion() {
     const monto = parseFloat(document.getElementById('monto-inf').value);
     const tasa = parseFloat(document.getElementById('tasa-inf').value);
-    const anos = parseInt(document.getElementById('anos-inf').value);
+    const años = parseInt(document.getElementById('años-inf').value);
 
-    if (!monto || !tasa || !anos) {
+    if (!monto || !tasa || !años) {
         alert('Por favor completa todos los campos.');
         return;
     }
 
-    const factor = Math.pow(1 + tasa / 100, anos);
+    const factor = Math.pow(1 + tasa / 100, años);
     const valorFuturo = monto * factor;
     const perdida = valorFuturo - monto;
     const valorReal = monto / factor;
@@ -189,11 +189,11 @@ const pct = ((1 - 1 / factor) * 100).toFixed(1);
     document.getElementById('valor-futuro-inf').textContent = fmt(valorFuturo);
     document.getElementById('perdida-inf').textContent = fmt(perdida);
     document.getElementById('valor-real-inf').textContent = fmt(valorReal);
-    document.getElementById('tip-inf').textContent = '📉 En ' + anos + ' anos tu dinero habra perdido el ' + pct + '% de su poder adquisitivo.';
+    document.getElementById('tip-inf').textContent = '📉 En ' + años + ' años tu dinero habra perdido el ' + pct + '% de su poder adquisitivo.';
 
     document.getElementById('resultados-espera-inf').style.display = 'none';
     document.getElementById('resultados-data-inf').style.display = 'block';
-    window._shareMsg = 'Calcule el impacto de la inflacion en MiDineroObedece:\n' + fmt(monto) + ' hoy equivaldra a ' + fmt(valorFuturo) + ' en ' + anos + ' anos (inflacion ' + tasa + '% anual)\nPoder adquisitivo perdido: ' + fmt(perdida) + '\nCalcula el tuyo gratis: midineroobedece.com/calculadora-inflacion';
+    window._shareMsg = 'Calcule el impacto de la inflacion en MiDineroObedece:\n' + fmt(monto) + ' hoy equivaldra a ' + fmt(valorFuturo) + ' en ' + años + ' años (inflacion ' + tasa + '% anual)\nPoder adquisitivo perdido: ' + fmt(perdida) + '\nCalcula el tuyo gratis: midineroobedece.com/calculadora-inflacion';
     document.getElementById('btn-share-inf').style.display = 'flex';
 }
 </script>

@@ -26,17 +26,17 @@
     {
       "@type": "Question",
       "name": "Por que planificar la jubilacion desde joven?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Gracias al interes compuesto, cada ano que esperas para empezar a ahorrar para el retiro te cuesta mucho mas. Comenzar a los 25 anos en vez de los 35 puede significar aportar la mitad del dinero y llegar al mismo resultado al momento de jubilarte."}
+      "acceptedAnswer": {"@type": "Answer", "text": "Gracias al interes compuesto, cada año que esperas para empezar a ahorrar para el retiro te cuesta mucho mas. Comenzar a los 25 años en vez de los 35 puede significar aportar la mitad del dinero y llegar al mismo resultado al momento de jubilarte."}
     },
     {
       "@type": "Question",
       "name": "Cuanto dinero necesito para jubilarme?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Una regla practica es multiplicar tus gastos mensuales en el retiro por 12 meses y por los anos que esperas vivir retirado. Si quieres $1,000 al mes durante 20 anos, necesitas un fondo de $240,000 como minimo sin considerar rendimientos durante el retiro."}
+      "acceptedAnswer": {"@type": "Answer", "text": "Una regla practica es multiplicar tus gastos mensuales en el retiro por 12 meses y por los años que esperas vivir retirado. Si quieres $1,000 al mes durante 20 años, necesitas un fondo de $240,000 como minimo sin considerar rendimientos durante el retiro."}
     },
     {
       "@type": "Question",
       "name": "A que edad debo empezar a ahorrar para la jubilacion?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Lo antes posible, idealmente desde tu primer trabajo. Empezar a los 25 anos en lugar de los 35 puede significar aportar la mitad del dinero total y llegar al mismo resultado gracias al interes compuesto. Cada ano que esperas aumenta significativamente el monto mensual que necesitas ahorrar."}
+      "acceptedAnswer": {"@type": "Answer", "text": "Lo antes posible, idealmente desde tu primer trabajo. Empezar a los 25 años en lugar de los 35 puede significar aportar la mitad del dinero total y llegar al mismo resultado gracias al interes compuesto. Cada año que esperas aumenta significativamente el monto mensual que necesitas ahorrar."}
     },
     {
       "@type": "Question",
@@ -72,14 +72,14 @@
                 <label for="edad-actual">Edad actual</label>
                 <div class="input-wrap">
                     <input type="number" id="edad-actual" class="with-suf" placeholder="30" min="18" max="70">
-                    <span class="input-suf">anos</span>
+                    <span class="input-suf">años</span>
                 </div>
             </div>
             <div class="campo">
                 <label for="edad-retiro">Edad de retiro</label>
                 <div class="input-wrap">
                     <input type="number" id="edad-retiro" class="with-suf" placeholder="65" min="40" max="80">
-                    <span class="input-suf">anos</span>
+                    <span class="input-suf">años</span>
                 </div>
             </div>
             <div class="campo">
@@ -90,10 +90,10 @@
                 </div>
             </div>
             <div class="campo">
-                <label for="anos-retiro">Anos esperados de retiro</label>
+                <label for="años-retiro">Años esperados de retiro</label>
                 <div class="input-wrap">
-                    <input type="number" id="anos-retiro" class="with-suf" placeholder="20" min="5" max="50">
-                    <span class="input-suf">anos</span>
+                    <input type="number" id="años-retiro" class="with-suf" placeholder="20" min="5" max="50">
+                    <span class="input-suf">años</span>
                 </div>
             </div>
             <div class="campo">
@@ -140,9 +140,9 @@
 
     <article class="contenido-seo">
         <h2>Por que planificar la jubilacion desde joven?</h2>
-        <p>Gracias al interes compuesto, cada ano que esperas para empezar a ahorrar para el retiro te cuesta mucho mas. Comenzar a los 25 anos en vez de los 35 puede significar aportar la mitad del dinero y llegar al mismo resultado.</p>
+        <p>Gracias al interes compuesto, cada año que esperas para empezar a ahorrar para el retiro te cuesta mucho mas. Comenzar a los 25 años en vez de los 35 puede significar aportar la mitad del dinero y llegar al mismo resultado.</p>
         <h3>Cuanto necesito realmente para jubilarme?</h3>
-        <p>Una regla practica es multiplicar tus gastos anuales en el retiro por los anos que esperas vivir retirado. Si quieres $1,000/mes durante 20 anos, necesitas un fondo de $240,000 como minimo (sin considerar rendimientos durante el retiro).</p>
+        <p>Una regla practica es multiplicar tus gastos anuales en el retiro por los años que esperas vivir retirado. Si quieres $1,000/mes durante 20 años, necesitas un fondo de $240,000 como minimo (sin considerar rendimientos durante el retiro).</p>
         <h3>Consejos para acelerar tu retiro</h3>
         <ul>
             <li>Empieza hoy, aunque sea con $50 al mes. La constancia es mas importante que el monto.</li>
@@ -184,7 +184,7 @@ function calcularJubilacion() {
     const edadActual = parseInt(document.getElementById('edad-actual').value);
     const edadRetiro = parseInt(document.getElementById('edad-retiro').value);
     const gastos = parseFloat(document.getElementById('gastos-retiro').value);
-    const anosRetiro = parseInt(document.getElementById('anos-retiro').value);
+    const anosRetiro = parseInt(document.getElementById('años-retiro').value);
     const tasaAnual = parseFloat(document.getElementById('tasa-jub').value) || 0;
 
     if (!edadActual || !edadRetiro || !gastos || !anosRetiro) {
@@ -217,7 +217,7 @@ function calcularJubilacion() {
 
     document.getElementById('resultados-espera-jub').style.display = 'none';
     document.getElementById('resultados-data-jub').style.display = 'block';
-    window._shareMsg = 'Calcule mi plan de jubilacion en MiDineroObedece:\nRetiro a los ' + edadRetiro + ' anos | Gastos mensuales: ' + fmt(gastos) + '\nNecesito ahorrar: ' + fmt(ahorro) + '/mes\nFondo necesario: ' + fmt(corpus) + '\nCalcula el tuyo gratis: midineroobedece.com/calculadora-jubilacion';
+    window._shareMsg = 'Calcule mi plan de jubilacion en MiDineroObedece:\nRetiro a los ' + edadRetiro + ' años | Gastos mensuales: ' + fmt(gastos) + '\nNecesito ahorrar: ' + fmt(ahorro) + '/mes\nFondo necesario: ' + fmt(corpus) + '\nCalcula el tuyo gratis: midineroobedece.com/calculadora-jubilacion';
     document.getElementById('btn-share-jub').style.display = 'flex';
 }
 </script>

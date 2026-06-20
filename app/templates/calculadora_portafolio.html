@@ -30,7 +30,7 @@
     {
       "@type": "Question",
       "name": "Cuanto deberia invertir mensualmente?",
-      "acceptedAnswer": {"@type": "Answer", "text": "La regla del 20% dice que deberias ahorrar e invertir al menos el 20% de tus ingresos netos. Si ganas $1,000 al mes, invierte $200 mensualmente. Incluso $50-$100 mensuales durante 20-30 anos pueden acumular un patrimonio significativo gracias al interes compuesto."}
+      "acceptedAnswer": {"@type": "Answer", "text": "La regla del 20% dice que deberias ahorrar e invertir al menos el 20% de tus ingresos netos. Si ganas $1,000 al mes, invierte $200 mensualmente. Incluso $50-$100 mensuales durante 20-30 años pueden acumular un patrimonio significativo gracias al interes compuesto."}
     }
   ]
 }
@@ -78,7 +78,7 @@
                 <label for="plazo-port">Plazo de inversion</label>
                 <div class="input-wrap">
                     <input type="number" id="plazo-port" class="with-suf" placeholder="20" min="1" max="50">
-                    <span class="input-suf">anos</span>
+                    <span class="input-suf">años</span>
                 </div>
             </div>
 
@@ -146,11 +146,11 @@
 
     <article class="contenido-seo">
         <h2>Que significa cada perfil de riesgo</h2>
-        <p><strong>Conservador (~5% anual):</strong> plazos fijos, bonos del Estado, CDTs. Baja volatilidad, rendimiento predecible. Ideal para plazos menores a 5 anos o personas proximas a necesitar el dinero.</p>
-        <p><strong>Moderado (~8% anual):</strong> combinacion de renta fija y acciones (60/40 o 50/50). Balance entre crecimiento y estabilidad. El mas recomendado para plazos de 10-20 anos.</p>
-        <p><strong>Agresivo (~11% anual):</strong> predominio de acciones globales (ETFs de indices como S&P 500, MSCI World). Alta volatilidad en el corto plazo pero mayor rendimiento historico a largo plazo. Solo recomendable si no necesitaras el dinero por mas de 10-15 anos.</p>
+        <p><strong>Conservador (~5% anual):</strong> plazos fijos, bonos del Estado, CDTs. Baja volatilidad, rendimiento predecible. Ideal para plazos menores a 5 años o personas proximas a necesitar el dinero.</p>
+        <p><strong>Moderado (~8% anual):</strong> combinacion de renta fija y acciones (60/40 o 50/50). Balance entre crecimiento y estabilidad. El mas recomendado para plazos de 10-20 años.</p>
+        <p><strong>Agresivo (~11% anual):</strong> predominio de acciones globales (ETFs de indices como S&P 500, MSCI World). Alta volatilidad en el corto plazo pero mayor rendimiento historico a largo plazo. Solo recomendable si no necesitaras el dinero por mas de 10-15 años.</p>
         <h3>El poder de invertir de forma constante</h3>
-        <p>El simulador usa aportes mensuales con capitalizacion mensual. La clave no es el monto inicial sino la constancia: $200 al mes durante 25 anos a un 8% anual generan mas de $180,000, de los cuales solo $60,000 son tu dinero — los otros $120,000 son el rendimiento compuesto. Empezar 10 anos antes duplica aproximadamente el resultado final.</p>
+        <p>El simulador usa aportes mensuales con capitalizacion mensual. La clave no es el monto inicial sino la constancia: $200 al mes durante 25 años a un 8% anual generan mas de $180,000, de los cuales solo $60,000 son tu dinero — los otros $120,000 son el rendimiento compuesto. Empezar 10 años antes duplica aproximadamente el resultado final.</p>
         <h3>Advertencia importante</h3>
         <p>Las tasas usadas son promedios historicos de largo plazo. Los rendimientos pasados no garantizan rendimientos futuros. En mercados locales de LATAM las tasas reales pueden ser distintas. Este simulador es una herramienta educativa, no una proyeccion garantizada.</p>
     </article>
@@ -210,7 +210,7 @@ function calcularPortafolio() {
     var plazo   = parseInt(document.getElementById('plazo-port').value)    || 0;
 
     if (!aporte && !capIni) { alert('Ingresa al menos una aportacion mensual o capital inicial.'); return; }
-    if (!plazo) { alert('Ingresa el plazo en anos.'); return; }
+    if (!plazo) { alert('Ingresa el plazo en años.'); return; }
 
     var r = _perfilRate / 100 / 12;
     var meses = plazo * 12;
@@ -235,20 +235,20 @@ function calcularPortafolio() {
     }
     if (milestones[milestones.length - 1] !== plazo) milestones.push(plazo);
 
-    var html = '<thead><tr><th>Ano</th><th>Aportado</th><th>Valor total</th><th>Ganancia</th></tr></thead><tbody>';
+    var html = '<thead><tr><th>Año</th><th>Aportado</th><th>Valor total</th><th>Ganancia</th></tr></thead><tbody>';
     milestones.forEach(function(y) {
         var m = y * 12;
         var fv = capIni * Math.pow(1+r, m) + (r > 0 ? aporte * (Math.pow(1+r, m) - 1) / r : aporte * m);
         var ap = capIni + aporte * m;
         var gn = fv - ap;
-        html += '<tr><td>Ano ' + y + '</td><td>' + fmt(ap) + '</td><td>' + fmt(fv) + '</td><td>+' + fmt(gn) + '</td></tr>';
+        html += '<tr><td>Año ' + y + '</td><td>' + fmt(ap) + '</td><td>' + fmt(fv) + '</td><td>+' + fmt(gn) + '</td></tr>';
     });
     html += '</tbody>';
     tabla.innerHTML = html;
 
     document.getElementById('resultados-espera-port').style.display = 'none';
     document.getElementById('resultados-data-port').style.display   = 'block';
-    window._shareMsg = 'Simule mi portafolio ' + _perfilName + ' en MiDineroObedece:\nPatrimonio en ' + plazo + ' anos: ' + fmt(patrimonio) + ' (aporte ' + fmt(aporte) + '/mes)\nSimula el tuyo gratis: midineroobedece.com/calculadora-portafolio';
+    window._shareMsg = 'Simule mi portafolio ' + _perfilName + ' en MiDineroObedece:\nPatrimonio en ' + plazo + ' años: ' + fmt(patrimonio) + ' (aporte ' + fmt(aporte) + '/mes)\nSimula el tuyo gratis: midineroobedece.com/calculadora-portafolio';
     document.getElementById('btn-share-port').style.display = 'flex';
 }
 </script>

@@ -30,7 +30,7 @@
     {
       "@type": "Question",
       "name": "Que tipo de seguro de vida es mejor en LATAM?",
-      "acceptedAnswer": {"@type": "Answer", "text": "El seguro de vida temporal (term life) es el mas recomendado para la mayoria de familias: cubre el periodo en que tus dependientes realmente te necesitan (20-30 anos) y tiene la prima mas baja. El seguro de vida permanente mezcla seguro con inversion, lo cual suele ser menos eficiente que tenerlos separados."}
+      "acceptedAnswer": {"@type": "Answer", "text": "El seguro de vida temporal (term life) es el mas recomendado para la mayoria de familias: cubre el periodo en que tus dependientes realmente te necesitan (20-30 años) y tiene la prima mas baja. El seguro de vida permanente mezcla seguro con inversion, lo cual suele ser menos eficiente que tenerlos separados."}
     }
   ]
 }
@@ -67,10 +67,10 @@
             </div>
 
             <div class="campo">
-                <label for="anos-cob">Anos de cobertura necesarios</label>
+                <label for="años-cob">Años de cobertura necesarios</label>
                 <div class="input-wrap">
-                    <input type="number" id="anos-cob" class="with-suf" placeholder="20" min="1" max="40">
-                    <span class="input-suf">anos</span>
+                    <input type="number" id="años-cob" class="with-suf" placeholder="20" min="1" max="40">
+                    <span class="input-suf">años</span>
                 </div>
                 <p class="tasa-hint">Hasta que tus dependientes sean independientes o tu pareja se jubile.</p>
             </div>
@@ -135,7 +135,7 @@
                     <p class="seg-prima-titulo">Prima mensual estimada</p>
                     <div class="seg-prima-grid">
                         <div class="seg-prima-item">
-                            <span>Seguro temporal 20 anos</span>
+                            <span>Seguro temporal 20 años</span>
                             <strong id="prima-temp"></strong>
                         </div>
                         <div class="seg-prima-item">
@@ -157,9 +157,9 @@
         <h2>Como se calcula la cobertura necesaria</h2>
         <p>Usamos el metodo DIME simplificado: <strong>Deudas + Ingresos de reemplazo + gastos finales - Ahorros</strong>. Es el metodo mas usado por asesores financieros en LATAM por ser directo y conservador.</p>
         <h3>Por que el ingreso de reemplazo es el factor mas grande</h3>
-        <p>Si ganas $1,500 al mes y tus dependientes necesitan esos ingresos por 20 anos, el fondo necesario es de $360,000 nominales. Aunque la inflacion erosionara ese dinero, un seguro a suma fija sigue siendo la forma mas accesible de proteger a tu familia en la mayoria de paises de LATAM.</p>
+        <p>Si ganas $1,500 al mes y tus dependientes necesitan esos ingresos por 20 años, el fondo necesario es de $360,000 nominales. Aunque la inflacion erosionara ese dinero, un seguro a suma fija sigue siendo la forma mas accesible de proteger a tu familia en la mayoria de paises de LATAM.</p>
         <h3>Seguro temporal vs permanente</h3>
-        <p>El <strong>seguro temporal</strong> cubre un periodo definido (10, 20, 30 anos) y su prima es significativamente mas baja. Es ideal si tu objetivo es cubrir el periodo mientras tus hijos son dependientes o mientras pagas la hipoteca. Al vencimiento no tiene valor residual.</p>
+        <p>El <strong>seguro temporal</strong> cubre un periodo definido (10, 20, 30 años) y su prima es significativamente mas baja. Es ideal si tu objetivo es cubrir el periodo mientras tus hijos son dependientes o mientras pagas la hipoteca. Al vencimiento no tiene valor residual.</p>
         <p>El <strong>seguro permanente</strong> cubre toda la vida y tiene un componente de ahorro (valor en efectivo). Su prima es 5 a 15 veces mayor. La mayoria de planificadores financieros recomienda el temporal y separar el ahorro en instrumentos mas eficientes.</p>
     </article>
 
@@ -198,18 +198,18 @@
 <script>
 function calcularSeguro() {
     var ingreso  = parseFloat(document.getElementById('ingreso-seg').value)    || 0;
-    var anos     = parseFloat(document.getElementById('anos-cob').value)        || 20;
+    var años     = parseFloat(document.getElementById('años-cob').value)        || 20;
     var deudas   = parseFloat(document.getElementById('deudas-seg').value)      || 0;
     var gastos   = parseFloat(document.getElementById('gastos-finales').value)  || 0;
     var ahorros  = parseFloat(document.getElementById('ahorros-seg').value)     || 0;
 
     if (!ingreso) { alert('Ingresa tu ingreso mensual.'); return; }
 
-    var reemplazoIngresos = ingreso * 12 * anos;
+    var reemplazoIngresos = ingreso * 12 * años;
     var totalNecesidad    = reemplazoIngresos + deudas + gastos;
     var cobertura         = Math.max(0, totalNecesidad - ahorros);
 
-    // Prima estimada: temporal ~0.25% cobertura/ano para adulto sano 30-40 anos
+    // Prima estimada: temporal ~0.25% cobertura/año para adulto sano 30-40 años
     // permanente ~1.5-2%
     var primaTempAnual = cobertura * 0.0025;
     var primaPermAnual = cobertura * 0.018;

@@ -389,7 +389,7 @@ function calcularDescuento() {
 // ── CALCULADORA LIQUIDACION LABORAL ──
 function calcularLiquidacion() {
   const sueldo = parseFloat(document.getElementById('sueldo-liq').value);
-  const anos = parseInt(document.getElementById('anos-liq').value) || 0;
+  const años = parseInt(document.getElementById('años-liq').value) || 0;
   const meses = parseInt(document.getElementById('meses-liq').value) || 0;
   const tipo = document.getElementById('tipo-liq').value;
 
@@ -398,7 +398,7 @@ function calcularLiquidacion() {
     return;
   }
 
-  const indemnizacion = tipo === 'despido' ? sueldo * anos : 0;
+  const indemnizacion = tipo === 'despido' ? sueldo * años : 0;
   const vacaciones = (sueldo / 12) * meses;
   const aguinaldo = (sueldo / 12) * meses;
   const total = indemnizacion + vacaciones + aguinaldo;

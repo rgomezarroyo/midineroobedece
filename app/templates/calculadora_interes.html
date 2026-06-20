@@ -91,10 +91,10 @@
                 <p class="tasa-hint" data-hint="interes"><strong>Ref inversion:</strong> plazo fijo 3-13% · fondos indexados ~10% hist. · CETES/TES 9-12%</p>
             </div>
             <div class="campo">
-                <label for="anos">Anos de inversion</label>
+                <label for="años">Años de inversion</label>
                 <div class="input-wrap">
-                    <input type="number" id="anos" class="with-suf" placeholder="10" min="1">
-                    <span class="input-suf">anos</span>
+                    <input type="number" id="años" class="with-suf" placeholder="10" min="1">
+                    <span class="input-suf">años</span>
                 </div>
             </div>
 
@@ -135,7 +135,7 @@
             <li>A mayor tiempo, mayor efecto del interes compuesto.</li>
             <li>Incluso aportes pequenos mensuales hacen una gran diferencia a largo plazo.</li>
             <li>La clave es la constancia y no retirar los intereses generados.</li>
-            <li>Empezar 10 anos antes puede duplicar o triplicar el capital final.</li>
+            <li>Empezar 10 años antes puede duplicar o triplicar el capital final.</li>
         </ul>
         <h3>Diferencia entre interes simple e interes compuesto</h3>
         <p>El interes simple se calcula siempre sobre el capital original. El interes compuesto se calcula sobre el capital mas los intereses ya acumulados, generando un efecto de bola de nieve. Por eso es tan poderoso en el largo plazo.</p>
@@ -175,15 +175,15 @@ function calcularInteres() {
     const capital = parseFloat(document.getElementById('capital').value) || 0;
     const aporte = parseFloat(document.getElementById('aporte').value) || 0;
     const tasaAnual = parseFloat(document.getElementById('tasa-ic').value) || 0;
-    const anos = parseInt(document.getElementById('anos').value) || 0;
+    const años = parseInt(document.getElementById('años').value) || 0;
 
-    if (anos <= 0) {
-        alert('Por favor ingresa los anos de inversion.');
+    if (años <= 0) {
+        alert('Por favor ingresa los años de inversion.');
         return;
     }
 
     const tasaMensual = tasaAnual / 100 / 12;
-    const meses = anos * 12;
+    const meses = años * 12;
     const factor = Math.pow(1 + tasaMensual, meses);
 
     let valorFinal;
@@ -201,7 +201,7 @@ document.getElementById('valor-final').textContent = fmt(valorFinal);
 
     document.getElementById('resultados-espera-ic').style.display = 'none';
     document.getElementById('resultados-data-ic').style.display = 'block';
-    window._shareMsg = 'Simule mi inversion con interes compuesto en MiDineroObedece:\nCapital: ' + fmt(capital) + ' al ' + tasaAnual + '% por ' + anos + ' anos\nValor final: ' + fmt(valorFinal) + ' (ganancias: ' + fmt(ganancias) + ')\nSimula el tuyo gratis: midineroobedece.com/calculadora-interes-compuesto';
+    window._shareMsg = 'Simule mi inversion con interes compuesto en MiDineroObedece:\nCapital: ' + fmt(capital) + ' al ' + tasaAnual + '% por ' + años + ' años\nValor final: ' + fmt(valorFinal) + ' (ganancias: ' + fmt(ganancias) + ')\nSimula el tuyo gratis: midineroobedece.com/calculadora-interes-compuesto';
     document.getElementById('btn-share-ic').style.display = 'flex';
 }
 </script>

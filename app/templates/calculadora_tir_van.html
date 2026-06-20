@@ -81,24 +81,24 @@
 
             <div class="campo">
                 <label>Flujos de caja anuales (hasta 10 periodos)</label>
-                <p class="tir-sub">Ingresa el flujo neto de cada periodo. Puede ser negativo si hay perdida ese ano.</p>
+                <p class="tir-sub">Ingresa el flujo neto de cada periodo. Puede ser negativo si hay perdida ese año.</p>
                 <div id="flujos-wrap">
                     <div class="flujo-row">
-                        <span class="flujo-label">Ano 1</span>
+                        <span class="flujo-label">Año 1</span>
                         <div class="input-wrap flujo-input">
                             <span class="input-pre cur-sym">$</span>
                             <input type="number" class="with-pre flujo" placeholder="3,000">
                         </div>
                     </div>
                     <div class="flujo-row">
-                        <span class="flujo-label">Ano 2</span>
+                        <span class="flujo-label">Año 2</span>
                         <div class="input-wrap flujo-input">
                             <span class="input-pre cur-sym">$</span>
                             <input type="number" class="with-pre flujo" placeholder="4,000">
                         </div>
                     </div>
                     <div class="flujo-row">
-                        <span class="flujo-label">Ano 3</span>
+                        <span class="flujo-label">Año 3</span>
                         <div class="input-wrap flujo-input">
                             <span class="input-pre cur-sym">$</span>
                             <input type="number" class="with-pre flujo" placeholder="5,000">
@@ -199,7 +199,7 @@ var MIN_FLUJOS = 1;
 
 function updateFlujoLabels() {
     var rows = document.querySelectorAll('.flujo-row');
-    rows.forEach(function(r, i) { r.querySelector('.flujo-label').textContent = 'Ano ' + (i + 1); });
+    rows.forEach(function(r, i) { r.querySelector('.flujo-label').textContent = 'Año ' + (i + 1); });
     document.getElementById('btn-rem').disabled = rows.length <= MIN_FLUJOS;
 }
 
@@ -287,7 +287,7 @@ function calcularTirVan() {
     document.getElementById('res-van').style.color = van >= 0 ? '#00cc76' : '#ef4444';
     document.getElementById('res-tir').textContent = tirVal !== null ? tirVal.toFixed(2) + '%' : 'No calculable';
     document.getElementById('res-tir').style.color = (tirVal !== null && tirVal > tasa) ? '#00cc76' : '#ef4444';
-    document.getElementById('res-payback').textContent = payback !== null ? payback.toFixed(1) + ' anos' : 'No recupera';
+    document.getElementById('res-payback').textContent = payback !== null ? payback.toFixed(1) + ' años' : 'No recupera';
     document.getElementById('res-total').textContent = fmt(totalFlujos);
 
     var verdict = document.getElementById('res-verdict');

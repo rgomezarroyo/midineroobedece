@@ -26,7 +26,7 @@
     {
       "@type": "Question",
       "name": "Por que es tan peligroso pagar solo el minimo de la tarjeta?",
-      "acceptedAnswer": {"@type": "Answer", "text": "Las tarjetas de credito en America Latina tienen tasas anuales que van del 18% al 60%. Cuando pagas solo el minimo, la mayor parte de tu pago cubre intereses y casi nada reduce la deuda real. Esto puede hacer que tardes anos en liquidar un saldo que parece pequeno."}
+      "acceptedAnswer": {"@type": "Answer", "text": "Las tarjetas de credito en America Latina tienen tasas anuales que van del 18% al 60%. Cuando pagas solo el minimo, la mayor parte de tu pago cubre intereses y casi nada reduce la deuda real. Esto puede hacer que tardes años en liquidar un saldo que parece pequeno."}
     },
     {
       "@type": "Question",
@@ -123,7 +123,7 @@
 
     <article class="contenido-seo">
         <h2>Por que es tan peligroso pagar solo el minimo?</h2>
-        <p>Las tarjetas de credito en America Latina tienen tasas de interes anuales que van del 18% al 60%. Cuando pagas solo el minimo, la mayor parte de tu pago va a cubrir intereses y casi nada reduce la deuda real. Esto puede hacer que tardes anos - incluso decadas - en liquidar un saldo que parece pequeno.</p>
+        <p>Las tarjetas de credito en America Latina tienen tasas de interes anuales que van del 18% al 60%. Cuando pagas solo el minimo, la mayor parte de tu pago va a cubrir intereses y casi nada reduce la deuda real. Esto puede hacer que tardes años - incluso decadas - en liquidar un saldo que parece pequeno.</p>
         <h3>Estrategia para pagar mas rapido</h3>
         <ul>
             <li>Paga siempre mas del minimo. Aunque sea un 20% extra marca una diferencia enorme.</li>
@@ -186,11 +186,11 @@ function calcularTarjeta() {
     const totalPagado = pago * meses;
     const totalIntereses = totalPagado - saldo;
 
-    const anos = Math.floor(meses / 12);
+    const años = Math.floor(meses / 12);
     const mesesResto = meses % 12;
     let tiempoTexto = '';
-    if (anos > 0) tiempoTexto += anos + (anos === 1 ? ' ano' : ' anos');
-    if (anos > 0 && mesesResto > 0) tiempoTexto += ' y ';
+    if (años > 0) tiempoTexto += años + (años === 1 ? ' año' : ' años');
+    if (años > 0 && mesesResto > 0) tiempoTexto += ' y ';
     if (mesesResto > 0) tiempoTexto += mesesResto + (mesesResto === 1 ? ' mes' : ' meses');
 
     document.getElementById('meses-tc').textContent = tiempoTexto;
