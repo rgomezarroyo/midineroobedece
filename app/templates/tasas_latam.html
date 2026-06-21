@@ -1,19 +1,18 @@
 {% extends "base.html" %}
 
-{% block title %}Tasas de Interes en America Latina 2025 | Prestamos, Ahorro e Inflacion por Pais{% endblock %}
-{% block meta_description %}Comparativa de tasas de interes en 19 paises de LATAM: tasa de prestamos, rendimiento de ahorro e inflacion anual. Datos de bancos centrales actualizados 2025.{% endblock %}
+{% block title %}Tasas de Interes en America Latina | Prestamos, Ahorro e Inflacion por Pais{% endblock %}
+{% block meta_description %}Comparativa de tasas de interes en 19 paises de LATAM: tasa de prestamos, rendimiento de ahorro e inflacion anual. Datos de bancos centrales y reguladores financieros, con fecha de referencia por pais.{% endblock %}
 
 {% block json_ld %}
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Dataset",
-  "name": "Tasas de interes en America Latina 2025",
-  "description": "Comparativa de tasas de prestamos, ahorro e inflacion en 19 paises de America Latina. Datos de bancos centrales, actualizados jun 2025.",
+  "name": "Tasas de interes en America Latina",
+  "description": "Comparativa de tasas de prestamos, ahorro e inflacion en 19 paises de America Latina. Datos de bancos centrales y reguladores financieros, cada uno con su fecha de referencia.",
   "url": "https://midineroobedece.com/tasas-de-interes-latam",
   "creator": {"@type": "Organization", "name": "MiDineroObedece"},
-  "inLanguage": "es",
-  "temporalCoverage": "2025"
+  "inLanguage": "es"
 }
 </script>
 <script type="application/ld+json">
@@ -32,7 +31,7 @@
 <section class="calculadora-page">
     <p class="breadcrumb"><a href="/">Inicio</a> › Tasas de Interes LATAM</p>
     <h1>Tasas de interes en America Latina</h1>
-    <p class="subtitulo">Prestamos, ahorro e inflacion en 19 paises. Datos de bancos centrales — ref. jun 2025.</p>
+    <p class="subtitulo">Prestamos, ahorro e inflacion en 19 paises. Datos de bancos centrales y reguladores financieros — fecha de referencia indicada por pais.</p>
 
     <div class="tasas-legend">
         <span class="tl-item"><span class="tl-dot" style="background:#00cc76"></span>Bajo</span>
@@ -135,8 +134,10 @@
 
     <div class="tasas-disclaimer">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" width="16" height="16" style="flex-shrink:0;color:#a78bfa"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        <p>Las tasas son promedios de referencia tomados de bancos centrales y reguladores financieros. Las tasas reales varian segun banco, perfil del cliente y plazo. Datos actualizados junio 2025. <strong>No constituyen asesoramiento financiero.</strong></p>
+        <p>Las tasas son promedios de referencia tomados de bancos centrales y reguladores financieros. Las tasas reales varian segun banco, perfil del cliente y plazo. La fuente y el mes de cada dato se indican junto a su valor en la tabla. <strong>No constituyen asesoramiento financiero.</strong></p>
     </div>
+
+    {% include '_ad_unit.html' %}
 
     <article class="contenido-seo" style="margin-top:2.5rem">
         <h2>Como leer esta tabla</h2>

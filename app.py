@@ -6,26 +6,33 @@ app = Flask(__name__, template_folder='app/templates', static_folder='app/static
 
 # ── MOTOR DE TASAS (Bancos Centrales, refresh mensual) ──
 _RATES_FALLBACK = {
-    'USD': {'lending': 17.0, 'deposit':  5.0,  'inflation':   2.7, 'source': 'BCE Ecuador', 'year': 'jun 2025'},
-    'MXN': {'lending': 28.0, 'deposit':  9.0,  'inflation':   3.9, 'source': 'Banxico',     'year': 'jun 2025'},
-    'GTQ': {'lending': 16.0, 'deposit':  5.0,  'inflation':   4.5, 'source': 'Banguat',     'year': 'jun 2025'},
-    'HNL': {'lending': 22.0, 'deposit':  7.0,  'inflation':   5.5, 'source': 'BCH',         'year': 'jun 2025'},
-    'SVC': {'lending': 11.0, 'deposit':  3.5,  'inflation':   1.5, 'source': 'BCR El Salvador', 'year': 'jun 2025'},
-    'NIO': {'lending': 15.0, 'deposit':  4.0,  'inflation':   7.0, 'source': 'BCN',         'year': 'jun 2025'},
-    'CRC': {'lending': 16.0, 'deposit':  8.0,  'inflation':   1.5, 'source': 'BCCR',        'year': 'jun 2025'},
-    'PAB': {'lending':  9.5, 'deposit':  3.5,  'inflation':   2.5, 'source': 'SBP Panama',  'year': 'jun 2025'},
-    'DOP': {'lending': 20.0, 'deposit':  8.0,  'inflation':   4.5, 'source': 'BCRD',        'year': 'jun 2025'},
-    'COP': {'lending': 20.0, 'deposit':  7.5,  'inflation':   5.2, 'source': 'Banrep',      'year': 'jun 2025'},
-    'VES': {'lending': 30.0, 'deposit': 10.0,  'inflation': 130.0, 'source': 'BCV',         'year': 'jun 2025'},
-    'CUP': {'lending': 12.0, 'deposit':  3.0,  'inflation':  25.0, 'source': 'BCC Cuba',    'year': 'jun 2025'},
-    'PEN': {'lending': 14.0, 'deposit':  4.0,  'inflation':   2.4, 'source': 'BCRP',        'year': 'jun 2025'},
-    'BOB': {'lending':  8.0, 'deposit':  2.5,  'inflation':   3.5, 'source': 'BCB Bolivia', 'year': 'jun 2025'},
-    'BRL': {'lending': 44.0, 'deposit': 13.75, 'inflation':   5.5, 'source': 'BCB Brasil',  'year': 'jun 2025'},
-    'CLP': {'lending': 13.0, 'deposit':  5.0,  'inflation':   4.1, 'source': 'BCCh',        'year': 'jun 2025'},
-    'ARS': {'lending': 55.0, 'deposit': 32.0,  'inflation':  80.0, 'source': 'BCRA',        'year': 'jun 2025'},
-    'UYU': {'lending': 18.0, 'deposit':  8.0,  'inflation':   5.5, 'source': 'BCU',         'year': 'jun 2025'},
-    'PYG': {'lending': 16.0, 'deposit':  6.0,  'inflation':   4.5, 'source': 'BCP',         'year': 'jun 2025'},
+    'USD': {'lending': 15.79, 'deposit': 5.59,  'inflation':   2.6,  'source': 'BCE Ecuador', 'year': 'abr 2026'},
+    'MXN': {'lending': 28.0,  'deposit': 6.54,  'inflation':   4.45, 'source': 'Banxico',     'year': 'mayo 2026'},
+    'GTQ': {'lending': 16.0,  'deposit': 5.0,   'inflation':   2.85, 'source': 'Banguat',     'year': 'mayo 2026'},
+    'HNL': {'lending': 13.71, 'deposit': 7.32,  'inflation':   5.56, 'source': 'BCH',         'year': 'abr 2026'},
+    'SVC': {'lending': 11.0,  'deposit': 3.5,   'inflation':   2.2,  'source': 'BCR El Salvador', 'year': 'abr 2026'},
+    'NIO': {'lending': 15.0,  'deposit': 4.0,   'inflation':   3.72, 'source': 'BCN',         'year': 'mayo 2026'},
+    'CRC': {'lending': 16.0,  'deposit': 3.65,  'inflation':  -2.7,  'source': 'BCCR',        'year': 'feb 2026'},
+    'PAB': {'lending':  9.5,  'deposit': 3.5,   'inflation':  -0.2,  'source': 'SBP Panama',  'year': 'dic 2025'},
+    'DOP': {'lending': 13.28, 'deposit': 6.28,  'inflation':   5.11, 'source': 'BCRD',        'year': 'abr 2026'},
+    'COP': {'lending': 20.0,  'deposit': 7.5,   'inflation':   5.84, 'source': 'Banrep',      'year': 'mayo 2026'},
+    'VES': {'lending': 30.0,  'deposit': 10.0,  'inflation': 130.0,  'source': 'BCV',         'year': 'jun 2025'},
+    'CUP': {'lending': 12.0,  'deposit': 3.0,   'inflation':  25.0,  'source': 'BCC Cuba',    'year': 'jun 2025'},
+    'PEN': {'lending': 14.0,  'deposit': 4.0,   'inflation':   4.0,  'source': 'BCRP',        'year': 'abr 2026'},
+    'BOB': {'lending':  8.0,  'deposit': 2.5,   'inflation':  12.51, 'source': 'BCB Bolivia', 'year': 'mayo 2026'},
+    'BRL': {'lending': 44.0,  'deposit': 13.75, 'inflation':   5.5,  'source': 'BCB Brasil',  'year': 'jun 2025'},
+    'CLP': {'lending': 13.0,  'deposit': 5.0,   'inflation':   3.9,  'source': 'BCCh',        'year': 'mayo 2026'},
+    'ARS': {'lending': 55.0,  'deposit': 29.5,  'inflation':  32.4,  'source': 'BCRA',        'year': 'mayo 2026'},
+    'UYU': {'lending': 18.0,  'deposit': 8.0,   'inflation':   3.77, 'source': 'BCU',         'year': 'mayo 2026'},
+    'PYG': {'lending': 16.0,  'deposit': 6.0,   'inflation':   4.5,  'source': 'BCP',         'year': 'jun 2025'},
 }
+# Nota (21 jun 2026): refresco manual con datos reales investigados (sin API gratuita para la mayoria
+# de bancos centrales de LATAM). Venezuela, Cuba y Paraguay quedaron SIN tocar a proposito -- la
+# investigacion no encontro datos oficiales confiables/recientes para esos 3 (Venezuela y Cuba tienen
+# series de tasas/inflacion ampliamente cuestionadas, Paraguay solo tenia una proyeccion, no una medicion).
+# Mexico y Colombia tampoco actualizaron su 'lending': lo unico disponible era la tasa de politica
+# monetaria, que no equivale a la tasa de credito al consumo que mide este campo. Repetir este proceso
+# cada 6-12 meses; no hay forma de automatizarlo salvo para Brasil (ya cubierto por _bcb_get arriba).
 
 _COUNTRY_META = {
     'USD': {'name': 'Ecuador',          'flag': 'ec', 'symbol': '$',    'note': 'Dolarizado'},
@@ -37,7 +44,7 @@ _COUNTRY_META = {
     'CRC': {'name': 'Costa Rica',       'flag': 'cr', 'symbol': '₡',    'note': ''},
     'PAB': {'name': 'Panama',           'flag': 'pa', 'symbol': 'B/.', 'note': 'Dolarizado'},
     'DOP': {'name': 'Rep. Dominicana',  'flag': 'do', 'symbol': 'RD$',  'note': ''},
-    'CUP': {'name': 'Cuba',             'flag': 'cu', 'symbol': '$',    'note': ''},
+    'CUP': {'name': 'Cuba',             'flag': 'cu', 'symbol': '$',    'note': 'Dato oficial poco confiable'},
     'COP': {'name': 'Colombia',         'flag': 'co', 'symbol': '$',    'note': ''},
     'VES': {'name': 'Venezuela',        'flag': 've', 'symbol': 'Bs.',  'note': 'Alta inflacion'},
     'PEN': {'name': 'Peru',             'flag': 'pe', 'symbol': 'S/',   'note': ''},
