@@ -41,6 +41,34 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Es realmente gratis?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Si. Las 17 calculadoras son gratuitas y sin limite de uso. El sitio se sostiene con publicidad, no con suscripciones ni venta de datos."}
+    },
+    {
+      "@type": "Question",
+      "name": "Necesito crear una cuenta para usarlas?",
+      "acceptedAnswer": {"@type": "Answer", "text": "No. Ningun calculo se guarda en un servidor ni requiere registro. Todo el calculo corre directo en tu navegador."}
+    },
+    {
+      "@type": "Question",
+      "name": "De donde salen las tasas de cambio y de interes de referencia?",
+      "acceptedAnswer": {"@type": "Answer", "text": "Se actualizan desde fuentes publicas (bancos centrales cuando es posible) y se muestran junto a la fecha de la ultima actualizacion, para que sepas que tan reciente es el dato."}
+    },
+    {
+      "@type": "Question",
+      "name": "Estos resultados reemplazan a un asesor financiero?",
+      "acceptedAnswer": {"@type": "Answer", "text": "No. Son herramientas de calculo y educacion, utiles para entender un numero antes de decidir, pero una decision grande como un credito hipotecario o un plan de pensiones conviene revisarla tambien con un profesional o con tu banco."}
+    }
+  ]
+}
+</script>
 {% endblock %}
 
 {% block content %}
@@ -341,6 +369,23 @@
         </div>
     </div>
 
+</section>
+
+<!-- SOBRE EL PROYECTO -->
+<section class="info-section">
+    <div class="info-inner">
+        <article class="contenido-seo">
+            <h2>Por que existe este sitio</h2>
+            <p>La mayoria de bancos y apps financieras en America Latina muestran la cuota mensual de un prestamo, pero no cuanto de esa cuota es realmente interes ni el costo total del credito. Con una tarjeta lo mismo: el estado de cuenta muestra "pago minimo" sin explicar que pagar solo eso puede significar anos pagando una compra que costo unas pocas cuotas. MiDineroObedece nacio para llenar ese hueco -- herramientas simples que hacen el calculo completo, con la formula a la vista, sin necesidad de abrir una cuenta ni entregar tus datos.</p>
+            <h3>Como se calculan estas herramientas</h3>
+            <p>Ninguna calculadora de este sitio inventa numeros. Los prestamos usan el sistema frances de amortizacion (el que usa la mayoria de bancos de la region), ahorro e interes compuesto usan la formula estandar de capitalizacion, y TIR/VAN sigue el metodo de flujo de caja descontado que se enseña en cualquier curso de finanzas basico. Puedes verificar cualquier resultado con una calculadora financiera comun -- no hay nada oculto en la formula, solo se te ahorra hacer la cuenta a mano.</p>
+            <h3>Preguntas frecuentes</h3>
+            <p><strong>Es realmente gratis?</strong> Si. Las 17 calculadoras son gratuitas y sin limite de uso. El sitio se sostiene con publicidad, no con suscripciones ni venta de datos.</p>
+            <p><strong>Necesito crear una cuenta?</strong> No. Ningun calculo se guarda en un servidor ni requiere registro -- todo corre directo en tu navegador.</p>
+            <p><strong>De donde salen las tasas de cambio y de interes de referencia?</strong> Se actualizan desde fuentes publicas (bancos centrales cuando es posible) y se muestran junto a la fecha de la ultima actualizacion, para que sepas que tan reciente es el dato.</p>
+            <p><strong>Estos resultados reemplazan a un asesor financiero?</strong> No. Son herramientas de calculo y educacion, utiles para entender un numero antes de decidir, pero una decision grande como un credito hipotecario o un plan de pensiones conviene revisarla tambien con un profesional o con tu banco.</p>
+        </article>
+    </div>
 </section>
 
 <!-- NEWSLETTER -->

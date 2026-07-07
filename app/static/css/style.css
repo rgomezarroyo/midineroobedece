@@ -1595,6 +1595,10 @@ main {
     font-size: 0.85rem;
 }
 
+/* ── INFO SECTION (HOME) ── */
+.info-section { padding: 1rem 1.5rem 2rem; }
+.info-inner { max-width: 880px; margin: 0 auto; }
+
 /* ── RELACIONADAS ── */
 .relacionadas { margin-top: 2rem; }
 
