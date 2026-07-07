@@ -1599,6 +1599,61 @@ main {
 .info-section { padding: 1rem 1.5rem 2rem; }
 .info-inner { max-width: 880px; margin: 0 auto; }
 
+/* ── MISSION SECTION (HOME) ── */
+.mission-section {
+    background: linear-gradient(135deg, rgba(91,79,255,0.10) 0%, rgba(0,204,118,0.07) 100%);
+    margin: 0 -2rem 3.5rem;
+    padding: 4.5rem 2rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.mission-inner { max-width: 1100px; margin: 0 auto; }
+
+.mission-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+.mission-item {
+    background: var(--surface);
+    border-radius: 20px;
+    padding: 2rem 1.75rem;
+    border: 1px solid var(--border);
+    transition: all 0.22s;
+}
+
+.mission-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+}
+
+.mission-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.1rem;
+}
+
+.mission-icon svg { width: 24px; height: 24px; }
+
+.mission-item h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.5rem;
+}
+
+.mission-item p {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
 /* ── RELACIONADAS ── */
 .relacionadas { margin-top: 2rem; }
 
@@ -2212,6 +2267,9 @@ footer { background: var(--footer-bg); margin-top: 4rem; }
 
     .benefits-strip { margin: 0 -1.25rem 2.5rem; }
     .benefits-inner { padding: 2rem 1.25rem; }
+
+    .mission-section { margin: 0 -1.25rem 2.5rem; padding: 3.5rem 1.25rem; }
+    .mission-grid { grid-template-columns: 1fr; }
 
     .stats-section { margin: 1rem -1.25rem 0; padding: 4rem 1.25rem; }
     .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
