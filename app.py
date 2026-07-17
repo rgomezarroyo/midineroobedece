@@ -265,12 +265,22 @@ def api_contacto():
     msg['Reply-To'] = correo
 
     def _enviar():
+        # Railway no resuelve IPv6 en este contenedor; se fuerza IPv4 solo
+        # para esta conexion (si no, smtplib intenta IPv6 y falla con
+        # "Network is unreachable").
+        import socket
+        orig_getaddrinfo = socket.getaddrinfo
+        def _getaddrinfo_ipv4(host, port, family=0, type=0, proto=0, flags=0):
+            return orig_getaddrinfo(host, port, socket.AF_INET, type, proto, flags)
         try:
+            socket.getaddrinfo = _getaddrinfo_ipv4
             with smtplib.SMTP_SSL('smtp.gmail.com', 465, timeout=10) as server:
                 server.login(user, password)
                 server.sendmail(user, [user], msg.as_string())
         except Exception as e:
             print('Error enviando correo de contacto:', e)
+        finally:
+            socket.getaddrinfo = orig_getaddrinfo
 
     threading.Thread(target=_enviar, daemon=True).start()
     return jsonify({'ok': True})
