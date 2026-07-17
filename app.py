@@ -1,6 +1,7 @@
-from flask import Flask, render_template, Response, jsonify
+from flask import Flask, render_template, Response, jsonify, request
 from datetime import date, datetime, timedelta
-import requests, threading
+import requests, threading, os, smtplib
+from email.mime.text import MIMEText
 
 app = Flask(__name__, template_folder='app/templates', static_folder='app/static')
 
@@ -240,9 +241,47 @@ def blog_article(slug):
 def contacto():
     return render_template('contacto.html')
 
+@app.route('/api/contacto', methods=['POST'])
+def api_contacto():
+    data = request.get_json(silent=True) or request.form
+    limpiar = lambda v, n: (v or '').strip().replace('\r', ' ').replace('\n', ' ')[:n]
+    nombre  = limpiar(data.get('nombre'), 200)
+    correo  = limpiar(data.get('correo'), 200)
+    asunto  = limpiar(data.get('subject'), 200) or 'Consulta general'
+    mensaje = (data.get('body') or '').strip()[:5000]
+
+    if not nombre or not correo or not mensaje:
+        return jsonify({'ok': False, 'error': 'Faltan campos obligatorios'}), 400
+
+    user = os.environ.get('CONTACT_SMTP_USER')
+    password = os.environ.get('CONTACT_SMTP_PASS')
+    if not user or not password:
+        return jsonify({'ok': False, 'error': 'Servicio de correo no configurado'}), 503
+
+    msg = MIMEText(f"Nombre: {nombre}\nCorreo: {correo}\n\n{mensaje}")
+    msg['Subject'] = f"[MDO] {asunto} - {nombre}"
+    msg['From'] = user
+    msg['To'] = user
+    msg['Reply-To'] = correo
+
+    def _enviar():
+        try:
+            with smtplib.SMTP_SSL('smtp.gmail.com', 465, timeout=10) as server:
+                server.login(user, password)
+                server.sendmail(user, [user], msg.as_string())
+        except Exception as e:
+            print('Error enviando correo de contacto:', e)
+
+    threading.Thread(target=_enviar, daemon=True).start()
+    return jsonify({'ok': True})
+
 @app.route('/acerca')
 def acerca():
     return render_template('acerca.html')
+
+@app.route('/metodologia')
+def metodologia():
+    return render_template('metodologia.html')
 
 @app.route('/privacidad')
 def privacidad():
@@ -294,6 +333,7 @@ def sitemap():
         ('/tasas-de-interes-latam', '0.85', 'monthly'),
         ('/contacto', '0.4', 'yearly'),
         ('/acerca', '0.4', 'yearly'),
+        ('/metodologia', '0.4', 'yearly'),
         ('/privacidad', '0.3', 'yearly'),
         ('/terminos', '0.3', 'yearly'),
     ]

@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Metodologia y Fuentes de Datos | MiDineroObedece{% endblock %}
+
+{% block meta_description %}Como calculamos cada resultado en MiDineroObedece: formulas usadas, fuentes de las tasas de interes por pais, frecuencia de actualizacion y politica editorial.{% endblock %}
+
+{% block content %}
+<section class="calculadora-page">
+    <p class="breadcrumb"><a href="/">Inicio</a> › Metodologia</p>
+    <h1>Metodologia y fuentes de datos</h1>
+    <p class="subtitulo">Como calculamos cada resultado, de donde salen las tasas de referencia, y con que frecuencia se actualizan.</p>
+
+    <article class="contenido-seo">
+        <h2>Quien escribe y revisa este contenido</h2>
+        <p>MiDineroObedece lo mantiene un equipo editorial independiente basado en Ecuador, con formacion en finanzas personales y desarrollo de software. Elegimos mantener el sitio sin firmas individuales por preferencia del equipo, pero cada calculadora y cada dato que publicamos pasa por el mismo proceso: se verifica la formula contra una fuente tecnica reconocida, se prueba con casos reales antes de publicar, y se revisa periodicamente.</p>
+
+        <h2 style="margin-top:2rem">Formulas que usamos (y de donde salen)</h2>
+        <p>No inventamos formulas propias. Usamos las mismas que ensena cualquier curso de matematica financiera y las mismas que aplican los bancos:</p>
+        <ul>
+            <li><strong>Prestamos:</strong> sistema frances de amortizacion (cuota fija, la mezcla capital/interes cambia cada mes) — es el que usa la mayoria de bancos en LATAM para creditos personales e hipotecarios.</li>
+            <li><strong>Interes compuesto y ahorro:</strong> formula estandar de capitalizacion compuesta (M = C x (1 + i)^n), con aportes periodicos cuando aplica.</li>
+            <li><strong>TIR y VAN:</strong> metodos estandar de evaluacion de proyectos de inversion (flujo de caja descontado).</li>
+            <li><strong>Liquidacion laboral:</strong> formulas segun la legislacion laboral de cada pais (vacaciones proporcionales, indemnizacion, aguinaldo/decimos donde aplica).</li>
+            <li><strong>Reglas practicas</strong> (como el limite de 30% del ingreso en deuda, o los meses recomendados de fondo de emergencia): son estandares ampliamente usados por asesores financieros, no una invencion nuestra — los citamos como referencia, no como ley.</li>
+        </ul>
+        <p>Ninguna calculadora envia tus datos a un servidor: todo el calculo ocurre en tu navegador. No guardamos los numeros que ingresas.</p>
+
+        <h2 style="margin-top:2rem">De donde salen las tasas de interes por pais</h2>
+        <p>Las tasas de referencia que aparecen en las calculadoras (por ejemplo los rangos "MX 18-36% · CO 20-32%" en prestamos) y la tabla completa de <a href="/tasas-de-interes-latam" style="color:var(--primary)">Tasas de Interes LATAM</a> vienen de dos fuentes segun el pais:</p>
+        <ul>
+            <li><strong>Brasil:</strong> se actualiza solo, de forma automatica, consultando la API publica del Banco Central do Brasil (BCB) cada 30 dias.</li>
+            <li><strong>Resto de paises:</strong> se recopilan a mano desde publicaciones oficiales de cada banco central o superintendencia financiera (Banco de Mexico, Banco de la Republica de Colombia, BCRP en Peru, Banco Central del Ecuador, CMF en Chile, BCRA en Argentina, entre otros), y se revisan cada 6 a 12 meses. No existe hoy una API publica y unificada para toda la region, por eso el proceso en estos paises es manual.</li>
+        </ul>
+        <p><strong>Somos transparentes cuando un dato no es confiable.</strong> En Venezuela y Cuba, las series oficiales de los bancos centrales estan ampliamente cuestionadas por economistas independientes — lo marcamos visiblemente en la tabla en vez de presentarlo como un numero solido. En Paraguay, lo unico disponible publicamente es una proyeccion, no una medicion real, y lo indicamos como tal.</p>
+
+        <h2 style="margin-top:2rem">Con que frecuencia se actualiza esto</h2>
+        <p>Brasil: cada 30 dias, automatico. El resto de la tabla de tasas: revision manual cada 6-12 meses. Las formulas de las calculadoras no cambian salvo que se corrija un error o cambie una ley (por ejemplo, en liquidacion laboral). Si encuentras un dato desactualizado, dinos exactamente cual — lo revisamos y corregimos.</p>
+
+        <h2 style="margin-top:2rem">Politica editorial</h2>
+        <p>MiDineroObedece se sostiene con publicidad y con algunos enlaces de afiliado (marcados siempre como tales, con la aclaracion "Enlace de afiliado" visible junto al boton). Ningun afiliado paga por aparecer mejor posicionado, por una tasa mas favorable, o por estar mencionado en una calculadora que no le corresponde. El contenido educativo y los resultados de las calculadoras son independientes de cualquier relacion comercial.</p>
+        <p>Nada de lo publicado aqui es asesoramiento financiero personalizado — son herramientas de referencia general. Para decisiones importantes, consulta con un asesor financiero certificado en tu pais.</p>
+
+        <h2 style="margin-top:2rem">Como reportar un error</h2>
+        <p>Si una calculadora te da un resultado que no cuadra, o encuentras una tasa desactualizada, escribenos desde <a href="/contacto" style="color:var(--primary)">la pagina de contacto</a> indicando la calculadora, los datos que usaste, y el resultado que esperabas. Revisamos cada reporte.</p>
+    </article>
+</section>
+{% endblock %}

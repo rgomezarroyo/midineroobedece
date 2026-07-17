@@ -89,18 +89,26 @@ function enviarContacto(e) {
     var btn = document.getElementById('contacto-btn');
     btn.disabled = true;
     btn.textContent = 'Enviando...';
-    var nombre  = document.getElementById('contact-name').value;
-    var correo  = document.getElementById('contact-email').value;
-    var asunto  = document.getElementById('contact-subject').value;
-    var mensaje = document.getElementById('contact-msg').value;
-    var mailto  = 'mailto:info@midineroobedece.com'
-                + '?subject=' + encodeURIComponent('[MDO] ' + asunto + ' - ' + nombre)
-                + '&body='    + encodeURIComponent('Nombre: ' + nombre + '\nCorreo: ' + correo + '\n\n' + mensaje);
-    window.location.href = mailto;
-    setTimeout(function() {
+    var payload = {
+        nombre:  document.getElementById('contact-name').value,
+        correo:  document.getElementById('contact-email').value,
+        subject: document.getElementById('contact-subject').value,
+        body:    document.getElementById('contact-msg').value
+    };
+    fetch('/api/contacto', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(payload)
+    }).then(function(r) { return r.json().then(function(data) { return {ok: r.ok, data: data}; }); })
+      .then(function(res) {
+        if (!res.ok || !res.data.ok) throw new Error(res.data.error || 'Error al enviar');
         document.getElementById('contacto-form').style.display = 'none';
         document.getElementById('form-exito').style.display    = 'flex';
-    }, 800);
+    }).catch(function(err) {
+        btn.disabled = false;
+        btn.textContent = 'Enviar mensaje →';
+        alert('No pudimos enviar tu mensaje. Escribenos directo a info@midineroobedece.com. (' + err.message + ')');
+    });
 }
 </script>
 
