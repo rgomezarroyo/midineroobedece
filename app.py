@@ -276,9 +276,10 @@ def api_contacto():
             socket.getaddrinfo = _getaddrinfo_ipv4
             with smtplib.SMTP_SSL('smtp.gmail.com', 465, timeout=10) as server:
                 server.login(user, password)
-                server.sendmail(user, [user], msg.as_string())
+                rechazados = server.sendmail(user, [user], msg.as_string())
+                print('Correo de contacto enviado, rechazados:', rechazados, flush=True)
         except Exception as e:
-            print('Error enviando correo de contacto:', e)
+            print('Error enviando correo de contacto:', repr(e), flush=True)
         finally:
             socket.getaddrinfo = orig_getaddrinfo
 
