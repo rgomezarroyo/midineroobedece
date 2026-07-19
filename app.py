@@ -1,7 +1,6 @@
 from flask import Flask, render_template, Response, jsonify, request
 from datetime import date, datetime, timedelta
-import requests, threading, os, smtplib
-from email.mime.text import MIMEText
+import requests, threading, os
 
 app = Flask(__name__, template_folder='app/templates', static_folder='app/static')
 
@@ -253,35 +252,30 @@ def api_contacto():
     if not nombre or not correo or not mensaje:
         return jsonify({'ok': False, 'error': 'Faltan campos obligatorios'}), 400
 
-    user = os.environ.get('CONTACT_SMTP_USER')
-    password = os.environ.get('CONTACT_SMTP_PASS')
-    if not user or not password:
+    resend_key = os.environ.get('RESEND_API_KEY')
+    destino = os.environ.get('CONTACT_SMTP_USER')  # correo de Ricardo, se reusa la misma var de antes
+    if not resend_key or not destino:
         return jsonify({'ok': False, 'error': 'Servicio de correo no configurado'}), 503
 
-    msg = MIMEText(f"Nombre: {nombre}\nCorreo: {correo}\n\n{mensaje}")
-    msg['Subject'] = f"[MDO] {asunto} - {nombre}"
-    msg['From'] = user
-    msg['To'] = user
-    msg['Reply-To'] = correo
-
     def _enviar():
-        # Railway no resuelve IPv6 en este contenedor; se fuerza IPv4 solo
-        # para esta conexion (si no, smtplib intenta IPv6 y falla con
-        # "Network is unreachable").
-        import socket
-        orig_getaddrinfo = socket.getaddrinfo
-        def _getaddrinfo_ipv4(host, port, family=0, type=0, proto=0, flags=0):
-            return orig_getaddrinfo(host, port, socket.AF_INET, type, proto, flags)
+        # Railway bloquea SMTP saliente por completo (confirmado, no es arreglable
+        # desde el codigo) - se usa la API HTTPS de Resend en su lugar.
         try:
-            socket.getaddrinfo = _getaddrinfo_ipv4
-            with smtplib.SMTP_SSL('smtp.gmail.com', 465, timeout=10) as server:
-                server.login(user, password)
-                rechazados = server.sendmail(user, [user], msg.as_string())
-                print('Correo de contacto enviado, rechazados:', rechazados, flush=True)
+            r = requests.post(
+                'https://api.resend.com/emails',
+                headers={'Authorization': f'Bearer {resend_key}', 'Content-Type': 'application/json'},
+                json={
+                    'from': 'MiDineroObedece <onboarding@resend.dev>',
+                    'to': [destino],
+                    'reply_to': correo,
+                    'subject': f"[MDO] {asunto} - {nombre}",
+                    'text': f"Nombre: {nombre}\nCorreo: {correo}\n\n{mensaje}",
+                },
+                timeout=10,
+            )
+            print('Correo de contacto enviado via Resend, status:', r.status_code, r.text[:200], flush=True)
         except Exception as e:
             print('Error enviando correo de contacto:', repr(e), flush=True)
-        finally:
-            socket.getaddrinfo = orig_getaddrinfo
 
     threading.Thread(target=_enviar, daemon=True).start()
     return jsonify({'ok': True})
